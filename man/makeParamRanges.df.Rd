@@ -101,3 +101,9 @@ param.ranges <- makeParamRanges.df(figure = 28.3)
 param.ranges[c("K.bc","K.wg"), ]
 
 }
+\references{
+Runge, MC and PP Marra.  2004.  Modeling seasonal
+interactions in the population dynamics of migratory birds.
+In Greenberg, R and PP Marra, eds.  Birds of two worlds.
+Johns Hopkins University Press, Baltimore.
+}
