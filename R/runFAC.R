@@ -4,9 +4,9 @@
 #' until equilbirium is reached.  Typically the desired output is the equilibrium
 #' population size(s) and all intermediate output is discarded.
 #'
-#' @param reps how many iterations of model to run before stopping
+#' @param iterations how many iterations of model to run before stopping
 #' @param Ninit vector of initial abundances at the begining of winter for W.mg, W.mp, W.fg and W.fp
-#' @param paramsWorking initila parameters for this run of the model.
+#' @param param.set initila parameters for this run of the model.
 #' @param scenario character string representing name of scenario explored in original Runge and Marra paper (not currently implemented 7/10/2018)
 #' @param vary ...
 #' @param verbose verbose output
@@ -22,9 +22,9 @@
 #' @references Runge, MC & PP Marra 2004.  Modeling seasonal interactions in the population dynamics of migratory birds.  Birds of two words.
 #' @export
 
-runFAC <- function(reps = 350 #number of generations to run model; setting tol.1 to a value greater than 1 causes model to check for equilbrium; deafult of tol.1 is 3, which means models check for equilbrium after 1/3 of the reps have been run
+runFAC <- function(iterations = 350 #number of generations to run model; setting tol.1 to a value greater than 1 causes model to check for equilbrium; deafult of tol.1 is 3, which means models check for equilbrium after 1/3 of the iterations have been run
                    ,Ninit = c(10,0,10,0)
-                   ,paramsWorking = makeParCombos()
+                   ,param.set = param_set()
                    ,scenario = NA
                    ,vary = NA
                    ,verbose = FALSE
@@ -33,9 +33,9 @@ runFAC <- function(reps = 350 #number of generations to run model; setting tol.1
                    ### Diagnostics and misc
                    ,check.eq = TRUE #check for equilibrium
                    ,check.eq.after.i = 20
-                   ,tol.1 = 3 # tolerance value for checking for equlibrium; lower values are more stringed; minimum is 1, which makes the model run the full number of reps
+                   ,tol.1 = 3 # tolerance value for checking for equlibrium; lower values are more stringed; minimum is 1, which makes the model run the full number of iterations
                    ,tol.2 = 3 #2ndary tolerance value for checking equilbrium; LARGER values increase stringency
-                   ,diagnostic.plot = F
+                   ,diagnostic.plot = T
                    ,...
                 ){
 
@@ -48,15 +48,15 @@ runFAC <- function(reps = 350 #number of generations to run model; setting tol.1
 
 # Check main parameter dataframe
 ## Check that dataframe of parameters is correct size
-QAQC_paramsWorking(paramsWorking)
+QAQC_param_set(param.set)
 
 
 ## Create dataframe to store output from each iteration
-out.df <- makeSingleRunOutDf(reps)
+out.df <- make_FAC_df(iterations)
 
 ## Set up fixed parameters
 ### Calculate Competition for winter territories: gamma
-gamma.i <- with(paramsWorking,
+gamma.i <- with(param.set,
                   eq24buildGammaVect(gamma))
 
 
@@ -69,7 +69,7 @@ gamma.i <- with(paramsWorking,
 ### EQUATION 2: winter survival matrix
 ### Winter SURVIVAL (S.w) of birds in different habitat qualities
 ##### (Former Alias: Fx.make.winter.surv.eq2())
-S.w <- with(paramsWorking,
+S.w <- with(param.set,
             eq02bulidMat(S.w.mg,
                          S.w.mp,
                          S.w.fg,
@@ -78,7 +78,7 @@ S.w <- with(paramsWorking,
 ### EQUATION 3: spring migration survival matrix
 ### Northward migration survival (S.m)
 #### (Alias: Fx.make.spring.mig.surv.eq3)
-S.m <- with(paramsWorking,
+S.m <- with(param.set,
             eq03(S.m.mg,
                  S.m.mp,
                  S.m.fg,
@@ -87,7 +87,7 @@ S.m <- with(paramsWorking,
 
 ### Equation 20: Breeding season survival matrix
 ### (alias: Fx.make.breeding.s.matrix.eq20)
-S.b <- with(paramsWorking,
+S.b <- with(param.set,
             eq20(S.b.mc,
                  S.b.mk,
                  S.b.md,
@@ -97,7 +97,7 @@ S.b <- with(paramsWorking,
 
 #EQUATION 21: Spring migration survival matrix = adults
 # alias: Fx.make.fall.adult.s.matrix.eq21
-S.f <-  with(paramsWorking,
+S.f <-  with(param.set,
              eq21(S.f.mc,
                   S.f.mk,
                   S.f.md,
@@ -108,7 +108,7 @@ S.f <-  with(paramsWorking,
 
 ### EQUATION 22 Spring mgiraiton survival matrix - young
 # alias: Fx.make.fall.adult.s.matrix.eq22
-S.y <- with(paramsWorking,
+S.y <- with(param.set,
             eq22(S.y.mc,
                  S.y.mk,
                  S.y.fc,
@@ -126,7 +126,7 @@ S.y <- with(paramsWorking,
 
 ## Implement model iteratively
 ### Iterate model in order to reach stable equilibrium
-for(i in 1:reps){
+for(i in 1:iterations){
 
   # 1st iteration only:
   ## Initial winter population state
@@ -197,7 +197,7 @@ for(i in 1:reps){
   #habitat during summer
 
   #scalar output
-  B.fc <- with(paramsWorking,
+  B.fc <- with(param.set,
                  eq04(W2,
                       K.bc))
 
@@ -206,7 +206,7 @@ for(i in 1:reps){
   #### (Alias F.2.sink.eq5.k)
 
   #scalar output
-  B.fk <- with(paramsWorking,
+  B.fk <- with(param.set,
                  eq05calcScalar(K.bc,
                                 K.bk,
                                 W2))
@@ -230,7 +230,7 @@ for(i in 1:reps){
 
   # scalar out
   # (alias #M.2.source.eq6.c)
-  B.mc <- with(paramsWorking,
+  B.mc <- with(param.set,
                  eq06(W2,
                       K.bc))
 
@@ -239,7 +239,7 @@ for(i in 1:reps){
   # (alias #M.2.sink.eq7.k)
 
   # scalar out
-  B.mk <- with(paramsWorking,
+  B.mk <- with(param.set,
                  eq07calcScalar(K.bc,
                                 W2,
                                 B.fk))
@@ -252,7 +252,7 @@ for(i in 1:reps){
   #   minus those that ended up in source habitat (K.bc)
   #   minus those that paired w/female in sink habitat (B.fk)
 
-  B.md <- with(paramsWorking,
+  B.md <- with(param.set,
                  eq08calcScalar(W2,
                                 K.bc,
                                 B.fk)) #M.2.drain.eq8
@@ -269,7 +269,7 @@ for(i in 1:reps){
   ### EQUATION 9 eq09calcScalar()
 
   #### alias #pairing.eq9.P.c.gg
-  P.cgg <- with(paramsWorking,
+  P.cgg <- with(param.set,
                   eq09calcScalar(W2,
                                  K.bc,
                                  B.mc,
@@ -281,7 +281,7 @@ for(i in 1:reps){
 
   # alias #pairing.eq10.P.c.gp
 
-  P.cgp <- with(paramsWorking,
+  P.cgp <- with(param.set,
                   eq10(W2,
                        K.bc,
                        B.fc,
@@ -292,7 +292,7 @@ for(i in 1:reps){
   ### EQUATION 11:  eq11()
   ### Proportion of poor males mated w/ "good" female
 
-  P.cpg <- with(paramsWorking,
+  P.cpg <- with(param.set,
                   eq11(W2,
                        B.mc,
                        B.fc,
@@ -319,7 +319,7 @@ for(i in 1:reps){
     ### pairing in SIN.K. habitat
 
     ### pairing.eq13.P.kgg
-    P.kgg <- with(paramsWorking,
+    P.kgg <- with(param.set,
                   eq13(W2,
                        K.bc,
                        K.bk,
@@ -332,7 +332,7 @@ for(i in 1:reps){
     ### proportion in sink habitat, good-poor pairs
 
     #### alias pairing.eq14.P.kgp
-    P.kgp <- with(paramsWorking,
+    P.kgp <- with(param.set,
                   eq14(W2,
                        K.bc,K.bk,
                        B.mk,B.fk))
@@ -340,7 +340,7 @@ for(i in 1:reps){
 
     ### EQUATION 15: eq15()
     ### aliaspairing.eq15.P.kpg
-    P.kpg <- with(paramsWorking,
+    P.kpg <- with(param.set,
                   eq15(W2,
                        K.bc,K.bk,
                        B.mk,B.fk))
@@ -382,7 +382,7 @@ for(i in 1:reps){
 
     ### LOAD EQUATION 18a
     ### alias: fx.make.R.all.eq18
-    R.all <- with(paramsWorking,
+    R.all <- with(param.set,
                   eq18buildRmat(R.base.rate,
                                 R.hab.effect,
                                 co))
@@ -413,7 +413,7 @@ for(i in 1:reps){
     #sex ratio
 
     #make.F.matrix
-    eq19.f.mat <- with(paramsWorking,
+    eq19.f.mat <- with(param.set,
                        eq19buildFmat(f))
 
     ### Cacluate reproductive output
@@ -519,10 +519,10 @@ for(i in 1:reps){
     #Compeition only occurs if the total number of birds arriving from breeding ground
     #on migration exceeds the winter carrying capacity, K.wg
     #  otherwise A.G = A.i, A.P = 0
-    if( sum(A.i) > paramsWorking$K.wg ){
+    if( sum(A.i) > param.set$K.wg ){
 
       #Implement competition
-      A.post.comp <- with(paramsWorking,
+      A.post.comp <- with(param.set,
                           eq24compLoop(K.wg,
                                        A.i,
                                        gamma.i))
@@ -590,7 +590,7 @@ for(i in 1:reps){
     ### Check to see if equilibrium has been reached
     ###  population size no longer changing
     at.eq <- FALSE
-    if(check.eq == TRUE & reps > check.eq.after.i & i > reps/tol.1){
+    if(check.eq == TRUE & iterations > check.eq.after.i & i > iterations/tol.1){
       at.eq <- runFAC_check_equilibrium(out.df, i, tol.2,at.eq)
     }
 

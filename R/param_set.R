@@ -4,9 +4,8 @@
 #' these are then turned into a matrix of all combinations by the function
 #' makeParamCombos.df()
 #'
-#' @return Dataframe with 2 columns, minimum and maxium values for each parameter
 #'
-#' @param scenario Difference scenarios defined by Runge & Marra
+#' @param scenario Difference scenarios defined by Runge & Marra.  If set overides other varibles.
 #' @param figure generate figure.  Currently only figures 28.3 and 28.4 are implemented
 #' @param gamma. xx
 #' @param c. xxx
@@ -40,113 +39,124 @@
 #' @param S.y.fc. xxx
 #' @param S.y.fk. xxx
 #'
-#' @return param.ranges 30 x 2 dataframe of the min. and max. parameter values that will be considered.  Often values are fixed.
+#' @return param.ranges 30 x 2 dataframe of the min. and max. parameter values that will be considered.  Often values are fixed and do not vary.
 #'
 #' @references Runge, MC and PP Marra.  2004.  Modeling seasonal
 #'       interactions in the population dynamics of migratory birds.
-#'       In Greenberg, R and PP Marra, eds.  Birds of two worlds.
+#'       In Greenberg, R and PP Marra, eds.  Birds of two worlds: The ecology & evolution of migration.
 #'       Johns Hopkins University Press, Baltimore.
 #'
 #' @examples
-#' param.ranges <- makeParamRanges.df(scenario. = "winter.limited")
+#'
+#' # Set parameters for the winter limited scenario in original paper (Runge & Marra 2004)
+#' param.ranges <- param_ranges(scenario = "winter.limited")
 #' head(param.ranges)
 #'
-#' param.ranges <- makeParamRanges.df(figure = 28.3)
+#' # Parameters to remake Figure 28.3 in original paper (Runge & Marra 2004)
+#' param.ranges <- param_ranges(figure = 28.3)
+#' param.ranges[c("K.bc","K.wg"), ]
+#'
+#' # Setting carrying capacities to 0 causes errors when running model
+#' ## param_ranges() therefore automatically changes to prevent this bug
+#' param.ranges <- param_ranges(K.bc. = c(0,100))
 #' param.ranges[c("K.bc","K.wg"), ]
 #'
 #' @export
 
-makeParamRanges.df <- function(
-  scenario. = NA
+param_set <- function(
+  scenario = NA
   ,figure = NA
-  ,gamma.  = c(5,5)
-  ,c.      = c(1,1)
-  ,K.bc.   = c(1000,1000)                #c(0,600)
-  ,K.bk.   = c(10000,10000)
-  ,K.wg.   = c(900,900)
+  ,gamma.  = 5
+  ,c.      = 1
+  ,K.bc.   = 1000                #c(0,600)
+  ,K.bk.   = 10000
+  ,K.wg.   = 900
 
   #Winter SURVIVAL (S.w)
-  ,S.w.mg. = c(0.80,0.80) #c(0.80,0.80)
-  ,S.w.mp. = c(0.80,0.80)
-  ,S.w.fg. = c(0.80,0.80)
-  ,S.w.fp. = c(0.80,0.80)
+  ,S.w.mg. = 0.80
+  ,S.w.mp. = 0.80
+  ,S.w.fg. = 0.80
+  ,S.w.fp. = 0.80
 
   #Spring (Northward) migration SURVIVAL (S.m)
-  ,S.m.mg. = c(0.90,0.90)  #do they call this s.smg?
-  ,S.m.mp. = c(0.80,0.80)
-  ,S.m.fg. = c(0.90,0.90)
-  ,S.m.fp. = c(0.80,0.80)
+  ,S.m.mg. = 0.90  #do they call this s.smg?
+  ,S.m.mp. = 0.90
+  ,S.m.fg. = 0.90
+  ,S.m.fp. = 0.90
 
   #FECUNDITIES
-  ,R.base.rate. = c(1.8,1.8)
-  ,R.hab.effect. = c(0.5,0.5)   #effects of pair breeding in poor habitat
-  ,co. = c(1,1)    #2              #magnitude of carry over effect; c =1 equals no carry over
+  ,R.base.rate. = 1.8
+  ,R.hab.effect. = 0.5  #effects of pair breeding in poor habitat
+  ,co. = 1   #2              #magnitude of carry over effect; c =1 equals no carry over
 
   #sex ratio
-  ,f. = c(0.50,0.50)
+  ,f. = 0.50
 
   #Breeding season mortality
-  ,S.b.mc. = c(0.95,0.95) #males in sour.c.e habitat
-  ,S.b.mk. = c(0.85,0.85) #males in sin.k. habitat
-  ,S.b.md. = c(0.80,0.80) #"drain" males
-  ,S.b.fc. = c(0.95,0.95)
-  ,S.b.fk. = c(0.85,0.85)
+  ,S.b.mc. = 0.95 #males in sour.c.e habitat
+  ,S.b.mk. = 0.85 #males in sin.k. habitat
+  ,S.b.md. = 0.80 #"drain" males
+  ,S.b.fc. = 0.95
+  ,S.b.fk. = 0.85
 
   #FALL (southward) MIGRATION Mortality of ADULTS
   #pg 381; Table 28.2
-  ,S.f.mc. = c(0.80,0.80) # c(0.80,0.80)#males from sour.c.e
-  ,S.f.mk. = c(0.75,0.75) #c(0.75,0.75)
-  ,S.f.md. = c(0.80,0.80) #drain males have higher surv b/c they don't have costs of repro
-  ,S.f.fc. = c(0.80,0.80)
-  ,S.f.fk. = c(0.75,0.75)
+  ,S.f.mc. = 0.80 # c(0.80,0.80)#males from sour.c.e
+  ,S.f.mk. = 0.75 #c(0.75,0.75)
+  ,S.f.md. = 0.80#drain males have higher surv b/c they don't have costs of repro
+  ,S.f.fc. = 0.80
+  ,S.f.fk. = 0.75
 
   #FALL MIGRATION Survival of OFFSPRING
-  ,S.y.mc. = c(0.80,0.80)
-  ,S.y.mk. = c(0.75,0.75)
-  ,S.y.fc. = c(0.80,0.80)
-  ,S.y.fk. = c(0.75,0.75)){
+  ,S.y.mc. = 0.80
+  ,S.y.mk. = 0.75
+  ,S.y.fc. = 0.80
+  ,S.y.fk. = 0.75){
 
 
   #Set scenarios from Runge and Marra
-  if(is.na(scenario.) == FALSE){
-    if(scenario.%in% c("winter.limited",
+  if(is.na(scenario) == FALSE){
+    if(scenario%in% c("winter.limited",
                        "winter.lim",
                        "winter",
                        "win.lim",
                        "win")){
-      K.bc. <- c(800,800)
-      K.wg. <- c(485,485)
+      K.bc. <- c(800)
+      K.wg. <- c(485)
     }
 
-    if(scenario. %in% c("intermediate","inter","both","intermed")){
-      K.bc. <- c(224,224)
-      K.wg. <- c(580,580)
+    if(scenario %in% c("intermediate","inter","both","intermed")){
+      K.bc. <- c(224)
+      K.wg. <- c(580)
     }
 
-    if(scenario. %in% c("summer.limited","summer.lim","summer","sum.lim","sum")){
-      K.bc. <-  c(205,205)
-      K.wg. <- c(900,900)
+    if(scenario %in% c("summer.limited","summer.lim","summer","sum.lim","sum")){
+      K.bc. <-  c(205)
+      K.wg. <- c(900)
     }}
 
 
-  #Set up for particular figures
-  if(is.na(figure)== FALSE){
-    if(figure == 28.4){
-      K.bc. <- c(1,600)
-      K.wg.  <- c(900,900)
-    }
-    if(figure == 28.3){
-      K.bc. <- c(1,1000)
-      K.wg.  <- c(1,1000)
-    }
+
+  #check for zeros in carrying capacities
+  #should add messge about this: 0s can result in model not running so they
+  # are changed in to 1
+  min.K <- min(c(K.bc.,K.bk.,K.wg.))
+
+  if(min.K == 0){
+    message("One of your carrying capacities is set to 0, which due to an unresolved bug can cause problems.  This value has been set to 1.  Sorry.")
+    K.bc. <- ifelse(K.bc. == 0, 1, K.bc.)  #Change any zeros to 1 to make model avoid errors
+    K.bk. <- ifelse(K.bk. == 0, 1, K.bk.)  #Change any zeros to 1 to make model avoid errors
+    K.wg. <- ifelse(K.wg. == 0, 1, K.wg.)  #Change any zeros to 1 to make model avoid errors
+
   }
 
+
+
   #Ranges of parametrs to consider
-  param.ranges <- t(data.frame(
-    row.names = c("min","max")
-    # scenario = scenario. I would like to indicate if a scenario was used
+  param.set <- data.frame(
+    # scenario = scenario I would like to indicate if a scenario was used
     # this could be added as an attribute perhaps?  or use a list?
-    ,gamma  = gamma.
+    gamma  = gamma.
     ,co      = co.
     ,K.bc   = K.bc.                #c(0,600)
     ,K.bk   = K.bk.
@@ -186,12 +196,13 @@ makeParamRanges.df <- function(
     ,S.f.fc = S.f.fc.
     ,S.f.fk = S.f.fk.
 
-    #FALL MIGRATION Survival of OFFSPRING
+    #FALL MIGRATION Survival of OFFSPRINGpa
     ,S.y.mc = S.y.mc.
     ,S.y.mk = S.y.mk.
     ,S.y.fc = S.y.fc.
-    ,S.y.fk = S.y.fk.))
+    ,S.y.fk = S.y.fk.)
 
-  return(param.ranges)
+
+  return(param.set)
 }
 

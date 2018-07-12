@@ -1,4 +1,4 @@
-#' Create FAC output dataframe function
+#' Create FAC output dataframe
 #'
 #' Creates a dataframe to hold output from a single run
 #' of a Runge & Marra (2004) FAC model Model is run over a certain number of
@@ -14,10 +14,10 @@
 #' @export
 
 
-makeSingleRunOutDf <- function(reps = 300){
+make_FAC_df <- function(iterations = 300){ #change reps to iterations?
 
   # Empty vector
-  NA.vec <- rep(NA,reps)
+  NA.vec <- rep(NA,iterations)
 
   # Dataframe to hold output
   out.df <- data.frame  (W.mg = NA.vec,  #Winter population AFTER Competition
