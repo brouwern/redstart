@@ -5,8 +5,8 @@
 #' makeParamCombos.df()
 #'
 #'
-#' @param scenario Difference scenarios defined by Runge & Marra.  If set overides other varibles.
-#' @param figure generate figure.  Currently only figures 28.3 and 28.4 are implemented
+#' @param scenario Difference scenarios defined by Runge & Marra: "winter" limited, "intermediate", and "spring" limited.  If set overides other varibles.
+#' @param figure deprecated
 #' @param gamma. xx
 #' @param c. xxx
 #' @param K.bc. xxx
@@ -48,23 +48,38 @@
 #'
 #' @examples
 #'
-#' # Set parameters for the winter limited scenario in original paper (Runge & Marra 2004)
-#' param.ranges <- param_ranges(scenario = "winter.limited")
-#' head(param.ranges)
+#' # Default values
+#' ## Print out default values (only 1st 10 show.  Remove "[1:10]" to see all)
+#' param_set()[1:10]
 #'
-#' # Parameters to remake Figure 28.3 in original paper (Runge & Marra 2004)
-#' param.ranges <- param_ranges(figure = 28.3)
-#' param.ranges[c("K.bc","K.wg"), ]
+#' ## Print defaults in a column by taking the transpose using t()
+#' ## (only 1st 10 show.  Remove "[1:10]" to see all)
+#' t(param_set()[1:10])
 #'
-#' # Setting carrying capacities to 0 causes errors when running model
-#' ## param_ranges() therefore automatically changes to prevent this bug
-#' param.ranges <- param_ranges(K.bc. = c(0,100))
-#' param.ranges[c("K.bc","K.wg"), ]
+#' # Set parameters for the different scenarios plotted in figure Figure 28.5 in Runge & Marra (2004)
+#' ## (note that to actually replicate Fig 28.5 param_rangs() and param_seqs() need to be used)
+#' ## to set up full parameter grid with the male dominanc parameter gamma varying.
+#'
+#' ## winter limited
+#' winter <- param_set(scenario = "winter.limited")
+#'
+#' ## intermediate scenario
+#' intermediate <- param_set(scenario = "intermediate")
+#'
+#' ## summer limited scenario
+#' summer <- param_set(scenario = "summer.limited")
+#'
+#' ## compare the scenarios
+#' ### K.bc varies
+#' ### k.bk fixed
+#' ### K.wg varies
+#' rbind(winter = winter, intermed = intermediate, summer = summer)[, 1:10]
+#'
 #'
 #' @export
 
 param_set <- function(
-  scenario = NA
+   scenario = NA
   ,figure = NA
   ,gamma.  = 5
   ,c.      = 1

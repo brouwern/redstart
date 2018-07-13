@@ -14,5 +14,9 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
-Imports: stats,
-    graphics
+Imports:
+    stats,
+    graphics,
+    ggplot2,
+    reshape2,
+    devtools

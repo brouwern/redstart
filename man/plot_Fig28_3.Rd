@@ -6,6 +6,15 @@
 \usage{
 plot_Fig28_3(runFAC.multi, plot.type = "P", scale. = T, tick.labs = 1)
 }
+\arguments{
+\item{runFAC.multi}{output from runFAC_multi()}
+
+\item{plot.type}{3D perspective plot ("P"; default) or 2D contour plot ("C")}
+
+\item{scale.}{include scale}
+
+\item{tick.labs}{????}
+}
 \description{
 Process the output of runMultiFAC() to re-create the 3D Fig 28.3
 }

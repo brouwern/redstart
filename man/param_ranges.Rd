@@ -14,10 +14,10 @@ param_ranges(scenario = NA, figure = NA, gamma. = c(5, 5), c. = c(1, 1),
   S.b.fc. = c(0.95, 0.95), S.b.fk. = c(0.85, 0.85), S.f.mc. = c(0.8, 0.8),
   S.f.mk. = c(0.75, 0.75), S.f.md. = c(0.8, 0.8), S.f.fc. = c(0.8, 0.8),
   S.f.fk. = c(0.75, 0.75), S.y.mc. = c(0.8, 0.8), S.y.mk. = c(0.75, 0.75),
-  S.y.fc. = c(0.8, 0.8), S.y.fk. = c(0.75, 0.75))
+  S.y.fc. = c(0.8, 0.8), S.y.fk. = c(0.75, 0.75), verbose = TRUE)
 }
 \arguments{
-\item{scenario}{Difference scenarios defined by Runge & Marra.  If set overides other varibles.}
+\item{scenario}{Difference scenarios defined by Runge & Marra.  If set overides other varibles that may have been set using other arguements.}
 
 \item{figure}{generate figure.  Currently only figures 28.3 and 28.4 are implemented}
 
@@ -82,6 +82,8 @@ param_ranges(scenario = NA, figure = NA, gamma. = c(5, 5), c. = c(1, 1),
 \item{S.y.fc.}{xxx}
 
 \item{S.y.fk.}{xxx}
+
+\item{verbose}{T/F return messages}
 }
 \value{
 param.ranges 30 x 2 dataframe of the min. and max. parameter values that will be considered.  Often values are fixed and do not vary.
@@ -105,6 +107,16 @@ param.ranges[c("K.bc","K.wg"), ]
 ## param_ranges() therefore automatically changes to prevent this bug
 param.ranges <- param_ranges(K.bc. = c(0,100))
 param.ranges[c("K.bc","K.wg"), ]
+
+# Set up different scenarios
+## this is similar to data for figure 28.5, but without gamma varying
+winter.lim <- param_ranges(scenario = "winter")
+intermed <- param_ranges(scenario = "intermediate")
+summer.lim <- param_ranges(scenario = "summer")
+
+# Show data
+## Note only 1st 6 rows shown; delete "[1:6,]" to show all.
+data.frame(winter.lim, intermed, summer.lim)[1:6,]
 
 }
 \references{

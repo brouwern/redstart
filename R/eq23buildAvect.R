@@ -1,6 +1,6 @@
-#' Equation 23: Build A matrix (not implemented)
+#' Equation 23: Build the A matrix (not implemented)
 #'
-#' @details
+#' @details ...
 #'
 #' @param B2 Adults that survived breeding and fall migration
 #' @param Y2 Young (offspring) that survived breeding and fall migration

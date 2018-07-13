@@ -1,12 +1,21 @@
 #' Run multiple FAC models to equilibirum accross a range of parameters
 #'
+#' Note that the "para.grid" arguement take take produced by the param_grid() function,
+#' which gets its name because it uses the expand.grid() function to make all
+#' combinations of the parameters being varied.
+#' runFAC() has been updated to be able to output the full time serie
+#' OR just the eq pop size
+#' need to update runFAC_multi() to just take that eq size
+#' should run a bit faster if runFAC() is keep all of that info
+#' NB: "remakeFigure" does not appear in current code
+#'
+#' @param para.grid Dataframe of parameters, usually with 1 or 2 that vary accross a range
+#' @para makeFigure deprecated.  Replaced by plot_Fig29_3
+#'
 #' @export
 
 
-#"remakeFigure" does not appear in current code
-#should I set up runFAC() to be able to only output equilibrium size,
-# and have that be the only thing that gets picked up by runFAC_multi()
-# should run a bit fast if runFAC() is keep all of that info
+
 
 runFAC_multi <- function(param.grid = param_grid(),
                          remakeFigure = NA){

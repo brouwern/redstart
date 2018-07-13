@@ -1,13 +1,23 @@
 ---
-title: "Relevant Literature"
-author: "Nathan Brouwer"
-date: "July 13, 2018"
-output: html_document
+title: "Running a full-annual cycle model with FACavian"
+author: "Vignette Author"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
 ```
+
 
 
 Paxton et al 2017.  Journal of Avian Biology.  Survivorship across the annual cycle of a migratory passerine, the willow flycatcher.

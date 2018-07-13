@@ -26,8 +26,8 @@
 
 
 eq08calcScalar <- function(W2,
-                K.bc,
-                B.fk){
+                           K.bc,
+                           B.fk){
   max(0,
       (W2["mg"]+W2["mp"]-K.bc-B.fk) )
 }

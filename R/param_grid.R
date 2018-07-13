@@ -47,7 +47,10 @@
 param_grid <- function(param.seqs = param_seqs(param_ranges(figure = 28.3))){
 
 
-
+  if(is.list(param.seqs) == FALSE){
+    message("Input is not a list.")
+    break
+  }
 
   param.grid <- do.call(what = expand.grid,param.seqs)
 

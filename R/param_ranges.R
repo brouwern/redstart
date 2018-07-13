@@ -5,7 +5,7 @@
 #' makeParamCombos.df()
 #'
 #'
-#' @param scenario Difference scenarios defined by Runge & Marra.  If set overides other varibles.
+#' @param scenario Difference scenarios defined by Runge & Marra.  If set overides other varibles that may have been set using other arguements.
 #' @param figure generate figure.  Currently only figures 28.3 and 28.4 are implemented
 #' @param gamma. xx
 #' @param c. xxx
@@ -38,6 +38,7 @@
 #' @param S.y.mk. xxx
 #' @param S.y.fc. xxx
 #' @param S.y.fk. xxx
+#' @param verbose T/F return messages
 #'
 #' @return param.ranges 30 x 2 dataframe of the min. and max. parameter values that will be considered.  Often values are fixed and do not vary.
 #'
@@ -60,6 +61,16 @@
 #' ## param_ranges() therefore automatically changes to prevent this bug
 #' param.ranges <- param_ranges(K.bc. = c(0,100))
 #' param.ranges[c("K.bc","K.wg"), ]
+#'
+#' # Set up different scenarios
+#' ## this is similar to data for figure 28.5, but without gamma varying
+#' winter.lim <- param_ranges(scenario = "winter")
+#' intermed <- param_ranges(scenario = "intermediate")
+#' summer.lim <- param_ranges(scenario = "summer")
+#'
+#' # Show data
+#' ## Note only 1st 6 rows shown; delete "[1:6,]" to show all.
+#' data.frame(winter.lim, intermed, summer.lim)[1:6,]
 #'
 #' @export
 
@@ -111,10 +122,13 @@ param_ranges <- function(
   ,S.y.mc. = c(0.80,0.80)
   ,S.y.mk. = c(0.75,0.75)
   ,S.y.fc. = c(0.80,0.80)
-  ,S.y.fk. = c(0.75,0.75)){
+  ,S.y.fk. = c(0.75,0.75)
+  ,verbose = TRUE){
 
 
   #Set scenarios from Runge and Marra
+
+  ## Winter-limited scanario
   if(is.na(scenario) == FALSE){
     if(scenario%in% c("winter.limited",
                        "winter.lim",
@@ -123,28 +137,70 @@ param_ranges <- function(
                        "win")){
       K.bc. <- c(800,800)
       K.wg. <- c(485,485)
+      if(verbose == TRUE){
+        message("Setting breeding 'source' carrying capacity K.bc to 800",
+              "\nSetting winter   'good'   carrying capacity K.wg to 484")
+      }
     }
 
-    if(scenario %in% c("intermediate","inter","both","intermed")){
+    ## intermediate scanario
+    if(scenario %in% c("intermediate","inter","both","intermed","int")){
       K.bc. <- c(224,224)
       K.wg. <- c(580,580)
+      if(verbose == TRUE){
+        message("Setting breeding 'source' carrying capacity K.bc to 224",
+                "\nSetting winter   'good'   carrying capacity K.wg to 580")
+      }
     }
 
+    ## summer-limited scanario
     if(scenario %in% c("summer.limited","summer.lim","summer","sum.lim","sum")){
       K.bc. <-  c(205,205)
       K.wg. <- c(900,900)
+
+      if(verbose == TRUE){
+        message("Setting breeding 'source' carrying capacity K.bc to 205",
+                "\nSetting winter   'good'   carrying capacity K.wg to 900")
+      }
     }}
 
 
   #Set up for particular figures
   if(is.na(figure)== FALSE){
+
+    ## Figure 28.3: 3D surface plot
+    if(figure == 28.3){
+      K.bc.  <- c(1,1000) # varies
+      K.wg.  <- c(1,1000) # varies
+    }
+
+    ## Figure 28.4: vary breeding carrying capacity
     if(figure == 28.4){
       K.bc. <- c(1,600)
       K.wg.  <- c(900,900)
     }
-    if(figure == 28.3){
-      K.bc.  <- c(1,1000)
-      K.wg.  <- c(1,1000)
+
+    ## Figure 28.5: vary male dominance parameter gamma
+    if(figure == 28.5){
+      gamma. <- c(1,5)
+      if(verbose == TRUE){
+        message("\nSetting male winter dominance parameter to vary from 1 to 5")
+
+        if(is.na(scenario) == TRUE){
+          message(
+          "\nNOTE: A population limitation 'scenario' was not set",
+          "\nFor remaking figure 28.5 create seperate parameter grids with gamma varying for",
+          "\nthe 3 population limitation scenarios",
+          "\n(arguement scenario = 'summer', 'intermediate', 'winter')",
+          "\nSet the arguement 'verbose = FALSE' to turn off this message")
+        }
+      }
+    }
+
+    ## Figure 28.6: vary carry over effect
+    if(figure == 28.6){
+      message("Setting carry over effect to vary from 1 to 2")
+      gamma. <- c(1,5)
     }
   }
 

@@ -1,5 +1,10 @@
 #' Process the output of runMultiFAC() to re-create the 3D Fig 28.3
 #'
+#' @param runFAC.multi output from runFAC_multi()
+#' @param plot.type 3D perspective plot ("P"; default) or 2D contour plot ("C")
+#' @param scale. include scale
+#' @param tick.labs ????
+#'
 #' @export
 
 plot_Fig28_3 <- function(runFAC.multi,

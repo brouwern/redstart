@@ -9,8 +9,8 @@
 #' a male and female FROM good habitat is
 #'  This function determines how many females from good winter habitat
 #'  pair w/ males from good habitat
-#'    1)If W2["mg"] > K.bc  (number of males from good habitat > source K)
-#'    AND W2["fg"] > K.bc (number of females from good > source K)
+#'    1)If mg > K.bc  (number of males from good habitat > source K)
+#'    AND fg > K.bc (number of females from good > source K)
 #'    Then all of the pairs on the source habitat will be good-good pairs
 #'    That is, if there are enough males and femaels to fill up the source
 #'    then the pairing rate will be 100%
@@ -46,9 +46,9 @@
 
 
 eq09calcScalar <- function(W2,
-                K.bc,
-                B.mc,
-                B.fc){
+                           K.bc,
+                           B.mc,
+                           B.fc){
   if(  W2["mg"] > K.bc) #If males from good winter habitat exceed the carrying capacity in the sour.c.e  ...
     if(W2["fg"] > K.bc) #AND females from good winter habitat exceed the carring capacity in the sour.ce ...
     {r <-1}             #then all the pairs that form in the source will be good-good

@@ -47,7 +47,7 @@ The most recent version of FACavian is available from github and can be download
 library(devtools)
 
 #download FACavian from github
-install_github("brouwern/FACavian")
+devtools::install_github("brouwern/FACavian")
 
 #load FACavian into your current R sessions
 library(FACavian)
