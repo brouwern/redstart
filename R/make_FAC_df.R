@@ -20,7 +20,7 @@ make_FAC_df <- function(iterations = 300){ #change reps to iterations?
   NA.vec <- rep(NA,iterations)
 
   # Dataframe to hold output
-  out.df <- data.frame  (W.mg = NA.vec,  #Winter population AFTER Competition
+  out.df <- data.frame(W.mg = NA.vec,  #Winter population AFTER Competition
                          W.mp = NA.vec,  #m = male, f = female
                          W.fg = NA.vec,  #g = good, p = poor
                          W.fp = NA.vec,

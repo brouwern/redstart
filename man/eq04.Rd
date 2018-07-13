@@ -21,8 +21,7 @@ high quality "source" habitat.
 \details{
 This function compares total female poplatuion size to K.bc
 the souce carrying capacity; if total popualtion of females < K.bc, all females
-go to the source. If (W2\link{"fg"} + W2\link{"fp"}) > K.bc,
-then it gets filled up.
+go to the source. If fg + fp > K.bc, then it gets filled up.
 
 The output of this function is used in equation 17.
 

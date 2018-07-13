@@ -1,8 +1,10 @@
-#Make empty dataframe for holding output of runMultiFAC(). which runs the model accross a range
-#of paramers
-make_multiFAC_df <- function(params.use){
+#' Make empty dataframe for holding output of runMultiFAC(). which runs the model accross a range of paramers
+#'
+#' @export
 
-  FAC.runs <- rnow(params.use)
+make_multiFAC_df <- function(params.use = param_grid()){
+
+  FAC.runs <- nrow(params.use)
   NA.vec <- rep(NA,FAC.runs)
 
   #dataframe only holds key information about equilibrium

@@ -1,12 +1,14 @@
-#Process the output of runMultiFAC() to re-create the 3D Fig 28.3
-plot_Fig28_3 <- function(runMultiFAC.out,
-                         plot ="P",
+#' Process the output of runMultiFAC() to re-create the 3D Fig 28.3
+#'
+#' @export
+
+plot_Fig28_3 <- function(runFAC.multi,
+                         plot.type ="P",
                          scale. = T,
                          tick.labs = 1){
-  library(reshape2)
 
-  #' Reshape output to make 2D and persp plots
-  cast.out <- dcast(data = runMultiFAC.out,
+  #Reshape output to make 2D and persp plots
+  cast.out <- reshape2::dcast(data = runFAC.multi,
                     formula = K.bc.i ~ K.wg.i,
                     value.var = "B.f.tot", #B.tot
                     fun.aggregate = sum)
@@ -31,9 +33,9 @@ plot_Fig28_3 <- function(runMultiFAC.out,
   #create z matrix
   z1 <- fx()
 
-  #' Make perspective plot
-  if(plot %in% c("perspective","persp","p","P")){
-    persp(col = 3,
+  # Make perspective plot
+  if(plot.type %in% c("perspective","persp","p","P")){
+    graphics::persp(col = 3,
           shade = 0.25,
           scale = scale.,
           ticktype = "detailed",
@@ -59,8 +61,8 @@ plot_Fig28_3 <- function(runMultiFAC.out,
 
   }
 
-  if(plot %in% c("contour","cont","c","C")){
-    contour.out <-contour(x = x.K.bc.i,
+  if(plot.type %in% c("contour","cont","c","C")){
+    contour.out <-graphics::contour(x = x.K.bc.i,
                           y = y.K.wg.i,
                           z  = t(z1))
 

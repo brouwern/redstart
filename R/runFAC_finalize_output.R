@@ -1,3 +1,7 @@
+#' finalize output
+#'
+#' @export
+
 runFAC_finalize_output <- function(out.df){
   ### Summarize model run
 

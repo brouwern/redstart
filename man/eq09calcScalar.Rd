@@ -30,8 +30,8 @@ In the SOURCE habitat, how many PAIRS are good-good
 a male and female FROM good habitat is
 This function determines how many females from good winter habitat
 pair w/ males from good habitat
-1)If W2\link{"mg"} > K.bc  (number of males from good habitat > source K)
-AND W2\link{"fg"} > K.bc (number of females from good > source K)
+1)If mg > K.bc  (number of males from good habitat > source K)
+AND fg > K.bc (number of females from good > source K)
 Then all of the pairs on the source habitat will be good-good pairs
 That is, if there are enough males and femaels to fill up the source
 then the pairing rate will be 100%

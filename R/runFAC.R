@@ -15,6 +15,8 @@
 #' @param tol.1 tolerance value for diagnostics checks for whether the run of the model has reached equilibrium.  Lower values are more stringent; minimum is 1, which makes the model run the full number of iterations
 #' @param tol.2 secondary tolerance value for checking equilbrium; LARGER values increase stringency
 #' @param diagnostic.plot Return a diagnostic plot show population size over time
+#' @param return.output Output the full model dataframe?
+#' @param save.ts Save the full time series of the model run?  If FALSE then only final time point will be returned.  Additionally, equilibrium monitoring will not be done and the time series cannot be plotted.
 #'
 #' @return A dataframe containing the status of the popualtion at each time step for all parameters
 #'
@@ -36,6 +38,8 @@ runFAC <- function(iterations = 350 #number of generations to run model; setting
                    ,tol.1 = 3 # tolerance value for checking for equlibrium; lower values are more stringed; minimum is 1, which makes the model run the full number of iterations
                    ,tol.2 = 3 #2ndary tolerance value for checking equilbrium; LARGER values increase stringency
                    ,diagnostic.plot = T
+                   ,return.output = T
+                   ,save.ts = T
                    ,...
                 ){
 
@@ -577,24 +581,43 @@ for(i in 1:iterations){
     #### Also, to speed thins up I should
     #### make it optional as to whether this is save - what is
     #### really only needed for most runs is final equilibrium sizes
-    out.df <- save_current_state(i, out.df,
-                                 W.mg,W.mp,W.fg,W.fp,
-                                 B0,
-                                 P.cgg, P.cgp, P.cpg, P.cpp,
-                                 P.kgg, P.kgp, P.kpg, P.kpp,
-                                 Y2,
-                                 A.G,
-                                 A.P)
+    if(save.ts == TRUE){
+      out.df <- save_current_state(i, out.df,
+                                   W.mg,W.mp,W.fg,W.fp,
+                                   B0,
+                                   P.cgg, P.cgp, P.cpg, P.cpp,
+                                   P.kgg, P.kgp, P.kpg, P.kpp,
+                                   Y2,
+                                   A.G,
+                                   A.P)
 
+      ### Check to see if equilibrium has been reached
+      ###  population size no longer changing
+      at.eq <- FALSE
+      if(check.eq == TRUE & iterations > check.eq.after.i & i > iterations/tol.1){
+        at.eq <- runFAC_check_equilibrium(out.df, i, tol.2,at.eq)
+      }
 
-    ### Check to see if equilibrium has been reached
-    ###  population size no longer changing
-    at.eq <- FALSE
-    if(check.eq == TRUE & iterations > check.eq.after.i & i > iterations/tol.1){
-      at.eq <- runFAC_check_equilibrium(out.df, i, tol.2,at.eq)
+      if(at.eq == TRUE){break}
     }
 
-    if(at.eq == TRUE){break}
+
+    ## If not saving full time series then save final state at last time point
+    if(save.ts == FALSE & i == iterations){
+      out.df <- save_current_state(i, out.df,
+                                   W.mg,W.mp,W.fg,W.fp,
+                                   B0,
+                                   P.cgg, P.cgp, P.cpg, P.cpp,
+                                   P.kgg, P.kgp, P.kpg, P.kpp,
+                                   Y2,
+                                   A.G,
+                                   A.P)
+
+      out.eq <- out.df[iterations,]
+    }
+
+
+
 
   }#close main for() loop for iterating model
 
@@ -602,17 +625,36 @@ for(i in 1:iterations){
 
   ### Finalize output dataframe
   ### Total up seasonal population sizes, round off numbers
-  out.df <- runFAC_finalize_output(out.df)
+  if(save.ts == TRUE){
+    out.df <- runFAC_finalize_output(out.df)
 
-
-
-  ### Plot Diagnostic for full run of model
-  if(diagnostic.plot == T){
-    plot_runFAC(out.df)
+    ### Plot Diagnostic for full run of model
+    if(diagnostic.plot == T){
+      plot_runFAC(out.df)
     }
 
 
-  ### Return output of full run of model
-  return(out.df)
+    ### Return output of full run of model
+    if(return.output == T){
+
+
+      return(out.df)
+    }
+  }
+
+
+### If NOT saving full time series just output eq. state at the end
+if(save.ts == FALSE){
+  ## would be good if I could calculate lambda to
+  ## monitor equilibrium
+  return(out.eq)
+}
+
+
+
+
+
+
+
 
 }

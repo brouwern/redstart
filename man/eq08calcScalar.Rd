@@ -25,7 +25,7 @@ Aliased as M.2.drain.eq8()
 Drain males:: Males that don't find a territory
 AND don't find a mate (for those in sink)
 become "drain" males (floaters)
-W2\link{"mg"}+W2\link{"mp"} = total male population
+mg+mp = total male population
 minus those that ended up in source habitat (K.bc)
 minus those that paired w/female in sink habitat (B.fk)
 

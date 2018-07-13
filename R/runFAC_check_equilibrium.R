@@ -1,3 +1,6 @@
+#' check model equilibrium
+#'
+#' @export
 
 runFAC_check_equilibrium <- function(out.df, i, tol.2,at.eq, ...){
 

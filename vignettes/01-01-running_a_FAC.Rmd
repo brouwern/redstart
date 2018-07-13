@@ -1,0 +1,115 @@
+---
+title: "Running a full-annual cycle model with FACavian"
+author: "Vignette Author"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+## Introduction
+
+The full-annual cycle (FAC) model of Runge and Marra (2004) is a density-dependent (dd) matrix model.  The principal output of a density-dependent model is the **equilibrium population size**.  An important issue with dd models is that you can only determine the equilibrium population size using numerical simulation.  This means that you actually have to plug information -- particularly initial population sizes -- into the model and run it through many iteraction until and monitor the output until you see that it stabilizes. This is in contrast to traditional matrix models (and their cousin, integral projection model) which can be analyzed mathematically without specifying a starting population state or iterating the model.
+
+In the FACavian package, a single run of a FAC is done using the runFAC() function.  This function is given two general pieces of information:
+
+1. The fixed parameters for the model, including surival rates, fecundities, and habitat carrying capacities
+1. The intial population state.  Specifically the abundance of male and females on the wintering ground in "good" and "poor" habitat.
+
+runFAC() then builds all of the matrices that describe the FAC, plugs in the starting population state, and turns the crank on the model for either a given number of iterations (the default is 300) or, if specified, until a stability criteria is met.  
+
+runFAC() can be run to either keep track of everything that happens during the entire model run or just the final time point which, if the model reach equilibrium, represents that stable population size, stage, and sex structure of the model during each time point.
+
+Examining the entire time series of the model is mostly useful for understanding what the model does and for diagnostics purposes, eg to makes sure it is reaching equilbrium.  For most subsequent analyses just the equilibrium state is needed; a typical analysis of an FAC model involves running the model many times while systematically varying one or two key parameters to understand how they impact the equilibrium population state.
+
+In this vignette I'll demonstrate what runFAC() does and what the output of a single run the FAC looks like.  In subsequent vignettes we'll using a wrapper function, runFAC_multi() to run the model repeatedly to equilibirum while varying parameters such as carrying capacity.
+
+
+## Preliminaries
+
+### Getting the FACavian package
+
+The most recent version of FACavian is available from github and can be downloaded directly using hte devtools package
+```{r}
+#load devtools
+library(devtools)
+
+#download FACavian from github
+install_github("brouwern/FACavian")
+
+#load FACavian into your current R sessions
+library(FACavian)
+```
+
+### Getting parameters for a model run
+
+Default values are set in all of FACavians functions so you can easily explore the functions without worrying about setting the underlying demographic parameters.  For a preliminary run parameters will be called automatically behind the scenes using a function called param_set(), which has defaults as givn in Runge and Marra (2004).  
+
+You can look at the parameters by calling the param_set() function.  Later we'll use param_set() to tweak a few parameters.
+
+The starting defaults are:
+```{r}
+param_set()
+```
+
+Counting the 3 carrying capacities there are 30 parameters
+```{r}
+length(param_set())
+```
+
+Additionally, there are four intial population size values for males and females in the two types of winter habitats.  Defaults are set for thse.
+
+## Running a FAC
+
+### A basic run of the FAC
+
+We'll call runFAC() wiht the argument return.output set to false to supress the output of the big dataframe.
+```{r}
+runFAC(return.output = F)
+```
+
+By default runFAC() monitors whether you've reached equilibrium and ends the model run eariler if it thinks the model has stabilized.  It also plots a 2-panel graph.  On the left hand size is a graph of total winter population size (color???) and (?????).  On the right hand size is a graph of population growth rate calcualted simply as winter population size in year t+1 divided by size in year t.  When growth stabilizes at 1.0, the model is at equilibrium.
+
+If you want to make sure your model is at equilibrium you can turn off the default equilibirum monitoring using the check.eq arguement; the model will run for the default of 350 iterations.
+
+```{r}
+runFAC(return.output = F,
+       check.eq = FALSE)
+```
+
+You can also specify a specific number of interations
+```{r}
+###: NOTE: plot returned here is off; doesn't include zero
+runFAC(return.output = F,
+       iterations = 20)
+```
+
+
+The main output of runFAC() is a dataframe containing the status of the population at each timestep. Removing "return.output = F" will elicit this.  THe dataframe is 45 columns wide and has the state variable for each step in the model, as well as summary stats such as the total breeding (tot.B) and  winter (tot.W) populations.
+
+```{r}
+runFAC(iterations = 5)
+```
+
+
+### Setting parameters
+
+### Returning just the equilibrium state
+
+```{r}
+runFAC(save.ts = F)
+```
+
+

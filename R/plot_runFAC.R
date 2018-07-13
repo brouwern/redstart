@@ -1,3 +1,8 @@
+#' Plot time series of a single run of a FAC model
+#'
+#' @export
+#'
+
 plot_runFAC <- function(out.df){
   graphics::par(mfrow = c(1,2))
   graphics::plot(out.df$tot.W ~ out.df$t,

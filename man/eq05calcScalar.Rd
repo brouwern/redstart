@@ -21,28 +21,28 @@ This function allocates breeding (B.) females (f) to
 to sink habitat (k).
 }
 \details{
-This function compares total number of females (W2\link{"fg"} + W2\link{"fp"})
+This function compares total number of females fg + fp
 against K.bc, the  carrying capacity ("K.") of the breeding-ground
 (".b.") source habiat (".c")
 
 Notes:
-1)If W2\link{"fg"} + W2\link{"fp"} < K.bc, then ALL birds went to the sour.c.e
+1)If fg + fp < K.bc, then ALL birds went to the sour.c.e
 (via the previous function) and 0 birds end up going to the breeding sink
 
-2)If K.bc < W2\link{"fg"} + W2\link{"fp"}, then the total female pop is larger
+2)If K.bc < fg + fp, then the total female pop is larger
 the source carrying capacity and all birds cannot go to source.
 (That is, the nubmer of females is in excess of the amount of source habitat)
 Therefore, some birds will go to source and some to sink,
 with birds wintering in high quality habitat having preference
 
-So, if K.bc < (W2\link{"fg"} + W2\link{"fp"}) AND
-W2\link{"fg"} + W2\link{"fp"} < (K.bc+K.bk)
+So, if K.bc < (fg + fp) AND
+fg + fp < (K.bc+K.bk)
 (tot fem pop less than combined source and sink k)
-then number that go to the sink is W2\link{"fg"} + W2\link{"fp"} - K.bc
+then number that go to the sink is fg + fp - K.bc
 That is, the number going to the sink is anything left after
 allocation to the source K.bc
 
-3)If W2\link{"fg"} + W2\link{"fp"} >= (K.bc+K.bk)
+3)If fg + fp >= (K.bc+K.bk)
 (tot fem pop >= combined K of both habitats)
 then both the source and the sink get completely filled up
 and any remaining female birds, from the perspective of the model

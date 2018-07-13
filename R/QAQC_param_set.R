@@ -1,3 +1,7 @@
+#' Quality control on parameters entering runFAC()
+#'
+#' @export
+
 QAQC_param_set <- function(param.set){
   ## Check input:
   ### check that that only a single vector of parameters have been sent

@@ -4,17 +4,17 @@
 \alias{runFAC}
 \title{Run FAC model to equilibirum}
 \usage{
-runFAC(reps = 350, Ninit = c(10, 0, 10, 0),
-  paramsWorking = makeParCombos(), scenario = NA, vary = NA,
-  verbose = FALSE, check.eq = TRUE, check.eq.after.i = 20, tol.1 = 3,
-  tol.2 = 3, diagnostic.plot = F, ...)
+runFAC(iterations = 350, Ninit = c(10, 0, 10, 0), param.set = param_set(),
+  scenario = NA, vary = NA, verbose = FALSE, check.eq = TRUE,
+  check.eq.after.i = 20, tol.1 = 3, tol.2 = 3, diagnostic.plot = T,
+  return.output = T, save.ts = T, ...)
 }
 \arguments{
-\item{reps}{how many iterations of model to run before stopping}
+\item{iterations}{how many iterations of model to run before stopping}
 
 \item{Ninit}{vector of initial abundances at the begining of winter for W.mg, W.mp, W.fg and W.fp}
 
-\item{paramsWorking}{initila parameters for this run of the model.}
+\item{param.set}{initila parameters for this run of the model.}
 
 \item{scenario}{character string representing name of scenario explored in original Runge and Marra paper (not currently implemented 7/10/2018)}
 
@@ -29,6 +29,10 @@ runFAC(reps = 350, Ninit = c(10, 0, 10, 0),
 \item{tol.2}{secondary tolerance value for checking equilbrium; LARGER values increase stringency}
 
 \item{diagnostic.plot}{Return a diagnostic plot show population size over time}
+
+\item{return.output}{Output the full model dataframe?}
+
+\item{save.ts}{Save the full time series of the model run?  If FALSE then only final time point will be returned.  Additionally, equilibrium monitoring will not be done and the time series cannot be plotted.}
 
 \item{minimum}{number of iterations to run if equilibrium is being checked}
 }
