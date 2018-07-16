@@ -35,9 +35,20 @@ eq11 <- function(W2,
     {num <-  (min( W2["fg"], B.mc) - W2["mg"])
     denom <- min( B.mc,     B.fc)
 
-    r <-  ifelse(num/denom != "NaN", num/denom,0)
+    r <- num/denom
 
-  return( ifelse(r < 0,0,r) )}
+          if(is.nan(r) == TRUE){
+            message("ERROR IN EQUATION 11: NaN!!")
+          }
 
-  return(0)
+          if(r < 0){
+            message("ERROR IN EQUATION 11: P < 0!!")
+          }
+
+    r <-  ifelse(is.nan(r) == TRUE, 0, r)
+    r <-  ifelse(r < 0,             0, r)
+
+    }
+
+  return(r)
 }

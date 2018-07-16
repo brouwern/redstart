@@ -30,11 +30,25 @@ eq10 <- function(W2,
                  K.bc,
                  B.fc,
                  B.mc){
-  if(W2["mg"] > W2["fg"])
-    if(W2["fg"] < K.bc)
-    {num <- (min(W2["mg"], B.fc) - W2["fg"])  #this code checks for division by zero
-    denom <- min(B.mc, B.fc)
-    return( ifelse(num/denom != "NaN", num/denom,0))}
 
-  return(0)
+  r <- 0
+
+  if(W2["mg"] > W2["fg"]){
+    if(W2["fg"] < K.bc)
+    {num   <- (min(W2["mg"], B.fc) - W2["fg"])  #this code checks for division by zero
+     denom <-  min(B.mc, B.fc)
+
+    #calcualte r
+    r <- num/denom
+
+    #warning message
+     if(is.nan(r) == TRUE){
+          message("ERROR IN EQUATION 10: NaN!!")
+        }
+    }
+  }
+
+  r <- ifelse(is.nan(r) == TRUE, 0, r)
+
+  return( r)
 }

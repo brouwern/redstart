@@ -1,4 +1,4 @@
-#' Equation 2: Build Winter survival matrix
+#' Equation 2: Build winter survival matrix
 #'
 #' This function produces a diagonal matrix of survival (S.) values.
 #' in winter (S.w) for males (.m) and females (.f) in both good (._g)

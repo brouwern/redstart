@@ -51,6 +51,29 @@
 #'       In Greenberg, R and PP Marra, eds.  Birds of two worlds.
 #'       Johns Hopkins University Press, Baltimore.
 #'
+#' @examples
+#' # Set parameters:
+#' ## Create named population W2 vector using the eq01buildW0vect()
+#' W2 <- eq01buildW0vect(100,10,100,10)
+#'
+#' W2
+#'
+#' #Breeding source habitat carrying capacity
+#' K.bc.110 <- 110
+#' K.bc.100 <- 100
+#' K.bc.10  <- 10
+#'
+#' #Breeding sink habitat carrying capacity
+#' K.bk <- 1000
+#'
+#' # Total population is 110 and source habitat size is 110, so 0 go to sink
+#' eq05calcScalar(W2 = W2, K.bc = K.bc.110, K.bk = K.bk)
+#'
+#' # Reduce source habitat size down to 100 so 10 go to sink
+#' eq05calcScalar(W2 = W2, K.bc = K.bc.100, K.bk = K.bk)
+#'
+#' # Redeuce source habitat size down to 10, so 100 go to sink
+#' eq05calcScalar(W2 = W2, K.bc = K.bc.10, K.bk = K.bk)
 #'
 #' @export
 
@@ -58,15 +81,27 @@
 eq05calcScalar <- function(K.bc,
                            K.bk,
                            W2){
-  if( (W2["fg"] + W2["fp"]) < K.bc)
-  { return(0) }
+  #if total female pop < carrying capacity in source
+  #0 females settle in sink, b/c they have
+  #already all settle in source, so retunr 0
+  if( (W2["fg"] + W2["fp"]) < K.bc){
+    return(0) }
 
-  if( K.bc <= (W2["fg"] + W2["fp"]) )
-    if( (W2["fg"] + W2["fp"]) < (K.bc+K.bk) )
-    {return( W2["fg"] + W2["fp"] - K.bc) }
+  #if total female population is greater than
+  #source size BUT is less than total breeding habitat size (K.bc+K.bk)
+  #then the number allocated to sink is the total population
+  #minus those already allocated to the source
+  if( K.bc <= (W2["fg"] + W2["fp"]) ){
+    if( (W2["fg"] + W2["fp"]) < (K.bc+K.bk) ){
+      return( (W2["fg"] + W2["fp"]) - K.bc)
+      }
+  }
 
-  if( (W2["fg"] + W2["fp"]) >= (K.bc+K.bk))
-  { return(K.bk) }
+  #if total female population exceeds carrying capacity of
+  #BOTH habitats, then sink will become saturated
+  #so return sink size K.bk
+  if( (W2["fg"] + W2["fp"]) >= (K.bc+K.bk)){
+    return(K.bk) }
 }
 
 

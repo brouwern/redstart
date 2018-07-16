@@ -56,7 +56,19 @@ eq09calcScalar <- function(W2,
   #ELSE:
   r <- ( min(W2["mg"], W2["fg"]) / #NUMERATOR:   the number from good winter habitat
            min(B.mc, B.fc))          #DENOMINATOR: the total number in the breeding habitat
-  r <- ifelse(r > 1, 1,r)
-  return(ifelse(r != "NaN",r,0))
+
+  if(r > 1){
+    message("\nERROR IN EQUATION 9: P > 1!!")
+    message("  P = ",r)
+  }
+
+  if(is.nan(r) == TRUE){
+    message("ERROR IN EQUATION 9: NaN!!")
+  }
+
+  #paper over errors...
+  r <- ifelse(r > 1,            1, r)
+  r <- ifelse(is.nan(r) == TRUE,0, r)
+  return(r)
 }
 

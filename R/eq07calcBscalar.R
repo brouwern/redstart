@@ -46,15 +46,18 @@ eq07calcScalar <- function(K.bc,
                 W2,
                 B.fk){
 
-  if( (W2["mg"] + W2["mp"]) < K.bc)
-  {return(0)}
+  if( (W2["mg"] + W2["mp"]) < K.bc){
+    return(0)}
 
-  if(K.bc <= (W2["mg"] + W2["mp"]) )
-    if( (W2["mg"] + W2["mp"]) < (K.bc+B.fk) ) #K.bc = sink carrying capacity;
-    {return(W2["mg"] + W2["mp"] - K.bc)}
+  #K.bc = sink carrying capacity;
+  if(K.bc <= (W2["mg"] + W2["mp"]) ){
+    if( (W2["mg"] + W2["mp"]) < (K.bc+B.fk) ){
+      return(W2["mg"] + W2["mp"] - K.bc)}
+  }
 
-  if( (W2["mg"] + W2["mp"]) >= (K.bc + B.fk) )
-  {return(B.fk)}
+
+  if( (W2["mg"] + W2["mp"]) >= (K.bc + B.fk) ){
+    return(B.fk)}
 
  }
 

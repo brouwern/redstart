@@ -10,15 +10,15 @@
 #' NB: "remakeFigure" does not appear in current code
 #'
 #' @param para.grid Dataframe of parameters, usually with 1 or 2 that vary accross a range
-#' @para makeFigure deprecated.  Replaced by plot_Fig29_3
+#' @param makeFigure deprecated.  Replaced by plot_Fig29_3
+#' @param ... other arguements
 #'
 #' @export
 
 
-
-
 runFAC_multi <- function(param.grid = param_grid(),
-                         remakeFigure = NA){
+                         remakeFigure = NA,
+                         ...){
 
 
   ### DATA STORAGE FOR runMultiFAC
@@ -30,7 +30,9 @@ runFAC_multi <- function(param.grid = param_grid(),
   ### Iterate models over each set of parametres
   for(i in 1:dim(param.grid)[1]){
 
-    out.df <-  runFAC(param.set=param.grid[i,])
+    out.df <-  runFAC(param.set=param.grid[i,],
+                      check.eq = FALSE,
+                      diagnostic.plot = F)
 
 
 

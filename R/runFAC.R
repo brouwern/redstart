@@ -16,7 +16,8 @@
 #' @param tol.2 secondary tolerance value for checking equilbrium; LARGER values increase stringency
 #' @param diagnostic.plot Return a diagnostic plot show population size over time
 #' @param return.output Output the full model dataframe?
-#' @param save.ts Save the full time series of the model run?  If FALSE then only final time point will be returned.  Additionally, equilibrium monitoring will not be done and the time series cannot be plotted.
+#' @param save.ts Save the full time series of the model run?  If FALSE then only final time point will be returned.  Additionally, equilibrium monitoring will not be done and the time series cannot be plotted
+#' @param ... other arguements passed
 #'
 #' @return A dataframe containing the status of the popualtion at each time step for all parameters
 #'
@@ -426,8 +427,14 @@ for(i in 1:iterations){
 
 
     #QA/QC: CHeck to make sure offspring sex ratio is equal
-    if(round(Y1["mc"],3) != round(Y1["fc"],3)){brower()}
-    if(round(Y1["mk"],3) != round(Y1["fk"],3)){brower()}
+    if( round(Y1["mc"],3) != round(Y1["fc"],3)){
+      browser()
+      message("Error in offspring sex ratio!")
+      }
+    if(round(Y1["mk"],3) != round(Y1["fk"],3)){
+      browser()
+      message("Error in offspring sex ratio!")
+      }
 
 
     ##############################
@@ -569,7 +576,10 @@ for(i in 1:iterations){
             round(sum(W.mg,W.mp,W.fg,W.fp),4)
 
 
-    if(temp == FALSE){browser()}
+    if(temp == FALSE){
+      #browser()
+      message("ERROR RELATED TO COMPETITION!!!!!!!!!!!!!!!!!1")
+      }
 
 
 

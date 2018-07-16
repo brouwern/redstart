@@ -17,6 +17,9 @@ eq14 <- function(W2,
                  K.bk,
                  B.mk,
                  B.fk){
+
+  r <- 0
+
   if(W2["fg"] < K.bc)
     if(W2["mg"] >= (K.bc+K.bk) )
     {r <- 1}
@@ -31,7 +34,10 @@ eq14 <- function(W2,
       if(W2["mg"] > W2["fg"])
       {r <- (min(W2["mg"], (B.fk+K.bc)) - W2["fg"]) / min(B.mk,B.fk)}
 
-  r <- 0
+  if(is.nan(r) == TRUE){
+    message("ERROR IN EQUATION 14: NaN!!")
+  }
+
 
   return(ifelse(r != "NaN",r,0))
 }
