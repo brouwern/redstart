@@ -2,29 +2,33 @@
 % Please edit documentation in R/eq01buildW0vect.R
 \name{eq01buildW0vect}
 \alias{eq01buildW0vect}
-\title{Equation 1: Set up current population vector W0}
+\title{Equation 1: Set up current population vector (W0)}
 \usage{
 eq01buildW0vect(W.mg, W.mp, W.fg, W.fp)
 }
 \arguments{
-\item{W.mg}{scalar}
+\item{W.mg}{Number of males (.m_) wintering in good (._g) habitat.  Scalar}
 
-\item{W.mp}{scalar}
+\item{W.mp}{Number of males (.m_) wintering in poor (._p) habitat.  Scalar}
 
-\item{W.fg}{scalar}
+\item{W.fg}{Number of females (.f_) wintering in good (._g) habitat. Scalar}
 
-\item{W.fp}{scalar}
+\item{W.fp}{Number of males (.f_) wintering in poor (._p) habitat. Scalar}
 }
 \value{
-A vector containing the status of the popualtion at the beginning of winter: \code{W.mg} , \code{W.mp} , \code{W.fg} , and \code{W.fp}
+A vector containing the status of the population at the beginning of winter: \code{W.mg} , \code{W.mp} , \code{W.fg} , and \code{W.fp}
 }
 \description{
-Create a vector representing Population at beginning of winter (W0)
+Create a vector representing population structure at the beginning of winter (W0) after
+competition for territories has occured but before winter mortality.
 }
 \details{
-During 1st iteration (i=1) this taken from function call
-This is updated during every iteration by taking values of W.mg, W.mp
+During 1st iteration (i=1) the population status taken from the runFAC() function call.
+W0 is then updated during every iteration by taking values of \code{W.mg} , \code{W.mp},
 etc that were calculated in equation 27 at the end of the last iteration (i-1)
+
+Formalizing this into an equation may not be strictly necessary but helps with aliginging
+how the model is implemented with how it is described in the original Rung and Marra paper.
 }
 \references{
 Runge, MC and PP Marra.  2004.  Modeling seasonal

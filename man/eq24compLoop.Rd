@@ -19,8 +19,9 @@ Equation 24: competition - Allocation bird to high quality winter habitiat
 \details{
 A.i = initial population of vector when competition process starts
 A.i.i = vector of individuals that haven't been allocated yet
-A.G.i = vector of weights of individuals in A.i.i; this is constrainted so that A.G.i cannot be greater thatn A.i.i
-after constrain implemented, this is the vector of indiviuals alloacted
+A.G.i = vector of weights of individuals in A.i.i; this is constrainted so
+that A.G.i cannot be greater that A.i.i
+after constrain implemented, this is the vector of indiviuals allocated
 to different habitat qualities
 A.storage.i = vector to hold output of each loop
 A.storage = object to hold entire output of competition process?

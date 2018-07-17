@@ -2,7 +2,7 @@
 % Please edit documentation in R/eq23buildAvect.R
 \name{eq23buildAvect}
 \alias{eq23buildAvect}
-\title{Equation 23: Build A matrix (not implemented)}
+\title{Equation 23: Build the A matrix (not implemented)}
 \usage{
 eq23buildAvect(B2, Y2)
 }
@@ -12,5 +12,8 @@ eq23buildAvect(B2, Y2)
 \item{Y2}{Young (offspring) that survived breeding and fall migration}
 }
 \description{
-Equation 23: Build A matrix (not implemented)
+Equation 23: Build the A matrix (not implemented)
+}
+\details{
+...
 }

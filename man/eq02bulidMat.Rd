@@ -2,7 +2,7 @@
 % Please edit documentation in R/eq02buildW1Mat.R
 \name{eq02bulidMat}
 \alias{eq02bulidMat}
-\title{Equation 2: Build Winter survival matrix}
+\title{Equation 2: Build winter survival matrix}
 \usage{
 eq02bulidMat(S.w.mg = 0.8, S.w.mp = 0.8, S.w.fg = 0.8, S.w.fp = 0.8)
 }

@@ -4,10 +4,14 @@
 \alias{runFAC_multi}
 \title{Run multiple FAC models to equilibirum accross a range of parameters}
 \usage{
-runFAC_multi(param.grid = param_grid(), remakeFigure = NA)
+runFAC_multi(param.grid = param_grid(), remakeFigure = NA, ...)
 }
 \arguments{
+\item{...}{other arguements}
+
 \item{para.grid}{Dataframe of parameters, usually with 1 or 2 that vary accross a range}
+
+\item{makeFigure}{deprecated.  Replaced by plot_Fig29_3}
 }
 \description{
 Note that the "para.grid" arguement take take produced by the param_grid() function,

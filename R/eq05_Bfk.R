@@ -40,9 +40,9 @@
 #'
 #' Aliased as F.2.sink.eq5.k()
 #'
+#' @param W2 population vector
 #' @param K.bc sour.c.e K
 #' @param K.bk sin.k. K
-#' @param W2 population vector
 #'
 #' @return K.bk, the ... xxxx
 #'
@@ -67,25 +67,25 @@
 #' K.bk <- 1000
 #'
 #' # Total population is 110 and source habitat size is 110, so 0 go to sink
-#' eq05calcScalar(W2 = W2, K.bc = K.bc.110, K.bk = K.bk)
+#' eq05_Bfk(W2 = W2, K.bc = K.bc.110, K.bk = K.bk)
 #'
 #' # Reduce source habitat size down to 100 so 10 go to sink
-#' eq05calcScalar(W2 = W2, K.bc = K.bc.100, K.bk = K.bk)
+#' eq05_Bfk(W2 = W2, K.bc = K.bc.100, K.bk = K.bk)
 #'
 #' # Redeuce source habitat size down to 10, so 100 go to sink
-#' eq05calcScalar(W2 = W2, K.bc = K.bc.10, K.bk = K.bk)
+#' eq05_Bfk(W2 = W2, K.bc = K.bc.10, K.bk = K.bk)
 #'
 #' @export
 
 
-eq05calcScalar <- function(K.bc,
-                           K.bk,
-                           W2){
+eq05_Bfk <- function(W2,
+                     K.bc,
+                     K.bk){
   #if total female pop < carrying capacity in source
   #0 females settle in sink, b/c they have
   #already all settle in source, so retunr 0
   if( (W2["fg"] + W2["fp"]) < K.bc){
-    return(0) }
+    B.fk <- 0 }
 
   #if total female population is greater than
   #source size BUT is less than total breeding habitat size (K.bc+K.bk)
@@ -93,7 +93,7 @@ eq05calcScalar <- function(K.bc,
   #minus those already allocated to the source
   if( K.bc <= (W2["fg"] + W2["fp"]) ){
     if( (W2["fg"] + W2["fp"]) < (K.bc+K.bk) ){
-      return( (W2["fg"] + W2["fp"]) - K.bc)
+      B.fk <- (W2["fg"] + W2["fp"]) - K.bc
       }
   }
 
@@ -101,7 +101,12 @@ eq05calcScalar <- function(K.bc,
   #BOTH habitats, then sink will become saturated
   #so return sink size K.bk
   if( (W2["fg"] + W2["fp"]) >= (K.bc+K.bk)){
-    return(K.bk) }
+    B.fk <- K.bk
+    }
+
+  names(B.fk) <- "B.fk"
+
+  return(B.fk)
 }
 
 

@@ -13,13 +13,21 @@
 #'
 #' @export
 
-eq16 <- function(P.kgg,
+eq16_Pkpp <- function(P.kgg,
                  P.kgp,
                  P.kpg,
                  B.mk,
                  B.fk){
-  if(B.mk > 0)
-    if(B.fk > 0)
-    {return(1-P.kgg-P.kgp-P.kpg)}
-  return(0)
+
+  #equation 16 part 2 (lower line)
+  P.kpp <- 0
+
+  #equation 16 part 1 (upper line)
+  if(B.mk > 0){
+    if(B.fk > 0){
+      P.kpp <- 1-P.kgg-P.kgp-P.kpg
+      }
+    }
+
+  return(P.kpp)
 }

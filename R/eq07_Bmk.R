@@ -29,8 +29,8 @@
 #'
 #' Aliased prevously as M.2.sink.eq7.k()
 #'
-#' @param K.bc source carrying capacity
 #' @param W2 population vector
+#' @param K.bc source carrying capacity
 #' @param B.fk females allocated to SINK
 #'
 #' @return B.fk, the number of breeding females in sink (".k") habitat
@@ -42,22 +42,27 @@
 #'
 #' @export
 
-eq07calcScalar <- function(K.bc,
-                W2,
-                B.fk){
+eq07_Bmk <- function(W2,
+                     K.bc,
+                     B.fk){
 
   if( (W2["mg"] + W2["mp"]) < K.bc){
-    return(0)}
+    B.mk <- 0
+     }
 
   #K.bc = sink carrying capacity;
   if(K.bc <= (W2["mg"] + W2["mp"]) ){
     if( (W2["mg"] + W2["mp"]) < (K.bc+B.fk) ){
-      return(W2["mg"] + W2["mp"] - K.bc)}
+      B.mk <- W2["mg"] + W2["mp"] - K.bc
+      }
   }
 
 
   if( (W2["mg"] + W2["mp"]) >= (K.bc + B.fk) ){
-    return(B.fk)}
+    B.mk <- B.fk
+    }
+
+  return(B.mk)
 
  }
 

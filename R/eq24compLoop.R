@@ -3,8 +3,9 @@
 #' @details
 #' A.i = initial population of vector when competition process starts
 #' A.i.i = vector of individuals that haven't been allocated yet
-#' A.G.i = vector of weights of individuals in A.i.i; this is constrainted so that A.G.i cannot be greater thatn A.i.i
-#'        after constrain implemented, this is the vector of indiviuals alloacted
+#' A.G.i = vector of weights of individuals in A.i.i; this is constrainted so
+#'        that A.G.i cannot be greater that A.i.i
+#'        after constrain implemented, this is the vector of indiviuals allocated
 #'        to different habitat qualities
 #' A.storage.i = vector to hold output of each loop
 #' A.storage = object to hold entire output of competition process?
@@ -16,10 +17,10 @@
 #' @export
 
 eq24compLoop <- function(K.wg,
-                 A.i,
-                 gamma.i){
+                         A.i,
+                         gamma.i){
 
-  #how many birds have been allocated to high quality habitat so far?
+  #A.allocated.i = how many birds have been allocated to high quality habitat so far?
   A.allocated.i <- 0
   names(A.allocated.i) <- "A.alloc"
 
@@ -28,14 +29,14 @@ eq24compLoop <- function(K.wg,
   names(K.wg.unallocated.i) <- "K.alloc"
 
 
-  #birds eneganging in compeition
+  #birds engaging in compeition
   A.i.i <- A.i
 
   A.storage <- c(A.i.i,              #Pop vector
-                 A.allocated.i,      #Numbre allocated so far
+                 A.allocated.i,      #Number allocated so far
                  K.wg.unallocated.i) #number not yet allocated
 
-  while(round(A.allocated.i) < round(K.wg)) #keepin allocating until the total allocated to good habitat equals the carrying capacity
+  while(round(A.allocated.i) < round(K.wg)) #keep allocating until the total allocated to good habitat equals the carrying capacity
   {
 
     #set current "weights" for birds that have not yet acquird a territory

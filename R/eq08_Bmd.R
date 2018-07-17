@@ -30,7 +30,7 @@
 #' @export
 
 
-eq08calcScalar <- function(W2,
+eq08_Bmd <- function(W2,
                            K.bc,
                            B.fk){
   max(0,

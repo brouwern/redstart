@@ -32,7 +32,9 @@ runFAC(iterations = 350, Ninit = c(10, 0, 10, 0), param.set = param_set(),
 
 \item{return.output}{Output the full model dataframe?}
 
-\item{save.ts}{Save the full time series of the model run?  If FALSE then only final time point will be returned.  Additionally, equilibrium monitoring will not be done and the time series cannot be plotted.}
+\item{save.ts}{Save the full time series of the model run?  If FALSE then only final time point will be returned.  Additionally, equilibrium monitoring will not be done and the time series cannot be plotted}
+
+\item{...}{other arguements passed}
 
 \item{minimum}{number of iterations to run if equilibrium is being checked}
 }

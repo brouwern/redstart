@@ -38,18 +38,23 @@
 #' K.bc.100 <- 100
 #' K.bc.10  <- 10
 #'
-#' eq04(W2, K.bc.110)
-#' eq04(W2, K.bc.100)
-#' eq04(W2, K.bc.10)
+#' eq04_Bfc(W2, K.bc.110)
+#' eq04_Bfc(W2, K.bc.100)
+#' eq04_Bfc(W2, K.bc.10)
 #'
 #' @export
 
-eq04 <- function(W2,
-                 K.bc
+eq04_Bfc <- function(W2,
+                     K.bc
 ){
-  ifelse( (W2["fg"] + W2["fp"])  < K.bc,
-          (W2["fg"] + W2["fp"]) ,
-          K.bc)
+  if((W2["fg"] + W2["fp"])  < K.bc){
+    B.fc <- (W2["fg"] + W2["fp"])
+  }else{
+    B.fc <- K.bc
+  }
+
+ names(B.fc) <- "B.fc"
+  return(B.fc)
 }
 
 

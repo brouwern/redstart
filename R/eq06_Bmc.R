@@ -22,12 +22,17 @@
 
 
 
-eq06 <- function(W2,
-                 K.bc){
+eq06_Bmc <- function(W2,
+                     K.bc){
 
-  ifelse( (W2["mg"]+W2["mp"]) < K.bc,
-          (W2["mg"]+W2["mp"]),
-          K.bc)
+  if( (W2["mg"]+W2["mp"]) < K.bc){
+    B.mc <- (W2["mg"]+W2["mp"])
+  } else{
+    B.mc <- K.bc
+  }
+
+   names(B.mc) <- "B.mc"
+   return(B.mc)
 }
 
 

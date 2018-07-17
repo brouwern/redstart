@@ -13,7 +13,7 @@
 #'
 #' @export
 
-eq13 <- function(W2,
+eq13_Pkgg <- function(W2,
                  K.bc,
                  K.bk,
                  B.mk,
@@ -43,12 +43,7 @@ eq13 <- function(W2,
 
 
   #error message
-      if(is.nan(r) == TRUE){
-        message("ERROR IN EQUATION 13: NaN!!")
-      }
-
-
-  r <- ifelse(is.nan(r) == TRUE, 0, r)
+  check_P_division(x = r,equation_name = eq13_Pkgg,i = i)
 
   return(r)
 

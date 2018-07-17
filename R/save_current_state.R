@@ -1,3 +1,4 @@
+
 #' Save current population state
 #'
 #'
@@ -44,6 +45,7 @@ save_current_state <- function(i, out.df,
 
   ### SAVE pairing frequencies
   #equation 18ish
+
   out.df[i, c("P.cgg","P.cgp","P.cpg","P.cpp",
               "P.kgg","P.kgp","P.kpg","P.kpp")] <- c(P.cgg, P.cgp, P.cpg, P.cpp,
                                                      P.kgg, P.kgp, P.kpg, P.kpp)

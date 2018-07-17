@@ -203,8 +203,8 @@ for(i in 1:iterations){
 
   #scalar output
   B.fc <- with(param.set,
-                 eq04(W2,
-                      K.bc))
+               eq04_Bfc(W2,
+                        K.bc))
 
   ### EQUATION 5: eq05calcScalar()
   ### Number of Females in SINK (k) habitat
@@ -212,11 +212,12 @@ for(i in 1:iterations){
 
   #scalar output
   B.fk <- with(param.set,
-                 eq05calcScalar(K.bc,
-                                K.bk,
-                                W2))
+               eq05_Bfk(W2,
+                        K.bc,
+                        K.bk))
 
-  #Note: excess females leave the system, whereas males become "drain" males
+  #Note: excess females leave the system,
+  #whereas males become "drain" males
   #(aka floaters)
 
   #---------------------------------#
@@ -236,7 +237,7 @@ for(i in 1:iterations){
   # scalar out
   # (alias #M.2.source.eq6.c)
   B.mc <- with(param.set,
-                 eq06(W2,
+               eq06_Bmc(W2,
                       K.bc))
 
   ### EQUATION 7: eq07calcScalar()
@@ -245,9 +246,9 @@ for(i in 1:iterations){
 
   # scalar out
   B.mk <- with(param.set,
-                 eq07calcScalar(K.bc,
-                                W2,
-                                B.fk))
+                 eq07_Bmk(W2,
+                          K.bc,
+                          B.fk))
 
 
   ### EQUATION 8:  eq08calcScalar()
@@ -258,9 +259,9 @@ for(i in 1:iterations){
   #   minus those that paired w/female in sink habitat (B.fk)
 
   B.md <- with(param.set,
-                 eq08calcScalar(W2,
-                                K.bc,
-                                B.fk)) #M.2.drain.eq8
+                 eq08_Bmd(W2,
+                          K.bc,
+                          B.fk)) #M.2.drain.eq8
 
 
 
@@ -275,7 +276,7 @@ for(i in 1:iterations){
 
   #### alias #pairing.eq9.P.c.gg
   P.cgg <- with(param.set,
-                  eq09calcScalar(W2,
+                eq09_Pcgg(W2,
                                  K.bc,
                                  B.mc,
                                  B.fc))
@@ -287,7 +288,7 @@ for(i in 1:iterations){
   # alias #pairing.eq10.P.c.gp
 
   P.cgp <- with(param.set,
-                  eq10(W2,
+                eq10_Pcgp(W2,
                        K.bc,
                        B.fc,
                        B.mc))
@@ -298,22 +299,23 @@ for(i in 1:iterations){
   ### Proportion of poor males mated w/ "good" female
 
   P.cpg <- with(param.set,
-                  eq11(W2,
-                       B.mc,
-                       B.fc,
-                       K.bc))
+                eq11_Pcgp(W2 = W2,
+                          K.bc = K.bc,
+                          B.fc = B.fc,
+                          B.mc = B.mc))
 
 
 
 
-    ### EQUATION 12 eq12()
+    ### EQUATION 12 eq12_Pcpp()
     ####  proportion composed of a male and female both from poor habitat
     ####  This is calcualted by subtraction
     ####  pairing.eq12.P.cpp <- function(P.cgg,P.cgp, P.cpg){1 - P.cgg - P.cgp - P.cpg}
 
+
     #APPLY EQUATION 12
     # pairing.eq12.P.cpp
-    P.cpp <- eq12(P.cgg,
+    P.cpp <- eq12_Pcpp(P.cgg,
                   P.cgp,
                   P.cpg)
 
@@ -325,7 +327,7 @@ for(i in 1:iterations){
 
     ### pairing.eq13.P.kgg
     P.kgg <- with(param.set,
-                  eq13(W2,
+                  eq13_Pkgg(W2,
                        K.bc,
                        K.bk,
                        B.mk,
@@ -338,15 +340,17 @@ for(i in 1:iterations){
 
     #### alias pairing.eq14.P.kgp
     P.kgp <- with(param.set,
-                  eq14(W2,
-                       K.bc,K.bk,
-                       B.mk,B.fk))
+                  eq14_Pkgp(W2 = W2,      #note that both eq14 and eq habve .kgp subscripts in original paper
+                            K.bc = K.bc,
+                            K.bk = K.bk,
+                            B.mk = B.mk,
+                            B.fk = B.fk))
 
 
     ### EQUATION 15: eq15()
     ### aliaspairing.eq15.P.kpg
     P.kpg <- with(param.set,
-                  eq15(W2,
+                  eq15_Pkgp(W2,       #note that both eq14 and eq habve .kgp subscripts in original paper
                        K.bc,K.bk,
                        B.mk,B.fk))
 
@@ -356,7 +360,7 @@ for(i in 1:iterations){
     #   proportion in sink composed of poor-poor
 
     #### alias pairing.eq16.P.kpp
-    P.kpp <- eq16(P.kgg,P.kgp,P.kpg,
+    P.kpp <- eq16_Pkpp(P.kgg,P.kgp,P.kpg,
                   B.mk,B.fk)
 
 
@@ -399,6 +403,11 @@ for(i in 1:iterations){
     #Delete this?              P.kgg, P.kgp, P.kpg, P.kpp)
 
     #Fx.make.P.matrix.eq18
+
+    if(round(sum(P.cgg, P.cgp,P.cpg, P.cpp),3) != 1)browser()
+    if(round(sum(P.kgg, P.kgp,P.kpg, P.kpp),3) > 1)browser()
+    if(round(sum(P.kgg, P.kgp,P.kpg, P.kpp),3) < 0)browser()
+
     P.all <- eq18buildPmat(P.cgg, P.cgp,
                            P.cpg, P.cpp,
                            P.kgg, P.kgp,
@@ -494,10 +503,10 @@ for(i in 1:iterations){
     #*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
 
     ### Equation 23 eq23buildAvect()
-    ### Stack adults and young into single vector (A)
+    ### Stack adults &  young into single vector (A)
 
     A.i <-eq23buildAvect(B2, #Adults after migration
-                         Y2)#offspring after migration
+                         Y2) #offspring after migration
 
 
 
@@ -506,37 +515,39 @@ for(i in 1:iterations){
     #    winter K is based on individuals!
 
     #competition ability depends on "an intrsince age-,sex-
-    # and condition(habitat)-specific competitive factor
-    # gamma & the number of birds in each class"
+    # and condition (habitat)-specific competitive factor
+    # gamma & the number of birds in each class" (Runge & Marra 2004, pg xxx)
 
 
     #competition should only occur when the number of birds arriving from migration
-    #exceeds carrying capacity.  THis is what is implied by Fig 28.4
+    #exceeds carrying capacity.  This is what is implied by Fig 28.4
 
     A.G <- A.i  #A.i is population vector post-migration; "G" = "good habitat"
 
     #All birds will go to good habitat if sum(A.G) < K.wg
     #that is, winter pop is below winter K
 
-    A.P <- rep(0, length(A.G)) #A.P is a vector to hold individuals that get outcompeted
+    # Create A.P vector
+    ### A.P is a vector to hold individuals that get outcompeted
+    ### and therefore shunted to low quality habitat
 
-    #and therefore shunted to low quality habitat
+    A.P <- rep(0, length(A.G))
     names(A.P) <- names(A.G)
 
 
-    ### Equation 24:
+    ### Equation 24: Competition loo
     ### Competition for winter territories
 
-    #Compeition only occurs if the total number of birds arriving from breeding ground
-    #on migration exceeds the winter carrying capacity, K.wg
+    #Competition only occurs if the total number of birds arriving from
+    # breeding ground on migration exceeds the winter carrying capacity, K.wg
     #  otherwise A.G = A.i, A.P = 0
     if( sum(A.i) > param.set$K.wg ){
 
       #Implement competition
       A.post.comp <- with(param.set,
-                          eq24compLoop(K.wg,
-                                       A.i,
-                                       gamma.i))
+                          eq24compLoop(K.wg = K.wg,
+                                       A.i = A.i,
+                                       gamma.i = gamma.i))
 
       A.G <- A.post.comp$A.G
       A.P <- A.post.comp$A.P
@@ -549,16 +560,21 @@ for(i in 1:iterations){
 
 
     ### EQUATION 27
-    # Combine young and old after competition
+    # Combine young & old after competition
     # differences between ages and breeding site disappear at this stage
     #
+
+    ### Male
     W.mg <- sum(A.G[c("mc","mk","md","y.mc","y.mk")])
     W.mp <- sum(A.P[c("mc","mk","md","y.mc","y.mk")])
+
+    ### Femalw
     W.fg <- sum(A.G[c("fc","fk",     "y.fc","y.fk")])
     W.fp <- sum(A.P[c("fc","fk",     "y.fc","y.fk")])
 
 
     #Check allocations
+    ##?????
     A.P.m <- A.P[c("mc","mk","md","y.mc","y.mk")]
     A.P.f <- A.P[c("fc","fk", "md","y.fc","y.fk")]
     A.P.f["md"] <- NA
@@ -584,13 +600,15 @@ for(i in 1:iterations){
 
 
     ### save current state
-    ###  pick up everything from environment and save
+    ###  pick up everything from environment & save
     #### NOTE: this could probably be made more efficient
-    ####       right now it picks up entire df framge, adds data to current
+    ####       right now it picks up entire df frame, adds data to current
     ####       column i, then outputs entire df
     #### Also, to speed thins up I should
-    #### make it optional as to whether this is save - what is
+    #### make it optional as to whether this is saved - what is
     #### really only needed for most runs is final equilibrium sizes
+
+    #browser()
     if(save.ts == TRUE){
       out.df <- save_current_state(i, out.df,
                                    W.mg,W.mp,W.fg,W.fp,
