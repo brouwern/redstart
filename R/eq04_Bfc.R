@@ -47,13 +47,13 @@
 eq04_Bfc <- function(W2,
                      K.bc
 ){
-  if((W2["fg"] + W2["fp"])  < K.bc){
-    B.fc <- (W2["fg"] + W2["fp"])
+  if((unlist(W2["fg"]) + unlist(W2["fp"]))  < K.bc){
+    B.fc <- unlist((W2["fg"]) + unlist(W2["fp"]))
   }else{
-    B.fc <- K.bc
+    B.fc <- unlist(K.bc)
   }
 
- names(B.fc) <- "B.fc"
+  #names(B.fc) <- "B.fc"
   return(B.fc)
 }
 

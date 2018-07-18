@@ -10,6 +10,7 @@
 #' @param K.bk carrying capacity...
 #' @param B.mk ...
 #' @param B.fk ...
+#' @param ...
 #'
 #' @export
 
@@ -17,7 +18,7 @@ eq13_Pkgg <- function(W2,
                  K.bc,
                  K.bk,
                  B.mk,
-                 B.fk){
+                 B.fk, ...){
 
   #condition 3: if other conditions fails
   num <- (min(W2["mg"], W2["fg"]) - K.bc)

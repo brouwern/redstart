@@ -93,18 +93,18 @@ eq05_Bfk <- function(W2,
   #minus those already allocated to the source
   if( K.bc <= (W2["fg"] + W2["fp"]) ){
     if( (W2["fg"] + W2["fp"]) < (K.bc+K.bk) ){
-      B.fk <- (W2["fg"] + W2["fp"]) - K.bc
+      B.fk <- (unlist(W2["fg"]) + unlist(W2["fp"])) - K.bc
       }
   }
 
   #if total female population exceeds carrying capacity of
   #BOTH habitats, then sink will become saturated
   #so return sink size K.bk
-  if( (W2["fg"] + W2["fp"]) >= (K.bc+K.bk)){
+  if( (unlist(W2["fg"]) + unlist(W2["fp"])) >= (K.bc+K.bk)){
     B.fk <- K.bk
     }
 
-  names(B.fk) <- "B.fk"
+  #names(B.fk) <- "B.fk"
 
   return(B.fk)
 }

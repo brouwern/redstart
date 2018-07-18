@@ -17,8 +17,8 @@
 #' @param P.kpg scalar...
 #' @param P.kpp scalar...
 #' @param Y2 vector of reproductive output (post migration?)
-#' @param A.G vector...
-#' @param A.P vector...
+#' @param A.G.i vector...
+#' @param A.P.i vector...
 #'
 #' @return out.df dataframe updated with population sizeds from time i
 #'
@@ -26,14 +26,14 @@
 #'
 
 
-save_current_state <- function(i, out.df,
+save_FAC_state <- function(i, out.df,
                              W.mg,W.mp,W.fg,W.fp,
                              B0,
                              P.cgg, P.cgp, P.cpg, P.cpp,
                              P.kgg, P.kgp, P.kpg, P.kpp,
                              Y2,
-                             A.G,
-                             A.P, ...){
+                             A.G.i,
+                             A.P.i, ...){
 
   ### SAVE POPULATION STATE
   #### Save winter state "after ...birds have arrived and settelined onto territories"
@@ -57,8 +57,8 @@ save_current_state <- function(i, out.df,
 
 
   # Store number of birds allocated to G and P habitat
-  out.df[i,grep("A.G",names(out.df))] <- A.G #
-  out.df[i,grep("A.P",names(out.df))] <- A.P
+  out.df[i,grep("A.G",names(out.df))] <- A.G.i #
+  out.df[i,grep("A.P",names(out.df))] <- A.P.i
 
   return(out.df)
 }

@@ -10,6 +10,7 @@
 #' @param K.bk carrying capacity
 #' @param B.mk ...
 #' @param B.fk ...
+#' @param ... ...
 #'
 #' @export
 
@@ -18,7 +19,7 @@ eq15_Pkgp <- function(W2,
                  K.bc,
                  K.bk,
                  B.mk,
-                 B.fk){
+                 B.fk, ...){
 
   #equation 15 last line
   r <- 0
@@ -33,7 +34,8 @@ eq15_Pkgp <- function(W2,
   if(W2["mg"] < K.bc){
     if( K.bc < W2["fg"]){
       if (W2["fg"] < (K.bc+K.bk)){
-        r<- (W2["fg"]-K.bc)/min(B.mk, B.fk) }
+        #browser()
+        r<- (unlist(W2["fg"])-K.bc)/min(B.mk, B.fk) }
     }
   }
 
@@ -41,7 +43,7 @@ eq15_Pkgp <- function(W2,
   if(K.bc < W2["mg"]){
     if(W2["mg"] < (K.bc + K.bk)){
       if(W2["fg"] > W2["mg"]){
-        r <- (min(W2["fg"], (B.mk+K.bc))-W2["mg"])/min(B.mk,B.fk) }
+        r <- (min(unlist(W2["fg"]), (B.mk+K.bc))-unlist(W2["mg"]))/min(B.mk,B.fk) }
     }
   }
 

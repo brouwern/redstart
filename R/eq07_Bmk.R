@@ -46,20 +46,20 @@ eq07_Bmk <- function(W2,
                      K.bc,
                      B.fk){
 
-  if( (W2["mg"] + W2["mp"]) < K.bc){
+  if( (unlist(W2["mg"]) + unlist(W2["mp"])) < K.bc){
     B.mk <- 0
      }
 
   #K.bc = sink carrying capacity;
-  if(K.bc <= (W2["mg"] + W2["mp"]) ){
-    if( (W2["mg"] + W2["mp"]) < (K.bc+B.fk) ){
-      B.mk <- W2["mg"] + W2["mp"] - K.bc
+  if(K.bc <= (unlist(W2["mg"]) + unlist(W2["mp"])) ){
+    if( (unlist(W2["mg"]) + unlist(W2["mp"])) < (K.bc+unlist(B.fk)) ){
+      B.mk <- unlist(W2["mg"]) + unlist(W2["mp"]) - K.bc
       }
   }
 
 
-  if( (W2["mg"] + W2["mp"]) >= (K.bc + B.fk) ){
-    B.mk <- B.fk
+  if( (unlist(W2["mg"]) + unlist(W2["mp"])) >= (K.bc + unlist(B.fk)) ){
+    B.mk <- unlist(B.fk)
     }
 
   return(B.mk)

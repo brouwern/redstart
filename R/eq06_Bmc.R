@@ -25,13 +25,13 @@
 eq06_Bmc <- function(W2,
                      K.bc){
 
-  if( (W2["mg"]+W2["mp"]) < K.bc){
-    B.mc <- (W2["mg"]+W2["mp"])
+  if( (unlist(W2["mg"])+unlist(W2["mp"])) < K.bc){
+    B.mc <- (unlist(W2["mg"])+unlist(W2["mp"]))
   } else{
     B.mc <- K.bc
   }
 
-   names(B.mc) <- "B.mc"
+   #names(B.mc) <- "B.mc"
    return(B.mc)
 }
 

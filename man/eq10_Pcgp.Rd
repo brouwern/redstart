@@ -4,7 +4,7 @@
 \alias{eq10_Pcgp}
 \title{Equation 10:}
 \usage{
-eq10_Pcgp(W2, K.bc, B.fc, B.mc)
+eq10_Pcgp(W2, K.bc, B.fc, B.mc, ...)
 }
 \arguments{
 \item{W2}{population vector}
@@ -14,6 +14,8 @@ eq10_Pcgp(W2, K.bc, B.fc, B.mc)
 \item{B.fc}{females available in sink}
 
 \item{B.mc}{males on sour.c. habitat}
+
+\item{...}{....}
 }
 \value{
 xxx xxxx

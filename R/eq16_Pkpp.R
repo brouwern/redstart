@@ -10,6 +10,7 @@
 #' @param P.kpg ...
 #' @param B.mk ...
 #' @param B.fk ...
+#' @param ... ...
 #'
 #' @export
 
@@ -17,7 +18,7 @@ eq16_Pkpp <- function(P.kgg,
                  P.kgp,
                  P.kpg,
                  B.mk,
-                 B.fk){
+                 B.fk, ...){
 
   #equation 16 part 2 (lower line)
   P.kpp <- 0

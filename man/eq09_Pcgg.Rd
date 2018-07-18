@@ -5,16 +5,18 @@
 \title{Equation 9: Pair formation in source habitat between birds both from
 good habitat}
 \usage{
-eq09_Pcgg(W2, K.bc, B.mc, B.fc)
+eq09_Pcgg(W2, K.bc, B.fc, B.mc, ...)
 }
 \arguments{
 \item{W2}{population vector}
 
 \item{K.bc}{source carrying capacity (?)  original file said "sink popualtion size" in comments}
 
+\item{B.fc}{...}
+
 \item{B.mc}{females available in sink}
 
-\item{B.fc}{...}
+\item{...}{...}
 }
 \value{
 P.cgg, the proportion of pairings in the "source" breeding habitat between male and

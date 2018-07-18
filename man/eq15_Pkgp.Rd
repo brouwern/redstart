@@ -4,7 +4,7 @@
 \alias{eq15_Pkgp}
 \title{Equation 15: Proportion in sink poor-poor}
 \usage{
-eq15_Pkgp(W2, K.bc, K.bk, B.mk, B.fk)
+eq15_Pkgp(W2, K.bc, K.bk, B.mk, B.fk, ...)
 }
 \arguments{
 \item{W2}{Popualtion vector}
@@ -16,6 +16,8 @@ eq15_Pkgp(W2, K.bc, K.bk, B.mk, B.fk)
 \item{B.mk}{...}
 
 \item{B.fk}{...}
+
+\item{...}{...}
 }
 \description{
 Equation 15: Proportion in sink poor-poor

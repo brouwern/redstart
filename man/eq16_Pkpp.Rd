@@ -4,7 +4,7 @@
 \alias{eq16_Pkpp}
 \title{Equation 16:}
 \usage{
-eq16_Pkpp(P.kgg, P.kgp, P.kpg, B.mk, B.fk)
+eq16_Pkpp(P.kgg, P.kgp, P.kpg, B.mk, B.fk, ...)
 }
 \arguments{
 \item{P.kgg}{...}
@@ -16,6 +16,8 @@ eq16_Pkpp(P.kgg, P.kgp, P.kpg, B.mk, B.fk)
 \item{B.mk}{...}
 
 \item{B.fk}{...}
+
+\item{...}{...}
 }
 \description{
 Equation 16:

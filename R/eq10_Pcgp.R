@@ -17,6 +17,7 @@
 #' @param K.bc females on sour.c.habitat
 #' @param B.fc females available in sink
 #' @param B.mc males on sour.c. habitat
+#' @param ... ....
 #'
 #' @return xxx xxxx
 #'
@@ -61,7 +62,7 @@
 eq10_Pcgp <- function(W2,
                  K.bc,
                  B.fc,
-                 B.mc){
+                 B.mc, ...){
 
   P.cgp <- 0
 

@@ -1,4 +1,9 @@
-check_P_division <- function(x,equation_name,i,debug.it = FALSE,...){
+
+check_P_division <- function(x,equation_name,
+                             #i,
+                             #debug.it = TRUE,
+                             ...){
+  i<- "unknown"
 
   if(is.nan(x)==TRUE){
     message(equation_name," is NaN on iteration ",i)
@@ -9,10 +14,10 @@ check_P_division <- function(x,equation_name,i,debug.it = FALSE,...){
   }
 
   if(is.infinite(x)==TRUE){
-    message(equation_name," is NaN on iteration ",i)
+    message(equation_name," is inf on iteration ",i)
   }
 
-  if(debug.it == TRUE){
-    browser()
-  }
+  # if(debug.it == TRUE){
+  #   browser()
+  # }
 }

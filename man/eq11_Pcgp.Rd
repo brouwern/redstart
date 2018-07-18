@@ -4,7 +4,7 @@
 \alias{eq11_Pcgp}
 \title{Equation 11:}
 \usage{
-eq11_Pcgp(W2, K.bc, B.fc, B.mc)
+eq11_Pcgp(W2, K.bc, B.fc, B.mc, ...)
 }
 \arguments{
 \item{W2}{population vector; indicats where birds are coming from}
@@ -14,6 +14,8 @@ eq11_Pcgp(W2, K.bc, B.fc, B.mc)
 \item{B.fc}{females alreadiy in source}
 
 \item{B.mc}{males already in source}
+
+\item{...}{...}
 }
 \value{
 P.cgp, the proportion of pairings in the source habitat made up of xxx

@@ -1,5 +1,5 @@
 #' Equation 24 - Competition parameters (gamma)
-#' 
+#'
 #' Calculates gammas based on gamma.base provided in function call
 #'
 #' @details
@@ -8,18 +8,18 @@
 #' competition ability depends on "an intrsince age-,sex-
 #' and condition(habitat)-specific competitive factor
 #' gamma and the number of birds in each class"
-#' 
-#' 
+#'
+#'
 #'    gamma represents "an instrinsic age-,sex,- and condition (habitat)-specific...factor" pg380 col 2
-#'  
-#' previously aliased as fx.make.gamma.i.eq24 
+#'
+#' previously aliased as fx.make.gamma.i.eq24
 #'
 #' @param gamma.base Competition
 #'
 #' @export
 
 
-eq24buildGammaVect <- function(gamma.base){
+eq24_make_gamma_vec <- function(gamma.base){
   gamma.i <-  c(
     #Adult males
     1,

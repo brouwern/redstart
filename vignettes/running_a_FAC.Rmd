@@ -113,3 +113,9 @@ runFAC(save.ts = F)
 ```
 
 
+
+
+```{r}
+x <- runFAC()
+```
+

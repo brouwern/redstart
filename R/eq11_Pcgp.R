@@ -16,6 +16,7 @@
 #' @param K.bc females  sour.c.habitat carrying capacity
 #' @param B.fc females alreadiy in source
 #' @param B.mc males already in source
+#' @param ... ...
 #'
 #' @return P.cgp, the proportion of pairings in the source habitat made up of xxx
 #' from good winter habitat and yyy from poor winter habitat.
@@ -62,7 +63,7 @@
 eq11_Pcgp <- function(W2,
                       K.bc,
                       B.fc,
-                      B.mc){# K
+                      B.mc,...){# K
 
   #part B of equation 11 (lower part)
   P.cgp <- 0

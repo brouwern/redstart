@@ -34,5 +34,5 @@ eq08_Bmd <- function(W2,
                            K.bc,
                            B.fk){
   max(0,
-      (W2["mg"]+W2["mp"] - K.bc - B.fk) )
+      (unlist(W2["mg"])+unlist(W2["mp"]) - K.bc - unlist(B.fk)) )
 }

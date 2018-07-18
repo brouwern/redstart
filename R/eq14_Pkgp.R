@@ -9,6 +9,7 @@
 #' @param K.bk carrying capacity ...
 #' @param B.mk ...
 #' @param B.fk ...
+#' @param ... ...
 #'
 #' @export
 
@@ -16,42 +17,42 @@ eq14_Pkgp <- function(W2,
                  K.bc,
                  K.bk,
                  B.mk,
-                 B.fk){
+                 B.fk, ...){
 
   #equation 14 last line
-  r <- 0
+  P.kgp <- 0
 
   #equaiton 14 1st line
   if(W2["fg"] < K.bc){
     if(W2["mg"] >= (K.bc+K.bk) ){
-      r <- 1}
+      P.kgp <- 1}
     }
 
 
   if(W2["fg"] < K.bc){
     if(K.bc < W2["mg"]){
       if(W2["mg"] < (K.bc + K.bk)){
-        r<-(W2["mg"]-K.bc)/min(B.mk, B.fk) } #can result in division by zero
+        P.kgp <- (unlist(W2["mg"])-K.bc)/min(B.mk, B.fk) } #can result in division by zero
     }
     }
 
   if(K.bc < W2["fg"]){
     if(W2["fg"] < (K.bc+K.bk)){
       if(W2["mg"] > W2["fg"]){
-        r <- (min(W2["mg"], (B.fk+K.bc)) - W2["fg"]) / min(B.mk,B.fk)
+        P.kgp <- (min(unlist(W2["mg"]), (B.fk+K.bc)) - unlist(W2["fg"])) / min(B.mk,B.fk)
         }
     }
   }
 
 
-  check_P_division(x = r,equation_name = "eq14_Pkgp",i = i)
+ # check_P_division(x = P.kgp, equation_name = "eq14_Pkgp",i = i)
 
   ## Paper over crack
-  if(is.infinite(r) == TRUE){
+  if(is.infinite(P.kgp) == TRUE){
     #browser()
-    r <- 0
+    P.kgp <- 0
   }
 
-  return(r)
+  return(P.kgp)
 
 }

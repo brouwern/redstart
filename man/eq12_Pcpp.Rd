@@ -4,7 +4,7 @@
 \alias{eq12_Pcpp}
 \title{Equation 12}
 \usage{
-eq12_Pcpp(P.cgg, P.cgp, P.cpg)
+eq12_Pcpp(P.cgg, P.cgp, P.cpg, ...)
 }
 \arguments{
 \item{P.cgg}{proportion...}
@@ -12,6 +12,8 @@ eq12_Pcpp(P.cgg, P.cgp, P.cpg)
 \item{P.cgp}{proportion...}
 
 \item{P.cpg}{proportion...}
+
+\item{...}{....}
 }
 \value{
 P.cpp

@@ -4,7 +4,7 @@
 \alias{eq13_Pkgg}
 \title{Equation 13: pairing in sink (.k) habitat}
 \usage{
-eq13_Pkgg(W2, K.bc, K.bk, B.mk, B.fk)
+eq13_Pkgg(W2, K.bc, K.bk, B.mk, B.fk, ...)
 }
 \arguments{
 \item{W2}{population vector}
@@ -16,6 +16,8 @@ eq13_Pkgg(W2, K.bc, K.bk, B.mk, B.fk)
 \item{B.mk}{...}
 
 \item{B.fk}{...}
+
+\item{...}{}
 }
 \description{
 Equation 13: pairing in sink (.k) habitat

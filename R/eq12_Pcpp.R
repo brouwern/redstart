@@ -10,6 +10,7 @@
 #' @param P.cgg proportion...
 #' @param P.cgp proportion...
 #' @param P.cpg proportion...
+#' @param ... ....
 #'
 #' @return P.cpp
 #'
@@ -17,7 +18,7 @@
 
 eq12_Pcpp <- function(P.cgg,
                  P.cgp,
-                 P.cpg){
+                 P.cpg,...){
   P.cpp <-  round(1 - P.cgg - P.cgp - P.cpg,5)
 
   #warnings

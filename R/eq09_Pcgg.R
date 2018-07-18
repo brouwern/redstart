@@ -37,6 +37,7 @@
 #' @param K.bc source carrying capacity (?)  original file said "sink popualtion size" in comments
 #' @param B.mc females available in sink
 #' @param B.fc ...
+#' @param ... ...
 #'
 #' @return P.cgg, the proportion of pairings in the "source" breeding habitat between male and
 #' females which both winter in the good habitat
@@ -87,8 +88,9 @@
 
 eq09_Pcgg <- function(W2,
                       K.bc,
+                      B.fc,
                       B.mc,
-                      B.fc){
+                      ...){
 
   if(  (W2["mg"] > K.bc) &  #If males from good winter habitat exceed souce carrying capacity...
        (W2["fg"] > K.bc)  ){#AND females from g winter habitat exceed souce carrying capacity...

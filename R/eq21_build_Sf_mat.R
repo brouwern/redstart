@@ -12,7 +12,7 @@
 #' @export
 
 
-eq21 <- function(S.f.mc,
+eq21_build_Sf_mat <- function(S.f.mc,
                  S.f.mk,
                  S.f.md,
                  S.f.fc,

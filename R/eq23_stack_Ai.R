@@ -9,7 +9,7 @@
 #' @export
 
 
-eq23buildAvect <- function(B2,Y2){
+eq23_stack_Ai <- function(B2,Y2){
   A.i <- c(B2,Y2)
   return(A.i)
 }
