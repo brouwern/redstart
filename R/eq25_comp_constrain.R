@@ -1,7 +1,10 @@
-# Equation 25: Competition A.i constraint
+#' Equation 25: Competition A.i constraint
+#' @export
 
-eq25_comp_constrain <- function(A.i.settled.j.raw = A.i.settled.j.raw,
-                                A.i.0 = A.i.0){
-  A.i.settled.j.cor <- ifelse(A.i.settled.j.raw > A.i.0, A.i.0, A.i.settled.j.raw)
-  return(A.i.settled.j.cor)
+eq25_comp_constrain <- function(A.i.G.settled.raw.j,
+                                A.i.0){
+  A.i.G.settled.cor.j <- ifelse(A.i.G.settled.raw.j > A.i.0,
+                                A.i.0,
+                                A.i.G.settled.raw.j)
+  return(A.i.G.settled.cor.j)
 }

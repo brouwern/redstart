@@ -4,7 +4,7 @@
 \alias{plot_runFAC}
 \title{Plot time series of a single run of a FAC model}
 \usage{
-plot_runFAC(out.df)
+plot_runFAC(out.df, y1 = "tot.W", y2 = "tot.B", ...)
 }
 \description{
 Plot time series of a single run of a FAC model

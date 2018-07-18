@@ -504,8 +504,8 @@ for(i in 1:iterations){
     ### Equation 23 eq23_stack_Ai() ###
     #### Stack adults &  young into single vector (A)
 
-    A.i <-eq23_stack_Ai(B2, #Adults after migration
-                        Y2) #offspring after migration
+    A <-eq23_stack_Ai(B2, #Adults after migration
+                      Y2) #offspring after migration
 
 
 
@@ -536,7 +536,7 @@ for(i in 1:iterations){
                      un.settled = NA)
 
     ### Number of iterations to run loop to resolve competition
-    iterations <- nrow(df)
+    comp.its <- nrow(df)
 
 
 
@@ -544,21 +544,38 @@ for(i in 1:iterations){
     #### eq24_comp_loop() implements a loop
     #### that runs eq24_competition() and eq25_comp_constrain()
     #### gamma.i created by eq24_make_gamma_vec()
-    #browser()
-    A.G.i.0 <- A.i
-    comp.out.list <- eq24_comp_loop(A.i.0 = A.G.i.0,
-                                    K.wg.0 = param.set$K.wg,
+
+
+    # A = stacked pop vector from eq 23
+
+    ## Initial states
+    A.i.0 <- A
+    K.wg.0 <- param.set$K.wg
+
+
+
+
+    # if(i == 65){
+    #   #browser()
+    #   #debugonce(eq24_comp_loop)
+    #   #debugonce(eq26_alloc_winter_P)
+    # }
+
+
+    comp.out.list <- eq24_comp_loop(A.i.0 = A.i.0,
+                                    K.wg.0 = K.wg.0,
                                     y.i = gamma.i,
                                     comp.df = df,
-                                    j = iterations)
+                                    j = comp.its)
 
 
     #Birds alloacted to good winter habitat
-    A.G.i <- comp.out.list$A.G.i.settled
+    A.G.i <- comp.out.list$A.i.G.settled.j
 
     ### Equation 26 Allocated birds to poor winter habitat ###
     ####  A.P.i <- A.i-A.G.i
-    A.P.i <- eq26_alloc_winter_P(A.i = A.i, A.G.i = A.G.i)
+    A.P.i <- eq26_alloc_winter_P(A.i.0 = A.i.0,
+                                 A.G.i = A.G.i)
 
     ### Name output
     class.names <- c("mc","mk","md","fc","fk","y.mc","y.mk","y.fc","y.fk")
@@ -568,12 +585,14 @@ for(i in 1:iterations){
 
     ### Test competition output
 
-    if(any(A.G.i > A.G.i.0)){
+    if(any(A.G.i > A.i.0)){
       message("Competition error: A.G.i > A.i")
     }
 
     if(sum(A.G.i) > param.set$K.wg){
-      message("Competition error: sum(A.G.i) > K.wg")
+      message("Competition error: sum(A.G.i) > K.wg ",
+              sum(A.G.i)," vs ",param.set$K.wg)
+
     }
 
     if(any(A.P.i) < 0){
@@ -598,7 +617,7 @@ for(i in 1:iterations){
 
 
     #Does output of competition match input before competition?
-    temp <- round(sum(A.i),4) ==
+    temp <- round(sum(A.i.0),4) ==
             round(sum(W.list$W.mg,W.list$W.mp,W.list$W.fg,W.list$W.fp),4)
 
 

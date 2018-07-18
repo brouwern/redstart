@@ -1,3 +1,7 @@
+#' Competition loop
+#'
+#' @export
+
 
 eq24_comp_loop <- function(A.i.0,
                            K.wg.0 ,
@@ -12,18 +16,21 @@ eq24_comp_loop <- function(A.i.0,
 
   # Assign intial states
   ## Initial number of settled birds
-  A.G.i.settled <- rep(0, length(A.i.0))
+  ## When loop starts, no birds have settled on territories
+  A.i.G.settled.j <- rep(0, length(A.i.0))
 
-  ## Number of open territories = carrying capacity
-  K.wg.j <- K.wg.0
+  ## Number of open territories
+  ###  When loop starts all are open
+  K.wg.open.j <- K.wg.0
 
   ## Number of actively competiing birds
+  ###  (initilally = pop vector)
   A.i.active.j <- A.i.0
 
 
 
 
-  #browser()
+
   #competition loop
   for (j in index.j){
 
@@ -31,32 +38,41 @@ eq24_comp_loop <- function(A.i.0,
     ## all birds settle in good habitat
     ## and loop exists
     if(sum(A.i.active.j) <= K.wg.0){
-      A.G.i.settled <- A.i.0
+      A.i.G.settled.j <- A.i.0
 
       break
     }
 
-    #store for reference
-    K.wg.j.init <- K.wg.j
-    A.G.i.settled.init <- sum(A.G.i.settled)
-    A.G.i.active.init  <- sum(A.i.active.j)
+
+
+          #store for reference
+          K.wg.open.j.init <- K.wg.open.j
+          A.i.G.settled.init <- sum(A.i.G.settled.j)
+          A.G.i.active.init  <- sum(A.i.active.j)
 
     ## settled best competitors to good habitat
-    #A.i.settled.j.raw <- (A.i.active.j*y.i)/sum((A.i.active.j*y.i))*K.wg.j
-    A.i.settled.j.raw <- eq24_competition()
+    #A.i.settled.raw.j <- (A.i.active.j*y.i)/sum((A.i.active.j*y.i))*K.wg.open.j
+    A.i.G.settled.raw.j <- eq24_competition(A.i.j = A.i.active.j,
+                                          y.i = y.i,
+                                          K.wg.open.j = K.wg.open.j)
 
     ## correct values if they exceed original abundance A.i.0
     #
-    A.i.settled.j.cor <- eq25_comp_constrain()
+    A.i.G.settled.cor.j <- eq25_comp_constrain(A.i.G.settled.raw.j = A.i.G.settled.raw.j,
+                                             A.i.0 = A.i.0)
 
     ## Add those just settled to those already in good habitat
-    A.G.i.settled <- A.i.settled.j.cor + A.G.i.settled
+    #total settled    total settled         total settled
+    #overwritten      this iteration        current
+    A.i.G.settled.j <- A.i.G.settled.cor.j + A.i.G.settled.j
 
     ## Update carrying capacity
-    K.wg.j <- K.wg.0 - sum(A.G.i.settled)
+    K.wg.open.j <- K.wg.0 - sum(A.i.G.settled.j)
 
     ## calculate number remaining un-settledd
-    A.i.unsettled.j <- A.i.active.j - A.i.settled.j.cor
+    # currently      original  updated number
+    # un-settled     pop vect  settled
+    A.i.unsettled.j <- A.i.0 - A.i.G.settled.j
 
 
     ## Bird unsettled at end of loop remain "Active" during next iteration
@@ -64,27 +80,29 @@ eq24_comp_loop <- function(A.i.0,
 
     ### Save meta data
     comp.df$j[j] <- j
-    comp.df$K.wg.j.init[j]         <- K.wg.j.init
-    comp.df$K.wg.j.end[j]         <- K.wg.j
-    comp.df$tot.settled.init[j]    <- A.G.i.settled.init
-    comp.df$tot.settled.final[j]   <- sum(A.G.i.settled)
+    comp.df$K.wg.open.j.init[j]         <- K.wg.open.j.init
+    comp.df$K.wg.open.j.end[j]         <- K.wg.open.j
+    comp.df$tot.settled.init[j]    <- A.i.G.settled.init
+    comp.df$tot.settled.final[j]   <- sum(A.i.G.settled.j)
     comp.df$tot.active.init[j]     <- A.G.i.active.init
     comp.df$tot.active.final[j]    <- sum(A.i.active.j)
-    comp.df$suc.settled.raw[j]    <- sum(A.i.settled.j.raw)
-    comp.df$suc.settled.cor[j]    <- sum(A.i.settled.j.cor)
+    comp.df$suc.settled.raw[j]    <- sum(A.i.G.settled.raw.j)
+    comp.df$suc.settled.cor[j]    <- sum(A.i.G.settled.cor.j)
     comp.df$un.settled[j]         <- sum(A.i.unsettled.j)
 
 
+    #If number still active = 0, stop
+    if(sum(A.i.active.j) == 0){ break }
 
-    if(sum(A.G.i.settled) == K.wg){ break }
-
+    #If number settled = carrying capacity, stop
+    if(round(sum(A.i.G.settled.j),0) >= K.wg.0){ break }
   }
 
   comp.df <- stats::na.omit(comp.df)
 
   comp.df <- apply(comp.df,2,round)
 
-  comp.list <- list(A.G.i.settled = A.G.i.settled,
+  comp.list <- list(A.i.G.settled.j = A.i.G.settled.j,
                     comp.df = comp.df)
 
   return(comp.list)
