@@ -1,9 +1,9 @@
 
 check_P_division <- function(x,equation_name,
-                             #i,
+                             i = NA,
                              #debug.it = TRUE,
                              ...){
-  i<- "unknown"
+  #i<- "unknown"
 
   if(is.nan(x)==TRUE){
     message(equation_name," is NaN on iteration ",i)

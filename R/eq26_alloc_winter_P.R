@@ -5,10 +5,10 @@
 
 
 eq26_alloc_winter_P <- function(A.i.0,
-                                A.G.i){
+                                A.i.G){
   #        initial - number settled in good habitat
-  A.P.i <- A.i.0   -  A.G.i
-  return(A.P.i)
+  A.i.P <- A.i.0   -  A.i.G
+  return(A.i.P)
 }
 
 

@@ -4,7 +4,15 @@
 \alias{eq25_comp_constrain}
 \title{Equation 25: Competition A.i constraint}
 \usage{
-eq25_comp_constrain(A.i.G.settled.raw.j, A.i.0)
+eq25_comp_constrain(A.i.G.settled.raw.j, A.i.active.j)
+}
+\arguments{
+\item{A.i.G.settled.raw.j}{The raw number of birds that eq24_competition indicates have setteled.  This number needs to be trimmed if necessary so that the number settling cannot exceed the number actively looking for territories}
+
+\item{A.i.active.j}{The number of birds that were actively looking for nests.
+
+NOTE: in previous versions of this A.i.0 was incorrectly used instead
+of A.i.active.j}
 }
 \description{
 Equation 25: Competition A.i constraint

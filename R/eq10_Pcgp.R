@@ -1,7 +1,6 @@
 #' Equation 10:
 #'
 #' @details
-#' SUMMER MALE (M) DYNAMICS - pairing dynamics
 #' proportion of pairs on source habitat
 #' composed of MALES   from GOOD and
 #'           females from poor
@@ -11,7 +10,7 @@
 #'    Then the number of good-poor pairings is determined by...
 #'  2)other, the number of good-poor pairings is zero (all pairings are good-good)
 #'
-#' Aliased prevously as pairing.eq10.P.c.gp
+#' Note that in the original paper, both equations 10 and 11 have the same subscripts of P.cgp, while in equation 12 it is implied they have different subscripts.  It appears that the 2nd subscript should indicate the winter habitat for males and the 3rd should indicate the winter habitat for females.  Therefore equation 10 in the original paper remains as P.cgp (P.source.male-good.female-poor) and equation 11 should be changed to P.c.pg (P.source.male-poor.female-good)
 #'
 #' @param W2 population vector
 #' @param K.bc females on sour.c.habitat
@@ -28,10 +27,10 @@
 #' @examples
 #' # Test loop
 #' ## Values for population vector W2
-#' seqW <- seq(1,100,30)
+#' seqW <- seq(1,500,30)
 #'
 #' ## Values for carrying capacities
-#' seqK <- seq(1,125,50)
+#' seqK <- seq(1,525,50)
 #'
 #' ## dataframe of parameter combinations
 #' df <- expand.grid(mg = seqW,
@@ -49,15 +48,20 @@
 #'
 #'     B.mc <- eq06_Bmc(W2, params$K.bc)
 #'     B.fc <- eq04_Bfc(W2, params$K.bc)
-#'     df$P.cgg[i] <- eq10_Pcgp(W2 = W2,
+#'     df$P.cgp[i] <- eq10_Pcgp(W2 = W2,
 #'                              K.bc = params$K.bc,
 #'                              B.fc = B.fc,
 #'                              B.mc = B.mc)
 #' }
 #'
-#' hist(df$P.cgg)
+#' hist(df$P.cgp)
+#' summary(df$P.cgp)
 #'
 #' @export
+#'
+#
+
+
 
 eq10_Pcgp <- function(W2,
                  K.bc,
@@ -68,24 +72,25 @@ eq10_Pcgp <- function(W2,
 
   if(W2["mg"] > W2["fg"]){ #if more males from good winter than females from good winter
     if(W2["fg"] < K.bc){   #and females haven't saturated source breeding habitat...
-     num   <-  (min(unlist(W2["mg"]), unlist(B.fc)) - unlist(W2["fg"]))   #this code checks for division by zero
-     denom <-  min(unlist(B.mc),     unlist(B.fc))
+     numerator   <-  (min(unlist(W2["mg"]), unlist(B.fc)) - unlist(W2["fg"]))   #this code checks for division by zero
+     denominator <-  min(unlist(B.mc),     unlist(B.fc))
 
     #calcualte P.cgp
      #browser()
-     P.cgp <- num/denom
+     P.cgp <- numerator/denominator
     }
   }
 
-  #warning message
+  #warning messages
 
-  if(P.cgp > 1){
-    message("ERROR IN EQUATION 10: P.cgp > 1")
+  if(unlist(P.cgp) > 1){
+    message("ERROR IN EQUATION 10: P.cgp > 1 ",numerator," / ",denominator)
+    P.cgp <- 1
   }
 
   if(is.nan(unlist(P.cgp)) == TRUE){
       message("ERROR IN EQUATION 10: NaN!!")
-    }
+  }
 
 
   return(P.cgp)

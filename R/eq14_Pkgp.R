@@ -17,7 +17,8 @@ eq14_Pkgp <- function(W2,
                  K.bc,
                  K.bk,
                  B.mk,
-                 B.fk, ...){
+                 B.fk,
+                 i = NA){
 
   #equation 14 last line
   P.kgp <- 0
@@ -45,11 +46,12 @@ eq14_Pkgp <- function(W2,
   }
 
 
- # check_P_division(x = P.kgp, equation_name = "eq14_Pkgp",i = i)
+ check_P_division(x = P.kgp, equation_name = "eq14_Pkgp",i = i)
 
   ## Paper over crack
   if(is.infinite(P.kgp) == TRUE){
     #browser()
+
     P.kgp <- 0
   }
 

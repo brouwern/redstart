@@ -45,7 +45,11 @@ runFAC <- function(iterations = 350 #number of generations to run model; setting
                 ){
 
 
+## Warnings
 
+# message("NOTE: equation 9 has been set to overwrite P > 1 errors!!!!!")
+# message("\nNOTE: equation 10 has been set to overwrite P > 1 errors!!!!!")
+# message("\nNOTE: equation 12 has been set to overwrite P > 1 errors!!!!!")
 
 
 
@@ -155,6 +159,11 @@ for(i in 1:iterations){
   #### Create vector of population state
   W0 <- eq01buildW0vect(W.list$W.mg, W.list$W.mp,
                         W.list$W.fg, W.list$W.fp)
+
+  if(any(W0 < 0)){
+    browser()
+  }
+
 
   ### EQUATION 2:
   ### Winter SURVIVAL (S.w) of birds in different habitat qualities
@@ -297,8 +306,9 @@ for(i in 1:iterations){
 
   ### EQUATION 11:  eq11()
   ### Proportion of poor males mated w/ "good" female
+  #### NOte: subscripts wrong in original paper
 
-  P.cpg <- eq11_Pcgp(W2 = W2,
+  P.cpg <- eq11_Pcpg(W2 = W2,
                           K.bc = param.set$K.bc,
                           B.fc = B.fc,
                           B.mc = B.mc)
@@ -329,7 +339,8 @@ for(i in 1:iterations){
                        K.bc = param.set$K.bc,
                        K.bk = param.set$K.bk,
                        B.mk = B.mk,
-                       B.fk = B.fk)
+                       B.fk = B.fk,
+                       i = i)
 
 
 
@@ -347,10 +358,11 @@ for(i in 1:iterations){
 
     ### EQUATION 15: eq15()
     ### aliaspairing.eq15.P.kpg
-    P.kpg <- eq15_Pkgp(W2,       #note that both eq14 and eq habve .kgp subscripts in original paper
+    ### note that both eq14 and eq habve .kgp subscripts in original paper
+    P.kpg <- eq15_Pkpg(W2,
                        param.set$K.bc,
                        param.set$K.bk,
-                       B.mk, B.fk)
+                       B.mk, B.fk, i = i)
 
 
 
@@ -395,16 +407,19 @@ for(i in 1:iterations){
                                 co))
 
 
-    #Delete this? ## EQUATION 18
-    #Delete this? LOAD QUATION 18b
-    #Delete this?  all.Ps <- c(P.cgg, P.cgp, P.cpg, P.cpp,
-    #Delete this?              P.kgg, P.kgp, P.kpg, P.kpp)
+    #Delete this?: ## EQUATION 18
+    #Delete this?: LOAD QUATION 18b
+    #Delete this?:  all.Ps <- c(P.cgg, P.cgp, P.cpg, P.cpp,
+    #Delete this?:              P.kgg, P.kgp, P.kpg, P.kpp)
 
     #Fx.make.P.matrix.eq18
 
-    if(round(sum(P.cgg, P.cgp,P.cpg, P.cpp),3) != 1)browser()
-    if(round(sum(P.kgg, P.kgp,P.kpg, P.kpp),3) > 1)browser()
-    if(round(sum(P.kgg, P.kgp,P.kpg, P.kpp),3) < 0)browser()
+    if(round(sum(P.cgg, P.cgp,P.cpg, P.cpp),3) != 1)
+    if(round(sum(P.kgg, P.kgp,P.kpg, P.kpp),3) > 1)
+    if(round(sum(P.kgg, P.kgp,P.kpg, P.kpp),3) < 0)
+
+
+    browser(text = "text")
 
     P.all <- eq18buildPmat(P.cgg, P.cgp,
                            P.cpg, P.cpp,
@@ -435,12 +450,12 @@ for(i in 1:iterations){
 
     #QA/QC: CHeck to make sure offspring sex ratio is equal
     if( round(Y1["mc"],3) != round(Y1["fc"],3)){
-      browser()
-      message("Error in offspring sex ratio!")
+
+      #message("Error in offspring sex ratio!")
       }
     if(round(Y1["mk"],3) != round(Y1["fk"],3)){
-      browser()
-      message("Error in offspring sex ratio!")
+
+      #message("Error in offspring sex ratio!")
       }
 
 
@@ -556,48 +571,58 @@ for(i in 1:iterations){
 
 
     # if(i == 65){
-    #   #browser()
+    #   #
     #   #debugonce(eq24_comp_loop)
     #   #debugonce(eq26_alloc_winter_P)
     # }
 
+    ## Run eq24_comp_loop()
+    ### Outputs a list
 
     comp.out.list <- eq24_comp_loop(A.i.0 = A.i.0,
                                     K.wg.0 = K.wg.0,
                                     y.i = gamma.i,
                                     comp.df = df,
-                                    j = comp.its)
+                                    j = comp.its, i = i)
+
+
 
 
     #Birds alloacted to good winter habitat
-    A.G.i <- comp.out.list$A.i.G.settled.j
+    A.i.G <- comp.out.list$A.i.G.settled.tot.j
+
+
 
     ### Equation 26 Allocated birds to poor winter habitat ###
-    ####  A.P.i <- A.i-A.G.i
-    A.P.i <- eq26_alloc_winter_P(A.i.0 = A.i.0,
-                                 A.G.i = A.G.i)
+    ####  A.i.P <- A.i-A.i.G
+    A.i.P <- eq26_alloc_winter_P(A.i.0 = A.i.0,
+                                 A.i.G = A.i.G)
+
 
     ### Name output
     class.names <- c("mc","mk","md","fc","fk","y.mc","y.mk","y.fc","y.fk")
-    names(A.G.i) <- class.names
-    names(A.P.i) <- class.names
+    names(A.i.G) <- class.names
+    names(A.i.P) <- class.names
 
 
     ### Test competition output
 
-    if(any(A.G.i > A.i.0)){
-      message("Competition error: A.G.i > A.i")
-    }
-
-    if(sum(A.G.i) > param.set$K.wg){
-      message("Competition error: sum(A.G.i) > K.wg ",
-              sum(A.G.i)," vs ",param.set$K.wg)
-
-    }
-
-    if(any(A.P.i) < 0){
-      message("Competition error: any(A.P.i) < 0")
-    }
+    # if(any(A.i.G > A.i.0)){
+    #   #message("Competition error in runFAC: A.i.G > A.i.0 on iteration " ,i)
+    #   browser()
+    # }
+    #
+    # if(sum(A.i.G) > param.set$K.wg){
+    #   #message("Competition error runFAC: sum(A.i.G) > K.wg on iteration ",i," ",
+    #           #sum(A.i.G)," vs ",param.set$K.wg)
+    #   browser()
+    #
+    # }
+    #
+    # if(any(A.i.P) < 0){
+    #   #message("Competition error runFAC: any(A.i.P) < 0 on iteration", i, " ")
+    #   browser()
+    # }
 
 
 
@@ -610,9 +635,9 @@ for(i in 1:iterations){
     #
 
     ###NB: returns W.mg,W.mp,W.fg,W.fp objects to workspace
-    #browser()
-    W.list <- eq27_post_comp_pooling(A.G.i = A.G.i,
-                           A.P.i = A.P.i)
+    #
+    W.list <- eq27_post_comp_pooling(A.i.G = A.i.G,
+                           A.i.P = A.i.P)
 
 
 
@@ -622,8 +647,8 @@ for(i in 1:iterations){
 
 
     if(temp == FALSE){
-      #browser()
-      message("ERROR RELATED TO COMPETITION!!!!!!!!!!!!!!!!!1")
+      #
+      #message("ERROR RELATED TO COMPETITION!!!!!!!!!!!!!!!!!1")
       }
 
 
@@ -637,7 +662,7 @@ for(i in 1:iterations){
     #### make it optional as to whether this is saved - what is
     #### really only needed for most runs is final equilibrium sizes
 
-    #browser()
+    #
     if(save.ts == TRUE){
       out.df <- save_FAC_state(i, out.df,
                                W.list$W.mg,W.list$W.mp,W.list$W.fg,W.list$W.fp,
@@ -645,8 +670,8 @@ for(i in 1:iterations){
                                    P.cgg, P.cgp, P.cpg, P.cpp,
                                    P.kgg, P.kgp, P.kpg, P.kpp,
                                    Y2,
-                                   A.G.i,
-                                   A.P.i)
+                                   A.i.G,
+                                   A.i.P)
 
       ### Check to see if equilibrium has been reached
       ###  population size no longer changing
@@ -662,13 +687,13 @@ for(i in 1:iterations){
     ## If not saving full time series then save final state at last time point
     if(save.ts == FALSE & i == iterations){
       out.df <- save_FAC_state(i, out.df,
-                               W.list$W.mg,W.list$W.mp,W.list$W.fg,W.list$W.fp,
+                                   W.list$W.mg,W.list$W.mp,W.list$W.fg,W.list$W.fp,
                                    B0,
                                    P.cgg, P.cgp, P.cpg, P.cpp,
                                    P.kgg, P.kgp, P.kpg, P.kpp,
                                    Y2,
-                                   A.G,
-                                   A.P)
+                                   A.i.G,
+                                   A.i.P)
 
       out.eq <- out.df[iterations,]
     }

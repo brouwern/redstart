@@ -4,7 +4,8 @@
 \alias{eq24_comp_loop}
 \title{Competition loop}
 \usage{
-eq24_comp_loop(A.i.0, K.wg.0, y.i, comp.df, j, ...)
+eq24_comp_loop(A.i.0, K.wg.0, y.i, comp.df, j, i, debug.continue = FALSE,
+  internal.error.check = FALSE)
 }
 \description{
 Competition loop

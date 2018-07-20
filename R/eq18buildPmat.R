@@ -1,3 +1,4 @@
+
 #' Equation 18: Build 2 x 8 matrix of the proporations in each habitat combo
 #'
 #' Average fecunidty for pairs in source and sink habitat"
@@ -24,7 +25,7 @@ eq18buildPmat <- function(P.cgg, P.cgp,P.cpg, P.cpp,
                                            P.kgg, P.kgp, P.kpg, P.kpp){
   P.all <- c(P.cgg, P.cgp,P.cpg, P.cpp,    0,     0,     0,     0,
              0,     0,     0,     0,   P.kgg, P.kgp, P.kpg, P.kpp)
-  
+
   P.all <- matrix(data = P.all, nrow = 2, byrow = T)
 
   return(P.all)

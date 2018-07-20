@@ -4,7 +4,7 @@
 \alias{eq14_Pkgp}
 \title{Equation 14: proportion in sink habitat, good-poor pairs}
 \usage{
-eq14_Pkgp(W2, K.bc, K.bk, B.mk, B.fk, ...)
+eq14_Pkgp(W2, K.bc, K.bk, B.mk, B.fk, i = NA)
 }
 \arguments{
 \item{W2}{population vector}

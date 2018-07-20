@@ -5,7 +5,7 @@
 \title{Equation 27
 Use of assign() here is probably inefficient/awk; put into list?}
 \usage{
-eq27_post_comp_pooling(A.G.i, A.P.i)
+eq27_post_comp_pooling(A.i.G, A.i.P)
 }
 \description{
 Equation 27

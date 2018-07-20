@@ -8,16 +8,21 @@ eq24_comp_loop <- function(A.i.0,
                            y.i,
                            comp.df,
                            j,
-                           ...
+                           i,
+                           debug.continue = FALSE,
+                           internal.error.check = FALSE
                            ){
 
+  #if(i == 60){browser()}
   #number of iterations to loop
+  ## Based on size of df used to track competition process
+  ## Is artbitrary
   index.j <- 1:j
 
   # Assign intial states
   ## Initial number of settled birds
   ## When loop starts, no birds have settled on territories
-  A.i.G.settled.j <- rep(0, length(A.i.0))
+  A.i.G.settled.tot.j <- rep(0, length(A.i.0))
 
   ## Number of open territories
   ###  When loop starts all are open
@@ -37,73 +42,156 @@ eq24_comp_loop <- function(A.i.0,
     ## If total pop size is less than carrying capacity
     ## all birds settle in good habitat
     ## and loop exists
-    if(sum(A.i.active.j) <= K.wg.0){
-      A.i.G.settled.j <- A.i.0
+    if(sum(A.i.active.j) <= K.wg.0 & j == 1){
+      A.i.G.settled.tot.j <- A.i.0
 
       break
     }
 
 
 
-          #store for reference
+          #store for reference; will be added to df used to track
+          #competition process
           K.wg.open.j.init <- K.wg.open.j
-          A.i.G.settled.init <- sum(A.i.G.settled.j)
-          A.G.i.active.init  <- sum(A.i.active.j)
+          A.i.G.settled.tot.j.init <- sum(A.i.G.settled.tot.j)
+          A.G.i.active.j.init  <- sum(A.i.active.j)
 
     ## settled best competitors to good habitat
     #A.i.settled.raw.j <- (A.i.active.j*y.i)/sum((A.i.active.j*y.i))*K.wg.open.j
     A.i.G.settled.raw.j <- eq24_competition(A.i.j = A.i.active.j,
-                                          y.i = y.i,
-                                          K.wg.open.j = K.wg.open.j)
+                                            y.i = y.i,
+                                            K.wg.open.j = K.wg.open.j)
 
-    ## correct values if they exceed original abundance A.i.0
-    #
+    ## Trim ("correct") values if they exceed
+    ## NOTE: this was originally set to use original abundance A.i.0
     A.i.G.settled.cor.j <- eq25_comp_constrain(A.i.G.settled.raw.j = A.i.G.settled.raw.j,
-                                             A.i.0 = A.i.0)
+                                               A.i.active.j = A.i.active.j)
 
     ## Add those just settled to those already in good habitat
     #total settled    total settled         total settled
     #overwritten      this iteration        current
-    A.i.G.settled.j <- A.i.G.settled.cor.j + A.i.G.settled.j
+    A.i.G.settled.tot.j2a <- A.i.G.settled.cor.j + A.i.G.settled.tot.j
+
+    #make sure that the total that have settle isn't more than total
+    #available
+    ###  Originally I did this as just a 1 step process
+    ###  not 2 step
+    ####   first, make sure more don't settle w/in a time j step than began the step
+    ####   2nd, make sure the total number that have settle isn't greater than began
+    ####        the overall time step of the model
+    A.i.G.settled.tot.j2b <- ifelse(A.i.G.settled.tot.j2a >= A.i.0,
+                                  A.i.0, A.i.G.settled.tot.j2a)
 
     ## Update carrying capacity
-    K.wg.open.j <- K.wg.0 - sum(A.i.G.settled.j)
+    ###   NOTE: use K.wg.0 NOT K.wg.open.j b/c A.i.G.settled.tot.j has
+    ###         just been updated to reflect TOTAL number settled
+    K.wg.open.j2 <- K.wg.0 - sum(A.i.G.settled.tot.j2b)
 
     ## calculate number remaining un-settledd
-    # currently      original  updated number
-    # un-settled     pop vect  settled
-    A.i.unsettled.j <- A.i.0 - A.i.G.settled.j
+    # currently                       updated number
+    # un-settled                       settled
+    A.i.unsettled.j <- A.i.active.j - A.i.G.settled.tot.j2b
+                        #was originaly
+                        #set to A.i.0!!!
+
+
+
+
+
+
+
 
 
     ## Bird unsettled at end of loop remain "Active" during next iteration
-    A.i.active.j <- A.i.unsettled.j
+    A.i.active.j2 <- A.i.unsettled.j
 
-    ### Save meta data
-    comp.df$j[j] <- j
-    comp.df$K.wg.open.j.init[j]         <- K.wg.open.j.init
-    comp.df$K.wg.open.j.end[j]         <- K.wg.open.j
-    comp.df$tot.settled.init[j]    <- A.i.G.settled.init
-    comp.df$tot.settled.final[j]   <- sum(A.i.G.settled.j)
-    comp.df$tot.active.init[j]     <- A.G.i.active.init
-    comp.df$tot.active.final[j]    <- sum(A.i.active.j)
-    comp.df$suc.settled.raw[j]    <- sum(A.i.G.settled.raw.j)
-    comp.df$suc.settled.cor[j]    <- sum(A.i.G.settled.cor.j)
-    comp.df$un.settled[j]         <- sum(A.i.unsettled.j)
+            ### Save meta data
+            comp.df$j[j] <- j
+            comp.df$K.wg.open.j.init[j]         <- K.wg.open.j.init
+            comp.df$K.wg.open.j.end[j]         <- K.wg.open.j
+            comp.df$tot.settled.init[j]    <- A.i.G.settled.tot.j.init
+            comp.df$tot.settled.final[j]   <- sum(A.i.G.settled.tot.j)
+            comp.df$tot.active.init[j]     <- A.G.i.active.j.init
+            comp.df$tot.active.final[j]    <- sum(A.i.active.j)
+            comp.df$suc.settled.raw[j]    <- sum(A.i.G.settled.raw.j)
+            comp.df$suc.settled.cor[j]    <- sum(A.i.G.settled.cor.j)
+            comp.df$un.settled[j]         <- sum(A.i.unsettled.j)
 
+            ### Test competition output
+            if(internal.error.check == TRUE){
+              if(any(A.i.G.settled.tot.j2a > A.i.0)){
+                #message("Competition error in eq24_comp_loop: A.i.G > A.i.0 on iteration ", i)
+                #browser()
+              }
+
+              if(sum(A.i.G.settled.tot.j2a) > K.wg.0){
+                #message("Competition error eq24_comp_loop: sum(A.i.G) > K.wg on iteration ", i, " ",
+                #        sum(A.i.G.settled.tot.j)," vs ",K.wg.0)
+                #browser()
+              }
+
+              if(any(A.i.unsettled.j) < 0){
+               # message("Competition error eq24_comp_loop: any(A.i.P) < 0 on iteration ", i, " ")
+                browser()
+              }
+
+              if(any(A.i.active.j2) < 0){
+               # message("Competition error eq24_comp_loop: any(A.i.P) < 0 on iteration ", i, " ")
+                browser()
+              }
+
+            }
+
+
+            # ## for looking at each step of output
+            # compsum <- data.frame(A.i.0
+            #                       ,A.i.G.settled.tot.j
+            #                       ,A.i.active.j
+            #                       ,A.i.G.settled.raw.j
+            #                       ,A.i.G.settled.cor.j
+            #                       ,per = round(A.i.G.settled.cor.j/A.i.active.j,2)
+            #
+            #                       ,A.i.G.settled.tot.j2a
+            #                       ,A.i.G.settled.tot.j2b
+            #                       ,A.i.unsettled.j
+            #
+            #                       ,A.i.active.j2)
+            #
+            # names(compsum) <- gsub("settled","set",names(compsum))
+            # names(compsum) <- gsub("active","act",names(compsum))
+            # names(compsum) <- gsub("A.i.G","",names(compsum))
+            # names(compsum) <- gsub("A.i.","",names(compsum))
+            #
+            # compsum <- rbind(compsum,
+            #                  sum = apply(compsum,2,sum))
+            # compsum <- apply(compsum,2,round)
+
+
+  ### update for next time step  ###
+  A.i.active.j <- A.i.active.j2
+  A.i.G.settled.tot.j <- A.i.G.settled.tot.j2b
+  K.wg.open.j <- K.wg.open.j2
 
     #If number still active = 0, stop
     if(sum(A.i.active.j) == 0){ break }
 
     #If number settled = carrying capacity, stop
-    if(round(sum(A.i.G.settled.j),0) >= K.wg.0){ break }
+    if(round(sum(A.i.G.settled.tot.j),0) >= K.wg.0){ break }
   }
 
-  comp.df <- stats::na.omit(comp.df)
+        ## Clean up tracking df
+        ### remove blank rows from track df
+        comp.df <- stats::na.omit(comp.df)
 
-  comp.df <- apply(comp.df,2,round)
+        ### round
+        comp.df <- apply(comp.df,2,round)
 
-  comp.list <- list(A.i.G.settled.j = A.i.G.settled.j,
+  comp.list <- list(A.i.G.settled.tot.j = A.i.G.settled.tot.j,
                     comp.df = comp.df)
+
+  if(debug.continue == TRUE){
+    debugonce(runFAC)
+  }
 
   return(comp.list)
 }

@@ -94,30 +94,39 @@ eq09_Pcgg <- function(W2,
 
   if(  (W2["mg"] > K.bc) &  #If males from good winter habitat exceed souce carrying capacity...
        (W2["fg"] > K.bc)  ){#AND females from g winter habitat exceed souce carrying capacity...
-    r <-1 }           #then all the pairs that form in the source must be good-good
+    P.cgg <-1 }           #then all the pairs that form in the source must be good-good
     else {
-      r <- (   min(c(unlist(W2["mg"]), unlist(W2["fg"]))) / #NUMERATOR:   the number from good winter habitat
-               min(c(unlist(B.mc),     unlist(B.fc)    )) )        #DENOMINATOR: the total number in the breeding habitat
+      P.cgg <-    min(c(unlist(W2["mg"]), unlist(W2["fg"]))) / #NUMERATOR:   the number from good winter habitat
+                  min(c(unlist(B.mc),     unlist(B.fc)    ))         #DENOMINATOR: the total number in the breeding habitat
 
     }
 
 
   #check for errors
-  if(r > 1){
-    broswer()
-    message("\nERROR IN EQUATION 9: P > 1!!")
-    message("  P = ",r)
+  if(P.cgg < 0){
+    browser()
+    message("\nERROR IN EQUATION 9: P < 0!!")
+    message("  P = ",P.cgg)
   }
 
-  if(is.nan(r) == TRUE){
-    browse
+
+  if(P.cgg > 1){
+    #browser()
+    message("\nERROR IN EQUATION 9: P > 1!!")
+    message("  P = ",P.cgg)
+  }
+
+  if(is.nan(P.cgg) == TRUE){
+    #browser()
     message("ERROR IN EQUATION 9: NaN!!")
   }
 
 
   #paper over errors...
-  ##r <- ifelse(r > 1,            1, r)
-  ##r <- ifelse(is.nan(r) == TRUE,0, r)
-  return(r)
+  P.cgg <- ifelse(P.cgg > 1,            1, P.cgg)
+  P.cgg <- ifelse(is.nan(P.cgg) == TRUE,0, P.cgg)
+
+  ## Return output
+  return(P.cgg)
 }
 

@@ -4,7 +4,7 @@
 #'
 
 plot_runFAC <- function(out.df,y1 = "tot.W",y2="tot.B", ...){
-  graphics::par(mfrow = c(2,2))
+  graphics::par(mfrow = c(1,2))
   ## Panel 1: TOtal winter vs. Total breeding
   graphics::plot(out.df[,y1] ~ out.df$t,
        xlab = "Iteration",

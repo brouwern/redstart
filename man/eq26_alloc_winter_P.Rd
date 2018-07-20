@@ -4,7 +4,7 @@
 \alias{eq26_alloc_winter_P}
 \title{equation 26 Allocate to poor habitat}
 \usage{
-eq26_alloc_winter_P(A.i.0, A.G.i)
+eq26_alloc_winter_P(A.i.0, A.i.G)
 }
 \description{
 equation 26 Allocate to poor habitat

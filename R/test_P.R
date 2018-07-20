@@ -1,6 +1,6 @@
-#' Function to test equation 9 through 16
+#' Function to test equations 9 through 16
 #'
-#' These equations determine pairing proportions (P)
+#' These equations determine pairing proportions (P) in breeding habitat.
 #'
 #' @param test.dat.P dataframe with values against which to test function
 #' @param FUN function to test
@@ -9,6 +9,7 @@
 #' @param sample.N how many subsamples of datarame to take
 #' @param return.df return the full dataframe with original test values
 #'
+#' @export
 
 test_P <- function(dat = test.dat.P,
                    FUN = eq09_Pcgg,

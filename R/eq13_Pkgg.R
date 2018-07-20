@@ -18,35 +18,36 @@ eq13_Pkgg <- function(W2,
                  K.bc,
                  K.bk,
                  B.mk,
-                 B.fk, ...){
+                 B.fk,
+                 i = NA){
 
   #condition 3: if other conditions fails
   num <- (min(W2["mg"], W2["fg"]) - K.bc)
   denom <-  min(B.mk, B.fk)
 
-  r <- num/denom
+  P.kgg <- num/denom
 
   # Condition 1
   if(W2["mg"] >= (K.bc+K.bk)){
     if(W2["fg"] >= (K.bc+K.bk)){
-      r <- 1}
+      P.kgg <- 1}
      }
 
 
   # Condition 2
   ## 2a
   if(W2["mg"] <= K.bc){
-    r<-0}
+    P.kgg<-0}
 
   ## 2b
   if(W2["fg"] <= K.bc) {
-    r<-0}
+    P.kgg<-0}
 
 
   #error message
-  check_P_division(x = r,equation_name = eq13_Pkgg,i = i)
+  check_P_division(x = P.kgg,equation_name = "eq13_Pkgg",i = i)
 
-  return(r)
+  return(P.kgg)
 
 }
 

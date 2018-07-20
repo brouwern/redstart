@@ -2,7 +2,7 @@
 % Please edit documentation in R/test_P.R
 \name{test_P}
 \alias{test_P}
-\title{Function to test equation 9 through 16}
+\title{Function to test equations 9 through 16}
 \usage{
 test_P(dat = test.dat.P, FUN = eq09_Pcgg, plot.test = TRUE,
   subsample = TRUE, sample.N = 10, return.df = FALSE, ...)
@@ -21,5 +21,5 @@ test_P(dat = test.dat.P, FUN = eq09_Pcgg, plot.test = TRUE,
 \item{test.dat.P}{dataframe with values against which to test function}
 }
 \description{
-These equations determine pairing proportions (P)
+These equations determine pairing proportions (P) in breeding habitat.
 }

@@ -4,7 +4,7 @@
 \alias{eq24_competition}
 \title{Implement equation 24: competition}
 \usage{
-eq24_competition(A.i.j, y.i, K.wg.open.j)
+eq24_competition(A.i.j, y.i, K.wg.open.j, ...)
 }
 \description{
 Implement equation 24: competition
