@@ -122,13 +122,14 @@ runFAC(save.ts = F)
 
 
 
+
 ```{r}
 x <- runFAC(iterations = 150)
 plot_runFAC(x)
 w.G <- x$W.mg + x$W.mp + x$W.fg + x$W.fp
 w.G <- x$W.mg  + x$W.fg 
 
-plot(w.G ~ x$t)
+plot(w.G ~ x$t,type ="l")
 abline(h = param_set()$K.wg)
 
 ```

@@ -53,15 +53,6 @@ eq15_Pkpg <- function(W2,
   }
 
 
-  check_P_division(x = P.kpg, equation_name = "eq15_Pkgp",i = i)
-
-  #paper over cracks
-  if(is.infinite(P.kpg)==TRUE){
-    message("equation 15 is inf on iteration",i,
-            "; changed to 0 ",
-            "\nnum = ", numerator,"; denom = ",denominator)
-    P.kpg <- 0
-  }
 
   return(P.kpg)
 }

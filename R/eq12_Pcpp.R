@@ -26,21 +26,5 @@ eq12_Pcpp <- function(P.cgg,
                  P.cpg,...){
   P.cpp <-  round(1 - P.cgg - P.cgp - P.cpg,5)
 
-  #warnings
-  if(P.cpp > 1){
-    #browser()
-    message("Error in equation 12: P.cpp > 1;")
-    message(paste(round(P.cgg,3) , P.cgp , P.cpg, sep = ","))
-
-    #fix
-    P.cpp <- 1
-  }
-
-  if(P.cpp < 0){
-    #browser()
-    message("Error in equation 12: P.cpp < 0;")
-    message(paste(round(P.cgg,3) , P.cgp , P.cpg, sep = ","))
-  }
-
   return(P.cpp)
   }

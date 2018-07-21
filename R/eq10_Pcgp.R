@@ -72,7 +72,7 @@ eq10_Pcgp <- function(W2,
 
   if(W2["mg"] > W2["fg"]){ #if more males from good winter than females from good winter
     if(W2["fg"] < K.bc){   #and females haven't saturated source breeding habitat...
-     numerator   <-  (min(unlist(W2["mg"]), unlist(B.fc)) - unlist(W2["fg"]))   #this code checks for division by zero
+     numerator   <-  (min(unlist(W2["mg"]), unlist(B.fc)) - unlist(W2["fg"]))
      denominator <-  min(unlist(B.mc),     unlist(B.fc))
 
     #calcualte P.cgp
@@ -80,18 +80,6 @@ eq10_Pcgp <- function(W2,
      P.cgp <- numerator/denominator
     }
   }
-
-  #warning messages
-
-  if(unlist(P.cgp) > 1){
-    message("ERROR IN EQUATION 10: P.cgp > 1 ",numerator," / ",denominator)
-    P.cgp <- 1
-  }
-
-  if(is.nan(unlist(P.cgp)) == TRUE){
-      message("ERROR IN EQUATION 10: NaN!!")
-  }
-
 
   return(P.cgp)
 }

@@ -30,30 +30,55 @@ eq14_Pkgp <- function(W2,
     }
 
 
-  if(W2["fg"] < K.bc){
-    if(K.bc < W2["mg"]){
+  if(W2["fg"] < K.bc){    #not enough females in source to fill it, so all femalse in sink will be poor
+    if(K.bc < W2["mg"]){  #more good males than available source territories, so there are males in sink
       if(W2["mg"] < (K.bc + K.bk)){
-        P.kgp <- (unlist(W2["mg"])-K.bc)/min(B.mk, B.fk) } #can result in division by zero
-    }
-    }
+        numerator <- unlist(W2["mg"])-K.bc #number of good males settled in source
+        denominator <- min(B.mk, B.fk)
+        P.kgp <- numerator/denominator  #can result in division by zero
+
+        ## Error control
+        ### If numerator > denominator, then P = 1 (!!! is this correct?)
+        P.kgp <- ifelse(numerator> denominator,1,P.kgp)
+
+        ### if the denominator is ~0, then P = 0
+        P.kgp <- ifelse(floor(denominator) == 0,0,P.kgp)
+
+        #error check
+        if(P.kgp > 1){
+          browser()}
+
+        }
+
+
+       }
+      }
+
 
   if(K.bc < W2["fg"]){
     if(W2["fg"] < (K.bc+K.bk)){
       if(W2["mg"] > W2["fg"]){
-        P.kgp <- (min(unlist(W2["mg"]), (B.fk+K.bc)) - unlist(W2["fg"])) / min(B.mk,B.fk)
+        numerator <- min(unlist(W2["mg"]), (B.fk+K.bc)) - unlist(W2["fg"])
+        denominator <- min(B.mk, B.fk)
+        P.kgp <- numerator/ denominator
+
+        ## Error control
+        ### If numerator > denominator, then P = 1 (!!! is this correct?)
+        P.kgp <- ifelse(numerator> denominator,1,P.kgp)
+
+        ### if the denominator is ~0, then P = 0
+        P.kgp <- ifelse(floor(denominator) == 0,0,P.kgp)
+
+        #error check
+        if(P.kgp > 1){
+          browser()
+        }
+
+
         }
     }
   }
 
-
- check_P_division(x = P.kgp, equation_name = "eq14_Pkgp",i = i)
-
-  ## Paper over crack
-  if(is.infinite(P.kgp) == TRUE){
-    #browser()
-
-    P.kgp <- 0
-  }
 
   return(P.kgp)
 

@@ -44,9 +44,6 @@ eq13_Pkgg <- function(W2,
     P.kgg<-0}
 
 
-  #error message
-  check_P_division(x = P.kgg,equation_name = "eq13_Pkgg",i = i)
-
   return(P.kgg)
 
 }

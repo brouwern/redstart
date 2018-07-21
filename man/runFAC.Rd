@@ -5,9 +5,10 @@
 \title{Run FAC model to equilibirum}
 \usage{
 runFAC(iterations = 350, Ninit = c(10, 0, 10, 0), param.set = param_set(),
-  scenario = NA, vary = NA, verbose = FALSE, check.eq = TRUE,
-  check.eq.after.i = 20, tol.1 = 3, tol.2 = 3, diagnostic.plot = T,
-  return.output = T, save.ts = T, ...)
+  scenario = NA, vary = NA, verbose = FALSE, check.errors.in = c("B0",
+  "P.cgg", "P.cgp", "P.cpg", "P.cpp", "P.kgg", "P.kgp", "P.kpg", "P.kpp", "Y1"),
+  check.eq = TRUE, check.eq.after.i = 20, tol.1 = 3, tol.2 = 3,
+  diagnostic.plot = T, return.output = T, save.ts = T, ...)
 }
 \arguments{
 \item{iterations}{how many iterations of model to run before stopping}
@@ -20,7 +21,9 @@ runFAC(iterations = 350, Ninit = c(10, 0, 10, 0), param.set = param_set(),
 
 \item{vary}{...}
 
-\item{verbose}{verbose output}
+\item{verbose}{verbose general output}
+
+\item{check.errors.in}{run error checks and report}
 
 \item{check.eq}{should equilibrium be assessed?}
 

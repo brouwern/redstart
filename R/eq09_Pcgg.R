@@ -101,31 +101,6 @@ eq09_Pcgg <- function(W2,
 
     }
 
-
-  #check for errors
-  if(P.cgg < 0){
-    browser()
-    message("\nERROR IN EQUATION 9: P < 0!!")
-    message("  P = ",P.cgg)
-  }
-
-
-  if(P.cgg > 1){
-    #browser()
-    message("\nERROR IN EQUATION 9: P > 1!!")
-    message("  P = ",P.cgg)
-  }
-
-  if(is.nan(P.cgg) == TRUE){
-    #browser()
-    message("ERROR IN EQUATION 9: NaN!!")
-  }
-
-
-  #paper over errors...
-  P.cgg <- ifelse(P.cgg > 1,            1, P.cgg)
-  P.cgg <- ifelse(is.nan(P.cgg) == TRUE,0, P.cgg)
-
   ## Return output
   return(P.cgg)
 }

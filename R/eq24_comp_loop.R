@@ -64,6 +64,9 @@ eq24_comp_loop <- function(A.i.0,
 
     ## Trim ("correct") values if they exceed
     ## NOTE: this was originally set to use original abundance A.i.0
+    ##
+    ## A.i.G.settled.cor.j is the number that actually settled after all
+    ## corrections/"trimmings" have been done
     A.i.G.settled.cor.j <- eq25_comp_constrain(A.i.G.settled.raw.j = A.i.G.settled.raw.j,
                                                A.i.active.j = A.i.active.j)
 
@@ -90,9 +93,24 @@ eq24_comp_loop <- function(A.i.0,
     ## calculate number remaining un-settledd
     # currently                       updated number
     # un-settled                       settled
-    A.i.unsettled.j <- A.i.active.j - A.i.G.settled.tot.j2b
-                        #was originaly
-                        #set to A.i.0!!!
+
+    # Original when neg pop size  was occuring:
+    #     A.i.unsettled.j <- A.i.active.j - A.i.G.settled.tot.j2b
+
+    #this can be written 2 ways
+    #1)
+    #currently       starting  running total of all
+    #unsettled     = number    settled so far
+    A.i.unsettled.jvs1 <- A.i.0 - A.i.G.settled.tot.j2b
+
+    #2)
+    #currently         number active    number settled
+    #unsettled     =   this time step   this time step
+    A.i.unsettled.jvs2 <- A.i.active.j   - A.i.G.settled.cor.j
+
+    #use vs 1
+    A.i.unsettled.j <- A.i.unsettled.jvs1
+
 
 
 

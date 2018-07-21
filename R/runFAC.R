@@ -9,7 +9,8 @@
 #' @param param.set initila parameters for this run of the model.
 #' @param scenario character string representing name of scenario explored in original Runge and Marra paper (not currently implemented 7/10/2018)
 #' @param vary ...
-#' @param verbose verbose output
+#' @param verbose verbose general output
+#' @param check.errors.in run error checks and report
 #' @param check.eq should equilibrium be assessed?
 #' @param minimum number of iterations to run if equilibrium is being checked
 #' @param tol.1 tolerance value for diagnostics checks for whether the run of the model has reached equilibrium.  Lower values are more stringent; minimum is 1, which makes the model run the full number of iterations
@@ -31,6 +32,9 @@ runFAC <- function(iterations = 350 #number of generations to run model; setting
                    ,scenario = NA
                    ,vary = NA
                    ,verbose = FALSE
+                   ,check.errors.in = c("B0", "P.cgg", "P.cgp","P.cpg", "P.cpp",
+                                              "P.kgg", "P.kgp","P.kpg", "P.kpp",
+                                        "Y1")
 
 
                    ### Diagnostics and misc
@@ -160,8 +164,15 @@ for(i in 1:iterations){
   W0 <- eq01buildW0vect(W.list$W.mg, W.list$W.mp,
                         W.list$W.fg, W.list$W.fp)
 
+  #if(i == 37){ browser() }
+
   if(any(W0 < 0)){
-    browser()
+    err.msg <- paste("element of W0 < 0 on iteration ",i)
+    message(err.msg)
+    error.log <- list(param.set = param.set,
+                      error.msg = err.msg)
+    save(error.log,file = "./error_log/param_set_neg_popsize.RData")
+
   }
 
 
@@ -286,6 +297,7 @@ for(i in 1:iterations){
   ### EQUATION 9 eq09calcScalar()
 
   #### alias #pairing.eq9.P.c.gg
+
   P.cgg <- eq09_Pcgg(W2,
                      K.bc = param.set$K.bc,
                      B.mc = B.mc,
@@ -339,8 +351,7 @@ for(i in 1:iterations){
                        K.bc = param.set$K.bc,
                        K.bk = param.set$K.bk,
                        B.mk = B.mk,
-                       B.fk = B.fk,
-                       i = i)
+                       B.fk = B.fk)
 
 
 
@@ -352,8 +363,7 @@ for(i in 1:iterations){
                             K.bc = param.set$K.bc,
                             K.bk = param.set$K.bk,
                             B.mk = B.mk,
-                            B.fk = B.fk,
-                            i = i)
+                            B.fk = B.fk)
 
 
     ### EQUATION 15: eq15()
@@ -362,7 +372,7 @@ for(i in 1:iterations){
     P.kpg <- eq15_Pkpg(W2,
                        param.set$K.bc,
                        param.set$K.bk,
-                       B.mk, B.fk, i = i)
+                       B.mk, B.fk)
 
 
 
@@ -377,13 +387,45 @@ for(i in 1:iterations){
 
 
     ### EQUATION 17: eq17buildVect()
-    ### vector of results after after pairing
+    ### vector of results after prior to pairing
 
     B0 <- eq17buildVect(B.mc,
                         B.mk,
                         B.md,
                         B.fc,
                         B.fk)
+
+   ### Check B0 for errors
+   ###
+   error_check_B0(B0 = B0,
+                  W2 = W2,
+                  check.errors.in = check.errors.in,
+                  i = i)
+
+   ### Check P.xxx for errors
+   ###  Loops over
+
+   #set up
+   P.all.vector <- c(P.cgg, P.cgp,P.cpg, P.cpp,P.kgg, P.kgp,P.kpg, P.kpp)
+   names(P.all.vector) <- c("P.cgg", "P.cgp","P.cpg", "P.cpp","P.kgg", "P.kgp","P.kpg", "P.kpp")
+
+   P.equation.names    <- c("eq9_Pcgg", "eq10_Pcgp","eq11_Pcpg","eq12_Pcpp",
+                            "eq13_Pkgg","eq14_Pkgp","eq15_Pkpg","eq16_Pkpp")
+
+   names(P.equation.names) <- c("P.cgg", "P.cgp","P.cpg", "P.cpp","P.kgg", "P.kgp","P.kpg", "P.kpp")
+
+   #subset work
+   P.xxx.names <- check.errors.in[grep("P.",check.errors.in)]
+   P.xxx.values <- P.all.vector[P.xxx.names]
+   P.xxx.eq.names <- P.equation.names[P.xxx.names]
+   if(length(P.xxx.names) > 0){
+     for(p in 1:length(P.xxx.names)){
+       error_check_Pxxx(P.xxx.name = P.xxx.names[p],
+                        P.xxx.value = P.xxx.values[p],
+                        P.xxx.eq.name = P.xxx.eq.names[p],
+                        i = i)}
+   }
+
 
 
 
@@ -414,12 +456,12 @@ for(i in 1:iterations){
 
     #Fx.make.P.matrix.eq18
 
-    if(round(sum(P.cgg, P.cgp,P.cpg, P.cpp),3) != 1)
-    if(round(sum(P.kgg, P.kgp,P.kpg, P.kpp),3) > 1)
-    if(round(sum(P.kgg, P.kgp,P.kpg, P.kpp),3) < 0)
+    # if(round(sum(P.cgg, P.cgp,P.cpg, P.cpp),3) != 1)
+    # if(round(sum(P.kgg, P.kgp,P.kpg, P.kpp),3) > 1)
+    # if(round(sum(P.kgg, P.kgp,P.kpg, P.kpp),3) < 0)
 
 
-    browser(text = "text")
+
 
     P.all <- eq18buildPmat(P.cgg, P.cgp,
                            P.cpg, P.cpp,
@@ -443,25 +485,26 @@ for(i in 1:iterations){
     eq19.f.mat <- with(param.set,
                        eq19buildFmat(f))
 
+
     ### Cacluate reproductive output
     Y1 <- eq19.f.mat%*%eq19.min.mat%*%R
     names(Y1) <- c("mc","mk","fc","fk")
 
 
-    #QA/QC: CHeck to make sure offspring sex ratio is equal
-    if( round(Y1["mc"],3) != round(Y1["fc"],3)){
 
-      #message("Error in offspring sex ratio!")
-      }
-    if(round(Y1["mk"],3) != round(Y1["fk"],3)){
+    ### Cacluate reproductive output
+    if(any(is.na(Y1)) == TRUE |
+       any(is.nan(Y1)) == TRUE){
+      browser()
+    }
 
-      #message("Error in offspring sex ratio!")
-      }
+
 
 
     ##############################
     ### Summer adult mortality ###
     ##############################
+
 
     ### BREEDING season mortality
     #"adult birds experienc both sex- and habitat specific mortality
@@ -663,6 +706,7 @@ for(i in 1:iterations){
     #### really only needed for most runs is final equilibrium sizes
 
     #
+
     if(save.ts == TRUE){
       out.df <- save_FAC_state(i, out.df,
                                W.list$W.mg,W.list$W.mp,W.list$W.fg,W.list$W.fp,
@@ -686,16 +730,15 @@ for(i in 1:iterations){
 
     ## If not saving full time series then save final state at last time point
     if(save.ts == FALSE & i == iterations){
-      out.df <- save_FAC_state(i, out.df,
+
+      out.eq <- save_FAC_state(i, out.df,
                                    W.list$W.mg,W.list$W.mp,W.list$W.fg,W.list$W.fp,
                                    B0,
                                    P.cgg, P.cgp, P.cpg, P.cpp,
                                    P.kgg, P.kgp, P.kpg, P.kpp,
                                    Y2,
                                    A.i.G,
-                                   A.i.P)
-
-      out.eq <- out.df[iterations,]
+                                   A.i.P)[iterations,]
     }
 
 
