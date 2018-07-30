@@ -83,7 +83,7 @@ gamma.i <- with(param.set,
 
 ### EQUATION 2: winter survival matrix
 ### Winter SURVIVAL (S.w) of birds in different habitat qualities
-##### (Former Alias: Fx.make.winter.surv.eq2())
+
 S.w <- with(param.set,
             eq02bulidMat(S.w.mg,
                          S.w.mp,
@@ -92,7 +92,7 @@ S.w <- with(param.set,
 
 ### EQUATION 3: spring migration survival matrix
 ### Northward migration survival (S.m)
-#### (Alias: Fx.make.spring.mig.surv.eq3)
+
 S.m <- with(param.set,
             eq03(S.m.mg,
                  S.m.mp,
@@ -101,7 +101,7 @@ S.m <- with(param.set,
 
 
 ### Equation 20: Breeding season survival matrix
-### (alias: Fx.make.breeding.s.matrix.eq20)
+
 S.b <- with(param.set,
             eq20_build_Sb_mat(S.b.mc,
                  S.b.mk,
@@ -111,7 +111,7 @@ S.b <- with(param.set,
 
 
 #EQUATION 21: Spring migration survival matrix = adults
-# alias: Fx.make.fall.adult.s.matrix.eq21
+
 S.f <-  with(param.set,
              eq21_build_Sf_mat(S.f.mc,
                   S.f.mk,
@@ -122,7 +122,7 @@ S.f <-  with(param.set,
 
 
 ### EQUATION 22 Spring mgiraiton survival matrix - young
-# alias: Fx.make.fall.adult.s.matrix.eq22
+
 S.y <- with(param.set,
             eq22_build_Sy_mat(S.y.mc,
                  S.y.mk,
@@ -183,9 +183,12 @@ for(i in 1:iterations){
   W1 <- S.w%*%W0
 
 
+
+
+
   #*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
   #*#*#
-  #*#*# Spring northward migration Dynamics #*#*#
+  #*#*# Spring season northward migration Dynamics #*#*#
   #*#*#
   #*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
 
@@ -197,203 +200,153 @@ for(i in 1:iterations){
 
 
 
+
+
+
+
+
+
+
   #*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*
   #*#*#                                  #*#*#
-  #*#*# Summer breeding season  Dynamics #*#*#
+  #*#*#  Breeding season Dynamics        #*#*#
   #*#*#                                  #*#*#
   #*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*
 
-
-  ###########################################
-  ### Summer Habitat Acquisitiom dynamics ###
-  ###########################################
-
-  # These functions all create scalars reprsenting the number of
-  # birds by sex in each type of habitat (source vs. sink;
-  # excess males become floaters)
-
-  #----------------------------------#
-  #   FEMALE (F) Habitat Aquisition  #
-  #----------------------------------#
-
-  ### EQUATION 4: eq04()
-  ### Number of FEMALES (B.fc) in SOURCE (c) habitat
-  #### (alias #F.2.source.eq4.c)
-
-  #females from good winter habitat preferentially acquire source
-  #habitat during summer
-
-  #scalar output
-  B.fc <- with(param.set,
-               eq04_Bfc(W2,
-                        K.bc))
-
-  ### EQUATION 5: eq05calcScalar()
-  ### Number of Females in SINK (k) habitat
-  #### (Alias F.2.sink.eq5.k)
-
-  #scalar output
-  B.fk <- with(param.set,
-               eq05_Bfk(W2,
-                        K.bc,
-                        K.bk))
-
-  #Note: excess females leave the system,
-  #whereas males become "drain" males
-  #(aka floaters)
-
-  #---------------------------------#
-  #   MALE (M) Habitat Aquisition   #
-  #---------------------------------#
-
-  ### EQUATION 6:
-  ### Males acquiring  source habitat
-
-  #males from good winter habitat preferentially acquire source
-  #habitat during summer and therefore pair w/females most likely
-  #to have wintered in good habitat
-  #
-  # Note: Density dependence occurs via a ceiling function
+  # Breeding season involves 3 steps
+  ## 1) Step 1: Pre-breeding
+  ## 2) Step 2: breeding
+  ## 3) Step 3: post-breeding
 
 
-  # scalar out
-  # (alias #M.2.source.eq6.c)
-  B.mc <- with(param.set,
-               eq06_Bmc(W2,
-                      K.bc))
+  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
+  #-# Breeding Step 1: Pre-breeding       #-#
+  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
 
-  ### EQUATION 7: eq07calcScalar()
-  ### MALES the acquire sink habitat
-  # (alias #M.2.sink.eq7.k)
+  ## Pre-breeding is composed of 2 substeps
+  ## 1) Step 1: Pre-breeding
+  ##         Substep 1a) Habitat acquisition
+  ##             Function: substep_breed_hab_acquire_RM()
+  ##                          Equations: 4 through 8
+  ##         Subset 2b) Mate acquisition
+  ##             Functions:
+  ##                          Equations: 9 through 16
 
-  # scalar out
-  B.mk <- with(param.set,
-                 eq07_Bmk(W2,
-                          K.bc,
-                          B.fk))
+      #--#--#--#--#--#--#--#--#--#--#--#--#--#--#
+      #-- Breeding Step 1, Substep 1 of 2     --#
+      #-- Breeding Habitat Acquisitiom        --#
+      #--#--#--#--#--#--#--#--#--#--#--#--#--#--#
 
+      #browser()
 
-  ### EQUATION 8:  eq08calcScalar()
-  ### Males that don't find a territory become "drain" males (floaters)
-
-  #   W2["mg"]+W2["mp"] = total male population
-  #   minus those that ended up in source habitat (K.bc)
-  #   minus those that paired w/female in sink habitat (B.fk)
-
-  B.md <- with(param.set,
-                 eq08_Bmd(W2,
-                          K.bc,
-                          B.fk)) #M.2.drain.eq8
+      hab.acquire.results <- substep_breed_hab_acquire_RM(W2,
+                                                          K.bc = param.set$K.bc,
+                                                          K.bk = param.set$K.bk)
 
 
-
-  ###############################
-  ### Summer Pairing dynamics ###
-  ###############################
-
-  # Equations 9 through 16
-  # all output are scalars
-
-  ### EQUATION 9 eq09calcScalar()
-
-  #### alias #pairing.eq9.P.c.gg
-
-  P.cgg <- eq09_Pcgg(W2,
-                     K.bc = param.set$K.bc,
-                     B.mc = B.mc,
-                     B.fc = B.fc)
-
-  ### EQUATION 10: eq10()
-  ### proportion of pairs on source (c) habitat composed of males from good and
-  ### female from poor
-
-  # alias #pairing.eq10.P.c.gp
-
-  P.cgp <- eq10_Pcgp(W2,
-                     K.bc = param.set$K.bc,
-                       B.fc = B.fc,
-                       B.mc = B.mc)
+      ## Below is an outline of the steps implemented by the
+      ### wrapper function   substep_breed_hab_acquire_RM()
 
 
+          # Note:
+          # functions w/in hab.acquire.results
+          # all create scalars reprsenting the number of
+          # birds by sex in each type of habitat (source vs. sink;
+          # excess males become floaters)
+          # substep_breed_hab_acquire_RM() outputs a list hab.acquire.results
 
-  ### EQUATION 11:  eq11()
-  ### Proportion of poor males mated w/ "good" female
-  #### NOte: subscripts wrong in original paper
+          #----------------------------------#
+          #   FEMALE (F) Habitat Aquisition  #
+          #----------------------------------#
 
-  P.cpg <- eq11_Pcpg(W2 = W2,
-                          K.bc = param.set$K.bc,
-                          B.fc = B.fc,
-                          B.mc = B.mc)
+              ### EQUATION 4: eq04()
+              ### Number of FEMALES (B.fc) in SOURCE (c) habitat
+
+              #females from good winter habitat preferentially acquire source
+              #habitat during summer
+
+              ### EQUATION 5: eq05calcScalar()
+              ### Number of Females in SINK (k) habitat
+
+              #Note: excess females leave the system,
+              #whereas males become "drain" males
+              #(aka floaters)
+
+          #---------------------------------#
+          #   MALE (M) Habitat Aquisition   #
+          #---------------------------------#
+
+              ### EQUATION 6:
+              ### Males acquiring  source habitat
+
+                #males from good winter habitat preferentially acquire source
+                #habitat during summer and therefore pair w/females most likely
+                #to have wintered in good habitat
+                # Note: Density dependence occurs via a ceiling function
+
+
+              ### EQUATION 7: eq07calcScalar()
+              ### MALES that acquire sink habitat
+
+              ### EQUATION 8:  eq08calcScalar()
+              ### Males that don't find a territory become "drain" males (floaters)
 
 
 
 
-    ### EQUATION 12 eq12_Pcpp()
-    ####  proportion composed of a male and female both from poor habitat
-    ####  This is calcualted by subtraction
-    ####  pairing.eq12.P.cpp <- function(P.cgg,P.cgp, P.cpg){1 - P.cgg - P.cgp - P.cpg}
 
+      #--#--#--#--#--#--#--#--#--#--#--#--#--#--#
+      #-- Breeding Step 1
+      #--    Substep 2 of 2                   --#
+      #-- Breeding season mate Acquisition    --#
+      #--#--#--#--#--#--#--#--#--#--#--#--#--#--#
 
-    #APPLY EQUATION 12
-    # pairing.eq12.P.cpp
-    P.cpp <- eq12_Pcpp(P.cgg,
-                  P.cgp,
-                  P.cpg)
+      P.breeding.pair.results <- substep_breed_mate_acquire_RM(W2,
+                                    param.set,
+                                    hab.acquire.results)
 
+            # Equations 9 through 16
+            # all output are scalars
 
+            ### EQUATION 9 eq09calcScalar()
 
+            ### EQUATION 10: eq10()
+            #### proportion of pairs on source (c) habitat
+            #### composed of males from good &
+            #### female from poor
 
-    ### EQUATION 13: eq13()
-    ### pairing in SIN.K. habitat
+            ### EQUATION 11:  eq11()
+            ### Proportion of poor males mated w/ "good" female
+            #### NOte: subscripts wrong in original paper
 
-    ### pairing.eq13.P.kgg
-    P.kgg <- eq13_Pkgg(W2,
-                       K.bc = param.set$K.bc,
-                       K.bk = param.set$K.bk,
-                       B.mk = B.mk,
-                       B.fk = B.fk)
+            ### EQUATION 12 eq12_Pcpp()
+            ####  proportion composed of a male & female both from poor habitat
+            ####  This is calcualted by subtraction
 
+            ### EQUATION 13: eq13()
+            #### pairing in SIN.K. habita
 
+            ### EQUATION 14: eq14()
+            #### proportion in sink habitat, good-poor pairs
 
-    ### EQUATION 14: eq14()
-    ### proportion in sink habitat, good-poor pairs
+            ### EQUATION 15: eq15()
+            #### note that both eq14 and eq habve .kgp subscripts in original paper
 
-    #### alias pairing.eq14.P.kgp
-    P.kgp <- eq14_Pkgp(W2 = W2,      #note that both eq14 and eq habve .kgp subscripts in original paper
-                            K.bc = param.set$K.bc,
-                            K.bk = param.set$K.bk,
-                            B.mk = B.mk,
-                            B.fk = B.fk)
-
-
-    ### EQUATION 15: eq15()
-    ### aliaspairing.eq15.P.kpg
-    ### note that both eq14 and eq habve .kgp subscripts in original paper
-    P.kpg <- eq15_Pkpg(W2,
-                       param.set$K.bc,
-                       param.set$K.bk,
-                       B.mk, B.fk)
+            ### EQUATION 16: eq16()
+            ####   proportion in sink composed of poor-poor
 
 
 
-    ### EQUATION 16: eq16()
-    #   proportion in sink composed of poor-poor
-
-    #### alias pairing.eq16.P.kpp
-    P.kpp <- eq16_Pkpp(P.kgg, P.kgp, P.kpg,
-                       B.mk, B.fk)
+  #Compile results of pairing
+  ### EQUATION 17: eq17buildVect()
+  ### vector of results after prior to pairing
 
 
-
-
-    ### EQUATION 17: eq17buildVect()
-    ### vector of results after prior to pairing
-
-    B0 <- eq17buildVect(B.mc,
-                        B.mk,
-                        B.md,
-                        B.fc,
-                        B.fk)
+    B0 <- eq17buildVect(hab.acquire.results$B.mc,
+                        hab.acquire.results$B.mk,
+                        hab.acquire.results$B.md,
+                        hab.acquire.results$B.fc,
+                        hab.acquire.results$B.fk)
 
    ### Check B0 for errors
    ###
@@ -405,9 +358,7 @@ for(i in 1:iterations){
    ### Check P.xxx for errors
    ###  Loops over
 
-   #set up
-   P.all.vector <- c(P.cgg, P.cgp,P.cpg, P.cpp,P.kgg, P.kgp,P.kpg, P.kpp)
-   names(P.all.vector) <- c("P.cgg", "P.cgp","P.cpg", "P.cpp","P.kgg", "P.kgp","P.kpg", "P.kpp")
+
 
    P.equation.names    <- c("eq9_Pcgg", "eq10_Pcgp","eq11_Pcpg","eq12_Pcpp",
                             "eq13_Pkgg","eq14_Pkgp","eq15_Pkpg","eq16_Pkpp")
@@ -416,7 +367,7 @@ for(i in 1:iterations){
 
    #subset work
    P.xxx.names <- check.errors.in[grep("P.",check.errors.in)]
-   P.xxx.values <- P.all.vector[P.xxx.names]
+   P.xxx.values <- P.breeding.pair.results[P.xxx.names]
    P.xxx.eq.names <- P.equation.names[P.xxx.names]
    if(length(P.xxx.names) > 0){
      for(p in 1:length(P.xxx.names)){
@@ -442,7 +393,7 @@ for(i in 1:iterations){
 
 
     ### LOAD EQUATION 18a
-    ### alias: fx.make.R.all.eq18
+
     R.all <- with(param.set,
                   eq18buildRmat(R.base.rate,
                                 R.hab.effect,
@@ -463,21 +414,25 @@ for(i in 1:iterations){
 
 
 
-    P.all <- eq18buildPmat(P.cgg, P.cgp,
-                           P.cpg, P.cpp,
-                           P.kgg, P.kgp,
-                           P.kpg, P.kpp)
+    P.all <- eq18buildPmat(P.breeding.pair.results["P.cgg"],
+                           P.breeding.pair.results["P.cgp"],
+                           P.breeding.pair.results["P.cpg"],
+                           P.breeding.pair.results["P.cpp"],
+                           P.breeding.pair.results["P.kgg"],
+                           P.breeding.pair.results["P.kgp"],
+                           P.breeding.pair.results["P.kpg"],
+                           P.breeding.pair.results["P.kpp"])
 
     #APPLY EQUATION 18
     R <- P.all%*%R.all
 
 
     ### Equation 19: eq19buildMinMat() ###
-    #### Alias Fx.make.min.mat.eq19
-    eq19.min.mat <- eq19buildMinMat(B.mc,
-                                    B.fc,
-                                    B.mk,
-                                    B.fk)
+
+    eq19.min.mat <- eq19buildMinMat(hab.acquire.results$B.mc,
+                                    hab.acquire.results$B.fc,
+                                    hab.acquire.results$B.mk,
+                                    hab.acquire.results$B.fk)
 
     #sex ratio
 
@@ -711,8 +666,14 @@ for(i in 1:iterations){
       out.df <- save_FAC_state(i, out.df,
                                W.list$W.mg,W.list$W.mp,W.list$W.fg,W.list$W.fp,
                                    B0,
-                                   P.cgg, P.cgp, P.cpg, P.cpp,
-                                   P.kgg, P.kgp, P.kpg, P.kpp,
+                               P.breeding.pair.results["P.cgg"],
+                               P.breeding.pair.results["P.cgp"],
+                               P.breeding.pair.results["P.cpg"],
+                               P.breeding.pair.results["P.cpp"],
+                               P.breeding.pair.results["P.kgg"],
+                               P.breeding.pair.results["P.kgp"],
+                               P.breeding.pair.results["P.kpg"],
+                               P.breeding.pair.results["P.kpp"],
                                    Y2,
                                    A.i.G,
                                    A.i.P)
