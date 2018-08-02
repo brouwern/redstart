@@ -1,4 +1,6 @@
-#' Breeding habitat acquisition subsetp of pre-breeding step of breeding season
+#' Breeding habitat acquisition substep of pre-breeding step of breeding season using original Runge & Marra allocation functions
+#'
+#' For an alternative individual based (IB) approach see substep_breed_hab_acquire_IB()
 #'
 #' @param W2 population structure after winter and migration mortality
 #' @param K.bc carrying capacity of breeding ground source (._c) habitat
@@ -7,7 +9,7 @@
 #' @export
 
 
-substep_breed_hab_acquire_RM <- function(W2,
+substep_B_hab_acquire_RM <- function(W2,
                                       K.bc = param.set$K.bc,
                                       K.bk = param.set$K.bk){
   ###########################################
@@ -75,13 +77,13 @@ substep_breed_hab_acquire_RM <- function(W2,
                         K.bc,
                         B.fk) #M.2.drain.eq8
 
-  hab.acquire.results <- list(B.fc = B.fc,
+  hab.acquire.results.RM <- list(B.fc = B.fc,
                               B.fk = B.fk,
                               B.mc = B.mc,
                               B.mk = B.mk,
                               B.md = B.md)
 
-  return(hab.acquire.results)
+  return(hab.acquire.results.RM)
 }
 
 

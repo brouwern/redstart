@@ -4,7 +4,7 @@
 \alias{runFAC_check_equilibrium}
 \title{check model equilibrium}
 \usage{
-runFAC_check_equilibrium(out.df, i, tol.2, at.eq, ...)
+runFAC_check_equilibrium(out.df, i, at.eq = FALSE, verbose = TRUE, ...)
 }
 \description{
 check model equilibrium

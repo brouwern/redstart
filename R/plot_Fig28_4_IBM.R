@@ -5,7 +5,7 @@
 #' @export
 
 
-plot_Fig28_4<- function(runFAC.multi,
+plot_Fig28_4_IBM<- function(runFAC.multi,
                         plot.debug.lines = T){
 
   #set graphical parameters
@@ -18,11 +18,11 @@ plot_Fig28_4<- function(runFAC.multi,
       mgp = c(3, 0.1, 0))
 
   #top panel
-  graphics::plot(B.tot ~ K.bc.i, data = runFAC.multi, type = "l",ylim = c(0,1000),
+  graphics::plot(B.tot.IB ~ K.bc.i, data = runFAC.multi, type = "l",ylim = c(0,1000),
        xlab = "",
        ylab = "")
-  graphics::points(B.tot-B.md ~ K.bc.i, data = runFAC.multi, type = "l")
-  graphics::points(B.tot-B.md-B.mk-B.fk ~ K.bc.i, data = runFAC.multi, type = "l")
+  graphics::points(B.tot.IB-B.md.IB ~ K.bc.i, data = runFAC.multi, type = "l")
+  graphics::points(B.tot.IB-B.md.IB-B.mk.IB-B.fk.IB ~ K.bc.i, data = runFAC.multi, type = "l")
 
   #vert line in original pub
   graphics::abline(v = 265)

@@ -32,7 +32,7 @@ library(FACavian)
 The defaults for runFAC_multi() are set to reproduce Figure 28.3 in the original Runge and Marra paper.  This is a 3D surface showing...
 
 ```{r}
-F28_3 <- runFAC_multi()
+F28_3 <- runFAC_multi(use.IBM = F)
 ```
 
 Look at the dataframe
@@ -45,6 +45,11 @@ Plot the 3D surface.
 par(mfrow = c(1,1))
 plot_Fig28_3(F28_3)
 ```
+
+
+
+
+
 
 
 ### Figure 28.4
@@ -88,14 +93,24 @@ head(F28.4.grid)[,1:10]
 #### Run multiple FACs accross the parameters
 
 ```{r}
-F28.4.FAC <- runFAC_multi(param.grid = F28.4.grid)
+F28.4.FAC.RM <- runFAC_multi(param.grid = F28.4.grid,
+                          verbose = F, eq.tol = 2,
+                          use.IBM = F,
+                          run.IBM = F)
+
+plot_Fig28_4(F28.4.FAC.RM)
 ```
 
 
 ### Plot Figure 28.4
 
 ```{r}
-plot_Fig28_4(runFAC.multi = F28.4.FAC, plot.debug.lines = T)
+F28.4.FAC.RM <- runFAC_multi(param.grid = F28.4.grid,
+                          verbose = F, eq.tol = 2,
+                          use.IBM = T,
+                          run.IBM = T)
+
+plot_Fig28_4_IBM(runFAC.multi = F28.4.FAC, plot.debug.lines = T)
 ```
 
 

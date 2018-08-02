@@ -4,7 +4,8 @@
 \alias{runFAC_multi}
 \title{Run multiple FAC models to equilibirum accross a range of parameters}
 \usage{
-runFAC_multi(param.grid = param_grid(), remakeFigure = NA, ...)
+runFAC_multi(param.grid = param_grid(), remakeFigure = NA, use.IBM = F,
+  ...)
 }
 \arguments{
 \item{...}{other arguements}

@@ -102,7 +102,7 @@ param_set <- function(
   #FECUNDITIES
   ,R.base.rate. = 1.8
   ,R.hab.effect. = 0.5  #effects of pair breeding in poor habitat
-  ,co. = 1   #2              #magnitude of carry over effect; c =1 equals no carry over
+  ,co. = 1   #2         #magnitude of carry over effect; c =1 equals no carry over
 
   #sex ratio
   ,f. = 0.50

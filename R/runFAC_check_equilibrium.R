@@ -2,26 +2,31 @@
 #'
 #' @export
 
-runFAC_check_equilibrium <- function(out.df, i, tol.2,at.eq, ...){
-
-  #run regression through last 10 iterations
-  # to determine if population stable
-
-  ## run model
-  mod <- stats::lm(out.df$W.fg[c(i-10):i] ~
-                     c(1:length(out.df$W.fg[c(i-10):i])))
-  ## get slope
-  coef.out <- stats::coef(mod)[2]
-
-  local.slope <- round(coef.out, tol.2)
+runFAC_check_equilibrium <- function(lamb.B.mc.mean,
+                                     lamb.B.mc.var,
+                                     i,
+                                     at.eq = FALSE,
+                                     verbose = TRUE,
+                                     eq.tol = 5,
+                                     ...){
 
 
-  if(local.slope == 0){
-    #browser()
-    message("\nModel at equilibrium after ",i," iterations")
+ # out.df$lambda.B.mc.i[i]
+  if(round(lamb.B.mc.mean,eq.tol) == 1 &
+     round(lamb.B.mc.var, eq.tol) == 0){
     at.eq <- TRUE
+  }
+
+
+
+  if(at.eq == TRUE & verbose == TRUE){
+
+    message("\nModel at equilibrium after ",i," iterations")
+
   }
 
   return(at.eq)
 }
+
+
 

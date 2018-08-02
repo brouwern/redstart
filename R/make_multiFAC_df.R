@@ -9,17 +9,15 @@ make_multiFAC_df <- function(params.use = param_grid()){
 
   #dataframe only holds key information about equilibrium
   MultiFAC.out.df <- data.frame(B.mc = NA.vec,
-                                B.mk = NA.vec,
-                                B.md = NA.vec,
-                                B.fc = NA.vec,
-                                B.fk = NA.vec,
-                                W.mg = NA.vec,
-                                W.mp = NA.vec,
-                                W.fg = NA.vec,
-                                W.fp = NA.vec,
-                                error1 = NA.vec,
-                                error2 = NA.vec,
-                                err1.log = NA.vec,
-                                err2.log = NA.vec)
+                                B.mk = NA,
+                                B.md = NA,
+                                B.fc = NA,
+                                B.fk = NA,
+                                W.mg = NA,
+                                W.mp = NA,
+                                W.fg = NA,
+                                W.fp = NA,
+                                error1 = NA,
+                                error2 = NA)
   return(MultiFAC.out.df)
 }

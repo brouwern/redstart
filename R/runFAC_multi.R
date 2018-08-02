@@ -11,6 +11,8 @@
 #'
 #' @param para.grid Dataframe of parameters, usually with 1 or 2 that vary accross a range
 #' @param makeFigure deprecated.  Replaced by plot_Fig29_3
+#' @param use.IBM
+#' @param eq.tol
 #' @param ... other arguements
 #'
 #' @export
@@ -18,70 +20,105 @@
 
 runFAC_multi <- function(param.grid = param_grid(),
                          remakeFigure = NA,
+                         use.IBM = F,
+                         verbose = F,
+                         eq.tol = 6,
                          ...){
 
 
   ### DATA STORAGE FOR runMultiFAC
   ### df to store output of each individual model run
-  multiFAC.out.df <- make_multiFAC_df(params.use=param.grid)
+  multiFAC.out.df.RM <- make_multiFAC_df(params.use=param.grid)
+  multiFAC.out.df.IB <- make_multiFAC_df(params.use=param.grid)
 
 
 
   ### Iterate models over each set of parametres
   for(i in 1:dim(param.grid)[1]){
 
-    out.df <-  runFAC(param.set=param.grid[i,],
-                      check.eq = FALSE,
-                      diagnostic.plot = F)
+    runFAC.i <-  runFAC(param.set=param.grid[i,],
+                      check.eq = TRUE,
+                      save.ts = FALSE,
+                      diagnostic.plot = F,
+                      verbose = verbose,
+                      eq.tol = eq.tol,
+                      use.IBM = use.IBM)
 
 
 
 
     ### Extract and store final output of each iteration of model, the equilibrium population size
-    i.lastrow <- dim(out.df)[1]
+    FAC.eq.state.RM <- runFAC.i$FAC.eq.state.RM
 
-    multiFAC.out.df[i,c("B.mc","B.mk","B.md",
-                        "B.fc","B.fk",
-                        "W.mg","W.mp",
-                        "W.fg","W.fp")] <- out.df[i.lastrow,c(
-                          "B.mc","B.mk","B.md",
-                          "B.fc","B.fk",
-                          "W.mg","W.mp",
-                          "W.fg","W.fp")]
+    if(use.IBM == TRUE){
+      FAC.eq.state.IB <- runFAC.i$FAC.eq.state.IB
+    }
 
+    focal.out <- c("B.mc","B.mk","B.md",
+                   "B.fc","B.fk",
+                   "W.mg","W.mp",
+                   "W.fg","W.fp")
+
+
+
+    FAC.eq.state.focal.output.RM <- FAC.eq.state.RM[focal.out]
+
+    if(use.IBM == TRUE){
+      FAC.eq.state.focal.output.IB <- FAC.eq.state.IB[focal.out]
+    }
+
+
+    multiFAC.out.df.RM[i,focal.out] <- FAC.eq.state.focal.output.RM
+
+    if(use.IBM == TRUE){
+      multiFAC.out.df.IB[i,focal.out] <- FAC.eq.state.focal.output.IB
+
+    }
 
     #store parameters used to run the model
-    multiFAC.out.df$gamma.i[i] <- param.grid$gamma[i]
-    multiFAC.out.df$c.i[i] <- param.grid$c[i]
-    multiFAC.out.df$K.bc.i[i] <- param.grid$K.bc[i]
-    multiFAC.out.df$K.wg.i[i] <- param.grid$K.wg[i]
+    multiFAC.out.df.RM$gamma.i[i] <- param.grid$gamma[i]
+    multiFAC.out.df.RM$c.i[i]     <- param.grid$c[i]
+    multiFAC.out.df.RM$K.bc.i[i]  <- param.grid$K.bc[i]
+    multiFAC.out.df.RM$K.wg.i[i]  <- param.grid$K.wg[i]
+
+    if(use.IBM == TRUE){
+      multiFAC.out.df.IB$gamma.i[i] <- param.grid$gamma[i]
+      multiFAC.out.df.IB$c.i[i]     <- param.grid$c[i]
+      multiFAC.out.df.IB$K.bc.i[i]  <- param.grid$K.bc[i]
+      multiFAC.out.df.IB$K.wg.i[i]  <- param.grid$K.wg[i]
+
+    }
+
 
     #look for errors
-    P.columns <- c("P.cgg","P.cgp","P.cpg","P.cpp",
-                   "P.kgg","P.kgp","P.kpg","P.kpp")
 
-    multiFAC.out.df[i,"error1"] <- ifelse(any(out.df < 0), "neg values",".")
-    multiFAC.out.df[i,"error2"] <- ifelse(any(out.df[,P.columns] > 1), "p>1",".")
+    multiFAC.out.df.RM[i,"error1"] <- ifelse(any(multiFAC.out.df.RM < 0), "neg values",".")
+    #multiFAC.out.df.RM[i,"error2"] <- ifelse(any(multiFAC.out.df.RM[,P.columns] > 1), "p>1",".")
+
+
+    if(use.IBM == TRUE){
+
+      multiFAC.out.df.IB[i,"error1"] <- ifelse(any(multiFAC.out.df.IB < 0), "neg values",".")
+      #multiFAC.out.df.IB[i,"error2"] <- ifelse(any(multiFAC.out.df.IB[,P.columns] > 1), "p>1",".")
+
+    }
 
   }#close for loop to iterate model
 
 
-
   #### Process model output
   ### Calculate totals by sex and sex ratio
-  multiFAC.out.df$B.m.tot <- apply(multiFAC.out.df[,c("B.mc","B.mk","B.md")],1,sum)
-  multiFAC.out.df$B.m.tot.no.d <- apply(multiFAC.out.df[,c("B.mc","B.mk")],1,sum)
-  multiFAC.out.df$B.f.tot <- apply(multiFAC.out.df[,c("B.fc","B.fk")],1,sum)
-  multiFAC.out.df$sex.ratio <- multiFAC.out.df$B.m.tot/multiFAC.out.df$B.f.tot
-  multiFAC.out.df$sex.ratio.no.d <- multiFAC.out.df$B.m.tot.no.d/multiFAC.out.df$B.f.tot
+  multiFAC.out.df.RM <- runFAC_multi_finalize_output(multiFAC.out.df.RM)
+
+  if(use.IBM == TRUE){
+    multiFAC.out.df.IB <- runFAC_multi_finalize_output(multiFAC.out.df.IB)
 
 
-  ### Calculate total breeding population size
-  multiFAC.out.df$B.tot <- multiFAC.out.df$B.m.tot +  multiFAC.out.df$B.f.tot
-  multiFAC.out.df$B.tot.no.d <- multiFAC.out.df$B.m.tot.no.d +  multiFAC.out.df$B.f.tot
+  }
 
 
-  multiFAC.out.df$variable <- 1:dim(param.grid)[1]
+  multiFAC.out <- list(multiFAC.out.df.RM = multiFAC.out.df.RM,
+                       multiFAC.out.df.IB = multiFAC.out.df.IB)
 
-  return(multiFAC.out.df)
+  return(multiFAC.out)
 }#closefunction

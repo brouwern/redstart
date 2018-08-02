@@ -1,0 +1,191 @@
+
+---
+title: "Comparing Runge & Marra vs Individual Based Implementations"
+author: "Vignette Author"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+
+```{r}
+library(FACavian)
+```
+
+
+set use.IBM = T to run both forms of the model
+```{r}
+RMvsFAC <-  runFAC(use.IBM = T,Ninit = c(100,0,100,0)#,
+                   #param.set = param_set(K.bc = 50,K.wg. = 50)
+                   )
+```
+
+
+Look at output object
+```{r}
+str(RMvsFAC,1)
+```
+
+
+Compare the equilbirum states
+```{r}
+data.frame(RM = t(RMvsFAC$FAC.eq.state.RM)
+          ,IBM = t(RMvsFAC$FAC.eq.state.IB))
+
+plot_runFAC(RMvsFAC$FAC.out.RM)
+plot_runFAC(RMvsFAC$FAC.out.IB)
+```
+
+
+
+```{r}
+data.frame(RMvsFAC$FAC.out.RM$y.mc
+,RMvsFAC$FAC.out.IB$y.mc)
+
+```
+
+
+
+Run the FAC
+```{r}
+
+winter<- runFAC(param.set = param_set(scenario = "winter"),
+                    Ninit = c(100,0,100,0),
+                    use.IBM = T)
+plot_runFAC(winter$FAC.out.RM)
+plot_runFAC(winter$FAC.out.IB)
+
+summer<- runFAC(param.set = param_set(scenario = "summer"),
+                    Ninit = c(100,0,100,0),
+                    use.IBM = T)
+plot_runFAC(summer$FAC.out.RM)
+plot_runFAC(summer$FAC.out.IB)
+
+
+
+
+intermediate<- runFAC(param.set = param_set(scenario = "intermediate"),
+                    Ninit = c(100,0,100,0),
+                    use.IBM = T)
+plot_runFAC(intermediate$FAC.out.RM)
+plot_runFAC(intermediate$FAC.out.IB)
+
+
+
+plot_Fig28_5(dat.winter.lim = winter$FAC.out.RM,
+             dat.intermediate = intermediate$FAC.out.RM,
+             dat.summer.lim = summer$FAC.out.RM)
+
+```
+
+
+## Check habitat allocations
+
+```{r}
+par(mfrow = c(2,2))
+with(x, plot(B.mc ~ B.mc.IB)) #good, 
+with(x, plot(B.mk ~ B.mk.IB)) #good
+#with(x, plot(B.md ~ B.md.IB)) # NA
+with(x, plot(B.fc ~ B.fc.IB)) #good
+with(x, plot(B.fk ~ B.fk.IB)) #good
+```
+
+```{r}
+apply(x[,grep("^[P]....$",names(x))],2,max)
+apply(x[,grep("^[P]....$",names(x))],2,min)
+
+error <- apply(x[,grep("^[P]....$",names(x))],1,sum)
+error <- ifelse(error < 1.1, 1, 2)
+
+x[which(error > 1.1),grep("^[P]....$",names(x))]
+```
+
+
+
+```{r}
+#correct
+par(mfrow = c(2,2), mar = c(4,4,0,0))
+with(x, plot(P.cgg.IB ~ P.cgg,col =error)) #good, but off at small values
+abline(a = 0, b = 1, col = 2)
+with(x, plot(P.cgp.IB ~ P.cgp,col =error)) # ok
+abline(a = 0, b = 1, col = 2)
+with(x, plot(P.cpg.IB ~ P.cpg)) # NA
+abline(a = 0, b = 1, col = 2)
+with(x, plot(P.cpp.IB ~ P.cpp,col =error)) # ok
+abline(a = 0, b = 1, col = 2)
+
+par(mfrow = c(2,2), mar = c(4,4,0,0))
+with(x, plot(P.kgg.IB ~ P.kgg)) #na
+abline(a = 0, b = 1, col = 2)
+with(x, plot(P.kgp.IB ~ P.kgp)) #na
+abline(a = 0, b = 1, col = 2)
+with(x, plot(P.kpg.IB ~ P.kpg)) #NA
+abline(a = 0, b = 1, col = 2)
+with(x, plot(P.kpp.IB ~ P.kpp)) #bad
+abline(a = 0, b = 1, col = 2)
+
+```
+
+
+
+
+
+
+
+### check multi FAC
+
+```{r}
+ 
+F28_3_RM <- runFAC_multi(use.IBM = F)
+par(mfrow = c(1,1))
+plot_Fig28_3(F28_3)
+
+F28_3_IB <- runFAC_multi(run.IB = T, use.IBM = T)
+par(mfrow = c(1,1))
+plot_Fig28_3(F28_3_IB)
+
+F28_3$error2
+
+i <- 3
+plot(F28_3_IB[,"sex.ratio"] ~ F28_3[,"sex.ratio"])
+
+
+
+F28.4.range <- param_ranges(figure = 28.4)
+F28.4.seq <- param_seqs(F28.4.range)
+F28.4.grid <- param_grid(param.seqs = F28.4.seq)
+F28.4.FAC <- runFAC_multi(param.grid = F28.4.grid,use.IBM = F)
+plot_Fig28_4(runFAC.multi = F28.4.FAC, plot.debug.lines = T)
+
+
+F28.4.FAC.IB <- runFAC_multi(param.grid = F28.4.grid,use.IBM = T)
+plot_Fig28_4(runFAC.multi = F28.4.FAC.IB, plot.debug.lines = T)
+```
+
+ 
+```{r}
+F28.5.FAC.win.IB <- runFAC_multi(param.grid = F28.5.win.grid, use.IBM = T)
+
+
+F28.5.FAC.int.IB <- runFAC_multi(param.grid = F28.5.int.grid, use.IBM = T)
+F28.5.FAC.sum.IB <- runFAC_multi(param.grid = F28.5.sum.grid, use.IBM = T)
+
+plot_Fig28_5(dat.winter.lim = F28.5.FAC.win,
+                         dat.intermediate = F28.5.FAC.int,
+                         dat.summer.lim = F28.5.FAC.sum,
+                         drain = T)
+```
+ 

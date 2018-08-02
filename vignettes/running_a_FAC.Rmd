@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-The full-annual cycle (FAC) model of Runge and Marra (2004) is a density-dependent (dd) matrix model.  The principal output of a density-dependent model is the **equilibrium population size**.  An important issue with dd models is that you can only determine the equilibrium population size using numerical simulation.  This means that you actually have to plug information -- particularly initial population sizes -- into the model and run it through many iteraction until and monitor the output until you see that it stabilizes. This is in contrast to traditional matrix models (and their cousin, integral projection model) which can be analyzed mathematically without specifying a starting population state or iterating the model.
+The full-annual cycle (FAC) model of Runge and Marra (2004) is a density-dependent (dd) matrix model.  The principal output of a density-dependent model is the **equilibrium population size**.  An important issue with dd models is that you can only determine the equilibrium population size using numerical simulation.  This means that you actually have to plug information -- particularly initial population sizes -- into the model and run it through many iterations  and monitor the output until you see that it stabilizes or converges to a stable state. This is in contrast to traditional matrix models (and their cousin, integral projection model) which can be analyzed mathematically without specifying a starting population state or iterating the model (Footnote: assuming they are ergodic; Stott et al 2010 Method E&E)
 
 In the FACavian package, a single run of a FAC is done using the runFAC() function.  This function is given two general pieces of information:
 
@@ -66,15 +66,17 @@ Default values are set in all of FACavians functions so you can easily explore t
 
 You can look at the parameters by calling the param_set() function.  Later we'll use param_set() to tweak a few parameters.
 
-The starting defaults are:
-```{r}
-param_set()
-```
-
 Counting the 3 carrying capacities there are 30 parameters
 ```{r}
 length(param_set())
 ```
+
+
+The first 10 parameters are:
+```{r}
+param_set()[1:10]
+```
+
 
 Additionally, there are four intial population size values for males and females in the two types of winter habitats.  Defaults are set for thse.
 
@@ -82,9 +84,11 @@ Additionally, there are four intial population size values for males and females
 
 ### A basic run of the FAC
 
-We'll call runFAC() wiht the argument return.output set to false to supress the output of the big dataframe.
+We'll call runFAC() with the argument return.output set to FALSE to supress the output of the big dataframe.  Also set diagnostic.plot = T to seea plot of the time series.
 ```{r}
-runFAC(return.output = F)
+runFAC(return.output = F, 
+       diagnostic.plot = T, 
+       eq.tol = 6)
 ```
 
 By default runFAC() monitors whether you've reached equilibrium and ends the model run eariler if it thinks the model has stabilized.  It also plots a 2-panel graph.  On the left hand size is a graph of total winter population size (color???) and (?????).  On the right hand size is a graph of population growth rate calcualted simply as winter population size in year t+1 divided by size in year t.  When growth stabilizes at 1.0, the model is at equilibrium.
@@ -93,21 +97,24 @@ If you want to make sure your model is at equilibrium you can turn off the defau
 
 ```{r}
 runFAC(return.output = F,
-       check.eq = FALSE)
+       check.eq = FALSE,
+       diagnostic.plot = T)
 ```
 
 You can also specify a specific number of interations
 ```{r}
 ###: NOTE: plot returned here is off; doesn't include zero
 runFAC(return.output = F,
-       iterations = 20)
+       iterations = 20,
+       diagnostic.plot = T
+       )
 ```
 
 
 The main output of runFAC() is a dataframe containing the status of the population at each timestep. Removing "return.output = F" will elicit this.  THe dataframe is 45 columns wide and has the state variable for each step in the model, as well as summary stats such as the total breeding (tot.B) and  winter (tot.W) populations.
 
 ```{r}
-runFAC(iterations = 5)
+runFAC(iterations = 5)["FAC.out"]
 ```
 
 
@@ -115,8 +122,18 @@ runFAC(iterations = 5)
 
 ### Returning just the equilibrium state
 
+
+THis isn't working correctly
+
+
 ```{r}
-runFAC(save.ts = F)
+runFAC(save.ts = F)$FAC.eq.state
+```
+
+
+```{r}
+x <- runFAC(run.IBM = T,eq.tol = 2,diagnostic.plot = T)
+y <- runFAC(run.IBM = F,eq.tol = 2,diagnostic.plot = T)
 ```
 
 
@@ -131,6 +148,12 @@ w.G <- x$W.mg  + x$W.fg
 
 plot(w.G ~ x$t,type ="l")
 abline(h = param_set()$K.wg)
+
+with(x, plot(P.cgg.IB ~ P.cgg))
+with(x, plot(P.cgp.IB ~ P.cgp))
+with(x, plot(P.cpg.IB ~ P.cpg))
+with(x, plot(P.cpp.IB ~ P.cpp))
+
 
 ```
 

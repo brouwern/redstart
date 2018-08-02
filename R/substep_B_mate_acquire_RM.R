@@ -1,6 +1,7 @@
 
+#' @export
 
-substep_breed_mate_acquire_RM <- function(W2,
+substep_B_mate_acquire_RM <- function(W2,
                                           param.set,
                                           hab.acquire.results){
   ###############################
@@ -99,14 +100,17 @@ substep_breed_mate_acquire_RM <- function(W2,
 
 
   #set up
-  P.breeding.pair.results <- c(P.cgg, P.cgp,P.cpg, P.cpp,
-                    P.kgg, P.kgp,P.kpg, P.kpp)
+  P.breeding.pair.results.RM <- c(P.cgg, P.cgp,P.cpg, P.cpp,
+                                  P.kgg, P.kgp,P.kpg, P.kpp)
 
-  names(P.breeding.pair.results) <- c("P.cgg", "P.cgp","P.cpg", "P.cpp",
+
+  names(P.breeding.pair.results.RM) <- c("P.cgg", "P.cgp","P.cpg", "P.cpp",
                            "P.kgg", "P.kgp","P.kpg",  "P.kpp")
 
 
-  return(P.breeding.pair.results)
+
+
+  return(P.breeding.pair.results.RM)
 
 
 }

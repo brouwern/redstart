@@ -10,148 +10,78 @@
 #' @param scenario character string representing name of scenario explored in original Runge and Marra paper (not currently implemented 7/10/2018)
 #' @param vary ...
 #' @param verbose verbose general output
+#' @param check.errors Run error checks on model subcomponents
 #' @param check.errors.in run error checks and report
 #' @param check.eq should equilibrium be assessed?
-#' @param minimum number of iterations to run if equilibrium is being checked
-#' @param tol.1 tolerance value for diagnostics checks for whether the run of the model has reached equilibrium.  Lower values are more stringent; minimum is 1, which makes the model run the full number of iterations
-#' @param tol.2 secondary tolerance value for checking equilbrium; LARGER values increase stringency
+#' @param minimum.i number of iterations to run if equilibrium is being checked
 #' @param diagnostic.plot Return a diagnostic plot show population size over time
+#' @param eq.tol Tolerance for equilibirum check; the number of digistic lambda and variace of lambda should be rounded to when comparing against 1.  Larger numbers reduce the likelihood of model passing the equilbirium check
 #' @param return.output Output the full model dataframe?
 #' @param save.ts Save the full time series of the model run?  If FALSE then only final time point will be returned.  Additionally, equilibrium monitoring will not be done and the time series cannot be plotted
+#' @param use.IBM
 #' @param ... other arguements passed
 #'
 #' @return A dataframe containing the status of the popualtion at each time step for all parameters
 #'
 #'
 #' @references Runge, MC & PP Marra 2004.  Modeling seasonal interactions in the population dynamics of migratory birds.  Birds of two words.
+#'
+#' @examples
+#' # Run an FAC
+#' test.FAC <- runFAC(verbose = TRUE)
+#'
+#' # Look at structure of output
+#' str(test.FAC,1)
+#'
 #' @export
 
-runFAC <- function(iterations = 350 #number of generations to run model; setting tol.1 to a value greater than 1 causes model to check for equilbrium; deafult of tol.1 is 3, which means models check for equilbrium after 1/3 of the iterations have been run
+runFAC <- function(iterations = 350 #number of generations to run model;
                    ,Ninit = c(10,0,10,0)
                    ,param.set = param_set()
                    ,scenario = NA
                    ,vary = NA
                    ,verbose = FALSE
-                   ,check.errors.in = c("B0", "P.cgg", "P.cgp","P.cpg", "P.cpp",
+                   ,check.errors = TRUE
+                   ,check.errors.in = c("B0.RM", "P.cgg", "P.cgp","P.cpg", "P.cpp",
                                               "P.kgg", "P.kgp","P.kpg", "P.kpp",
-                                        "Y1")
-
+                                               "Y1")
 
                    ### Diagnostics and misc
                    ,check.eq = TRUE #check for equilibrium
-                   ,check.eq.after.i = 20
-                   ,tol.1 = 3 # tolerance value for checking for equlibrium; lower values are more stringed; minimum is 1, which makes the model run the full number of iterations
-                   ,tol.2 = 3 #2ndary tolerance value for checking equilbrium; LARGER values increase stringency
-                   ,diagnostic.plot = T
+                   ,minimum.i = 20
+                   ,eq.tol = 6
+                   ,diagnostic.plot = F
                    ,return.output = T
                    ,save.ts = T
+                   ,use.IBM = F
                    ,...
                 ){
 
+#################################
+###     Set model params      ###
+###     and do other prelims  ###
+#################################
 
-## Warnings
-
-# message("NOTE: equation 9 has been set to overwrite P > 1 errors!!!!!")
-# message("\nNOTE: equation 10 has been set to overwrite P > 1 errors!!!!!")
-# message("\nNOTE: equation 12 has been set to overwrite P > 1 errors!!!!!")
-
-
-
-# Set up parametres
-
-# Check main parameter dataframe
-## Check that dataframe of parameters is correct size
-QAQC_param_set(param.set)
-
-
-## Create dataframe to store output from each iteration
-out.df <- make_FAC_df(iterations)
-
-
-
-## Set up fixed parameters
-### Calculate Competition for winter territories: gamma
-gamma.i <- with(param.set,
-                eq24_make_gamma_vec(gamma))
+### Set up
+#### Dataframe to hold output of each iteration of model
+#### matrices holding survival and other parameters
+#### output: list
+runFAC.i <- runFAC_set_up(param.set,
+                          iterations,
+                          use.IBM)
 
 
 
 
 
+#############################
+###    Modeling loop      ###
+#############################
 
+### Implement model iteratively
+#### Iterate model in order to reach stable equilibrium
 
-
-### EQUATION 2: winter survival matrix
-### Winter SURVIVAL (S.w) of birds in different habitat qualities
-
-S.w <- with(param.set,
-            eq02bulidMat(S.w.mg,
-                         S.w.mp,
-                         S.w.fg,
-                         S.w.fp))
-
-### EQUATION 3: spring migration survival matrix
-### Northward migration survival (S.m)
-
-S.m <- with(param.set,
-            eq03(S.m.mg,
-                 S.m.mp,
-                 S.m.fg,
-                 S.m.fp))
-
-
-### Equation 20: Breeding season survival matrix
-
-S.b <- with(param.set,
-            eq20_build_Sb_mat(S.b.mc,
-                 S.b.mk,
-                 S.b.md,
-                 S.b.fc,
-                 S.b.fk))
-
-
-#EQUATION 21: Spring migration survival matrix = adults
-
-S.f <-  with(param.set,
-             eq21_build_Sf_mat(S.f.mc,
-                  S.f.mk,
-                  S.f.md,
-                  S.f.fc,
-                  S.f.fk))
-
-
-
-### EQUATION 22 Spring mgiraiton survival matrix - young
-
-S.y <- with(param.set,
-            eq22_build_Sy_mat(S.y.mc,
-                 S.y.mk,
-                 S.y.fc,
-                 S.y.fk))
-
-
-
-
-
-
-
-
-
-
-
-## Implement model iteratively
-### Iterate model in order to reach stable equilibrium
 for(i in 1:iterations){
-
-  # 1st iteration only:
-  ## Initial winter population state
-  ## (W.xx are the output of the final step of each iteraction of the model)
-  if(i == 1){
-    W.list <- list(W.mg = Ninit[1]
-      ,W.mp = Ninit[2]
-      ,W.fg = Ninit[3]
-      ,W.fp = Ninit[4])
-    }
 
   #*#*#*#*#*#*#*#*#*#*#*#*#*#
   #*#*#
@@ -159,48 +89,112 @@ for(i in 1:iterations){
   #*#*#
   #*#*#*#*#*#*#*#*#*#*#*#*#*#
 
-  ### EQUATION 1
-  #### Create vector of population state
-  W0 <- eq01buildW0vect(W.list$W.mg, W.list$W.mp,
-                        W.list$W.fg, W.list$W.fp)
+  ##################
+  ### EQUATION 1 ###
+  ##################
 
-  #if(i == 37){ browser() }
+  #### Create vector W0 of population state at end of winter
+  ##### (W.xx are the output of the final step of each iteration of the model)
 
-  if(any(W0 < 0)){
-    err.msg <- paste("element of W0 < 0 on iteration ",i)
-    message(err.msg)
-    error.log <- list(param.set = param.set,
-                      error.msg = err.msg)
-    save(error.log,file = "./error_log/param_set_neg_popsize.RData")
 
+  #### 1st iteration only:
+  ##### Initial winter population state
+
+  if(i == 1){
+
+    # Populate list w/ initial population sizes from main function call
+    W.list <- list(W.mg = Ninit[1]
+                  ,W.mp = Ninit[2]
+                  ,W.fg = Ninit[3]
+                  ,W.fp = Ninit[4])
+
+    # Create vector W0
+    W0.RM <- eq01buildW0vect(W.list$W.mg,
+                             W.list$W.mp,
+                             W.list$W.fg,
+                             W.list$W.fp)
+
+
+        if(use.IBM == TRUE){
+        # Create copy of vector W0 for use with individual based (IB) model
+          W0.IB <- W0.RM
+        }
+
+    }
+
+  #### All iteractions except the 1st
+  if(i > 1){
+
+    W0.RM <- eq01buildW0vect(W.list.RM$W.mg,
+                             W.list.RM$W.mp,
+                             W.list.RM$W.fg,
+                             W.list.RM$W.fp)
+
+        if(use.IBM == TRUE){
+          W0.IB <- eq01buildW0vect(W.list.IB$W.mg,
+                                   W.list.IB$W.mp,
+                                   W.list.IB$W.fg,
+                                   W.list.IB$W.fp)
+
+        }
   }
 
 
-  ### EQUATION 2:
+
+                  ###################
+                  ### error check ###
+                  ###################
+
+                  # if(check.errors == TRUE & any(W0.RM < 0)){
+                  #
+                  #   err.msg <- paste("element of W0 < 0 on iteration ",i)
+                  #   message(err.msg)
+                  #   error.log <- list(param.set = param.set,
+                  #                     error.msg = err.msg)
+                  #   save(error.log,file = "./error_log/param_set_neg_popsize.RData")
+                  #
+                  # }
+
+
+
+  ###################
+  ### EQUATION 2: ###
+  ###################
+
   ### Winter SURVIVAL (S.w) of birds in different habitat qualities
-
   #### Calculcate Population state at end of winter
-  W1 <- S.w%*%W0
+  W1.RM <- runFAC.i$param.matrices$S.w %*% W0.RM
+
+
+      if(use.IBM == T){
+        W1.IB <- runFAC.i$param.matrices$S.w %*% W0.IB
+      }
 
 
 
 
+  #*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
+  #*#*#                                             #*#*#
+  #*#*# Spring season northward migration Dynamics  #*#*#
+  #*#*#                                             #*#*#
+  #*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
 
-  #*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
-  #*#*#
-  #*#*# Spring season northward migration Dynamics #*#*#
-  #*#*#
-  #*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
+  ###################
+  ### EQUATION 3  ###
+  ###################
 
-  ### EQUATION 3
   ### Northward migration survival (S.m)
 
   #### Calulcate Population at end of northward migration
-  W2 <- S.m%*%W1; names(W2) <- c("mg","mp","fg","fp")
+
+  W2.RM <- runFAC.i$param.matrices$S.m %*% W1.RM
+    names(W2.RM) <- c("mg","mp","fg","fp")
 
 
-
-
+      if(use.IBM == T){
+        W2.IB <- runFAC.i$param.matrices$S.m %*% W1.IB
+        names(W2.IB) <- c("mg","mp","fg","fp")
+      }
 
 
 
@@ -213,85 +207,53 @@ for(i in 1:iterations){
   #*#*#                                  #*#*#
   #*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*
 
-  # Breeding season involves 3 steps
-  ## 1) Step 1: Pre-breeding
-  ## 2) Step 2: breeding
-  ## 3) Step 3: post-breeding
+  ### Breeding season involves 3 steps
+  #### 1) Step 1: Pre-breeding
+  #### 2) Step 2: breeding
+  #### 3) Step 3: post-breeding
 
 
   #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
   #-# Breeding Step 1: Pre-breeding       #-#
   #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
 
-  ## Pre-breeding is composed of 2 substeps
-  ## 1) Step 1: Pre-breeding
-  ##         Substep 1a) Habitat acquisition
-  ##             Function: substep_breed_hab_acquire_RM()
-  ##                          Equations: 4 through 8
-  ##         Subset 2b) Mate acquisition
-  ##             Functions:
-  ##                          Equations: 9 through 16
+      ### Pre-breeding is composed of 2 substeps
+      ### 1) Step 1: Pre-breeding
+      ###         Substep 1a) Habitat acquisition
+      ###             Function: substep_B_hab_acquire_RM()
+      ###                          Equations: 4 through 8
+      ###         Subset 2b) Mate acquisition
+      ###             Functions:
+      ###                          Equations: 9 through 16
 
       #--#--#--#--#--#--#--#--#--#--#--#--#--#--#
-      #-- Breeding Step 1, Substep 1 of 2     --#
+      #-- Breeding Step 1,
+      #--     Substep 1 of 2     --#
       #-- Breeding Habitat Acquisitiom        --#
       #--#--#--#--#--#--#--#--#--#--#--#--#--#--#
 
-      #browser()
 
-      hab.acquire.results <- substep_breed_hab_acquire_RM(W2,
+      # Runge & Marra habitat acquitions allocation functions
+      ## returns list w/ 5 elements, one scaler for each subset of the breeding populations
+      hab.acquire.results.RM <- substep_B_hab_acquire_RM(W2.RM,
                                                           K.bc = param.set$K.bc,
                                                           K.bk = param.set$K.bk)
 
 
-      ## Below is an outline of the steps implemented by the
-      ### wrapper function   substep_breed_hab_acquire_RM()
+          # Individual-based habitat acquitions
+          #    TO DO: add habitat df to be added externally
+          #                 to allow habitat to vary continuously in quality
+          #debugonce(substep_B_hab_acquire_IB)
 
+          #returns list w/ 6 elements
+          #   1st 5 are the 5 subsets of the popualtion
+          #   last element is a dataframe with individual based data
 
-          # Note:
-          # functions w/in hab.acquire.results
-          # all create scalars reprsenting the number of
-          # birds by sex in each type of habitat (source vs. sink;
-          # excess males become floaters)
-          # substep_breed_hab_acquire_RM() outputs a list hab.acquire.results
-
-          #----------------------------------#
-          #   FEMALE (F) Habitat Aquisition  #
-          #----------------------------------#
-
-              ### EQUATION 4: eq04()
-              ### Number of FEMALES (B.fc) in SOURCE (c) habitat
-
-              #females from good winter habitat preferentially acquire source
-              #habitat during summer
-
-              ### EQUATION 5: eq05calcScalar()
-              ### Number of Females in SINK (k) habitat
-
-              #Note: excess females leave the system,
-              #whereas males become "drain" males
-              #(aka floaters)
-
-          #---------------------------------#
-          #   MALE (M) Habitat Aquisition   #
-          #---------------------------------#
-
-              ### EQUATION 6:
-              ### Males acquiring  source habitat
-
-                #males from good winter habitat preferentially acquire source
-                #habitat during summer and therefore pair w/females most likely
-                #to have wintered in good habitat
-                # Note: Density dependence occurs via a ceiling function
-
-
-              ### EQUATION 7: eq07calcScalar()
-              ### MALES that acquire sink habitat
-
-              ### EQUATION 8:  eq08calcScalar()
-              ### Males that don't find a territory become "drain" males (floaters)
-
-
+          if(use.IBM == TRUE){
+            hab.acquire.results.IB <- substep_B_hab_acquire_IB(W2.IB,
+                                                               K.bc = param.set$K.bc,
+                                                               K.bk = param.set$K.bk)
+          }
 
 
 
@@ -301,157 +263,174 @@ for(i in 1:iterations){
       #-- Breeding season mate Acquisition    --#
       #--#--#--#--#--#--#--#--#--#--#--#--#--#--#
 
-      P.breeding.pair.results <- substep_breed_mate_acquire_RM(W2,
+
+      P.breeding.pair.results.RM <- substep_B_mate_acquire_RM(W2.RM,
                                     param.set,
-                                    hab.acquire.results)
-
-            # Equations 9 through 16
-            # all output are scalars
-
-            ### EQUATION 9 eq09calcScalar()
-
-            ### EQUATION 10: eq10()
-            #### proportion of pairs on source (c) habitat
-            #### composed of males from good &
-            #### female from poor
-
-            ### EQUATION 11:  eq11()
-            ### Proportion of poor males mated w/ "good" female
-            #### NOte: subscripts wrong in original paper
-
-            ### EQUATION 12 eq12_Pcpp()
-            ####  proportion composed of a male & female both from poor habitat
-            ####  This is calcualted by subtraction
-
-            ### EQUATION 13: eq13()
-            #### pairing in SIN.K. habita
-
-            ### EQUATION 14: eq14()
-            #### proportion in sink habitat, good-poor pairs
-
-            ### EQUATION 15: eq15()
-            #### note that both eq14 and eq habve .kgp subscripts in original paper
-
-            ### EQUATION 16: eq16()
-            ####   proportion in sink composed of poor-poor
+                                    hab.acquire.results.RM)
 
 
-
-  #Compile results of pairing
-  ### EQUATION 17: eq17buildVect()
-  ### vector of results after prior to pairing
-
-
-    B0 <- eq17buildVect(hab.acquire.results$B.mc,
-                        hab.acquire.results$B.mk,
-                        hab.acquire.results$B.md,
-                        hab.acquire.results$B.fc,
-                        hab.acquire.results$B.fk)
-
-   ### Check B0 for errors
-   ###
-   error_check_B0(B0 = B0,
-                  W2 = W2,
-                  check.errors.in = check.errors.in,
-                  i = i)
-
-   ### Check P.xxx for errors
-   ###  Loops over
-
-
-
-   P.equation.names    <- c("eq9_Pcgg", "eq10_Pcgp","eq11_Pcpg","eq12_Pcpp",
-                            "eq13_Pkgg","eq14_Pkgp","eq15_Pkpg","eq16_Pkpp")
-
-   names(P.equation.names) <- c("P.cgg", "P.cgp","P.cpg", "P.cpp","P.kgg", "P.kgp","P.kpg", "P.kpp")
-
-   #subset work
-   P.xxx.names <- check.errors.in[grep("P.",check.errors.in)]
-   P.xxx.values <- P.breeding.pair.results[P.xxx.names]
-   P.xxx.eq.names <- P.equation.names[P.xxx.names]
-   if(length(P.xxx.names) > 0){
-     for(p in 1:length(P.xxx.names)){
-       error_check_Pxxx(P.xxx.name = P.xxx.names[p],
-                        P.xxx.value = P.xxx.values[p],
-                        P.xxx.eq.name = P.xxx.eq.names[p],
-                        i = i)}
-   }
+          ### Individual based model - mate acquisition
+          #### 6th element of list returned by in last step
+          #### by substep_B_hab_acquire_IB()
+          #### contains the >>full dataframe<< of individual based results
+          #### the other 5 elements are the B.xx scalars for comparison
+          #### to the standard Runge & Marra approach (".RM")
+          if(use.IBM == TRUE){
+            P.breeding.pair.results.IB <- substep_B_mate_acquire_IB(hab.acquire.results.IB[[6]])
+          }
 
 
 
 
 
-    ###########################
-    ### Summer Reproduction ###
-    ###########################
+      ####################################
+      ### EQUATION 17: eq17buildVect() ###
+      ####################################
+
+      ## Compile results of pairing
+      ### vector of results after pairing
+
+      B0.RM <- eq17buildVect(hab.acquire.results.RM$B.mc,
+                          hab.acquire.results.RM$B.mk,
+                          hab.acquire.results.RM$B.md,
+                          hab.acquire.results.RM$B.fc,
+                          hab.acquire.results.RM$B.fk)
+
+
+        if(use.IBM == TRUE){
+          B0.IB <- eq17buildVect(hab.acquire.results.IB$B.mc,
+                                 hab.acquire.results.IB$B.mk,
+                                 hab.acquire.results.IB$B.md,
+                                 hab.acquire.results.IB$B.fc,
+                                 hab.acquire.results.IB$B.fk)
+        }
+
+
+
+       #x#x# #x#x# #x#x# #x#x#
+       #x#x# ERROR CHECK #x#x#
+       #x#x# #x#x# #x#x# #x#x#
+
+       ### Check B0.RM for errors
+
+       if(check.errors == TRUE){
+         error_check_summer(B0.RM,
+                            W2.RM,
+                            P.breeding.pair.results.RM,
+                            check.errors.in,
+                            i)
+
+            if(use.IBM == T){
+              error_check_summer(B0.IB,
+                                 W2.IB,
+                                 P.breeding.pair.results.IB,
+                                 check.errors.in,
+                                 i)
+            }
+         }
+
+
+
+
+
+    #####################################
+    ### Breeding Season Breeding step ###
+    #####################################
 
 
     ### REPRODUCTION
-    #"average fecunidty for pairs in source and sink habitat"
-    # is a function of how the proportion of pairs in that
-    # habitat that are good-good, good-poor etc
+    ####"average fecunidty for pairs in source and sink habitat"
+    #### is a function of how the proportion of pairs in that
+    ####  habitat that are good-good, good-poor etc
 
 
-    ### LOAD EQUATION 18a
+    ####################
+    ### EQUATION 18  ###
+    ####################
 
-    R.all <- with(param.set,
-                  eq18buildRmat(R.base.rate,
-                                R.hab.effect,
-                                co))
-
-
-    #Delete this?: ## EQUATION 18
-    #Delete this?: LOAD QUATION 18b
-    #Delete this?:  all.Ps <- c(P.cgg, P.cgp, P.cpg, P.cpp,
-    #Delete this?:              P.kgg, P.kgp, P.kpg, P.kpp)
-
-    #Fx.make.P.matrix.eq18
-
-    # if(round(sum(P.cgg, P.cgp,P.cpg, P.cpp),3) != 1)
-    # if(round(sum(P.kgg, P.kgp,P.kpg, P.kpp),3) > 1)
-    # if(round(sum(P.kgg, P.kgp,P.kpg, P.kpp),3) < 0)
+    ### Load Equation 18
+     P.all.RM <- eq18buildPmat(P.breeding.pair.results.RM["P.cgg"],
+                            P.breeding.pair.results.RM["P.cgp"],
+                            P.breeding.pair.results.RM["P.cpg"],
+                            P.breeding.pair.results.RM["P.cpp"],
+                            P.breeding.pair.results.RM["P.kgg"],
+                            P.breeding.pair.results.RM["P.kgp"],
+                            P.breeding.pair.results.RM["P.kpg"],
+                            P.breeding.pair.results.RM["P.kpp"])
 
 
 
 
-    P.all <- eq18buildPmat(P.breeding.pair.results["P.cgg"],
-                           P.breeding.pair.results["P.cgp"],
-                           P.breeding.pair.results["P.cpg"],
-                           P.breeding.pair.results["P.cpp"],
-                           P.breeding.pair.results["P.kgg"],
-                           P.breeding.pair.results["P.kgp"],
-                           P.breeding.pair.results["P.kpg"],
-                           P.breeding.pair.results["P.kpp"])
 
-    #APPLY EQUATION 18
-    R <- P.all%*%R.all
+        if(use.IBM ==TRUE){
+          P.all.IB <- eq18buildPmat(P.breeding.pair.results.IB["P.cgg"],
+                                 P.breeding.pair.results.IB["P.cgp"],
+                                 P.breeding.pair.results.IB["P.cpg"],
+                                 P.breeding.pair.results.IB["P.cpp"],
+                                 P.breeding.pair.results.IB["P.kgg"],
+                                 P.breeding.pair.results.IB["P.kgp"],
+                                 P.breeding.pair.results.IB["P.kpg"],
+                                 P.breeding.pair.results.IB["P.kpp"])
+        }
 
+    ### APPLY EQUATION 18
+    R.RM <- P.all.RM%*%runFAC.i$param.matrices$R.all
 
-    ### Equation 19: eq19buildMinMat() ###
-
-    eq19.min.mat <- eq19buildMinMat(hab.acquire.results$B.mc,
-                                    hab.acquire.results$B.fc,
-                                    hab.acquire.results$B.mk,
-                                    hab.acquire.results$B.fk)
-
-    #sex ratio
-
-    #make.F.matrix
-    eq19.f.mat <- with(param.set,
-                       eq19buildFmat(f))
-
-
-    ### Cacluate reproductive output
-    Y1 <- eq19.f.mat%*%eq19.min.mat%*%R
-    names(Y1) <- c("mc","mk","fc","fk")
+        if(use.IBM == TRUE){
+          R.IB <- P.all.IB%*%runFAC.i$param.matrices$R.all
+        }
 
 
 
-    ### Cacluate reproductive output
-    if(any(is.na(Y1)) == TRUE |
-       any(is.nan(Y1)) == TRUE){
-      browser()
+    #####################################
+    ### EQUATION 19 eq19buildMinMat() ###
+    #####################################
+
+    ### Prep equation 19
+    eq19.min.mat.RM <- eq19buildMinMat(hab.acquire.results.RM$B.mc,
+                                        hab.acquire.results.RM$B.fc,
+                                        hab.acquire.results.RM$B.mk,
+                                        hab.acquire.results.RM$B.fk)
+
+
+
+          if(use.IBM == TRUE){
+            eq19.min.mat.IB <- eq19buildMinMat(hab.acquire.results.IB$B.mc,
+                                            hab.acquire.results.IB$B.fc,
+                                            hab.acquire.results.IB$B.mk,
+                                            hab.acquire.results.IB$B.fk)
+
+          }
+
+
+    ### Apply equation 19
+    #### Cacluate reproductive output
+    Y1.RM <- runFAC.i$param.matrices$f.mat%*%eq19.min.mat.RM%*%R.RM
+    names(Y1.RM) <- c("mc","mk","fc","fk")
+
+
+        if(use.IBM == TRUE){
+          Y1.IB <- runFAC.i$param.matrices$f.mat%*%eq19.min.mat.IB%*%R.IB
+          names(Y1.IB) <- c("mc","mk","fc","fk")
+        }
+
+
+
+    #x#x# #x#x# #x#x# #x#x#
+    #x#x# ERROR CHECK #x#x#
+    #x#x# #x#x# #x#x# #x#x#
+
+    ### TO DO Make this compatible with the "check errors in" arguement
+    ###       make into a function
+    if(check.errors == TRUE){
+      if(any(is.na(Y1.RM)) == TRUE |
+         any(is.nan(Y1.RM)) == TRUE){
+        message("NAs in Y vector")
+      }
+
     }
+
+
 
 
 
@@ -462,12 +441,21 @@ for(i in 1:iterations){
 
 
     ### BREEDING season mortality
-    #"adult birds experienc both sex- and habitat specific mortality
-    # over the breeding season.
+    #### "adult birds experienc# both sex- and habitat specific mortality
+    ####  over the breeding season.
 
+    #####################
     ### Equation 20:  ###
+    #####################
+
     #### eq20_build_Sb_mat() builds the S.b matrix
-    B1 <- S.b%*%B0
+    B1.RM <- runFAC.i$param.matrices$S.b%*%B0.RM
+
+
+
+        if(use.IBM == TRUE){
+          B1.IB <- runFAC.i$param.matrices$S.b%*%B0.IB
+        }
 
 
     #*#*#*#*#*#*#*#*#*#*#*#*#*#*#*##*#*#
@@ -485,16 +473,25 @@ for(i in 1:iterations){
     #---------------------------------#
 
 
-    #"Mort during mig depends upon the sex of the bird &
-    # breeding habitat it used"
+    ### "Mort during mig depends upon the sex of the bird &
+    ### breeding habitat it used"
 
+    ######################
     ### EQUATION 21:   ###
+    ######################
+
     ### eq21_build_Sf_mat() builds S.f
-    B2 <- S.f%*%B1
 
-    names(B2) <- c("mc","mk","md","fc","fk")
+    B2.RM <- runFAC.i$param.matrices$S.f%*%B1.RM
+      names(B2.RM) <- c("mc","mk","md","fc","fk")
 
 
+        if(use.IBM == TRUE){
+
+          B2.IB <- runFAC.i$param.matrices$S.f%*%B1.IB
+              names(B2.IB) <- c("mc","mk","md","fc","fk")
+
+        }
 
 
     #------------------------------------#
@@ -503,7 +500,13 @@ for(i in 1:iterations){
 
 
     ### EQUATION 22 eq22() ###
-    Y2 <- S.y%*%Y1; names(Y2) <- c("y.mc","y.mk","y.fc","y.fk")
+    Y2.RM <- runFAC.i$param.matrices$S.y%*%Y1.RM
+        names(Y2.RM) <- c("y.mc","y.mk","y.fc","y.fk")
+
+        if(use.IBM==TRUE){
+          Y2.IB <- runFAC.i$param.matrices$S.y%*%Y1.IB
+          names(Y2.IB) <- c("y.mc","y.mk","y.fc","y.fk")
+        }
 
 
 
@@ -514,193 +517,161 @@ for(i in 1:iterations){
     #*#*#                             #*#*#
     #*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
 
-    ### Equation 23 eq23_stack_Ai() ###
-    #### Stack adults &  young into single vector (A)
 
-    A <-eq23_stack_Ai(B2, #Adults after migration
-                      Y2) #offspring after migration
-
-
-
-    ### Competition for territories
-    #NB: breeding K is based on pairs,
-    #    winter K is based on individuals!
-
-    #competition ability depends on "an intrsince age-,sex-
-    # and condition (habitat)-specific competitive factor
-    # gamma & the number of birds in each class" (Runge & Marra 2004, pg xxx)
+    W.list.RM <- substep_competition(B2.RM,
+                                  Y2.RM,
+                                  param.set,
+                                  gamma.i = runFAC.i$param.matrices$gamma.i,
+                                  i)
 
 
-    #competition should only occur when the number of birds arriving from migration
-    #exceeds winter carrying capacity K.wg  This is what is implied by Fig 28.4
+        if(use.IBM == TRUE){
+          W.list.IB <- substep_competition(B2.IB,
+                                           Y2.IB,
+                                           param.set,
+                                           gamma.i = runFAC.i$param.matrices$gamma.i,
+                                           i)
+        }
 
 
-    ### build dataframe to hold diagnostic data about competition
-    #### <<This step could be turned off to save a little bit of computation>>
-    df <- data.frame(j = rep(NA,1000),
-                     K.wg.j.init = NA,
-                     K.wg.j.end = NA,
-                     tot.settled.init = NA,
-                     tot.settled.final = NA,
-                     tot.active.init = NA,
-                     tot.active.final = NA,
-                     suc.settled.raw = NA,
-                     suc.settled.cor = NA,
-                     un.settled = NA)
-
-    ### Number of iterations to run loop to resolve competition
-    comp.its <- nrow(df)
+    #browser()
 
 
 
-    ### Equation 24 and Equation 25#
-    #### eq24_comp_loop() implements a loop
-    #### that runs eq24_competition() and eq25_comp_constrain()
-    #### gamma.i created by eq24_make_gamma_vec()
+          ############################################
+          ### Save info for diagnosing equilibrium
+          ############################################
 
+          ## this could be turned in to a small function
 
-    # A = stacked pop vector from eq 23
+          ### NOTE: currently use -RM, NOT IBM
 
-    ## Initial states
-    A.i.0 <- A
-    K.wg.0 <- param.set$K.wg
+          # Save current number of winter male pop size in good habitat
+          runFAC.i$W.mg.diagnostic.df[i,"W.mg"] <- W.list.RM$W.mg
+
+          #calcualte lambda for current time step
+          if(i>1){
+            W.mg.t2 <- runFAC.i$W.mg.diagnostic.df[i,"W.mg"]
+            W.mg.t1 <- runFAC.i$W.mg.diagnostic.df[i-1,"W.mg"]
+
+            runFAC.i$W.mg.diagnostic.df[i,"W.mg.lambda"] <- W.mg.t2/W.mg.t1
+          }
 
 
 
 
-    # if(i == 65){
-    #   #
-    #   #debugonce(eq24_comp_loop)
-    #   #debugonce(eq26_alloc_winter_P)
-    # }
+          # this could be turned into a small function
+          #range of values over which to do diagnostics for lambda
+          ## use last 10 time steps to calcualte mean lambda
+          if(i > 10){
+            lamb.diagnose.range.i <-c(i-10):i
+            diagnostic.lambs <- runFAC.i$W.mg.diagnostic.df[lamb.diagnose.range.i,"W.mg.lambda"]
 
-    ## Run eq24_comp_loop()
-    ### Outputs a list
 
-    comp.out.list <- eq24_comp_loop(A.i.0 = A.i.0,
-                                    K.wg.0 = K.wg.0,
-                                    y.i = gamma.i,
-                                    comp.df = df,
-                                    j = comp.its, i = i)
+            #calcualte mean and var of labmda
+            runFAC.i$W.mg.diagnostic.df[i,"W.mg.lambda.mean"] <- mean(diagnostic.lambs, na.rm = T)
+            runFAC.i$W.mg.diagnostic.df[i,"W.mg.lambda.var"]  <- var(diagnostic.lambs, na.rm = T)
 
+          }
 
 
 
-    #Birds alloacted to good winter habitat
-    A.i.G <- comp.out.list$A.i.G.settled.tot.j
+          ##############################
+          ###
+          ### Check for model completion
+          ###
+          ##############################
+
+          ###########################
+          ### Check for equilibiurm
+          ###########################
+
+          at.eq <- FALSE
+          if(check.eq == TRUE & i > minimum.i){
+            at.eq <- runFAC_check_equilibrium(runFAC.i$W.mg.diagnostic.df[i,"W.mg.lambda.mean"],
+                                              runFAC.i$W.mg.diagnostic.df[i,"W.mg.lambda.var"],
+                                              i,
+                                              at.eq = FALSE,
+                                              verbose = TRUE,
+                                              eq.tol,
+                                              ...)
+          }
 
 
 
-    ### Equation 26 Allocated birds to poor winter habitat ###
-    ####  A.i.P <- A.i-A.i.G
-    A.i.P <- eq26_alloc_winter_P(A.i.0 = A.i.0,
-                                 A.i.G = A.i.G)
+    #############################################
+    ### Save full output of model each iteration
+    #############################################
 
 
-    ### Name output
-    class.names <- c("mc","mk","md","fc","fk","y.mc","y.mk","y.fc","y.fk")
-    names(A.i.G) <- class.names
-    names(A.i.P) <- class.names
-
-
-    ### Test competition output
-
-    # if(any(A.i.G > A.i.0)){
-    #   #message("Competition error in runFAC: A.i.G > A.i.0 on iteration " ,i)
-    #   browser()
-    # }
-    #
-    # if(sum(A.i.G) > param.set$K.wg){
-    #   #message("Competition error runFAC: sum(A.i.G) > K.wg on iteration ",i," ",
-    #           #sum(A.i.G)," vs ",param.set$K.wg)
-    #   browser()
-    #
-    # }
-    #
-    # if(any(A.i.P) < 0){
-    #   #message("Competition error runFAC: any(A.i.P) < 0 on iteration", i, " ")
-    #   browser()
-    # }
-
-
-
-
-
-
-    ### EQUATION 27 ###
-    # Combine young & old after competition
-    # differences between ages and breeding site disappear at this stage
-    #
-
-    ###NB: returns W.mg,W.mp,W.fg,W.fp objects to workspace
-    #
-    W.list <- eq27_post_comp_pooling(A.i.G = A.i.G,
-                           A.i.P = A.i.P)
-
-
-
-    #Does output of competition match input before competition?
-    temp <- round(sum(A.i.0),4) ==
-            round(sum(W.list$W.mg,W.list$W.mp,W.list$W.fg,W.list$W.fp),4)
-
-
-    if(temp == FALSE){
-      #
-      #message("ERROR RELATED TO COMPETITION!!!!!!!!!!!!!!!!!1")
-      }
-
-
-
-    ### save current state
     ###  pick up everything from environment & save
     #### NOTE: this could probably be made more efficient
     ####       right now it picks up entire df frame, adds data to current
-    ####       column i, then outputs entire df
-    #### Also, to speed thins up I should
-    #### make it optional as to whether this is saved - what is
-    #### really only needed for most runs is final equilibrium sizes
+    ####       column i, then outputs entire df to workspace
+    #### Also, to speed things up I should
 
-    #
-
+    ### Save current state in real time ##
+    #### for saving full time series (ts)
     if(save.ts == TRUE){
-      out.df <- save_FAC_state(i, out.df,
-                               W.list$W.mg,W.list$W.mp,W.list$W.fg,W.list$W.fp,
-                                   B0,
-                               P.breeding.pair.results["P.cgg"],
-                               P.breeding.pair.results["P.cgp"],
-                               P.breeding.pair.results["P.cpg"],
-                               P.breeding.pair.results["P.cpp"],
-                               P.breeding.pair.results["P.kgg"],
-                               P.breeding.pair.results["P.kgp"],
-                               P.breeding.pair.results["P.kpg"],
-                               P.breeding.pair.results["P.kpp"],
-                                   Y2,
-                                   A.i.G,
-                                   A.i.P)
 
-      ### Check to see if equilibrium has been reached
-      ###  population size no longer changing
-      at.eq <- FALSE
-      if(check.eq == TRUE & iterations > check.eq.after.i & i > iterations/tol.1){
-        at.eq <- runFAC_check_equilibrium(out.df, i, tol.2,at.eq)
-      }
 
-      if(at.eq == TRUE){break}
+      ## Save Runge & Marra equations
+        runFAC.i$FAC.out.RM <- runFAC_store_pop_state_i(i,
+                                           minimum.i,
+                                           runFAC.i$FAC.out.RM,
+                                 W.list.RM,
+                                 B0.RM,
+                                 P.breeding.pair.results.RM,
+                                 Y2.RM)
+
+          ## Save IMB if run
+          if(use.IBM==T){
+            runFAC.i$FAC.out.IB <- runFAC_store_pop_state_i(i,
+                                               minimum.i,
+                                     runFAC.i$FAC.out.IB,
+                                     W.list.IB,
+                                     B0.IB,
+                                     P.breeding.pair.results.IB,
+                                     Y2.IB)
+          }
+     }
+
+
+    ### Save equilibirum state
+    #### Equilibirum state saved to seperate slot of output list
+    #### for easy access
+    if(i == iterations | at.eq == TRUE){
+      runFAC.i$FAC.eq.state.RM <- runFAC_store_pop_state_i(i,
+                                          minimum.i,
+                                          runFAC.i$FAC.out.RM,
+                                         W.list.RM,
+                                         B0.RM,
+                                         P.breeding.pair.results.RM,
+                                         Y2.RM)[i,]
+
+
+          if(use.IBM == T){
+            runFAC.i$FAC.eq.state.IB <- runFAC_store_pop_state_i(i,
+                                                                 minimum.i,
+                                                                 runFAC.i$FAC.out.IB,
+                                                                 W.list.RM,
+                                                                 B0.IB,
+                                                                 P.breeding.pair.results.IB,
+                                                                 Y2.IB)[i,]
+          }
+
+     }
+
+
+    ######################################
+    ### Break loop loop if at equilibrium
+    ######################################
+
+    if(check.eq == TRUE & at.eq == TRUE){
+      break
     }
 
 
-    ## If not saving full time series then save final state at last time point
-    if(save.ts == FALSE & i == iterations){
-
-      out.eq <- save_FAC_state(i, out.df,
-                                   W.list$W.mg,W.list$W.mp,W.list$W.fg,W.list$W.fp,
-                                   B0,
-                                   P.cgg, P.cgp, P.cpg, P.cpp,
-                                   P.kgg, P.kgp, P.kpg, P.kpp,
-                                   Y2,
-                                   A.i.G,
-                                   A.i.P)[iterations,]
-    }
 
 
 
@@ -709,38 +680,87 @@ for(i in 1:iterations){
 
 
 
-  ### Finalize output dataframe
-  ### Total up seasonal population sizes, round off numbers
+  ########################
+  ### Finalize output  ###
+  ########################
+
+
+  ### Add meta data on model run ###
+  FAC.meta <- list(
+    check.eq = check.eq,
+    i.final = i,
+    max.iterations.set.at = iterations,
+    min.iterations.set.at = minimum.i,
+    use.IBM = use.IBM,
+    Ninit = Ninit,
+    save.ts = save.ts,
+    lambda.mean = runFAC.i$W.mg.diagnostic.df[i,"W.mg.lambda.mean"],
+    lambda.var = runFAC.i$W.mg.diagnostic.df[i,"W.mg.lambda.var"])
+
+
+
+  ### Finalize full dataframe of output
+  #### Total up seasonal population sizes
+  #### round off numbers
+  #### etc
+
+
+  ### Finalize main datafrme
+  #### main df of time series output
   if(save.ts == TRUE){
-    out.df <- runFAC_finalize_output(out.df)
+    runFAC.i$FAC.out.RM <- runFAC_finalize_output(runFAC.i$FAC.out.RM)
 
-    ### Plot Diagnostic for full run of model
-    if(diagnostic.plot == T){
-      plot_runFAC(out.df)
-    }
+    if(use.IBM == TRUE){
+      runFAC.i$FAC.out.IB <- runFAC_finalize_output(runFAC.i$FAC.out.IB)
 
-
-    ### Return output of full run of model
-    if(return.output == T){
-
-
-      return(out.df)
     }
   }
 
 
-### If NOT saving full time series just output eq. state at the end
-if(save.ts == FALSE){
-  ## would be good if I could calculate lambda to
-  ## monitor equilibrium
-  return(out.eq)
-}
 
 
 
 
 
+  ### Finalize equlibrium state
+  #### Finalize the element in list that just contains the final sate
 
+  ### If full time series being save
+  if(save.ts == TRUE){
+    runFAC.i$FAC.eq.state.RM <- runFAC_finalize_output(runFAC.i$FAC.out.RM,
+                                                    save.ts = TRUE)[i,]
+
+    if(use.IBM == TRUE){
+      runFAC.i$FAC.eq.state.IB <- runFAC_finalize_output(runFAC.i$FAC.out.IB,
+                                                         save.ts = TRUE)[i,]
+    }
+  }
+
+  ### If full time series not being save
+  ###  (why seperate?)
+
+  if(save.ts == FALSE){
+    runFAC.i$FAC.eq.state.RM <- runFAC_finalize_output(runFAC.i$FAC.eq.state.RM,
+                                                    save.ts = FALSE)
+
+    if(use.IBM == TRUE){
+      runFAC.i$FAC.eq.state.IB <- runFAC_finalize_output(runFAC.i$FAC.eq.state.IB,
+                                                      save.ts = FALSE)
+    }
+  }
+
+
+
+  ### Plot Diagnostic for full run of model
+  if(save.ts == TRUE & diagnostic.plot == T){
+    plot_runFAC(runFAC.i$FAC.out)
+  }
+
+
+  ### Return all output
+  if(return.output == TRUE){
+    return(runFAC.i)
+  }
 
 
 }

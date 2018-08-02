@@ -30,5 +30,6 @@ eq16_Pkpp <- function(P.kgg,
       }
     }
 
+  #if(P.kpp == 1){browser()}
   return(P.kpp)
 }

@@ -1,0 +1,48 @@
+---
+title: "Introduction: Full Annual Cycle (FAC) demography"
+author: "Nathan Brouwer"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+📈 in references to "full annual cycle" (FAC) in titles / abstracts; in 2015 2 major papers were published:
+@PeterPMarra et al A call for FAC research in animal #ecology https://bit.ly/2KhqKag
+ 
+
+@JeffHostEcology FAC population models for migratory birds
+https://bit.ly/2Awa9QF
+
+
+
+```{r}
+N <- c(44,63,44,15,4,4,5,3,5,2,
+   3, 2, 5, 4,2,3,1,1,1,1,
+   1, 2,1)
+
+N <- rev(c(44,63,44,15,4,4,5,3,5,2,
+   3, 2, 5, 4,2,3,1,1,1,1,
+   1,2,1))
+
+year <- c(1990,1997:2018)
+
+plot(N ~ year,type = "b",
+     xlab = "Year",
+     ylab = "Number of publications",
+     main = "Number of papers on 'Full annual cycle' ecology published per year")
+abline(v = "2015", col = 2)
+```
+
