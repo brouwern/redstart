@@ -9,8 +9,7 @@
 #' @param K.bc carrying capacity
 #' @param K.bk carrying capacity
 #' @param B.mk ...
-#' @param B.fk ...
-#' @param i index of loop.  for debugging
+#' @param B.fk
 #'
 #' @export
 
@@ -19,8 +18,7 @@ eq15_Pkpg <- function(W2,
                  K.bc,
                  K.bk,
                  B.mk,
-                 B.fk,
-                 i = i){
+                 B.fk){
 
   #equation 15 last line
   P.kpg <- 0
@@ -47,12 +45,32 @@ eq15_Pkpg <- function(W2,
     if(W2["mg"] < (K.bc + K.bk)){
       if(W2["fg"] > W2["mg"]){
         numerator <- min(unlist(W2["fg"]), (B.mk+K.bc))-unlist(W2["mg"])
-        denominator <- numerator/min(B.mk,B.fk)
-        P.kpg <-  denominator}
+        denominator <- min(B.mk,B.fk)
+        P.kpg <-  numerator/denominator}
     }
   }
 
 
+  P.xxx <- P.kpg
+  if(P.xxx > 1){
+    browser()
+  }
+
+  if(P.xxx < 0){
+    browser()
+  }
+
+  if(is.infinite(P.xxx) == TRUE){
+    browser()
+  }
+
+  if(is.na(P.xxx) == TRUE){
+    browser()
+  }
+
+  if(is.nan(P.xxx) == TRUE){
+    browser()
+  }
 
   return(P.kpg)
 }

@@ -14,7 +14,7 @@
 #' eq19buildFmat()
 
 
-eq19buildFmat <- function(f = 0.5){
+eq19AbuildFmat <- function(f = 0.5){
   f.mat <- c(1-f, 0,
              0,   1-f,
              f,   0,

@@ -21,7 +21,7 @@
 #' @export
 
 
-eq18buildPmat <- function(P.cgg, P.cgp,P.cpg, P.cpp,
+eq18BbuildPmat <- function(P.cgg, P.cgp,P.cpg, P.cpp,
                                            P.kgg, P.kgp, P.kpg, P.kpp){
   P.all <- c(P.cgg, P.cgp,P.cpg, P.cpp,    0,     0,     0,     0,
              0,     0,     0,     0,   P.kgg, P.kgp, P.kpg, P.kpp)

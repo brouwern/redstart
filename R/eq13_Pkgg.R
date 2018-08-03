@@ -18,11 +18,10 @@ eq13_Pkgg <- function(W2,
                  K.bc,
                  K.bk,
                  B.mk,
-                 B.fk,
-                 i = NA){
+                 B.fk){
 
   #condition 3: if other conditions fails
-  num <- (min(W2["mg"], W2["fg"]) - K.bc)
+  num   <- (min(W2["mg"], W2["fg"]) - K.bc)
   denom <-  min(B.mk, B.fk)
 
   P.kgg <- num/denom
@@ -43,6 +42,11 @@ eq13_Pkgg <- function(W2,
   if(W2["fg"] <= K.bc) {
     P.kgg<-0}
 
+
+  ## error check
+  if(P.kgg > 1| P.kgg < 0){
+    browser()
+  }
 
   return(P.kgg)
 

@@ -20,7 +20,7 @@
 #'
 #' @export
 
-eq02bulidMat <- function(S.w.mg = 0.80, #survival-winter-male-good habitat
+eq02bulidW1Mat <- function(S.w.mg = 0.80, #survival-winter-male-good habitat
                          S.w.mp = 0.80, #survival-winter-male-poor habitat
                          S.w.fg = 0.80, #survival-winter-female-good habitat
                          S.w.fp = 0.80){

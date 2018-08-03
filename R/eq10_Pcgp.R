@@ -14,8 +14,8 @@
 #'
 #' @param W2 population vector
 #' @param K.bc females on sour.c.habitat
-#' @param B.fc females available in sink
-#' @param B.mc males on sour.c. habitat
+#' @param B.mc females available in sink
+#' @param B.fc males on sour.c. habitat
 #' @param ... ....
 #'
 #' @return xxx xxxx
@@ -24,38 +24,6 @@
 #'       interactions in the population dynamics of migratory birds.
 #'       In Greenberg, R and PP Marra, eds.  Birds of 2 worlds
 #'
-#' @examples
-#' # Test loop
-#' ## Values for population vector W2
-#' seqW <- seq(1,500,30)
-#'
-#' ## Values for carrying capacities
-#' seqK <- seq(1,525,50)
-#'
-#' ## dataframe of parameter combinations
-#' df <- expand.grid(mg = seqW,
-#'                   mp = seqW,
-#'                   fg = seqW,
-#'                   fp = seqW,
-#'                   K.bc = seqK,
-#'                   K.bk = seqK,
-#'                   P.cgg = NA)
-#'
-#' ## Loop over all param combos
-#' for(i in 1:nrow(df)){
-#'     W2 <- df[i,c("mg","mp","fg","fp")]
-#'     params <- df[i,c("K.bc","K.bk")]
-#'
-#'     B.mc <- eq06_Bmc(W2, params$K.bc)
-#'     B.fc <- eq04_Bfc(W2, params$K.bc)
-#'     df$P.cgp[i] <- eq10_Pcgp(W2 = W2,
-#'                              K.bc = params$K.bc,
-#'                              B.fc = B.fc,
-#'                              B.mc = B.mc)
-#' }
-#'
-#' hist(df$P.cgp)
-#' summary(df$P.cgp)
 #'
 #' @export
 #'
@@ -65,8 +33,9 @@
 
 eq10_Pcgp <- function(W2,
                  K.bc,
+                 B.mc,
                  B.fc,
-                 B.mc, ...){
+                 ...){
 
   P.cgp <- 0
 

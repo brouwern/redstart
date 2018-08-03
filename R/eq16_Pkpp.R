@@ -30,6 +30,10 @@ eq16_Pkpp <- function(P.kgg,
       }
     }
 
-  #if(P.kpp == 1){browser()}
+  #error check
+  if(P.kpp > 1 | P.kpp < 0){
+    browser()
+    }
+
   return(P.kpp)
 }

@@ -24,7 +24,11 @@
 eq12_Pcpp <- function(P.cgg,
                  P.cgp,
                  P.cpg,...){
-  P.cpp <-  round(1 - P.cgg - P.cgp - P.cpg,5)
+  P.cpp <-  round(1 - P.cgg - P.cgp - P.cpg, 5)
+
+  if(P.cpp > 1| P.cpp < 0){
+    browser()
+  }
 
   return(P.cpp)
   }

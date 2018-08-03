@@ -1,7 +1,7 @@
 
 #' @export
 
-substep_B_mate_acquire_RM <- function(W2,
+step3_substepA2_mate_acquire_RM <- function(W2,
                                           param.set,
                                           hab.acquire.results){
   ###############################

@@ -4,7 +4,7 @@
 \alias{runFAC_finalize_output}
 \title{finalize output}
 \usage{
-runFAC_finalize_output(out.df)
+runFAC_finalize_output(out.df, save.ts = TRUE)
 }
 \description{
 finalize output

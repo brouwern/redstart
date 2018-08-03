@@ -26,6 +26,7 @@ error_check_Pxxx <- function(P.xxx.name,
                              i = NA,
                              ...){
 
+
   #Is NaN (not a number)
   if(is.nan(P.xxx.value)==TRUE){
     message(P.xxx.name," is NaN on iteration ",i,"; equation ",P.xxx.eq.name)

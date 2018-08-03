@@ -10,7 +10,7 @@
 #'
 #' @export
 
-eq17buildVect <- function(B.mc,
+eq17buildB0Vect <- function(B.mc,
          B.mk,
          B.md,
          B.fc,

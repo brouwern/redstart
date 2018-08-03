@@ -5,16 +5,14 @@
 \title{Equation 9: Pair formation in source habitat between birds both from
 good habitat}
 \usage{
-eq09_Pcgg(W2, K.bc, B.fc, B.mc, ...)
+eq09_Pcgg(W2, K.bc, B.mc, B.fc, ...)
 }
 \arguments{
 \item{W2}{population vector}
 
 \item{K.bc}{source carrying capacity (?)  original file said "sink popualtion size" in comments}
 
-\item{B.fc}{...}
-
-\item{B.mc}{females available in sink}
+\item{B.fc}{females available in sink}
 
 \item{...}{...}
 }
@@ -56,44 +54,61 @@ and which sex is limiting in terms of total abundance in the breeding habitat
 Aliased as pairing.eq9.P.c.gg() in previous version of coad
 }
 \examples{
-# Set parameters:
-## Create named population W2 vector using the eq01buildW0vect()
-W2 <- eq01buildW0vect(100,10,100,10)
 
-##source Breeding habitat  carrying capacity
-K.bc.110 <- 110
-K.bc.100 <- 100
+# Test eq09_Pcgg() for single sets of parameters
+## Set parameters:
+### Population size:
+### Create named population W2 vector using eq01buildW0vect()
+### Note: ratio of good male to good females is 10:1
+W2 <- eq01buildW0vect(10,10,
+                      1, 10)
+### source Breeding habitat carrying capacities (K.bc)
+#### 3 options
 K.bc.10  <- 10
+K.bc.1   <- 1
+K.bc.0   <- 0
 
-##Sink (k) Breeding habitat carrying capacity
+### Sink (k) Breeding habitat carrying capacity (K.bk)
 K.bk <- 500
 
-##Number of males and females allocated to source breeding habitat
-B.mc <- eq06_Bmc(W2, K.bc.100)
-B.fc <- eq04_Bfc(W2, K.bc.100)
+### Number of males and females allocated to source breeding habitat
+#### use eq04_Bfc() & eq06_Bmc()
 
-eq09_Pcgg(W2, K.bc = 10, B.mc, B.fc)
+##### K.bc = 10
+B.fc.K10 <- eq04_Bfc(W2, K.bc.10)
+B.mc.K10 <- eq06_Bmc(W2, K.bc.10)
 
-# Test loop
-seqW <- seq(1,100,30)
-seqK <- seq(1,125,50)
-df <- expand.grid(mg = seqW,
-                  mp = seqW,
-                  fg = seqW,
-                  fp = seqW,
-                  K.bc = seqK,
-                  K.bk = seqK)
+##### K.bc = 1
+B.fc.K1  <- eq04_Bfc(W2, K.bc.1)
+B.mc.K1  <- eq06_Bmc(W2, K.bc.1)
 
-df$P.cgg <- NA
+##### K.bc = 0
+B.fc.K0  <- eq04_Bfc(W2, K.bc.0)
+B.mc.K0  <- eq06_Bmc(W2, K.bc.0)
+#'
+#### K.bc = 10
+##### 10 source territories, 10 good males, but only 1 good female
+eq09_Pcgg(W2, K.bc = K.bc.10, B.fc = B.fc.K10,  B.mc = B.mc.K10)
 
-for(i in 1:nrow(df)){
-    W2 <- df[i,c("mg","mp","fg","fp")]
-    params <- df[i,c("K.bc","K.bk")]
+#### K.bc = 1
+##### 1 source territory, 10 good males, but only 1 good female
+eq09_Pcgg(W2, K.bc = K.bc.1,  B.fc = B.fc.K1,   B.mc = B.mc.K1)
 
-    B.mc <- eq06_Bmc(W2, params$K.bc)
-    B.fc <- eq04_Bfc(W2, params$K.bc)
-    df$P.cgg[i] <- eq09_Pcgg(W2,params$K.bc, B.mc,B.fc)
-}
+#### K.bc = 0
+##### 0 source territories, 10 good males, but only 1 good female
+eq09_Pcgg(W2, K.bc = K.bc.0,  B.fc = B.fc.K0,   B.mc = B.mc.K0)
 
-hist(df$P.cgg)
+# Test eq09_Pcgg() accross a range of parameter
+
+## Set up parameter combinations to test
+
+## This creates a large range of potenial parameters to enter the function
+dim(P.test.df)
+
+## Loop over all parameter combinations
+
+## Look at distribution of P.cgg
+P.test.df.out <- test_eq09(P.test.df, call.browser = F, print.i = F)
+hist(P.test.df.out$P.cgg)
+summary(P.test.df.out$P.cgg)
 }

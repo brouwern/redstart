@@ -9,7 +9,7 @@
 #' @export
 
 
-substep_B_hab_acquire_RM <- function(W2,
+step3_substepA1_hab_acquire_RM <- function(W2,
                                       K.bc = param.set$K.bc,
                                       K.bk = param.set$K.bk){
   ###########################################

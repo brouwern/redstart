@@ -10,6 +10,7 @@
 #' NB: "remakeFigure" does not appear in current code
 #'
 #' @param para.grid Dataframe of parameters, usually with 1 or 2 that vary accross a range
+#' @param Ninit vector of initial population sizes
 #' @param makeFigure deprecated.  Replaced by plot_Fig29_3
 #' @param use.IBM
 #' @param eq.tol
@@ -19,6 +20,7 @@
 
 
 runFAC_multi <- function(param.grid = param_grid(),
+                         Ninit = c(10,0,10,0),
                          remakeFigure = NA,
                          use.IBM = F,
                          verbose = F,
@@ -29,7 +31,7 @@ runFAC_multi <- function(param.grid = param_grid(),
   ### DATA STORAGE FOR runMultiFAC
   ### df to store output of each individual model run
   multiFAC.out.df.RM <- make_multiFAC_df(params.use=param.grid)
-  multiFAC.out.df.IB <- make_multiFAC_df(params.use=param.grid)
+  multiFAC.out.df.IB <- multiFAC.out.df.RM
 
 
 
@@ -37,6 +39,7 @@ runFAC_multi <- function(param.grid = param_grid(),
   for(i in 1:dim(param.grid)[1]){
 
     runFAC.i <-  runFAC(param.set=param.grid[i,],
+                        Ninit = Ninit,
                       check.eq = TRUE,
                       save.ts = FALSE,
                       diagnostic.plot = F,
@@ -62,18 +65,14 @@ runFAC_multi <- function(param.grid = param_grid(),
 
 
     FAC.eq.state.focal.output.RM <- FAC.eq.state.RM[focal.out]
+    multiFAC.out.df.RM[i,focal.out] <- FAC.eq.state.focal.output.RM
+
 
     if(use.IBM == TRUE){
       FAC.eq.state.focal.output.IB <- FAC.eq.state.IB[focal.out]
-    }
-
-
-    multiFAC.out.df.RM[i,focal.out] <- FAC.eq.state.focal.output.RM
-
-    if(use.IBM == TRUE){
       multiFAC.out.df.IB[i,focal.out] <- FAC.eq.state.focal.output.IB
-
     }
+
 
     #store parameters used to run the model
     multiFAC.out.df.RM$gamma.i[i] <- param.grid$gamma[i]
@@ -108,10 +107,12 @@ runFAC_multi <- function(param.grid = param_grid(),
 
   #### Process model output
   ### Calculate totals by sex and sex ratio
-  multiFAC.out.df.RM <- runFAC_multi_finalize_output(multiFAC.out.df.RM)
+  multiFAC.out.df.RM <- runFAC_multi_finalize_output(multiFAC.out.df.RM,
+                                                     param.grid)
 
   if(use.IBM == TRUE){
-    multiFAC.out.df.IB <- runFAC_multi_finalize_output(multiFAC.out.df.IB)
+    multiFAC.out.df.IB <- runFAC_multi_finalize_output(multiFAC.out.df.IB,
+                                                       param.grid)
 
 
   }

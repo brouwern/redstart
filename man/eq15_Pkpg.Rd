@@ -4,7 +4,7 @@
 \alias{eq15_Pkpg}
 \title{Equation 15: Proportion in sink poor-poor}
 \usage{
-eq15_Pkpg(W2, K.bc, K.bk, B.mk, B.fk, i = i)
+eq15_Pkpg(W2, K.bc, K.bk, B.mk, B.fk)
 }
 \arguments{
 \item{W2}{Popualtion vector}
@@ -15,9 +15,7 @@ eq15_Pkpg(W2, K.bc, K.bk, B.mk, B.fk, i = i)
 
 \item{B.mk}{...}
 
-\item{B.fk}{...}
-
-\item{i}{index of loop.  for debugging}
+\item{B.fk}{}
 }
 \description{
 Equation 15: Proportion in sink poor-poor

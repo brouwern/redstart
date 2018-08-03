@@ -12,7 +12,7 @@
 
 
 
-eq22_build_Sy_mat <- function(S.y.mc,
+eq22buildSymat <- function(S.y.mc,
                  S.y.mk,
                  S.y.fc,
                  S.y.fk){

@@ -4,9 +4,8 @@
 \alias{runFAC_store_pop_state_i}
 \title{Save current population state}
 \usage{
-runFAC_store_pop_state_i(i, minimum.i = 10, FAC.out, W.list, B0.RM, B0.IB,
-  P.breeding.pair.results.RM, P.breeding.pair.results.IB, Y2, A.G.i, A.P.i,
-  check.eq = T, run.IBM = F, ...)
+runFAC_store_pop_state_i(i, minimum.i = 10, FAC.out, W.list, B0,
+  P.breeding.pair.results, Y2, check.eq = T, ...)
 }
 \arguments{
 \item{i}{current iteration of model}
@@ -15,21 +14,13 @@ runFAC_store_pop_state_i(i, minimum.i = 10, FAC.out, W.list, B0.RM, B0.IB,
 
 \item{W.list}{list containing state of population after winter and fall migration}
 
-\item{B0.RM}{vector of...}
+\item{B0}{vector of....}
 
-\item{B0.IB}{vector of...}
-
-\item{P.breeding.pair.results.RM}{vector representing pairing frequency of birds in source (".c") habitat the both originated from good (".gg") habitat on the wintering ground.}
+\item{P.breeding.pair.results}{vector representing pairing frequency of birds in source (".c") habitat the both originated from good (".gg") habitat on the wintering ground.}
 
 \item{Y2}{vector of reproductive output (post migration?)}
 
-\item{A.G.i}{vector...}
-
-\item{A.P.i}{vector...}
-
 \item{check.eq}{Should lambda be calculated}
-
-\item{run.IBM}{}
 }
 \value{
 FAC.out dataframe updated with population sizeds from time i

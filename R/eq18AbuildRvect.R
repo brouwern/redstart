@@ -24,7 +24,7 @@
 
 
 
-eq18buildRmat <- function(R.base.rate,
+eq18AbuildRvec <- function(R.base.rate,
                   R.hab.effect,
                   co){
 

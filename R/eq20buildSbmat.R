@@ -15,7 +15,7 @@
 #' @export
 
 
-eq20_build_Sb_mat <- function(S.b.mc,
+eq20buildSbmat <- function(S.b.mc,
                  S.b.mk,
                  S.b.md,
                  S.b.fc,

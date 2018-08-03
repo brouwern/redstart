@@ -1,6 +1,6 @@
 
 
-substep_B_mate_acquire_IB <- function(hab.aq.results.IB){
+step3_substepA2_mate_acquire_IB <- function(hab.aq.results.IB){
 
   #create consolidated pairing code
   hab.aq.results.IB$pair2 <- NA
@@ -61,7 +61,9 @@ substep_B_mate_acquire_IB <- function(hab.aq.results.IB){
                                      P.kpg = P.vec[7] ,
                                      P.kpp = P.vec[8] )
 
+  P.breeding.pair.results.list.IB <- list(P = P.breeding.pair.results.IB,
+                                     df = hab.aq.results.IB)
 
-  return(P.breeding.pair.results.IB)
+  return(P.breeding.pair.results.list.IB)
 
 }

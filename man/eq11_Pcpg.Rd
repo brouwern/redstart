@@ -4,16 +4,16 @@
 \alias{eq11_Pcpg}
 \title{Equation 11: Proportion of males from poor winter habitat mated with females from good winter habitat}
 \usage{
-eq11_Pcpg(W2, K.bc, B.fc, B.mc, ...)
+eq11_Pcpg(W2, K.bc, B.mc, B.fc, ...)
 }
 \arguments{
 \item{W2}{population vector; indicats where birds are coming from}
 
 \item{K.bc}{females  sour.c.habitat carrying capacity}
 
-\item{B.fc}{females alreadiy in source}
-
 \item{B.mc}{males already in source}
+
+\item{B.fc}{females alreadiy in source}
 
 \item{...}{...}
 }
@@ -38,39 +38,6 @@ Note that in the original paper, both equations 10 and 11 have the same subscrip
 
 Note  W2\link{"mg"} > W2\link{"fg"} in original paper.  ">" needs to be "<"  b/c poor males end up
 with good female when there are not enough good males for all the good females (Wmg < Wfg)
-}
-\examples{
-# Test loop
-## Values for population vector W2
-seqW <- seq(1,100,30)
-
-## Values for carrying capacities
-seqK <- seq(1,125,50)
-
-## dataframe of parameter combinations
-df <- expand.grid(mg = seqW,
-                  mp = seqW,
-                  fg = seqW,
-                  fp = seqW,
-                  K.bc = seqK,
-                  K.bk = seqK,
-                  P.cgg = NA)
-
-## Loop over all param combos
-for(i in 1:nrow(df)){
-    W2 <- df[i,c("mg","mp","fg","fp")]
-    params <- df[i,c("K.bc","K.bk")]
-
-    B.mc <- eq06_Bmc(W2, params$K.bc)
-    B.fc <- eq04_Bfc(W2, params$K.bc)
-    df$P.cpg[i] <- eq11_Pcpg(W2 = W2,
-                             K.bc = params$K.bc,
-                             B.fc = B.fc,
-                             B.mc = B.mc)
-}
-
-hist(df$P.cpg)
-
 }
 \references{
 Runge, MC and PP Marra.  2004.  Modeling seasonal

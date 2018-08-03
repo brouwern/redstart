@@ -35,73 +35,124 @@
 #'
 #' @param W2 population vector
 #' @param K.bc source carrying capacity (?)  original file said "sink popualtion size" in comments
-#' @param B.mc females available in sink
-#' @param B.fc ...
+#' @param B.mc
+#' @param B.fc females available in sink
 #' @param ... ...
 #'
 #' @return P.cgg, the proportion of pairings in the "source" breeding habitat between male and
 #' females which both winter in the good habitat
 #'
 #' @examples
-#' # Set parameters:
-#' ## Create named population W2 vector using the eq01buildW0vect()
-#' W2 <- eq01buildW0vect(100,10,100,10)
 #'
-#' ##source Breeding habitat  carrying capacity
-#' K.bc.110 <- 110
-#' K.bc.100 <- 100
+#' # Test eq09_Pcgg() for single sets of parameters
+#' ## Set parameters:
+#' ### Population size:
+#' ### Create named population W2 vector using eq01buildW0vect()
+#' ### Note: ratio of good male to good females is 10:1
+#' W2 <- eq01buildW0vect(10,10,
+#'                       1, 10)
+#' ### source Breeding habitat carrying capacities (K.bc)
+#' #### 3 options
 #' K.bc.10  <- 10
+#' K.bc.1   <- 1
+#' K.bc.0   <- 0
 #'
-#' ##Sink (k) Breeding habitat carrying capacity
+#' ### Sink (k) Breeding habitat carrying capacity (K.bk)
 #' K.bk <- 500
 #'
-#' ##Number of males and females allocated to source breeding habitat
-#' B.mc <- eq06_Bmc(W2, K.bc.100)
-#' B.fc <- eq04_Bfc(W2, K.bc.100)
+#' ### Number of males and females allocated to source breeding habitat
+#' #### use eq04_Bfc() & eq06_Bmc()
 #'
-#' eq09_Pcgg(W2, K.bc = 10, B.mc, B.fc)
+#' ##### K.bc = 10
+#' B.fc.K10 <- eq04_Bfc(W2, K.bc.10)
+#' B.mc.K10 <- eq06_Bmc(W2, K.bc.10)
 #'
-#' # Test loop
-#' seqW <- seq(1,100,30)
-#' seqK <- seq(1,125,50)
-#' df <- expand.grid(mg = seqW,
-#'                   mp = seqW,
-#'                   fg = seqW,
-#'                   fp = seqW,
-#'                   K.bc = seqK,
-#'                   K.bk = seqK)
+#' ##### K.bc = 1
+#' B.fc.K1  <- eq04_Bfc(W2, K.bc.1)
+#' B.mc.K1  <- eq06_Bmc(W2, K.bc.1)
 #'
-#' df$P.cgg <- NA
+#' ##### K.bc = 0
+#' B.fc.K0  <- eq04_Bfc(W2, K.bc.0)
+#' B.mc.K0  <- eq06_Bmc(W2, K.bc.0)
+#'#'
+#' #### K.bc = 10
+#' ##### 10 source territories, 10 good males, but only 1 good female
+#' eq09_Pcgg(W2, K.bc = K.bc.10, B.fc = B.fc.K10,  B.mc = B.mc.K10)
 #'
-#' for(i in 1:nrow(df)){
-#'     W2 <- df[i,c("mg","mp","fg","fp")]
-#'     params <- df[i,c("K.bc","K.bk")]
+#' #### K.bc = 1
+#' ##### 1 source territory, 10 good males, but only 1 good female
+#' eq09_Pcgg(W2, K.bc = K.bc.1,  B.fc = B.fc.K1,   B.mc = B.mc.K1)
 #'
-#'     B.mc <- eq06_Bmc(W2, params$K.bc)
-#'     B.fc <- eq04_Bfc(W2, params$K.bc)
-#'     df$P.cgg[i] <- eq09_Pcgg(W2,params$K.bc, B.mc,B.fc)
-#' }
+#' #### K.bc = 0
+#' ##### 0 source territories, 10 good males, but only 1 good female
+#' eq09_Pcgg(W2, K.bc = K.bc.0,  B.fc = B.fc.K0,   B.mc = B.mc.K0)
 #'
-#' hist(df$P.cgg)
+#' # Test eq09_Pcgg() accross a range of parameter
+#'
+#' ## Set up parameter combinations to test
+
+#'
+#' ## This creates a large range of potenial parameters to enter the function
+#' dim(P.test.df)
+#'
+#' ## Loop over all parameter combinations
+#'
+#' ## Look at distribution of P.cgg
+#' P.test.df.out <- test_eq09(P.test.df, call.browser = F, print.i = F)
+#' hist(P.test.df.out$P.cgg)
+#' summary(P.test.df.out$P.cgg)
 #' @export
 
 
 eq09_Pcgg <- function(W2,
                       K.bc,
-                      B.fc,
                       B.mc,
+                      B.fc,
                       ...){
 
-  if(  (W2["mg"] > K.bc) &  #If males from good winter habitat exceed souce carrying capacity...
-       (W2["fg"] > K.bc)  ){#AND females from g winter habitat exceed souce carrying capacity...
-    P.cgg <-1 }           #then all the pairs that form in the source must be good-good
-    else {
-      P.cgg <-    min(c(unlist(W2["mg"]), unlist(W2["fg"]))) / #NUMERATOR:   the number from good winter habitat
-                  min(c(unlist(B.mc),     unlist(B.fc)    ))         #DENOMINATOR: the total number in the breeding habitat
+  #equation 9: NEW CONDITION
+  #  in original R-M set up, if K.bc happend to be 0, then 1 was returned
+  #  K.bc is unlikely to be set to 0, and even if it was, its not likely
+  #  to have any consequences, but this was changed just in case
 
-    }
+  if(K.bc == 0){
+    P.cgg <-  0
+    return(P.cgg)
+  }
 
-  ## Return output
-  return(P.cgg)
+  #equation 9: NEW CONDITION
+  # unlikely to happen but could be useful if code adapated for PVA
+  if(W2["mg"] == 0 & W2["fg"] == 0){
+    P.cgg <-  0
+    return(P.cgg)
+  }
+
+  #equation 9: NEW CONDITION
+  # unlikely to happen but could be useful if code adapated for PVA
+  if(W2["mg"] > 0 & W2["fg"] == 0 |
+     W2["mg"] == 0 & W2["fg"] > 0){
+    P.cgg <-  0
+    return(P.cgg)
+  }
+
+
+  #equation 9 part A
+  if(  (W2["mg"] > K.bc) &  #If males fr. good win hab exceed souce K...
+       (W2["fg"] > K.bc) &  #AND femm from g winter hab exceed souce K...
+        K.bc      > 0){     #NEW CONDITION: AND K.bc doesn't =0 for some strange reason...
+    P.cgg <-1               #then all the pairs formed in the source must be good-good
+    return(P.cgg)
+  }
+
+  #equation 9 part B
+  if(K.bc > 0){
+    numerator   <- min(c(unlist(W2["mg"]), unlist(W2["fg"])))#num from good winter hab
+    denominator <- min(c(unlist(B.mc), unlist(B.fc)    ))    #tot num in the breeding hab
+    P.cgg <-  numerator/denominator
+    return(P.cgg)
+  }
+
+
+
 }
 

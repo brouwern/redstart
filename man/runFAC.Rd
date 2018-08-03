@@ -5,11 +5,11 @@
 \title{Run FAC model to equilibirum}
 \usage{
 runFAC(iterations = 350, Ninit = c(10, 0, 10, 0), param.set = param_set(),
-  scenario = NA, vary = NA, verbose = FALSE,
+  scenario = NA, vary = NA, verbose = FALSE, check.errors = TRUE,
   check.errors.in = c("B0.RM", "P.cgg", "P.cgp", "P.cpg", "P.cpp", "P.kgg",
   "P.kgp", "P.kpg", "P.kpp", "Y1"), check.eq = TRUE, minimum.i = 20,
-  tol.1 = 3, tol.2 = 3, diagnostic.plot = T, return.output = T,
-  save.ts = T, run.IBM = F, use.IBM = F, ...)
+  eq.tol = 6, diagnostic.plot = F, return.output = T, save.ts = T,
+  use.IBM = F, use.IBM.S.b = F, ...)
 }
 \arguments{
 \item{iterations}{how many iterations of model to run before stopping}
@@ -24,21 +24,25 @@ runFAC(iterations = 350, Ninit = c(10, 0, 10, 0), param.set = param_set(),
 
 \item{verbose}{verbose general output}
 
+\item{check.errors}{Run error checks on model subcomponents}
+
 \item{check.errors.in}{run error checks and report}
 
 \item{check.eq}{should equilibrium be assessed?}
 
 \item{minimum.i}{number of iterations to run if equilibrium is being checked}
 
-\item{tol.1}{tolerance value for diagnostics checks for whether the run of the model has reached equilibrium.  Lower values are more stringent; minimum is 1, which makes the model run the full number of iterations}
-
-\item{tol.2}{secondary tolerance value for checking equilbrium; LARGER values increase stringency}
+\item{eq.tol}{Tolerance for equilibirum check; the number of digistic lambda and variace of lambda should be rounded to when comparing against 1.  Larger numbers reduce the likelihood of model passing the equilbirium check}
 
 \item{diagnostic.plot}{Return a diagnostic plot show population size over time}
 
 \item{return.output}{Output the full model dataframe?}
 
 \item{save.ts}{Save the full time series of the model run?  If FALSE then only final time point will be returned.  Additionally, equilibrium monitoring will not be done and the time series cannot be plotted}
+
+\item{use.IBM}{use individual based model for habitat and mate acquisition}
+
+\item{use.IBM.S.b}{use IBM for summer adult survival}
 
 \item{...}{other arguements passed}
 }
@@ -50,6 +54,17 @@ Iterates a single parameterization of the Runge & Marra 2004 FAC model
 until equilbirium is reached.  Typically the desired output is the equilibrium
 population size(s) and all intermediate output is discarded.
 }
+\examples{
+# Run an FAC
+test.FAC <- runFAC(verbose = TRUE)
+
+# Look at structure of output
+str(test.FAC,1)
+
+}
 \references{
-Runge, MC & PP Marra 2004.  Modeling seasonal interactions in the population dynamics of migratory birds.  Birds of two words.
+Runge, MC and PP Marra.  2004.  Modeling seasonal
+interactions in the population dynamics of migratory birds.
+In Greenberg, R and PP Marra, eds.  Birds of two worlds.
+Johns Hopkins University Press, Baltimore.
 }

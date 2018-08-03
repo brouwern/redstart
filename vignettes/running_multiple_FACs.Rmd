@@ -32,7 +32,7 @@ library(FACavian)
 The defaults for runFAC_multi() are set to reproduce Figure 28.3 in the original Runge and Marra paper.  This is a 3D surface showing...
 
 ```{r}
-F28_3 <- runFAC_multi(use.IBM = F)
+F28_3 <- runFAC_multi(eq.tol = 2)
 ```
 
 Look at the dataframe
@@ -43,10 +43,8 @@ head(F28_3)
 Plot the 3D surface.
 ```{r}
 par(mfrow = c(1,1))
-plot_Fig28_3(F28_3)
+plot_Fig28_3(F28_3$multiFAC.out.df.RM)
 ```
-
-
 
 
 
@@ -93,24 +91,19 @@ head(F28.4.grid)[,1:10]
 #### Run multiple FACs accross the parameters
 
 ```{r}
-F28.4.FAC.RM <- runFAC_multi(param.grid = F28.4.grid,
-                          verbose = F, eq.tol = 2,
-                          use.IBM = F,
-                          run.IBM = F)
+F28.4.FAC <- runFAC_multi(param.grid = F28.4.grid,
+                             verbose = F, eq.tol =6,
+                             Ninit = c(100,0,100,0))
 
-plot_Fig28_4(F28.4.FAC.RM)
 ```
+
+
 
 
 ### Plot Figure 28.4
 
 ```{r}
-F28.4.FAC.RM <- runFAC_multi(param.grid = F28.4.grid,
-                          verbose = F, eq.tol = 2,
-                          use.IBM = T,
-                          run.IBM = T)
-
-plot_Fig28_4_IBM(runFAC.multi = F28.4.FAC, plot.debug.lines = T)
+plot_Fig28_4(F28.4.FAC.IB$multiFAC.out.df.RM)
 ```
 
 
@@ -126,7 +119,7 @@ plot_Fig28_4_IBM(runFAC.multi = F28.4.FAC, plot.debug.lines = T)
 #### Create the intial range of the parameters
 ```{r}
 F28.5.range.winter <- param_ranges(figure = 28.5, scenario = "winter")
-F28.5.range.inter <- param_ranges(figure = 28.5, scenario = "int")
+F28.5.range.inter  <- param_ranges(figure = 28.5, scenario = "int")
 F28.5.range.summer <- param_ranges(figure = 28.5, scenario = "summer")
 ```
 
@@ -176,10 +169,10 @@ F28.5.FAC.sum <- runFAC_multi(param.grid = F28.5.sum.grid)
 ### Plot Figure 28.5
 
 ```{r}
-plot_Fig28_5(dat.winter.lim = F28.5.FAC.win,
-                         dat.intermediate = F28.5.FAC.int,
-                         dat.summer.lim = F28.5.FAC.sum,
+plot_Fig28_5(dat.winter.lim = F28.5.FAC.win$multiFAC.out.df.RM,
+                         dat.intermediate = F28.5.FAC.int$multiFAC.out.df.RM,
+                         dat.summer.lim = F28.5.FAC.sum$multiFAC.out.df.RM,
                          drain = T)
-```
 
+```
 

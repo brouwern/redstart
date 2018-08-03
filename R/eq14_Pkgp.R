@@ -17,8 +17,7 @@ eq14_Pkgp <- function(W2,
                  K.bc,
                  K.bk,
                  B.mk,
-                 B.fk,
-                 i = NA){
+                 B.fk){
 
   #equation 14 last line
   P.kgp <- 0
@@ -64,21 +63,22 @@ eq14_Pkgp <- function(W2,
 
         ## Error control
         ### If numerator > denominator, then P = 1 (!!! is this correct?)
-        P.kgp <- ifelse(numerator> denominator,1,P.kgp)
+        ## P.kgp <- ifelse(numerator> denominator,1,P.kgp)
 
         ### if the denominator is ~0, then P = 0
-        P.kgp <- ifelse(floor(denominator) == 0,0,P.kgp)
+        ## P.kgp <- ifelse(floor(denominator) == 0,0,P.kgp)
 
-        #error check
-        if(P.kgp > 1){
-          browser()
-        }
+
 
 
         }
     }
   }
 
+
+  if(P.kgp > 1 |  P.kgp < 0){
+    browser()
+  }
 
   return(P.kgp)
 

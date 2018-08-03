@@ -18,7 +18,7 @@
 #' @export
 
 
-eq03 <- function(S.m.mg = 0.75,
+eq03buildW2Mat <- function(S.m.mg = 0.75,
                  S.m.mp = 0.75,
                  S.m.fg = 0.75,
                  S.m.fp = 0.75){

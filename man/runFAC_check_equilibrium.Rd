@@ -4,7 +4,8 @@
 \alias{runFAC_check_equilibrium}
 \title{check model equilibrium}
 \usage{
-runFAC_check_equilibrium(out.df, i, at.eq = FALSE, verbose = TRUE, ...)
+runFAC_check_equilibrium(lamb.B.mc.mean, lamb.B.mc.var, i, at.eq = FALSE,
+  verbose = TRUE, eq.tol = 5, ...)
 }
 \description{
 check model equilibrium

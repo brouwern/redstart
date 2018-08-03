@@ -4,16 +4,16 @@
 \alias{eq10_Pcgp}
 \title{Equation 10:}
 \usage{
-eq10_Pcgp(W2, K.bc, B.fc, B.mc, ...)
+eq10_Pcgp(W2, K.bc, B.mc, B.fc, ...)
 }
 \arguments{
 \item{W2}{population vector}
 
 \item{K.bc}{females on sour.c.habitat}
 
-\item{B.fc}{females available in sink}
+\item{B.mc}{females available in sink}
 
-\item{B.mc}{males on sour.c. habitat}
+\item{B.fc}{males on sour.c. habitat}
 
 \item{...}{....}
 }
@@ -34,40 +34,6 @@ Then the number of good-poor pairings is determined by...
 2)other, the number of good-poor pairings is zero (all pairings are good-good)
 
 Note that in the original paper, both equations 10 and 11 have the same subscripts of P.cgp, while in equation 12 it is implied they have different subscripts.  It appears that the 2nd subscript should indicate the winter habitat for males and the 3rd should indicate the winter habitat for females.  Therefore equation 10 in the original paper remains as P.cgp (P.source.male-good.female-poor) and equation 11 should be changed to P.c.pg (P.source.male-poor.female-good)
-}
-\examples{
-# Test loop
-## Values for population vector W2
-seqW <- seq(1,500,30)
-
-## Values for carrying capacities
-seqK <- seq(1,525,50)
-
-## dataframe of parameter combinations
-df <- expand.grid(mg = seqW,
-                  mp = seqW,
-                  fg = seqW,
-                  fp = seqW,
-                  K.bc = seqK,
-                  K.bk = seqK,
-                  P.cgg = NA)
-
-## Loop over all param combos
-for(i in 1:nrow(df)){
-    W2 <- df[i,c("mg","mp","fg","fp")]
-    params <- df[i,c("K.bc","K.bk")]
-
-    B.mc <- eq06_Bmc(W2, params$K.bc)
-    B.fc <- eq04_Bfc(W2, params$K.bc)
-    df$P.cgp[i] <- eq10_Pcgp(W2 = W2,
-                             K.bc = params$K.bc,
-                             B.fc = B.fc,
-                             B.mc = B.mc)
-}
-
-hist(df$P.cgp)
-summary(df$P.cgp)
-
 }
 \references{
 Runge, MC and PP Marra.  2004.  Modeling seasonal

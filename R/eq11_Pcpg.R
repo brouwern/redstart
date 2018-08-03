@@ -15,8 +15,8 @@
 #'
 #' @param W2 population vector; indicats where birds are coming from
 #' @param K.bc females  sour.c.habitat carrying capacity
-#' @param B.fc females alreadiy in source
 #' @param B.mc males already in source
+#' @param B.fc females alreadiy in source
 #' @param ... ...
 #'
 #' @return P.cpg, the proportion of pairings in the source habitat (.c _ _)
@@ -28,45 +28,15 @@
 #'       interactions in the population dynamics of migratory birds.
 #'       In Greenberg, R and PP Marra, eds.  Birds of two worlds.
 #'
-#' @examples
-#' # Test loop
-#' ## Values for population vector W2
-#' seqW <- seq(1,100,30)
-#'
-#' ## Values for carrying capacities
-#' seqK <- seq(1,125,50)
-#'
-#' ## dataframe of parameter combinations
-#' df <- expand.grid(mg = seqW,
-#'                   mp = seqW,
-#'                   fg = seqW,
-#'                   fp = seqW,
-#'                   K.bc = seqK,
-#'                   K.bk = seqK,
-#'                   P.cgg = NA)
-#'
-#' ## Loop over all param combos
-#' for(i in 1:nrow(df)){
-#'     W2 <- df[i,c("mg","mp","fg","fp")]
-#'     params <- df[i,c("K.bc","K.bk")]
-#'
-#'     B.mc <- eq06_Bmc(W2, params$K.bc)
-#'     B.fc <- eq04_Bfc(W2, params$K.bc)
-#'     df$P.cpg[i] <- eq11_Pcpg(W2 = W2,
-#'                              K.bc = params$K.bc,
-#'                              B.fc = B.fc,
-#'                              B.mc = B.mc)
-#' }
-#'
-#' hist(df$P.cpg)
 #'
 #' @export
 
 
 eq11_Pcpg <- function(W2,
                       K.bc,
+                      B.mc,
                       B.fc,
-                      B.mc,...){# K
+                      ...){
 
   #part B of equation 11 (lower part)
   P.cpg <- 0

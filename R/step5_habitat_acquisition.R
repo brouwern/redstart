@@ -2,7 +2,7 @@
 #' @export
 
 
-substep_competition <- function(B2,
+step5_habitat_acquisition <- function(B2,
                                 Y2,
                                 param.set,
                                 gamma.i,
