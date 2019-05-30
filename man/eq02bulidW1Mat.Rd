@@ -4,7 +4,8 @@
 \alias{eq02bulidW1Mat}
 \title{Equation 2: Build winter survival matrix}
 \usage{
-eq02bulidW1Mat(S.w.mg = 0.8, S.w.mp = 0.8, S.w.fg = 0.8, S.w.fp = 0.8)
+eq02bulidW1Mat(S.w.mg = 0.8, S.w.mp = 0.8, S.w.fg = 0.8,
+  S.w.fp = 0.8)
 }
 \arguments{
 \item{S.w.mg}{Survival (S) in the winter (w) of males (m) in good (g) habitat}

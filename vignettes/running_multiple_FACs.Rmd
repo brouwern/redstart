@@ -103,7 +103,7 @@ F28.4.FAC <- runFAC_multi(param.grid = F28.4.grid,
 ### Plot Figure 28.4
 
 ```{r}
-plot_Fig28_4(F28.4.FAC.IB$multiFAC.out.df.RM)
+#plot_Fig28_4(F28.4.FAC.IB$multiFAC.out.df.RM)
 ```
 
 

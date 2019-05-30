@@ -10,6 +10,10 @@ runFAC_multi(param.grid = param_grid(), Ninit = c(10, 0, 10, 0),
 \arguments{
 \item{Ninit}{vector of initial population sizes}
 
+\item{use.IBM}{Use individual-based model (IBM) implementation}
+
+\item{eq.tol}{Tolerance level for testing for equilibirum.  Smaller values are more stringent.}
+
 \item{...}{other arguements}
 
 \item{para.grid}{Dataframe of parameters, usually with 1 or 2 that vary accross a range}

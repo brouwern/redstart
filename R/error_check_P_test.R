@@ -1,5 +1,10 @@
 #' Test mate pairing equation against test dataframe
 #'
+#' @param equation Mate pairing equation to test.
+#' @param P.test.df A dataframe
+#' @param call.browser Open debuggin browser when error encounters
+#' @param print.i print iteration number for debugging
+#'
 #' @examples
 #' P.test.df <- error_check_build_Ptest_df()
 #' dim(P.test.df)

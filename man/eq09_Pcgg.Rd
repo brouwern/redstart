@@ -12,13 +12,14 @@ eq09_Pcgg(W2, K.bc, B.mc, B.fc, ...)
 
 \item{K.bc}{source carrying capacity (?)  original file said "sink popualtion size" in comments}
 
+\item{B.mc}{Number of males (.m) settled into source (.xc) habitat}
+
 \item{B.fc}{females available in sink}
 
-\item{...}{...}
+\item{...}{Aditional parameters}
 }
 \value{
-P.cgg, the proportion of pairings in the "source" breeding habitat between male and
-females which both winter in the good habitat
+P.cgg, the proportion of pairings in the "source" breeding habitat between male and females which both winter in the good habitat
 }
 \description{
 Calculats the proportion of pairing in source (.c_) breeding habitat that are betwee

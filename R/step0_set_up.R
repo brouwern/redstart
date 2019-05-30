@@ -1,4 +1,9 @@
-#' Step 0: Set up survival matrices and other preliminaries
+#' Step 0: Set up survival matrices &  other preliminaries
+#'
+#' @param param.set Initial parameters and population state for a single run of model to equilibirum
+#' @param iterations Number of iterations to run model to allow it to reach equilibrium
+#' @param use.IBM Use individual-based modeling implementation of breeding territory aquisition and mate pairing
+#' @param use.IBM.Sb Used individual-based modeling implementation of breeding survibal.
 #'
 #' @examples
 #'

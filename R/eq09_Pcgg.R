@@ -35,12 +35,11 @@
 #'
 #' @param W2 population vector
 #' @param K.bc source carrying capacity (?)  original file said "sink popualtion size" in comments
-#' @param B.mc
+#' @param B.mc Number of males (.m) settled into source (.xc) habitat
 #' @param B.fc females available in sink
-#' @param ... ...
+#' @param ... Aditional parameters
 #'
-#' @return P.cgg, the proportion of pairings in the "source" breeding habitat between male and
-#' females which both winter in the good habitat
+#' @return P.cgg, the proportion of pairings in the "source" breeding habitat between male and females which both winter in the good habitat
 #'
 #' @examples
 #'

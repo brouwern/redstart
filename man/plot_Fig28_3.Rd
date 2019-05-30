@@ -4,7 +4,8 @@
 \alias{plot_Fig28_3}
 \title{Process the output of runMultiFAC() to re-create the 3D Fig 28.3}
 \usage{
-plot_Fig28_3(runFAC.multi, plot.type = "P", scale. = T, tick.labs = 1)
+plot_Fig28_3(runFAC.multi, plot.type = "P", scale. = T,
+  tick.labs = 1)
 }
 \arguments{
 \item{runFAC.multi}{output from runFAC_multi()}

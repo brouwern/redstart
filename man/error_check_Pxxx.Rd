@@ -4,7 +4,8 @@
 \alias{error_check_Pxxx}
 \title{Check for errors in pairing equations}
 \usage{
-error_check_Pxxx(P.xxx.name, P.xxx.value, P.xxx.eq.name = NA, i = NA, ...)
+error_check_Pxxx(P.xxx.name, P.xxx.value, P.xxx.eq.name = NA, i = NA,
+  ...)
 }
 \arguments{
 \item{P.xxx.name}{name of scalar to check}

@@ -12,8 +12,8 @@
 #' @param para.grid Dataframe of parameters, usually with 1 or 2 that vary accross a range
 #' @param Ninit vector of initial population sizes
 #' @param makeFigure deprecated.  Replaced by plot_Fig29_3
-#' @param use.IBM
-#' @param eq.tol
+#' @param use.IBM Use individual-based model (IBM) implementation
+#' @param eq.tol Tolerance level for testing for equilibirum.  Smaller values are more stringent.
 #' @param ... other arguements
 #'
 #' @export

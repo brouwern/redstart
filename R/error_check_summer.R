@@ -1,7 +1,6 @@
+#' Check output of breeding season processes for errors
 #'
 #' @export
-#'
-#'
 
 error_check_summer <- function(B0,
                                W2,

@@ -1,8 +1,16 @@
+#' Execute 5th step of Runge & Mara FAC model: winter habitat acquisition
+#'
+#' @param B2 Adult population state at end of fall migration
+#' @param Y2 Offspring population state at end of fall migration
+#' @param param.set Initial parameters
+#' @param gamma.i Vector of parameters defining relative competitive ability for winter habitat
+#' @param i Model iteration number
+#' @param ... Additional parameters
 #'
 #' @export
 
 
-step5_habitat_acquisition <- function(B2,
+step5_winter_habitat_acquisition <- function(B2,
                                 Y2,
                                 param.set,
                                 gamma.i,

@@ -1,0 +1,49 @@
+---
+title: "The Full-annual cycle model of Runge & Marra (2004)"
+author: "Nathan Brouwer"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+> "The factors that limit and the mechanisms that regulate the dynamics of bird populations are often poorly understood ... especially for migratory birds. " (Runge & Marra 2004, pg 376)
+
+
+## Main conclusions of Runge & Marra 2004
+
+* Both winter and breeding ground habitat availability can be important for equilibirum population size (N.eq): "we show that habitat availability on both the wintering and breeding grounds can strongly affect equilibrium population size and sex ratio.
+* Sex ratio dynamics important (mediated via difference in survival and competitiveness?) "sex ratio dynamics, as mediated by behavioral dominance, can affect all other aspects of population dynamics."
+* Winter to breeding season carry over effects can be important "carry-over effects can be strong, especially when winter events are limiting."
+
+## Conventional wisdom: winter limitation
+Until recently, the prevailing view was that mi- gratory bird populations were limited primarily by events on their wintering grounds (e.g., Fretwell 1972; Alerstam and Högstedt 1982; Robbins et al. 1989; Baillie and Peach 1992; Rappole and MacDonald 1994).
+
+Pinning limitation to a single season is too simplisitc: "Periods of the annual cycle appear to be linked inextricably, such that ecological circumstances within one season subsequently influence reproductive success and/or survival in a subsequent season, effects we term 'seasonal interactions' "
+
+
+## What is not in the model
+
+
+* Age structure
+
+
+## Issues/Ideas
+* breeding to wintering carry over; how much did they look at this?
+* is dd habitat use a "potentially powerful regulatory mechanism" as Sherry and HOlmes (1995) state.  What does this mean?
+* ideal despotic distribution should result in decliens in mean fitness as population increases; this would be good to plot
+* compare despotic vs. ideal free dynamics (recent overnbird paper?).  How would ideal free be modeled?  Habitat settlement randomly allocated?
+* Summer-winter w/ despotic-despotic, vs. despotic-ideal free?  Selection for a given type of system?
+* Seasonal compensation "...as in Sutherland (1996), loss of winter habitat does not result in as severe a decline in equilibrium population size as might otherwise be expected, because increased production (due to density dependence on the breeding grounds) partially offsets the impact of the habitat loss. Understanding sea- sonal compensation thus requires understanding how the seasons interact with one another through population-level effects, especially as mediated by seasonal density-depend- ent processes. Direct"

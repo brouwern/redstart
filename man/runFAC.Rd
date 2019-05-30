@@ -4,12 +4,13 @@
 \alias{runFAC}
 \title{Run FAC model to equilibirum}
 \usage{
-runFAC(iterations = 350, Ninit = c(10, 0, 10, 0), param.set = param_set(),
-  scenario = NA, vary = NA, verbose = FALSE, check.errors = TRUE,
-  check.errors.in = c("B0.RM", "P.cgg", "P.cgp", "P.cpg", "P.cpp", "P.kgg",
-  "P.kgp", "P.kpg", "P.kpp", "Y1"), check.eq = TRUE, minimum.i = 20,
-  eq.tol = 6, diagnostic.plot = F, return.output = T, save.ts = T,
-  use.IBM = F, use.IBM.S.b = F, ...)
+runFAC(iterations = 350, Ninit = c(10, 0, 10, 0),
+  param.set = param_set(), scenario = NA, vary = NA,
+  verbose = FALSE, check.errors = TRUE, check.errors.in = c("B0.RM",
+  "P.cgg", "P.cgp", "P.cpg", "P.cpp", "P.kgg", "P.kgp", "P.kpg", "P.kpp",
+  "Y1"), check.eq = TRUE, minimum.i = 20, eq.tol = 6,
+  diagnostic.plot = F, return.output = T, save.ts = T, use.IBM = F,
+  use.IBM.S.b = F, ...)
 }
 \arguments{
 \item{iterations}{how many iterations of model to run before stopping}

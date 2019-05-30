@@ -510,7 +510,7 @@ for(i in 1:iterations){
     #*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
 
 
-    W.list.RM <- step5_habitat_acquisition(B2.RM,
+    W.list.RM <- step5_winter_habitat_acquisition(B2.RM,
                                   Y2.RM,
                                   param.set,
                                   gamma.i = runFAC.i$param.matrices$gamma.i,
@@ -519,7 +519,7 @@ for(i in 1:iterations){
     #set W.list.IB to NULL in case not being used
     W.list.IB <- NULL
         if(use.IBM == TRUE){
-          W.list.IB <- step_5_habitat_acquisition(B2.IB,
+          W.list.IB <- step5_winter_habitat_acquisition(B2.IB,
                                            Y2.IB,
                                            param.set,
                                            gamma.i = runFAC.i$param.matrices$gamma.i,

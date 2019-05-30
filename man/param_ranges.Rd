@@ -4,17 +4,19 @@
 \alias{param_ranges}
 \title{Make paramater ranges}
 \usage{
-param_ranges(scenario = NA, figure = NA, gamma. = c(5, 5), c. = c(1, 1),
-  K.bc. = c(1000, 1000), K.bk. = c(10000, 10000), K.wg. = c(900, 900),
-  S.w.mg. = c(0.8, 0.8), S.w.mp. = c(0.8, 0.8), S.w.fg. = c(0.8, 0.8),
-  S.w.fp. = c(0.8, 0.8), S.m.mg. = c(0.9, 0.9), S.m.mp. = c(0.8, 0.8),
-  S.m.fg. = c(0.9, 0.9), S.m.fp. = c(0.8, 0.8), R.base.rate. = c(1.8,
-  1.8), R.hab.effect. = c(0.5, 0.5), co. = c(1, 1), f. = c(0.5, 0.5),
-  S.b.mc. = c(0.95, 0.95), S.b.mk. = c(0.85, 0.85), S.b.md. = c(0.8, 0.8),
-  S.b.fc. = c(0.95, 0.95), S.b.fk. = c(0.85, 0.85), S.f.mc. = c(0.8, 0.8),
-  S.f.mk. = c(0.75, 0.75), S.f.md. = c(0.8, 0.8), S.f.fc. = c(0.8, 0.8),
-  S.f.fk. = c(0.75, 0.75), S.y.mc. = c(0.8, 0.8), S.y.mk. = c(0.75, 0.75),
-  S.y.fc. = c(0.8, 0.8), S.y.fk. = c(0.75, 0.75), verbose = TRUE)
+param_ranges(scenario = NA, figure = NA, gamma. = c(5, 5),
+  c. = c(1, 1), K.bc. = c(1000, 1000), K.bk. = c(10000, 10000),
+  K.wg. = c(900, 900), S.w.mg. = c(0.8, 0.8), S.w.mp. = c(0.8, 0.8),
+  S.w.fg. = c(0.8, 0.8), S.w.fp. = c(0.8, 0.8), S.m.mg. = c(0.9,
+  0.9), S.m.mp. = c(0.8, 0.8), S.m.fg. = c(0.9, 0.9),
+  S.m.fp. = c(0.8, 0.8), R.base.rate. = c(1.8, 1.8),
+  R.hab.effect. = c(0.5, 0.5), co. = c(1, 1), f. = c(0.5, 0.5),
+  S.b.mc. = c(0.95, 0.95), S.b.mk. = c(0.85, 0.85), S.b.md. = c(0.8,
+  0.8), S.b.fc. = c(0.95, 0.95), S.b.fk. = c(0.85, 0.85),
+  S.f.mc. = c(0.8, 0.8), S.f.mk. = c(0.75, 0.75), S.f.md. = c(0.8,
+  0.8), S.f.fc. = c(0.8, 0.8), S.f.fk. = c(0.75, 0.75),
+  S.y.mc. = c(0.8, 0.8), S.y.mk. = c(0.75, 0.75), S.y.fc. = c(0.8,
+  0.8), S.y.fk. = c(0.75, 0.75), verbose = TRUE)
 }
 \arguments{
 \item{scenario}{Difference scenarios defined by Runge & Marra.  If set overides other varibles that may have been set using other arguements.}

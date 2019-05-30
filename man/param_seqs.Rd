@@ -2,7 +2,6 @@
 % Please edit documentation in R/param_seqs.R, R/param_seqs2.R
 \name{param_seqs}
 \alias{param_seqs}
-\alias{param_seqs}
 \title{Create sequence of parameter values between minimum and maximum.  Output is a list}
 \usage{
 param_seqs(param.ranges = param_ranges(), length.out = 10)

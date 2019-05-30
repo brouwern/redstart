@@ -2,13 +2,22 @@
 % Please edit documentation in R/step0_set_up.R
 \name{step0_set_up}
 \alias{step0_set_up}
-\title{Step 0: Set up survival matrices and other preliminaries}
+\title{Step 0: Set up survival matrices &  other preliminaries}
 \usage{
 step0_set_up(param.set = param_set(), iterations = 150, use.IBM = F,
   use.IBM.S.b = F)
 }
+\arguments{
+\item{param.set}{Initial parameters and population state for a single run of model to equilibirum}
+
+\item{iterations}{Number of iterations to run model to allow it to reach equilibrium}
+
+\item{use.IBM}{Use individual-based modeling implementation of breeding territory aquisition and mate pairing}
+
+\item{use.IBM.Sb}{Used individual-based modeling implementation of breeding survibal.}
+}
 \description{
-Step 0: Set up survival matrices and other preliminaries
+Step 0: Set up survival matrices &  other preliminaries
 }
 \examples{
 

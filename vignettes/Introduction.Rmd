@@ -19,16 +19,60 @@ knitr::opts_chunk$set(
 ```
 
 
-📈 in references to "full annual cycle" (FAC) in titles / abstracts; in 2015 2 major papers were published:
-@PeterPMarra et al A call for FAC research in animal #ecology https://bit.ly/2KhqKag
+Key quote:
+
+> "Research not incorporating prior seasons may misclassify mechanisms underlying individual variation in the season under consideration and numerical changes in populations. Furthermore, full annual cycle approaches are essential for interpreting potential effects of major stressors like climate change " Marra et al 2015 (BIology Letters)
+
+Adahl E, Lundberg P, Jonzén N. 2006 From climate change to population change: the need to consider annual life cycles. Glob. Change Biol. 12, 1627–1633.
+
+Small-Lorenz SL, Culp LA, Ryder TB, Will TC, Marra PP. 2013 A blind spot in climate change vulnerability assessments. Nat. Clim. Change 3, 91–93.
+
+Marra et al 2015 (BIology Letters) "severe breeding season bias": "Although there is enormous variation in annual cycles across vertebrate taxa, what is consistent is that the breeding period composes a relatively small proportion of the cycle."
+
+
+* Most environments on earth are at least somewhat seasonal
+* Selective pressures, occurence or importance of density dependence, factors that limit population etc vary throughout the year
+* Migratory animals are especially likely to experience dramatically different ecological contexts throughout the year
+
+## Key Issues
+
+* Breeding season typical only small part of year
+* Research biased towards breeding season Marra et al 2015 "we found a strong seasonal bias"
+* Most studies only study/(discuss?) organisms during a single season Marra et al 2015 
+* Most studies don't consider carry over effects (seasonal interactions) Marra et al 2015 
+
+* Carry over: "Events occurring during one period often continue to influence individuals and populations during subsequent periods, profoundly influencing both ecological and evolutionary processes." (Marra et al 2015 Biology letters)
+  - Individuals: "At the individual level, non-fatal effects, such as poor physical condition or delayed phenology, carry-over from one season to the next to influence vital rates such as reproductive success or survival." (Marra et al 2015 Biology letters)
+  - Populations: " numerical changes between seasons can drive a density-dependent effect such as reduced winter survival altering densities and recruitment in the breeding period" (Marra et al 2015 Biology letters)
+  
+  
+## Carry-over research accross taxa
+ "several studies illustrate how full annual cycle research is necessary to understand fundamental biology across multiple species groups (e.g. amphibians, reptiles , birds, mammals" (Marra et al 2015)
  
+ Touchon JC, McCoy MW, Vonesh JR, Warkentin KM. 2013 Effects of plastic hatching timing carry over through metamorphosis in red-eyed treefrogs. Ecology 94, 850–860
+ 
+ Hare KM, Caldwell AJ, Cree A. 2012 Effects of early postnatal environment on phenotype and survival of a lizard. Oecologia 168, 639–649
+ 
+ Morrissette M, Bêty J, Gauthier G, Reed A, Lefebvre J. 2010 Climate, trophic interactions, density dependence and carry-over effects on the population productivity of a migratory Arctic herbivorous bird. Oikos 119, 1181–1191. (doi:10.1111/j.1600-0706.2009.18079.x)
+ 
+ English S, Bateman AW, Mares R, Ozgul A, Clutton-Brock TH. 2014 Maternal, social and abiotic environmental effects on growth vary across life stages in a cooperative mammal. J. Anim. Ecol. 83, 332–342.
+  
 
-@JeffHostEcology FAC population models for migratory birds
-https://bit.ly/2Awa9QF
+## History
+
+* Darwin, Descent of Man: "Darwin noted that events prior to breeding can influence female fecundity in migratory birds"
+* Fretwell: "Fretwell [5] argued that population dynamics of organisms living in seasonal environments result from events occurring between seasons [5]. He presented a theoretical case that breeding densities are determined in part by overwinter survival, which in turn, is related to events occurring during the preceding breeding season"
 
 
 
-```{r}
+```{r echo=FALSE}
+# R references to "full annual cycle" (FAC) in titles / abstracts; in 2015 2 major papers #were published: @PeterPMarra et al A call for FAC research in animal #ecology #https://bit.ly/2KhqKag
+#  
+# 
+# @JeffHostEcology FAC population models for migratory birds
+# https://bit.ly/2Awa9QF
+
+
 N <- c(44,63,44,15,4,4,5,3,5,2,
    3, 2, 5, 4,2,3,1,1,1,1,
    1, 2,1)
