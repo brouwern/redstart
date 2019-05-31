@@ -1,0 +1,92 @@
+---
+title: "Vignette Title"
+author: "Vignette Author"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+
+Load the package
+```{r}
+library(FACavian)
+```
+
+
+### Figure 28.5
+
+#### Create parameters
+
+#### Create the intial range of the parameters
+```{r}
+F28.5.range.winter <- param_ranges(figure = 28.5, scenario = "winter")
+F28.5.range.inter  <- param_ranges(figure = 28.5, scenario = "int")
+F28.5.range.summer <- param_ranges(figure = 28.5, scenario = "summer")
+```
+
+Examine the parameters
+```{r}
+data.frame(winter = head(F28.5.range.winter),
+      int = head(F28.5.range.inter),
+      summer = head(F28.5.range.summer))
+```
+
+
+#### Turn any varying parameters into sequence
+
+For Figure 28.5 breding ground carrying capacity is varied.
+```{r}
+F28.5.win.seq <- param_seqs(F28.5.range.winter)
+F28.5.int.seq <- param_seqs(F28.5.range.inter)
+F28.5.sum.seq <- param_seqs(F28.5.range.summer)
+
+```
+
+```{r}
+head(F28.5.win.seq)
+```
+
+
+#### Expand parameters into a grid
+Create all combinations of parameters
+```{r}
+F28.5.win.grid <- param_grid(param.seqs = F28.5.win.seq)
+F28.5.int.grid <- param_grid(param.seqs = F28.5.int.seq)
+F28.5.sum.grid <- param_grid(param.seqs = F28.5.sum.seq)
+```
+
+
+
+
+#### Run multiple FACs accross the parameters
+
+```{r}
+F28.5.FAC.win <- runFAC_multi(param.grid = F28.5.win.grid)
+F28.5.FAC.int <- runFAC_multi(param.grid = F28.5.int.grid)
+F28.5.FAC.sum <- runFAC_multi(param.grid = F28.5.sum.grid)
+```
+
+
+### Plot Figure 28.5
+
+```{r}
+plot_Fig28_5(dat.winter.lim = F28.5.FAC.win$multiFAC.out.df.RM,
+                         dat.intermediate = F28.5.FAC.int$multiFAC.out.df.RM,
+                         dat.summer.lim = F28.5.FAC.sum$multiFAC.out.df.RM,
+                         drain = T)
+
+```
+

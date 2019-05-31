@@ -29,16 +29,48 @@ library(FACavian)
 
 ### Figure 28.3: 3D surface
 
-The defaults for runFAC_multi() are set to reproduce Figure 28.3 in the original Runge and Marra paper.  This is a 3D surface showing...
+The defaults for runFAC_multi() are set to reproduce Figure 28.3 in the original Runge and Marra paper.  This is a 3D surface showing th equilibrium population size XX as the amount of xxxx and yyyy is varied.
 
 ```{r}
-F28_3 <- runFAC_multi(eq.tol = 2)
+F28_3 <- runFAC_multi(eq.tol = 2, 
+                      verbose = F)
 ```
 
-Look at the dataframe
+
+runFAC_multi produces a list with two elements.  
+
 ```{r}
-head(F28_3)
+is(F28_3)
+length(F28_3)
 ```
+
+
+One holds the output for the original model of Runge and Marra (rmFAC; multiFAC.out.df.RM), while the holds the output for from a model with individual-based submodels (ibFAC; multiFAC.out.df.IB:'data.frame). We'll focus on rmFAC. 
+
+```{r}
+str(F28_3, 1)
+```
+
+The rmFAC element is dataframe.
+
+```{r}
+is(F28_3$multiFAC.out.df.RM)
+```
+
+This dataframe. contains information on the output dozens of individual FAC models run to equilibrium so it very large
+
+```{r}
+dim(F28_3$multiFAC.out.df.RM)
+```
+
+There are 23 rows for various output such as the population sizes and sex ratios.  There are 100 rows.
+
+```{r}
+str(F28_3$multiFAC.out.df.RM,1)
+```
+
+
+Each rows is a single run of the model.  runFAC_multi() is designed to run the model over multiple combinations of parametrs.  A principle output is a 3D surface plot where the x and y axes are two parameters varied between runs of the model and the z (vertical axis) is a state of interest when the model is at equilibrium, such as the equilibirum summer population size.
 
 Plot the 3D surface.
 ```{r}
@@ -55,10 +87,17 @@ plot_Fig28_3(F28_3$multiFAC.out.df.RM)
 #### Create parameters
 
 #### Create the intial range of the parameters
+
+The param_ranges() function can be used to create ranges (minimum and maxiumum) of parameters that can then be subsequently explored using runFAC_multi().  This is the first step, followed by generating sequences of numbers between the min and the max.  param_ranges() is set up to take as arguements different scenarios (scenario = ... ) or figures (figure = ...) defined by Runge and Marra and to produce the combinations of parameters used in that paper.  In general one or two parameters are varied and all the others are kept constant.
+
+We can set up the parameters for Figures 28.3 and 28.4 like this
 ```{r}
+F28.3.range <- param_ranges(figure = 28.3)
 F28.4.range <- param_ranges(figure = 28.4)
 ```
 
+
+In this figure K.bc was varied from 100 to 600 and all other parameters kept constant.
 ```{r}
 head(F28.4.range)
 ```
@@ -66,34 +105,74 @@ head(F28.4.range)
 
 #### Turn any varying parameters into sequence
 
-For Figure 28.4 breding ground carrying capacity is varied.
+Once the minimum and maxium are set the actual sequence of numbers can be made.  This 
+
+For Figure 28.4 breding ground carrying capacity is varied from 100 to 600, so we want a vector of numbers, say 100, 200, 300, 400, 500, 600.
+
+For Figure 28.3 breding ground carrying capacity is varied from 1 to 1000, and also winter carrying capacity is varied from 1 to 100.
+
+We make a list the has all the parameters we need
 ```{r}
+F28.3.seq <- param_seqs(F28.3.range)
 F28.4.seq <- param_seqs(F28.4.range)
 ```
 
+This is a list
+```{r}
+is(F28.4.seq)
+```
+
+There is one element for each input parameter
+```{r}
+length(F28.4.seq)
+```
+
+
+If a parameter does not need to be varied a single value appears in its slot.  Otherwise a vector.  For figure 28.4 there is just one parameter that varies
 ```{r}
 head(F28.4.seq)
 ```
 
 
+For figure 28.3 there are two
+```{r}
+head(F28.3.seq)
+```
+
+
 #### Expand parameters into a grid
-Create all combinations of parameters
+
+Once the parameters have been defined a set of all possible parameter combinations needs to be created.  This is essentially a grid of all possible value.  (The shape isn't a square grid, but takes its name from the use of R's expand.grid function)
+
+For figure 28.4 only one parameter is varied.
 ```{r}
 F28.4.grid <- param_grid(param.seqs = F28.4.seq)
 ```
 
+Figure 28.3 is much larger because two parameters are varied.
+```{r}
+F28.3.grid <- param_grid(param.seqs = F28.3.seq)
+```
 
+The output is a dataframe
+```{r}
+is(F28.4.grid)
+```
+
+Each row of the dataframe contains all the parameters needed for a single run of the model.  
 ```{r}
 head(F28.4.grid)[,1:10]
 ```
-
+Each row of data will be fed in the runFAC() function and the model run until an equilibirum is reached.
 
 #### Run multiple FACs accross the parameters
 
+We can run the grid to equilibrium with runFAC_multi().
 ```{r}
 F28.4.FAC <- runFAC_multi(param.grid = F28.4.grid,
-                             verbose = F, eq.tol =6,
-                             Ninit = c(100,0,100,0))
+                             verbose = F, 
+                             eq.tol =6,
+                             Ninit = c(100, 0, 100, 0))
 
 ```
 
@@ -102,8 +181,9 @@ F28.4.FAC <- runFAC_multi(param.grid = F28.4.grid,
 
 ### Plot Figure 28.4
 
+Different kinds of figures require different set up and so there are specific functions for each figure.  Figure 28.3 is made with function plot_Fig28_3().  Figure 28.4 has its own function.
 ```{r}
-#plot_Fig28_4(F28.4.FAC.IB$multiFAC.out.df.RM)
+plot_Fig28_4(F28.4.FAC$multiFAC.out.df.RM)
 ```
 
 
@@ -111,68 +191,4 @@ F28.4.FAC <- runFAC_multi(param.grid = F28.4.grid,
 
 
 
-
-### Figure 28.5
-
-#### Create parameters
-
-#### Create the intial range of the parameters
-```{r}
-F28.5.range.winter <- param_ranges(figure = 28.5, scenario = "winter")
-F28.5.range.inter  <- param_ranges(figure = 28.5, scenario = "int")
-F28.5.range.summer <- param_ranges(figure = 28.5, scenario = "summer")
-```
-
-Examine the parameters
-```{r}
-data.frame(winter = head(F28.5.range.winter),
-      int = head(F28.5.range.inter),
-      summer = head(F28.5.range.summer))
-```
-
-
-#### Turn any varying parameters into sequence
-
-For Figure 28.5 breding ground carrying capacity is varied.
-```{r}
-F28.5.win.seq <- param_seqs(F28.5.range.winter)
-F28.5.int.seq <- param_seqs(F28.5.range.inter)
-F28.5.sum.seq <- param_seqs(F28.5.range.summer)
-
-```
-
-```{r}
-head(F28.5.win.seq)
-```
-
-
-#### Expand parameters into a grid
-Create all combinations of parameters
-```{r}
-F28.5.win.grid <- param_grid(param.seqs = F28.5.win.seq)
-F28.5.int.grid <- param_grid(param.seqs = F28.5.int.seq)
-F28.5.sum.grid <- param_grid(param.seqs = F28.5.sum.seq)
-```
-
-
-
-
-#### Run multiple FACs accross the parameters
-
-```{r}
-F28.5.FAC.win <- runFAC_multi(param.grid = F28.5.win.grid)
-F28.5.FAC.int <- runFAC_multi(param.grid = F28.5.int.grid)
-F28.5.FAC.sum <- runFAC_multi(param.grid = F28.5.sum.grid)
-```
-
-
-### Plot Figure 28.5
-
-```{r}
-plot_Fig28_5(dat.winter.lim = F28.5.FAC.win$multiFAC.out.df.RM,
-                         dat.intermediate = F28.5.FAC.int$multiFAC.out.df.RM,
-                         dat.summer.lim = F28.5.FAC.sum$multiFAC.out.df.RM,
-                         drain = T)
-
-```
 

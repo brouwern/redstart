@@ -1,0 +1,85 @@
+---
+title: "error_check_P_test"
+author: "Vignette Author"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+W2.30 <- eq01buildW0vect(30,0,30, 0)
+K.bc.500  <- 500
+
+B.mc.K500 <- eq06_Bmc(W2.30, K.bc.500)
+B.fc.K500 <- eq04_Bfc(W2.30, K.bc.500)
+
+### Examine output for a single set of parameters
+#### K.bc = 500
+eq09_Pcgg(W2.30, K.bc = K.bc.500, B.fc = B.fc.K500,  B.mc = B.mc.K500)
+
+
+## equation 9
+P.test.df.out9 <-  error_check_P_test(equation = "eq9",
+                                     P.test.df=error_check_build_Ptest_df(),
+                                     call.browser = T)
+hist(P.test.df.out9$P.cgg)
+
+
+## equation 10
+P.test.df.out10 <-  error_check_P_test(equation = "eq10",
+                                     P.test.df=error_check_build_Ptest_df(),
+                                     call.browser = T)
+
+summary(P.test.df10.out)
+hist(P.test.df.out10$P.cgp)
+
+
+
+## equation 11
+P.test.df.out11 <-  error_check_P_test(equation = "eq11",
+                                     P.test.df=error_check_build_Ptest_df(),
+                                     call.browser = T)
+
+summary(P.test.df.out11)
+hist(P.test.df.out11$P.cpg)
+
+
+
+## equation 13
+P.test.df.out13 <-  error_check_P_test(equation = "eq13",
+                                     P.test.df=error_check_build_Ptest_df(),
+                                     call.browser = T)
+
+summary(P.test.df.out13)
+hist(P.test.df.out13$P.kgg)
+
+
+
+## equation 14
+P.test.df.out14 <-  error_check_P_test(equation = "eq14",
+                                     P.test.df=error_check_build_Ptest_df(),
+                                     call.browser = T)
+
+summary(P.test.df.out14)
+hist(P.test.df.out14$P.kgp)
+
+
+
+
+## equation 15
+P.test.df.out15 <-  error_check_P_test(equation = "eq15",
+                                       P.test.df=error_check_build_Ptest_df(include.W.0 = F,
+                                                                            include.K.0 = F),
+                                       call.browser = T)
+
+summary(P.test.df.out15)
+hist(P.test.df.out15$P.kpg)
