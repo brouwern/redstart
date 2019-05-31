@@ -1,5 +1,5 @@
 ---
-title: "Introduction: Full Annual Cycle (FAC) demography"
+title: "Introduction: Full Annual Cycle (FAC) Demography"
 author: "Nathan Brouwer"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -27,7 +27,7 @@ Adahl E, Lundberg P, Jonzén N. 2006 From climate change to population change: t
 
 Small-Lorenz SL, Culp LA, Ryder TB, Will TC, Marra PP. 2013 A blind spot in climate change vulnerability assessments. Nat. Clim. Change 3, 91–93.
 
-Marra et al 2015 (BIology Letters) "severe breeding season bias": "Although there is enormous variation in annual cycles across vertebrate taxa, what is consistent is that the breeding period composes a relatively small proportion of the cycle."
+Marra et al 2015 (Biology Letters) "severe breeding season bias": "Although there is enormous variation in annual cycles across vertebrate taxa, what is consistent is that the breeding period composes a relatively small proportion of the cycle."
 
 
 * Most environments on earth are at least somewhat seasonal
@@ -47,6 +47,7 @@ Marra et al 2015 (BIology Letters) "severe breeding season bias": "Although ther
   
   
 ## Carry-over research accross taxa
+
  "several studies illustrate how full annual cycle research is necessary to understand fundamental biology across multiple species groups (e.g. amphibians, reptiles , birds, mammals" (Marra et al 2015)
  
  Touchon JC, McCoy MW, Vonesh JR, Warkentin KM. 2013 Effects of plastic hatching timing carry over through metamorphosis in red-eyed treefrogs. Ecology 94, 850–860
@@ -66,7 +67,8 @@ Marra et al 2015 (BIology Letters) "severe breeding season bias": "Although ther
 
 
 ```{r echo=FALSE}
-# R references to "full annual cycle" (FAC) in titles / abstracts; in 2015 2 major papers #were published: @PeterPMarra et al A call for FAC research in animal #ecology #https://bit.ly/2KhqKag
+# references to "full annual cycle" (FAC) in titles / abstracts; in 2015 2 major papers 
+#were published: @PeterPMarra et al A call for FAC research in animal #ecology #https://bit.ly/2KhqKag
 #  
 # 
 # @JeffHostEcology FAC population models for migratory birds

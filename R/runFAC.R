@@ -677,6 +677,8 @@ for(i in 1:iterations){
 
 
 
+
+
   ########################
   ### Finalize output  ###
   ########################
@@ -748,9 +750,12 @@ for(i in 1:iterations){
 
 
 
+
+
   ### Plot Diagnostic for full run of model
   if(save.ts == TRUE & diagnostic.plot == T){
-    plot_runFAC(runFAC.i$FAC.out)
+    message("Diagnostic plot build using runFAC.i$FAC.out.RM")
+    plot_runFAC(runFAC.i$FAC.out.RM)
   }
 
 

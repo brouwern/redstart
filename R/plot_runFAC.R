@@ -3,6 +3,7 @@
 #' @export
 #'
 
+
 plot_runFAC <- function(out.df,y1 = "tot.W",y2="tot.B", ...){
   graphics::par(mfrow = c(1,3),mar = c(3,3.2,2,0))
   ## Panel 1: TOtal winter vs. Total breeding
