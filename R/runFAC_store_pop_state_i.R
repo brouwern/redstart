@@ -1,4 +1,3 @@
-
 #' Save current population state
 #'
 #'

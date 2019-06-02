@@ -19,13 +19,12 @@ step1_winter_survival(i, runFAC.i, use.IBM, Ninit, W.list.RM = NULL,
 \item{W.list.RM}{List containing post-competition sub-population sizes for Runge-Marra implementation.  Takes place of Ninit on all iterations > 1}
 }
 \value{
-W1.list list containing W1.RM and W1.IB, the population stucture after overwinter survival
+W1.list list of W1.RM and W1.IB, the pop stucture after overwinter survival
 }
 \description{
-Execute 1st step of Runge & Marra FAC model: overwinter survival
+W.list.IB List of post-comp sub-pop sizes fo IBM version.  Replace Ninit on all i > 1
 }
 \examples{
-W.list.IB List containing post-competition sub-population sizes for individual based model implementation (IBM).  Takes place of Ninit on all iterations > 1
 
 # Initial population size for iteration 1
 step_1_winter_survival(i = 1, use.IBM = F,Ninit = c(10,0,10,0))

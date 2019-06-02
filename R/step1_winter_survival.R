@@ -1,14 +1,16 @@
 #' Execute 1st step of Runge & Marra FAC model: overwinter survival
 #'
+#' W.list.IB List of post-comp sub-pop sizes fo IBM version.  Replace Ninit on all i > 1
+#'
 #' @param i model iterations
 #' @param runFAC.i Initial parameters for this run of the FAC
 #' @param use.IBM Use individual-based modeling approach instead of Runge & Marra equation (not currently implemented)
 #' @param Ninit vector of initial population sizes for 1st iteration (i =1)
 #' @param W.list.RM List containing post-competition sub-population sizes for Runge-Marra implementation.  Takes place of Ninit on all iterations > 1
 #'
-#' @return W1.list list containing W1.RM and W1.IB, the population stucture after overwinter survival
+#' @return W1.list list of W1.RM and W1.IB, the pop stucture after overwinter survival
 #'
-#' @examples W.list.IB List containing post-competition sub-population sizes for individual based model implementation (IBM).  Takes place of Ninit on all iterations > 1
+#' @examples
 #'
 #' # Initial population size for iteration 1
 #' step_1_winter_survival(i = 1, use.IBM = F,Ninit = c(10,0,10,0))

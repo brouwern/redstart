@@ -1,20 +1,17 @@
-
-#This function sets up and runs a single iteration set models based on randomized vital rates
-#to see how Neq varies when summer and winter K are both varied
-#this produces a RESPONSE SURFACE
-#originally this function had a loop within it it to loop over multiple
-#sets of random vital rates but that has been placed external to this loop
-#
-#This function might actually be redundnat with the functions
-# it calls but Id need to check
-
-#Function was originally in a script with a "temp_" prefix
-#and was then rename "7_vita_rate_sim2.R"
-#was then moved to the master set of sub-functions
-#"1FAC-subfnxnsVS2.R" on "Thu Jul 21 10:27:22 2016"
+#' Random Vital Rate Response surface
+#' This function sets up and runs a single iteration set models based on randomized vital rates
+#' to see how Neq varies when summer and winter K are both varied
+#' this produces a RESPONSE SURFACE
+#' originally this function had a loop within it it to loop over multiple
+#' sets of random vital rates but that has been placed external to this loop
+#'
+#' This function might actually be redundnat with the functions
+#' it calls but Id need to check
+#'
+#' @export
 
 
-RandVitalRateResponseSurface <- function(r_vitals = r_vital(n = 5),
+RandVitalRateResponseSurface <- function(r_vitals = r_vitals(n = 5),
                                          var.length. = 5){
 
   # Loop over each row in the df of random vital rates
@@ -100,7 +97,7 @@ RandVitalRateResponseSurface <- function(r_vitals = r_vital(n = 5),
 
   #browser()
   #Run model
-  iraw.MultiFac.out <- runMultiFAC(paramCombos. = i.full.range.r_vitals)
+  iraw.MultiFac.out <- runFAC_multi(paramCombos. = i.full.range.r_vitals)
 
   #perturb Kbc
   dKbc.full.range.r_vitals       <- i.full.range.r_vitals

@@ -6,6 +6,8 @@
 #' @param dat.summer.lim Dataframe from running a summer-limited FAC
 #' @param drain Should drain males be included in plots.
 #'
+#' @import graphics
+#'
 #' @export
 
 

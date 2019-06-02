@@ -2,6 +2,8 @@
 #'
 #' Functions to replicate plots that occur in Runge and Mara's Birds of Two Worlds Full Annual Cycle model
 #'
+#' @import graphics
+#'
 #' @export
 
 

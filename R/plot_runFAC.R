@@ -1,13 +1,17 @@
 #' Plot time series of a single run of a FAC model
 #'
+#' @import graphics
+#'
 #' @export
 #'
 
 
-plot_runFAC <- function(out.df,y1 = "tot.W",y2="tot.B", ...){
-  graphics::par(mfrow = c(1,3),mar = c(3,3.2,2,0))
+plot_runFAC <- function(out.df,
+                        y1 = "tot.W",
+                        y2="tot.B", ...){
+  par(mfrow = c(1,3),mar = c(3,3.2,2,0))
   ## Panel 1: TOtal winter vs. Total breeding
-  graphics::plot(out.df[,y1] ~ out.df$t,
+  plot(out.df[,y1] ~ out.df$t,
                  xlab = "",
                  ylab = "",
        main = "Total population size")

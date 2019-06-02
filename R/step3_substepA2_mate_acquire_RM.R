@@ -1,4 +1,4 @@
-
+#' Step 3 Substep A2
 #' @export
 
 step3_substepA2_mate_acquire_RM <- function(W2,

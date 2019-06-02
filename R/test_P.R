@@ -9,6 +9,8 @@
 #' @param sample.N how many subsamples of datarame to take
 #' @param return.df return the full dataframe with original test values
 #'
+#' @import graphics
+#'
 #' @export
 
 test_P <- function(dat = test.dat.P,

@@ -5,6 +5,8 @@
 #' @param scale. include scale
 #' @param tick.labs ????
 #'
+#' @import graphics
+#'
 #' @export
 
 plot_Fig28_3 <- function(runFAC.multi,

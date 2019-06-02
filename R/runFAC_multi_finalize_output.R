@@ -1,3 +1,5 @@
+#' Finalize output from runFAC_multi
+#'
 #' @export
 #'
 

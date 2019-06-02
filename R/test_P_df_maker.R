@@ -1,8 +1,11 @@
-#make dataframe for test functions
-#to save use usethis::use_data(test.dat.P,overwrite = T)
+#' make dataframe for test functions
+#' to save use usethis::use_data(test.dat.P,overwrite = T)
+#'
+#' @export
 
-test_P_df_maker <- function(wmin=1,wmax=100,wstep=30,
-                          kmin = 1, kmax=125,kstep=30){
+
+test_P_df_maker <- function(wmin=1, wmax=100,wstep=30,
+                            kmin = 1, kmax=125,kstep=30){
   ## Set up parameters over which to test
   ## sequence of values for population vectors
   seqW <- seq(wmin,wmax,wstep)

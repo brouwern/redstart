@@ -7,5 +7,8 @@
 plot_Fig28_6(winter.lim, intermediate, summer.lim)
 }
 \description{
+@import graphics
+}
+\details{
 @export
 }

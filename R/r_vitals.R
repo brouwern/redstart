@@ -1,4 +1,12 @@
-# Generate random life histories/vital rates
+#' Generate random life histories/vital rates
+#'
+#' @import stats
+#'
+#' @export
+#'
+
+
+#
 r_vitals <- function(d = 0.25,   #sets range of data to draw random values from
                             n = 10000,                     #number of simulated life histories
                             params. = param_ranges() #starting values for parameters; originally makeParamCombos.df()
