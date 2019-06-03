@@ -9,8 +9,8 @@ LazyData: true
 ByteCompile: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.0
-Dependes:
-    R (>= 3.5.3)
+Depends:
+    R (>= 3.5)
 Suggests:
     testthat,
     knitr,

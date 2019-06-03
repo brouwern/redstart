@@ -1,5 +1,14 @@
 #' Competition loop
 #'
+#' @param A.i.0 xxx
+#' @param K.wg.0 xxx
+#' @param y.i xxx
+#' @param comp.df xxx
+#' @param j xxx
+#' @param i xxx
+#' @param debug.continue xxx
+#' @param internal.error.check xxx
+#'
 #' @export
 
 

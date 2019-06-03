@@ -5,12 +5,12 @@
 #' @details
 #' Previously aliased as Fx.make.min.mat.eq19
 #'
-#' @param B.mc ...
-#' @param B.fc ...
-#' @param B.mk ...
-#' @param B.fk ...
+#' @param B.mc xxx
+#' @param B.fc xxx
+#' @param B.mk xxx
+#' @param B.fk xxx
 #'
-#' @return min.mat ...
+#' @return min.mat xxx
 #'
 #' @export
 

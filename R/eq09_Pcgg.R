@@ -1,7 +1,7 @@
 #' Equation 9: Pair formation in source habitat between birds both from
 #' good habitat
 #'
-#' @description Calculats the proportion of pairing in source (.c_) breeding habitat that are betwee
+#' @description Calculates the proportion of pairing in source (.c_) breeding habitat that are betwee
 #' males that wintered in good habitat and females that wintered in good habitat.
 #'
 #' @details
@@ -92,14 +92,14 @@
 
 #'
 #' ## This creates a large range of potenial parameters to enter the function
-#' dim(P.test.df)
+#' dim(test.dat.P)
 #'
 #' ## Loop over all parameter combinations
 #'
 #' ## Look at distribution of P.cgg
-#' P.test.df.out <- test_eq09(P.test.df, call.browser = F, print.i = F)
-#' hist(P.test.df.out$P.cgg)
-#' summary(P.test.df.out$P.cgg)
+#' P.test.df.out <- test_P(test.dat.P, FUN = eq09_Pcgg, return.df = TRUE)
+#' hist(P.test.df.out$P)
+#' summary(P.test.df.out$P)
 #' @export
 
 

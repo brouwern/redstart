@@ -1,5 +1,12 @@
-#' make dataframe for test functions
+#' make dataframe for testing functions
 #' to save use usethis::use_data(test.dat.P,overwrite = T)
+#'
+#' @param wmin Winter carrying capacity minimum
+#' @param wmax Winter carrying capacity max
+#' @param wstep step size for creating vector of values between winter min and max
+#' @param kmin Summer (Breeding) carrying capacity minimum
+#' @param kmax Summer carrying capacity maximum
+#' @param kstep step size for creating vector of values between min ans max
 #'
 #' @export
 

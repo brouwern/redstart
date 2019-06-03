@@ -11,7 +11,7 @@
 #' @param W2 Population vector produced by eq02
 #' @param K.bc carrying capacity...
 #'
-#' @return scalar
+#' @return B.mc
 #'
 #' @references Runge, MC and PP Marra.  2004.  Modeling seasonal
 #'       interactions in the population dynamics of migratory birds.

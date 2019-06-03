@@ -2,13 +2,26 @@
 % Please edit documentation in R/test_P_df_maker.R
 \name{test_P_df_maker}
 \alias{test_P_df_maker}
-\title{make dataframe for test functions
+\title{make dataframe for testing functions
 to save use usethis::use_data(test.dat.P,overwrite = T)}
 \usage{
 test_P_df_maker(wmin = 1, wmax = 100, wstep = 30, kmin = 1,
   kmax = 125, kstep = 30)
 }
+\arguments{
+\item{wmin}{Winter carrying capacity minimum}
+
+\item{wmax}{Winter carrying capacity max}
+
+\item{wstep}{step size for creating vector of values between winter min and max}
+
+\item{kmin}{Summer (Breeding) carrying capacity minimum}
+
+\item{kmax}{Summer carrying capacity maximum}
+
+\item{kstep}{step size for creating vector of values between min ans max}
+}
 \description{
-make dataframe for test functions
+make dataframe for testing functions
 to save use usethis::use_data(test.dat.P,overwrite = T)
 }

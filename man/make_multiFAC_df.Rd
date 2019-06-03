@@ -6,6 +6,9 @@
 \usage{
 make_multiFAC_df(params.use = param_grid())
 }
+\arguments{
+\item{params.use}{Parameter values to use}
+}
 \description{
 Make empty dataframe for holding output of runMultiFAC(). which runs the model accross a range of paramers
 }

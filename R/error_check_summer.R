@@ -1,5 +1,11 @@
 #' Check output of breeding season processes for errors
 #'
+#' @param B0 xxx
+#' @param W2 xxx
+#' @param P.breeding.pair.results xxxx
+#' @param check.errors.in what to check errors in
+#' @param i index
+#'
 #' @export
 
 error_check_summer <- function(B0,

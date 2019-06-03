@@ -1,5 +1,7 @@
 #' Quality control on initial parameters entering runFAC()
 #'
+#' @param param.set Parameter set ...
+#'
 #' @export
 
 error_check_param_set <- function(param.set){

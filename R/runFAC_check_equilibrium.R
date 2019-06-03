@@ -1,5 +1,12 @@
 #' check model equilibrium
 #'
+#' @param lamb.B.mc.mean Mean lambda from B.mc ..
+#' @param lamb.B.mc.var Variance of lambda from B.mc ...
+#' @param i iteration
+#' @param at.eq At equilibrium
+#' @param verbose Verbose output?
+#' @param eq.tol Equilibrium tolerance level (higher is more conservative)
+#'
 #' @export
 
 runFAC_check_equilibrium <- function(lamb.B.mc.mean,

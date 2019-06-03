@@ -12,9 +12,9 @@
 #' # Generate parameter sequence
 #' params.seqs <- param_seqs(param.ranges = params)
 #'
-#' #show 1st 6 elements of list
+#'
 #' ## Most are constants; 3rd and 5th element vary accross a range of values
-#' params.seqs[1:6]
+#' params.seqs$K.wg
 #'
 #' @export
 

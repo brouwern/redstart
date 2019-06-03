@@ -2,17 +2,24 @@
 % Please edit documentation in R/RandVitalRateResponseSurface.R
 \name{RandVitalRateResponseSurface}
 \alias{RandVitalRateResponseSurface}
-\title{Random Vital Rate Response surface
+\title{Random Vital Rate Response surface}
+\usage{
+RandVitalRateResponseSurface(rand_vitals = r_vitals(n = 5),
+  var.length. = 5)
+}
+\arguments{
+\item{rand_vitals}{Random vital rates (?)}
+
+\item{var.length.}{???}
+}
+\description{
 This function sets up and runs a single iteration set models based on randomized vital rates
 to see how Neq varies when summer and winter K are both varied
 this produces a RESPONSE SURFACE
 originally this function had a loop within it it to loop over multiple
-sets of random vital rates but that has been placed external to this loop}
-\usage{
-RandVitalRateResponseSurface(r_vitals = r_vitals(n = 5),
-  var.length. = 5)
+sets of random vital rates but that has been placed external to this loop
 }
-\description{
+\details{
 This function might actually be redundnat with the functions
 it calls but Id need to check
 }

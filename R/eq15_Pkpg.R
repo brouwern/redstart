@@ -8,8 +8,8 @@
 #' @param W2 Popualtion vector
 #' @param K.bc carrying capacity
 #' @param K.bk carrying capacity
-#' @param B.mk ...
-#' @param B.fk
+#' @param B.mk xxx
+#' @param B.fk xxx
 #'
 #' @export
 

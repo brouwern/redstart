@@ -8,10 +8,9 @@
 #'
 #' Formerly aliased as makeParamCombos.df
 #'
-#' @param paramRanges Input range (min, max) for each paramters
-#' @param var.length Step size for diving range; number of increments to divide range into
+#' @param param.seqs sequence of parameters to use
 #'
-#' @return ParamCombos.df Dataframe of parameter combinations
+#' @return param.grid Dataframe of parameter combinations
 #'
 #' @examples
 #'

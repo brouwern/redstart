@@ -6,6 +6,11 @@
 \usage{
 eq26_alloc_winter_P(A.i.0, A.i.G)
 }
+\arguments{
+\item{A.i.0}{xxx}
+
+\item{A.i.G}{xxx}
+}
 \description{
 equation 26 Allocate to poor habitat
 }

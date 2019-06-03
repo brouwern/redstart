@@ -1,5 +1,8 @@
 #' Finalize output from runFAC_multi
 #'
+#' @param multiFAC.out.df Output of runFAC_multi
+#' @param param.grid Grid of parameters over which model was run (?)
+#'
 #' @export
 #'
 

@@ -2,6 +2,10 @@
 #'
 #' @import graphics
 #'
+#' @param out.df OUtput from runFAC()
+#' @param y1 Label for axis
+#' @param y2 Label for axis
+#'
 #' @export
 #'
 

@@ -8,6 +8,8 @@ test_P(dat = test.dat.P, FUN = eq09_Pcgg, plot.test = TRUE,
   subsample = TRUE, sample.N = 10, return.df = FALSE, ...)
 }
 \arguments{
+\item{dat}{dataframe with values against which to test function.  Defaults to object named test.dat.P.}
+
 \item{FUN}{function to test}
 
 \item{plot.test}{plots a histogram of the proportions calculated by tyeh function}
@@ -18,7 +20,7 @@ test_P(dat = test.dat.P, FUN = eq09_Pcgg, plot.test = TRUE,
 
 \item{return.df}{return the full dataframe with original test values}
 
-\item{test.dat.P}{dataframe with values against which to test function}
+\item{...}{Other}
 }
 \description{
 These equations determine pairing proportions (P) in breeding habitat.

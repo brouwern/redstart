@@ -4,15 +4,23 @@
 \alias{step3_substepA1_hab_acquire_IB}
 \title{Breeding habitat acquisition substep of pre-breeding step of breeding season using individual-based (IB) approach}
 \usage{
-step3_substepA1_hab_acquire_IB(W2, K.bc = param.set$K.bc,
-  K.bk = param.set$K.bk, ...)
+step3_substepA1_hab_acquire_IB(W2, K.bc, K.bk, ...)
+}
+\arguments{
+\item{W2}{...}
+
+\item{K.bc}{...}
+
+\item{K.bk}{...}
+
+\item{...}{additional arguements}
 }
 \description{
 Breeding habitat acquisition substep of pre-breeding step of breeding season using individual-based (IB) approach
 }
 \examples{
 #Set up param.set
-param.set <- param_set()
+param.set <- FACavian::param_set()
 
 #set breeding carrying capacities to be relatively small
 param.set$K.bc <- 50

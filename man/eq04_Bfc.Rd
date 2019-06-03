@@ -12,7 +12,7 @@ eq04_Bfc(W2, K.bc)
 \item{K.bc}{carrying capacity of breeding ground (.k_) source (._c) habitat}
 }
 \value{
-Abundance B...
+B.fc Abundance ...
 }
 \description{
 This function outputs \code{B.fc}, the number of females that acquire

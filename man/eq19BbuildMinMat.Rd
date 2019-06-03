@@ -7,16 +7,16 @@
 eq19BbuildMinMat(B.mc, B.fc, B.mk, B.fk)
 }
 \arguments{
-\item{B.mc}{...}
+\item{B.mc}{xxx}
 
-\item{B.fc}{...}
+\item{B.fc}{xxx}
 
-\item{B.mk}{...}
+\item{B.mk}{xxx}
 
-\item{B.fk}{...}
+\item{B.fk}{xxx}
 }
 \value{
-min.mat ...
+min.mat xxx
 }
 \description{
 Fx.make.min.mat.eq19()

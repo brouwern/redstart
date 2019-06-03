@@ -7,7 +7,7 @@
 make_FAC_df(iterations = 300)
 }
 \arguments{
-\item{reps}{Number of reps to run basic FAC model. Defaults to 300.}
+\item{iterations}{Number of iterations to run basic FAC model. Defaults to 300.}
 }
 \value{
 out.df A dataframe to hold output of each iteration from a single run of the model.

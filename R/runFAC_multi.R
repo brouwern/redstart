@@ -9,10 +9,11 @@
 #' should run a bit faster if runFAC() is keep all of that info
 #' NB: "remakeFigure" does not appear in current code
 #'
-#' @param para.grid Dataframe of parameters, usually with 1 or 2 that vary accross a range
+#' @param param.grid Dataframe of parameters, usually with 1 or 2 that vary accross a range
 #' @param Ninit vector of initial population sizes
-#' @param makeFigure deprecated.  Replaced by plot_Fig29_3
+#' @param remakeFigure deprecated.  Replaced by plot_Fig29_3
 #' @param use.IBM Use individual-based model (IBM) implementation
+#' @param verbose Use verbose output
 #' @param eq.tol Tolerance level for testing for equilibirum.  Smaller values are more stringent.
 #' @param ... other arguements
 #'

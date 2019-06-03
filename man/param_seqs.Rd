@@ -9,13 +9,13 @@ param_seqs(param.ranges = param_ranges(), length.out = 10)
 param_seqs(param.ranges = param_ranges(), length.out = 10)
 }
 \arguments{
-\item{param.ranges}{minimum and maximum values for all parameters, generted by \link{param_range}}
+\item{param.ranges}{minimum and maximum values for all parameters}
 
 \item{length.out}{number of increments to divide range into}
 
-\item{param.ranges}{minimum and maximum values for all parameters, generted by \link{param_range}}
+\item{len.out}{number of increments to divide range into}
 
-\item{length.out}{number of increments to divide range into}
+\item{param.ranges}{minimum and maximum values for all parameters, generted by \link{param_range}}
 }
 \value{
 param.seq List with 30 elements, one for each parameter.
@@ -34,18 +34,8 @@ params <- param_ranges(figure = 28.3)
 # Generate parameter sequence
 params.seqs <- param_seqs(param.ranges = params)
 
-#show 1st 6 elements of list
+
 ## Most are constants; 3rd and 5th element vary accross a range of values
-params.seqs[1:6]
-
-#generate min and max values for each parameter used for figure 28.3 in original paper
-params <- param_ranges(figure = 28.3)
-
-# Generate parameter sequence
-params.seqs <- param_seqs(param.ranges = params)
-
-#show 1st 6 elements of list
-## Most are constants; 3rd and 5th element vary accross a range of values
-params.seqs[1:6]
+params.seqs$K.wg
 
 }

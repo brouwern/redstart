@@ -4,6 +4,9 @@
 #'
 #' @import graphics
 #'
+#' @param runFAC.multi Output of runFAC_multi
+#' @param plot.debug.lines Should reference lines be plotted on graph
+#'
 #' @export
 
 

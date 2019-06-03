@@ -6,6 +6,13 @@
 \usage{
 r_vitals(d = 0.25, n = 10000, params. = param_ranges())
 }
+\arguments{
+\item{d}{sets range of data to draw random values from (?delta?)}
+
+\item{n}{number of simulated life histories}
+
+\item{params.}{starting values for parameters; originally makeParamCombos.df() but deprecated}
+}
 \description{
 Generate random life histories/vital rates
 }

@@ -6,6 +6,17 @@
 \usage{
 error_check_summer(B0, W2, P.breeding.pair.results, check.errors.in, i)
 }
+\arguments{
+\item{B0}{xxx}
+
+\item{W2}{xxx}
+
+\item{P.breeding.pair.results}{xxxx}
+
+\item{check.errors.in}{what to check errors in}
+
+\item{i}{index}
+}
 \description{
 Check output of breeding season processes for errors
 }

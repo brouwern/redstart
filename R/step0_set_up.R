@@ -3,22 +3,24 @@
 #' @param param.set Initial parameters and population state for a single run of model to equilibirum
 #' @param iterations Number of iterations to run model to allow it to reach equilibrium
 #' @param use.IBM Use individual-based modeling implementation of breeding territory aquisition and mate pairing
-#' @param use.IBM.Sb Used individual-based modeling implementation of breeding survibal.
+#' @param use.IBM.S.b Used individual-based modeling implementation of breeding survibal.
 #'
 #' @examples
 #'
-#' # Generate default matrices
-#' runFAC.i <- runFAC_set_initial_params()
+#' # Initialize model
+#' runFAC.i <- step0_set_up()
 #'
 #' # Look at structure of list
-#' str(runFAC.i)
+#' ## Elements for model output, matrices, parameters, etc
+#' str(runFAC.i,1)
 #'
 #' # Look at top of dataframe to hold output
-#' head(runFAC.i$FAC.out)[,1:5]
+#' head(runFAC.i$FAC.out.RM)[,1:5]
 #'
-#' # Look at 2nd matrix, winter survival
+#' # Look at 2nd matrix used in model, winter survival
 #' runFAC.i$param.matrices[2]
 #' runFAC.i$param.matrices$S.w
+#'
 #' @export
 
 

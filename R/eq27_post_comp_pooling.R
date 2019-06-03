@@ -1,6 +1,9 @@
 #' Equation 27
 #' Use of assign() here is probably inefficient/awk; put into list?
 #'
+#' @param A.i.G xxx
+#' @param A.i.P xxx
+#'
 #' @export
 
 eq27_post_comp_pooling <- function(A.i.G, A.i.P){

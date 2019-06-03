@@ -1,5 +1,8 @@
 #' equation 26 Allocate to poor habitat
 #'
+#' @param A.i.0 xxx
+#' @param A.i.G xxx
+#'
 #' @export
 
 

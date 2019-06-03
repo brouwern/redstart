@@ -7,6 +7,19 @@
 runFAC_check_equilibrium(lamb.B.mc.mean, lamb.B.mc.var, i, at.eq = FALSE,
   verbose = TRUE, eq.tol = 5, ...)
 }
+\arguments{
+\item{lamb.B.mc.mean}{Mean lambda from B.mc ..}
+
+\item{lamb.B.mc.var}{Variance of lambda from B.mc ...}
+
+\item{i}{iteration}
+
+\item{at.eq}{At equilibrium}
+
+\item{verbose}{Verbose output?}
+
+\item{eq.tol}{Equilibrium tolerance level (higher is more conservative)}
+}
 \description{
 check model equilibrium
 }

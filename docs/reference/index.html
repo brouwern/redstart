@@ -73,6 +73,51 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/Introduction.html">Introduction: Full Annual Cycle (FAC) Demography</a>
+    </li>
+    <li>
+      <a href="../articles/make_figure_28_5.html">Vignette Title</a>
+    </li>
+    <li>
+      <a href="../articles/p-tests.html">error_check_P_test</a>
+    </li>
+    <li>
+      <a href="../articles/paper-notes.html">Misc notes</a>
+    </li>
+    <li>
+      <a href="../articles/relevant_literature.html">Running a full-annual cycle model with FACavian</a>
+    </li>
+    <li>
+      <a href="../articles/Runge_and_Marra_notes.html">The Full-annual cycle model of Runge &amp; Marra (2004)</a>
+    </li>
+    <li>
+      <a href="../articles/running_a_FAC.html">Running a full-annual cycle (FAC) model with FACavian</a>
+    </li>
+    <li>
+      <a href="../articles/running_multiple_FACs.html">Running multiple FACs to explore parameter variation</a>
+    </li>
+    <li>
+      <a href="../articles/Sherry_Holmes_notes.html">The Cannonical perspective on Full-annual cycle demography in migratory passerines</a>
+    </li>
+    <li>
+      <a href="../articles/y-creating_a_package.html">w) Creating this package</a>
+    </li>
+    <li>
+      <a href="../articles/z-build_and_rebuild_package.html">z) Building and rebuilding vignettes</a>
+    </li>
+    <li>
+      <a href="../articles/z2-building_a_package.html">z2) Building and rebuilding vignettes - orig</a>
+    </li>
+  </ul>
+</li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -115,189 +160,311 @@
         <td>
           <p><code><a href="eq01buildW0vect.html">eq01buildW0vect()</a></code> </p>
         </td>
-        <td><p>Equation 1: Set up current population vector W0</p></td>
+        <td><p>Equation 1: Set up current population vector (W0)</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="eq02bulidMat.html">eq02bulidMat()</a></code> </p>
+          <p><code><a href="eq02bulidW1Mat.html">eq02bulidW1Mat()</a></code> </p>
         </td>
-        <td><p>Equation 2: Build Winter survival matrix</p></td>
+        <td><p>Equation 2: Build winter survival matrix</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="eq03.html">eq03()</a></code> </p>
+          <p><code><a href="eq03buildW2Mat.html">eq03buildW2Mat()</a></code> </p>
         </td>
         <td><p>Equation 3: Make northward migration survival matrix (S.m)</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="eq04.html">eq04()</a></code> </p>
+          <p><code><a href="eq04_Bfc.html">eq04_Bfc()</a></code> </p>
         </td>
         <td><p>Equation 4: Allocate breeding females to Source habitat (B.fc)</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="eq05calcScalar.html">eq05calcScalar()</a></code> </p>
+          <p><code><a href="eq05_Bfk.html">eq05_Bfk()</a></code> </p>
         </td>
         <td><p>Equation 5: Allocate breeding females to sink habitat (B.fk)</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="eq06.html">eq06()</a></code> </p>
+          <p><code><a href="eq06_Bmc.html">eq06_Bmc()</a></code> </p>
         </td>
         <td><p>Equation 6: Allocate breeding males to source habitat.</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="eq07calcScalar.html">eq07calcScalar()</a></code> </p>
+          <p><code><a href="eq07_Bmk.html">eq07_Bmk()</a></code> </p>
         </td>
         <td><p>Equation 7: Allocate breeding males to sink habitat</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="eq08calcScalar.html">eq08calcScalar()</a></code> </p>
+          <p><code><a href="eq08_Bmd.html">eq08_Bmd()</a></code> </p>
         </td>
-        <td><p>Equation 8: Assigning breeding males to "drain" status</p></td>
+        <td><p>Equation 8: Assigning breeding males to "drain" (aka "floater") status</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="eq09calcScalar.html">eq09calcScalar()</a></code> </p>
+          <p><code><a href="eq09_Pcgg.html">eq09_Pcgg()</a></code> </p>
         </td>
         <td><p>Equation 9: Pair formation in source habitat between birds both from
 good habitat</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="eq10.html">eq10()</a></code> </p>
+          <p><code><a href="eq10_Pcgp.html">eq10_Pcgp()</a></code> </p>
         </td>
         <td><p>Equation 10:</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="eq11.html">eq11()</a></code> </p>
+          <p><code><a href="eq11_Pcpg.html">eq11_Pcpg()</a></code> </p>
         </td>
-        <td><p>Equation 11:</p></td>
+        <td><p>Equation 11: Proportion of males from poor winter habitat mated with females from good winter habitat</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="eq12.html">eq12()</a></code> </p>
+          <p><code><a href="eq12_Pcpp.html">eq12_Pcpp()</a></code> </p>
         </td>
         <td><p>Equation 12</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="eq13.html">eq13()</a></code> </p>
+          <p><code><a href="eq13_Pkgg.html">eq13_Pkgg()</a></code> </p>
         </td>
         <td><p>Equation 13: pairing in sink (.k) habitat</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="eq14.html">eq14()</a></code> </p>
+          <p><code><a href="eq14_Pkgp.html">eq14_Pkgp()</a></code> </p>
         </td>
         <td><p>Equation 14: proportion in sink habitat, good-poor pairs</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="eq15.html">eq15()</a></code> </p>
+          <p><code><a href="eq15_Pkpg.html">eq15_Pkpg()</a></code> </p>
         </td>
         <td><p>Equation 15: Proportion in sink poor-poor</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="eq16.html">eq16()</a></code> </p>
+          <p><code><a href="eq16_Pkpp.html">eq16_Pkpp()</a></code> </p>
         </td>
         <td><p>Equation 16:</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="eq17buildVect.html">eq17buildVect()</a></code> </p>
+          <p><code><a href="eq17buildB0Vect.html">eq17buildB0Vect()</a></code> </p>
         </td>
         <td><p>Equation 17: Build vector of Breeding ground abundances after pairing</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="eq18buildPmat.html">eq18buildPmat()</a></code> </p>
-        </td>
-        <td><p>Equation 18: Build 2 x 8 matrix of the proporations in each habitat combo</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="eq18buildRmat.html">eq18buildRmat()</a></code> </p>
+          <p><code><a href="eq18AbuildRvec.html">eq18AbuildRvec()</a></code> </p>
         </td>
         <td><p>Equation 18: R vector - build vector of reproduction/fecunity values</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="eq19buildFmat.html">eq19buildFmat()</a></code> </p>
+          <p><code><a href="eq18BbuildPmat.html">eq18BbuildPmat()</a></code> </p>
+        </td>
+        <td><p>Equation 18: Build 2 x 8 matrix of the proporations in each habitat combo</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="eq19AbuildFmat.html">eq19AbuildFmat()</a></code> </p>
         </td>
         <td><p>Equation xx Fx.make.F.matrix()</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="eq19buildMinMat.html">eq19buildMinMat()</a></code> </p>
+          <p><code><a href="eq19BbuildMinMat.html">eq19BbuildMinMat()</a></code> </p>
         </td>
         <td><p>Equation 19: Build 2 x 2 Diagonal matrix based in minimumbs of B.mc vs B.fc and B.mk vs. B.fk</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="eq20.html">eq20()</a></code> </p>
+          <p><code><a href="eq20buildSbmat.html">eq20buildSbmat()</a></code> </p>
         </td>
         <td><p>Equation 20: BREEDING season mortality</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="eq21.html">eq21()</a></code> </p>
+          <p><code><a href="eq21buildSfmat.html">eq21buildSfmat()</a></code> </p>
         </td>
         <td><p>Equation 21 - MIGRATION Mortality of ADULTS
 "Mort during mig depends upon the sex of the bird and breeding habitat it used</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="eq22.html">eq22()</a></code> </p>
+          <p><code><a href="eq22buildSymat.html">eq22buildSymat()</a></code> </p>
         </td>
         <td><p>Equation 22: Mortality during migration of OFFSPRING</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="eq23buildAvect.html">eq23buildAvect()</a></code> </p>
+          <p><code><a href="eq23_stack_Ai.html">eq23_stack_Ai()</a></code> </p>
         </td>
-        <td><p>Equation 23: Build A matrix (not implemented)</p></td>
+        <td><p>Equation 23: Build the A matrix (not implemented)</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="eq24buildGammaVect.html">eq24buildGammaVect()</a></code> </p>
+          <p><code><a href="eq24_competition.html">eq24_competition()</a></code> </p>
+        </td>
+        <td><p>Implement equation 24: competition</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="eq24_comp_loop.html">eq24_comp_loop()</a></code> </p>
+        </td>
+        <td><p>Competition loop</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="eq24_make_gamma_vec.html">eq24_make_gamma_vec()</a></code> </p>
         </td>
         <td><p>Equation 24 - Competition parameters (gamma)</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="eq24compLoop.html">eq24compLoop()</a></code> </p>
+          <p><code><a href="eq25_comp_constrain.html">eq25_comp_constrain()</a></code> </p>
         </td>
-        <td><p>Equation 24: competition - Allocation bird to high quality winter habitiat</p></td>
+        <td><p>Equation 25: Competition A.i constraint</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="makeParamRanges.df.html">makeParamRanges.df()</a></code> </p>
+          <p><code><a href="eq26_alloc_winter_P.html">eq26_alloc_winter_P()</a></code> </p>
         </td>
-        <td><p>Make paramater ranges</p></td>
+        <td><p>equation 26 Allocate to poor habitat</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="makeParamSeq.html">makeParamSeq()</a></code> </p>
+          <p><code><a href="eq27_post_comp_pooling.html">eq27_post_comp_pooling()</a></code> </p>
         </td>
-        <td><p>Make parameter range for looping over multiple values of a parameter</p></td>
+        <td><p>Equation 27
+Use of assign() here is probably inefficient/awk; put into list?</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="makeParCombos.html">makeParCombos()</a></code> </p>
+          <p><code><a href="error_check_B0.html">error_check_B0()</a></code> </p>
+        </td>
+        <td><p>Check for errors in B0 (vector of abundances after breeding habiatat acquisition)</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="error_check_build_Ptest_df.html">error_check_build_Ptest_df()</a></code> </p>
+        </td>
+        <td><p>Builds sequences of parameters for testing mate pairing equations</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="error_check_param_set.html">error_check_param_set()</a></code> </p>
+        </td>
+        <td><p>Quality control on initial parameters entering runFAC()</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="error_check_Pxxx.html">error_check_Pxxx()</a></code> </p>
+        </td>
+        <td><p>Check for errors in pairing equations</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="error_check_P_test.html">error_check_P_test()</a></code> </p>
+        </td>
+        <td><p>Test mate pairing equation against test dataframe</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="error_check_summer.html">error_check_summer()</a></code> </p>
+        </td>
+        <td><p>Check output of breeding season processes for errors</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="error_check_Y1_sex_ratio.html">error_check_Y1_sex_ratio()</a></code> </p>
+        </td>
+        <td><p>Check offspring sex ratio</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="make_FAC_df.html">make_FAC_df()</a></code> </p>
+        </td>
+        <td><p>Create FAC output dataframe</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="make_multiFAC_df.html">make_multiFAC_df()</a></code> </p>
+        </td>
+        <td><p>Make empty dataframe for holding output of runMultiFAC(). which runs the model accross a range of paramers</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="param_grid.html">param_grid()</a></code> </p>
         </td>
         <td><p>Make combinations of parameters for parameter matrix</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="makeSingleRunOutDf.html">makeSingleRunOutDf()</a></code> </p>
+          <p><code><a href="param_ranges.html">param_ranges()</a></code> </p>
         </td>
-        <td><p>Create FAC output dataframe function</p></td>
+        <td><p>Make paramater ranges</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="param_seqs.html">param_seqs()</a></code> <code><a href="param_seqs.html">param_seqs()</a></code> </p>
+        </td>
+        <td><p>Create sequence of parameter values between minimum and maximum.  Output is a list</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="param_set.html">param_set()</a></code> </p>
+        </td>
+        <td><p>Make paramater ranges</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plot_Fig28_3.html">plot_Fig28_3()</a></code> </p>
+        </td>
+        <td><p>Process the output of runMultiFAC() to re-create the 3D Fig 28.3</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plot_Fig28_4.html">plot_Fig28_4()</a></code> </p>
+        </td>
+        <td><p>Replicate plot 28.4</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plot_Fig28_4_IBM.html">plot_Fig28_4_IBM()</a></code> </p>
+        </td>
+        <td><p>Replicate plot 28.4</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plot_Fig28_5.html">plot_Fig28_5()</a></code> </p>
+        </td>
+        <td><p>Figure 28.5: Vary male dominance parameter
+This varies competition for high quality winter habitat</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plot_Fig28_6.html">plot_Fig28_6()</a></code> </p>
+        </td>
+        <td><p>Make plot 28.6 - varying carry over effect c</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plot_runFAC.html">plot_runFAC()</a></code> </p>
+        </td>
+        <td><p>Plot time series of a single run of a FAC model</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="RandVitalRateResponseSurface.html">RandVitalRateResponseSurface()</a></code> </p>
+        </td>
+        <td><p>Random Vital Rate Response surface</p></td>
       </tr><tr>
         
         <td>
@@ -307,9 +474,94 @@ good habitat</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="save_current_state.html">save_current_state()</a></code> </p>
+          <p><code><a href="runFAC_check_equilibrium.html">runFAC_check_equilibrium()</a></code> </p>
+        </td>
+        <td><p>check model equilibrium</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="runFAC_finalize_output.html">runFAC_finalize_output()</a></code> </p>
+        </td>
+        <td><p>finalize output</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="runFAC_multi.html">runFAC_multi()</a></code> </p>
+        </td>
+        <td><p>Run multiple FAC models to equilibirum accross a range of parameters</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="runFAC_multi_finalize_output.html">runFAC_multi_finalize_output()</a></code> </p>
+        </td>
+        <td><p>Finalize output from runFAC_multi</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="runFAC_store_pop_state_i.html">runFAC_store_pop_state_i()</a></code> </p>
         </td>
         <td><p>Save current population state</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="r_vitals.html">r_vitals()</a></code> </p>
+        </td>
+        <td><p>Generate random life histories/vital rates</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="step0_set_up.html">step0_set_up()</a></code> </p>
+        </td>
+        <td><p>Step 0: Set up survival matrices &amp;  other preliminaries</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="step1_winter_survival.html">step1_winter_survival()</a></code> </p>
+        </td>
+        <td><p>Execute 1st step of Runge &amp; Marra FAC model: overwinter survival</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="step3_substepA1_hab_acquire_IB.html">step3_substepA1_hab_acquire_IB()</a></code> </p>
+        </td>
+        <td><p>Breeding habitat acquisition substep of pre-breeding step of breeding season using individual-based (IB) approach</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="step3_substepA1_hab_acquire_RM.html">step3_substepA1_hab_acquire_RM()</a></code> </p>
+        </td>
+        <td><p>Breeding habitat acquisition substep of pre-breeding step of breeding season using original Runge &amp; Marra allocation functions</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="step3_substepA2_mate_acquire_IB.html">step3_substepA2_mate_acquire_IB()</a></code> </p>
+        </td>
+        <td><p>Step 3 Substep ...</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="step3_substepA2_mate_acquire_RM.html">step3_substepA2_mate_acquire_RM()</a></code> </p>
+        </td>
+        <td><p>Step 3 Substep A2</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="step5_winter_habitat_acquisition.html">step5_winter_habitat_acquisition()</a></code> </p>
+        </td>
+        <td><p>Execute 5th step of Runge &amp; Mara FAC model: winter habitat acquisition</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="test_P.html">test_P()</a></code> </p>
+        </td>
+        <td><p>Function to test equations 9 through 16</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="test_P_df_maker.html">test_P_df_maker()</a></code> </p>
+        </td>
+        <td><p>make dataframe for test functions
+to save use usethis::use_data(test.dat.P,overwrite = T)</p></td>
       </tr>
     </tbody>
     </table>

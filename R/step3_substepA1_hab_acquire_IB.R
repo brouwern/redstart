@@ -1,8 +1,14 @@
 #' Breeding habitat acquisition substep of pre-breeding step of breeding season using individual-based (IB) approach
 #'
+#'
+#' @param W2 ...
+#' @param K.bc ...
+#' @param K.bk ...
+#' @param ... additional arguements
+#'
 #' @examples
 #' #Set up param.set
-#' param.set <- param_set()
+#' param.set <- FACavian::param_set()
 #'
 #' #set breeding carrying capacities to be relatively small
 #' param.set$K.bc <- 50
@@ -21,9 +27,9 @@
 #' @export
 
 step3_substepA1_hab_acquire_IB <- function(W2,
-                                         K.bc = param.set$K.bc,
-                                         K.bk = param.set$K.bk,
-                                     ...){
+                                         K.bc,  #= param.set$K.bc,
+                                         K.bk, # = param.set$K.bk,
+                                         ...){
 
   ## Habitat ##
   #total amount of habitat

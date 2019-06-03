@@ -1,5 +1,7 @@
 #' Make empty dataframe for holding output of runMultiFAC(). which runs the model accross a range of paramers
 #'
+#' @param params.use Parameter values to use
+#'
 #' @export
 
 make_multiFAC_df <- function(params.use = param_grid()){

@@ -6,6 +6,13 @@
 \usage{
 plot_runFAC(out.df, y1 = "tot.W", y2 = "tot.B", ...)
 }
+\arguments{
+\item{out.df}{OUtput from runFAC()}
+
+\item{y1}{Label for axis}
+
+\item{y2}{Label for axis}
+}
 \description{
 Plot time series of a single run of a FAC model
 }

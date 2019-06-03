@@ -13,9 +13,9 @@ eq15_Pkpg(W2, K.bc, K.bk, B.mk, B.fk)
 
 \item{K.bk}{carrying capacity}
 
-\item{B.mk}{...}
+\item{B.mk}{xxx}
 
-\item{B.fk}{}
+\item{B.fk}{xxx}
 }
 \description{
 Equation 15: Proportion in sink poor-poor

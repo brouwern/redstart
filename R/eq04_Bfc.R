@@ -19,7 +19,7 @@
 #' @param W2 Population vector produced after winter and northward migration survival.
 #' @param K.bc carrying capacity of breeding ground (.k_) source (._c) habitat
 #'
-#' @return Abundance B...
+#' @return B.fc Abundance ...
 #'
 #' @references Runge, MC and PP Marra.  2004.  Modeling seasonal
 #'       interactions in the population dynamics of migratory birds.

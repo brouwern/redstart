@@ -16,7 +16,7 @@
 #' @param K.bc females on sour.c.habitat
 #' @param B.mc females available in sink
 #' @param B.fc males on sour.c. habitat
-#' @param ... ....
+#' @param ... x
 #'
 #' @return xxx xxxx
 #'

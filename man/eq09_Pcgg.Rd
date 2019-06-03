@@ -22,7 +22,7 @@ eq09_Pcgg(W2, K.bc, B.mc, B.fc, ...)
 P.cgg, the proportion of pairings in the "source" breeding habitat between male and females which both winter in the good habitat
 }
 \description{
-Calculats the proportion of pairing in source (.c_) breeding habitat that are betwee
+Calculates the proportion of pairing in source (.c_) breeding habitat that are betwee
 males that wintered in good habitat and females that wintered in good habitat.
 }
 \details{
@@ -104,12 +104,12 @@ eq09_Pcgg(W2, K.bc = K.bc.0,  B.fc = B.fc.K0,   B.mc = B.mc.K0)
 ## Set up parameter combinations to test
 
 ## This creates a large range of potenial parameters to enter the function
-dim(P.test.df)
+dim(test.dat.P)
 
 ## Loop over all parameter combinations
 
 ## Look at distribution of P.cgg
-P.test.df.out <- test_eq09(P.test.df, call.browser = F, print.i = F)
-hist(P.test.df.out$P.cgg)
-summary(P.test.df.out$P.cgg)
+P.test.df.out <- test_P(test.dat.P, FUN = eq09_Pcgg, return.df = TRUE)
+hist(P.test.df.out$P)
+summary(P.test.df.out$P)
 }

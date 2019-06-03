@@ -4,6 +4,9 @@
 #'
 #' @import graphics
 #'
+#' @param runFAC.multi xxx
+#' @param plot.debug.lines Plot lines which represent ...
+#'
 #' @export
 
 

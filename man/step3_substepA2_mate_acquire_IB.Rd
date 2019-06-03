@@ -6,6 +6,9 @@
 \usage{
 step3_substepA2_mate_acquire_IB(hab.aq.results.IB)
 }
+\arguments{
+\item{hab.aq.results.IB}{Output from individuals-based model}
+}
 \description{
 Step 3 Substep ...
 }

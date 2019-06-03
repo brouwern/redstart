@@ -12,7 +12,7 @@ eq06_Bmc(W2, K.bc)
 \item{K.bc}{carrying capacity...}
 }
 \value{
-scalar
+B.mc
 }
 \description{
 Equation 6: Allocate breeding males to source habitat.

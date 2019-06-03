@@ -6,6 +6,9 @@
 \usage{
 error_check_param_set(param.set)
 }
+\arguments{
+\item{param.set}{Parameter set ...}
+}
 \description{
 Quality control on initial parameters entering runFAC()
 }

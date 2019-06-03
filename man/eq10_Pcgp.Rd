@@ -15,7 +15,7 @@ eq10_Pcgp(W2, K.bc, B.mc, B.fc, ...)
 
 \item{B.fc}{males on sour.c. habitat}
 
-\item{...}{....}
+\item{...}{x}
 }
 \value{
 xxx xxxx

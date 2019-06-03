@@ -227,7 +227,7 @@ param_ranges <- function(
     # scenario = scenario I would like to indicate if a scenario was used
     # this could be added as an attribute perhaps?  or use a list?
     gamma  = gamma.
-    ,co      = co.
+    ,co.      = co.
     ,K.bc   = K.bc.                #c(0,600)
     ,K.bk   = K.bk.
     ,K.wg   = K.wg.

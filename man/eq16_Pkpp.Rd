@@ -7,17 +7,17 @@
 eq16_Pkpp(P.kgg, P.kgp, P.kpg, B.mk, B.fk, ...)
 }
 \arguments{
-\item{P.kgg}{...}
+\item{P.kgg}{xxx}
 
-\item{P.kgp}{...}
+\item{P.kgp}{xxx}
 
-\item{P.kpg}{...}
+\item{P.kpg}{xxx}
 
-\item{B.mk}{...}
+\item{B.mk}{xxx}
 
-\item{B.fk}{...}
+\item{B.fk}{xxx}
 
-\item{...}{...}
+\item{...}{xxx}
 }
 \description{
 Equation 16:

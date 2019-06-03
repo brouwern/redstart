@@ -9,6 +9,31 @@ error_check_build_Ptest_df(include.W.0 = FALSE, include.K.0 = FALSE,
   seqP.cgp = NA, seqP.cpg = NA, seqP.cpp = NA, seqP.kgg = NA,
   seqP.kgp = NA, seqP.kpg = NA, seqP.kpp = NA)
 }
+\arguments{
+\item{include.W.0}{xxx}
+
+\item{include.K.0}{xxx}
+
+\item{seqW}{xxx}
+
+\item{seqK}{xxx}
+
+\item{seqP.cgg}{xxx}
+
+\item{seqP.cgp}{xxx}
+
+\item{seqP.cpg}{xxx}
+
+\item{seqP.cpp}{xxx}
+
+\item{seqP.kgg}{xxx}
+
+\item{seqP.kgp}{xxx}
+
+\item{seqP.kpg}{xxx}
+
+\item{seqP.kpp}{xxx}
+}
 \description{
 Builds sequences of parameters for testing mate pairing equations
 }

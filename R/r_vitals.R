@@ -2,14 +2,18 @@
 #'
 #' @import stats
 #'
+#' @param d sets range of data to draw random values from (?delta?)
+#' @param n number of simulated life histories
+#' @param params. starting values for parameters; originally makeParamCombos.df() but deprecated
+#'
 #' @export
 #'
 
 
 #
-r_vitals <- function(d = 0.25,   #sets range of data to draw random values from
-                            n = 10000,                     #number of simulated life histories
-                            params. = param_ranges() #starting values for parameters; originally makeParamCombos.df()
+r_vitals <- function(d = 0.25,   #
+                            n = 10000,                     #
+                            params. = param_ranges() #
 ){
 
   # Generate initial values for random variables
@@ -79,10 +83,10 @@ r_vitals <- function(d = 0.25,   #sets range of data to draw random values from
 
 
   #high quality habitat base rates
-  S.ad.hi <- with(params.init, S.b.fc*S.f.fc*S.w.fg*S.m.fg)
+  S.ad.hi  <- with(params.init, S.b.fc*S.f.fc*S.w.fg*S.m.fg)
   S.juv.hi <- with(params.init,S.y.fc*       S.w.fg*S.m.fg)
-  Fec.hi <- with(params.init, R.base.rate)
-  Lamb.hi <- S.ad.hi+ S.juv.hi*Fec.hi*px$f[1]
+  Fec.hi   <- with(params.init, R.base.rate)
+  Lamb.hi  <- S.ad.hi+ S.juv.hi*Fec.hi*px$f[1]
 
   #low quality habitat base rates
   S.ad.lo  <- with(params.init, S.b.fk*S.f.fk*S.w.fp*S.m.fp)

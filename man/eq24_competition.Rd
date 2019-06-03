@@ -6,6 +6,15 @@
 \usage{
 eq24_competition(A.i.j, y.i, K.wg.open.j, ...)
 }
+\arguments{
+\item{A.i.j}{xxx}
+
+\item{y.i}{xxx}
+
+\item{K.wg.open.j}{xxx}
+
+\item{...}{xxx}
+}
 \description{
 Implement equation 24: competition
 }

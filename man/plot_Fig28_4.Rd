@@ -6,6 +6,11 @@
 \usage{
 plot_Fig28_4(runFAC.multi, plot.debug.lines = T)
 }
+\arguments{
+\item{runFAC.multi}{xxx}
+
+\item{plot.debug.lines}{Plot lines which represent ...}
+}
 \description{
 Functions to replicate plots that occur in Runge and Mara's Birds of Two Worlds Full Annual Cycle model
 }

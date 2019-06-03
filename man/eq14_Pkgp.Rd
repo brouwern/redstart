@@ -13,11 +13,11 @@ eq14_Pkgp(W2, K.bc, K.bk, B.mk, B.fk)
 
 \item{K.bk}{carrying capacity ...}
 
-\item{B.mk}{...}
+\item{B.mk}{xxx}
 
-\item{B.fk}{...}
+\item{B.fk}{xx}
 
-\item{...}{...}
+\item{...}{xxx}
 }
 \description{
 Equation 14: proportion in sink habitat, good-poor pairs

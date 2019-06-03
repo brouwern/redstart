@@ -8,9 +8,9 @@
 #' @param W2 population vector
 #' @param K.bc carrying capacity...
 #' @param K.bk carrying capacity...
-#' @param B.mk ...
-#' @param B.fk ...
-#' @param ...
+#' @param B.mk xxx
+#' @param B.fk xxx
+#' @param ... ...
 #'
 #' @export
 
@@ -18,7 +18,8 @@ eq13_Pkgg <- function(W2,
                  K.bc,
                  K.bk,
                  B.mk,
-                 B.fk){
+                 B.fk,
+                 ...){
 
   #condition 3: if other conditions fails
   num   <- (min(W2["mg"], W2["fg"]) - K.bc)

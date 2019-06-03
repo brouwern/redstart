@@ -11,7 +11,7 @@
 #'
 #' @examples
 #' # Sex ratio matrix
-#' eq19buildFmat()
+#' eq19AbuildFmat()
 
 
 eq19AbuildFmat <- function(f = 0.5){

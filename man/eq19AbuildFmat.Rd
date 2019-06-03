@@ -19,5 +19,5 @@ Formerly aliased as Fx.make.F.matrix, make.F.matrix
 }
 \examples{
 # Sex ratio matrix
-eq19buildFmat()
+eq19AbuildFmat()
 }

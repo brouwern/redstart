@@ -7,6 +7,23 @@
 eq24_comp_loop(A.i.0, K.wg.0, y.i, comp.df, j, i, debug.continue = FALSE,
   internal.error.check = FALSE)
 }
+\arguments{
+\item{A.i.0}{xxx}
+
+\item{K.wg.0}{xxx}
+
+\item{y.i}{xxx}
+
+\item{comp.df}{xxx}
+
+\item{j}{xxx}
+
+\item{i}{xxx}
+
+\item{debug.continue}{xxx}
+
+\item{internal.error.check}{xxx}
+}
 \description{
 Competition loop
 }

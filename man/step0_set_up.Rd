@@ -14,7 +14,7 @@ step0_set_up(param.set = param_set(), iterations = 150, use.IBM = F,
 
 \item{use.IBM}{Use individual-based modeling implementation of breeding territory aquisition and mate pairing}
 
-\item{use.IBM.Sb}{Used individual-based modeling implementation of breeding survibal.}
+\item{use.IBM.S.b}{Used individual-based modeling implementation of breeding survibal.}
 }
 \description{
 Step 0: Set up survival matrices &  other preliminaries
@@ -22,7 +22,7 @@ Step 0: Set up survival matrices &  other preliminaries
 \examples{
 
 # Generate default matrices
-runFAC.i <- runFAC_set_initial_params()
+runFAC.i <- FACavian::runFAC_set_initial_params()
 
 # Look at structure of list
 str(runFAC.i)
@@ -33,4 +33,5 @@ head(runFAC.i$FAC.out)[,1:5]
 # Look at 2nd matrix, winter survival
 runFAC.i$param.matrices[2]
 runFAC.i$param.matrices$S.w
+
 }

@@ -17,6 +17,8 @@ step1_winter_survival(i, runFAC.i, use.IBM, Ninit, W.list.RM = NULL,
 \item{Ninit}{vector of initial population sizes for 1st iteration (i =1)}
 
 \item{W.list.RM}{List containing post-competition sub-population sizes for Runge-Marra implementation.  Takes place of Ninit on all iterations > 1}
+
+\item{W.list.IB}{As for W.list.RM but from individual-based submodel}
 }
 \value{
 W1.list list of W1.RM and W1.IB, the pop stucture after overwinter survival

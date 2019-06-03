@@ -7,6 +7,7 @@
 #' @param use.IBM Use individual-based modeling approach instead of Runge & Marra equation (not currently implemented)
 #' @param Ninit vector of initial population sizes for 1st iteration (i =1)
 #' @param W.list.RM List containing post-competition sub-population sizes for Runge-Marra implementation.  Takes place of Ninit on all iterations > 1
+#' @param W.list.IB As for W.list.RM but from individual-based submodel
 #'
 #' @return W1.list list of W1.RM and W1.IB, the pop stucture after overwinter survival
 #'

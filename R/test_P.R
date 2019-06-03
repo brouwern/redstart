@@ -2,12 +2,13 @@
 #'
 #' These equations determine pairing proportions (P) in breeding habitat.
 #'
-#' @param test.dat.P dataframe with values against which to test function
+#' @param dat dataframe with values against which to test function.  Defaults to object named test.dat.P.
 #' @param FUN function to test
 #' @param plot.test plots a histogram of the proportions calculated by tyeh function
 #' @param subsample should the test data be randomly subsampled for quick testing
 #' @param sample.N how many subsamples of datarame to take
 #' @param return.df return the full dataframe with original test values
+#' @param ... Other
 #'
 #' @import graphics
 #'

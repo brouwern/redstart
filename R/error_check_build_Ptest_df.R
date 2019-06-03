@@ -1,5 +1,18 @@
 #' Builds sequences of parameters for testing mate pairing equations
 #'
+#' @param include.W.0 xxx
+#' @param include.K.0 xxx
+#' @param seqW xxx
+#' @param seqK xxx
+#' @param seqP.cgg xxx
+#' @param seqP.cgp xxx
+#' @param seqP.cpg xxx
+#' @param seqP.cpp xxx
+#' @param seqP.kgg xxx
+#' @param seqP.kgp xxx
+#' @param seqP.kpg xxx
+#' @param seqP.kpp xxx
+#'
 #' @examples
 #' P.test.df <- error_check_build_Ptest_df()
 #' dim(P.test.df)

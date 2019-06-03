@@ -13,7 +13,7 @@ eq12_Pcpp(P.cgg, P.cgp, P.cpg, ...)
 
 \item{P.cpg}{proportion...}
 
-\item{...}{....}
+\item{...}{xxx}
 }
 \value{
 P.cpp

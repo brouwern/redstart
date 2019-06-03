@@ -1,4 +1,9 @@
 #' Step 3 Substep A2
+#'
+#' @param W2 ...
+#' @param param.set ...
+#' @param hab.acquire.results results from prevoushabitat acquisition step
+#'
 #' @export
 
 step3_substepA2_mate_acquire_RM <- function(W2,

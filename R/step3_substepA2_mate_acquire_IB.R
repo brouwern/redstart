@@ -1,4 +1,7 @@
 #' Step 3 Substep ...
+#'
+#' @param hab.aq.results.IB Output from individuals-based model
+#'
 #' @export
 
 step3_substepA2_mate_acquire_IB <- function(hab.aq.results.IB){

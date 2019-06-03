@@ -4,8 +4,7 @@
 \alias{step3_substepA1_hab_acquire_RM}
 \title{Breeding habitat acquisition substep of pre-breeding step of breeding season using original Runge & Marra allocation functions}
 \usage{
-step3_substepA1_hab_acquire_RM(W2, K.bc = param.set$K.bc,
-  K.bk = param.set$K.bk)
+step3_substepA1_hab_acquire_RM(W2, K.bc, K.bk, ...)
 }
 \arguments{
 \item{W2}{population structure after winter and migration mortality}
@@ -13,6 +12,8 @@ step3_substepA1_hab_acquire_RM(W2, K.bc = param.set$K.bc,
 \item{K.bc}{carrying capacity of breeding ground source (._c) habitat}
 
 \item{K.bk}{carrying capacity (K) of breeding ground skin (._k) habitat}
+
+\item{...}{additional arguements}
 }
 \description{
 For an alternative individual based (IB) approach see substep_breed_hab_acquire_IB()

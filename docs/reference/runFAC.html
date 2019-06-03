@@ -78,6 +78,51 @@ population size(s) and all intermediate output is discarded." />
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/Introduction.html">Introduction: Full Annual Cycle (FAC) Demography</a>
+    </li>
+    <li>
+      <a href="../articles/make_figure_28_5.html">Vignette Title</a>
+    </li>
+    <li>
+      <a href="../articles/p-tests.html">error_check_P_test</a>
+    </li>
+    <li>
+      <a href="../articles/paper-notes.html">Misc notes</a>
+    </li>
+    <li>
+      <a href="../articles/relevant_literature.html">Running a full-annual cycle model with FACavian</a>
+    </li>
+    <li>
+      <a href="../articles/Runge_and_Marra_notes.html">The Full-annual cycle model of Runge &amp; Marra (2004)</a>
+    </li>
+    <li>
+      <a href="../articles/running_a_FAC.html">Running a full-annual cycle (FAC) model with FACavian</a>
+    </li>
+    <li>
+      <a href="../articles/running_multiple_FACs.html">Running multiple FACs to explore parameter variation</a>
+    </li>
+    <li>
+      <a href="../articles/Sherry_Holmes_notes.html">The Cannonical perspective on Full-annual cycle demography in migratory passerines</a>
+    </li>
+    <li>
+      <a href="../articles/y-creating_a_package.html">w) Creating this package</a>
+    </li>
+    <li>
+      <a href="../articles/z-build_and_rebuild_package.html">z) Building and rebuilding vignettes</a>
+    </li>
+    <li>
+      <a href="../articles/z2-building_a_package.html">z2) Building and rebuilding vignettes - orig</a>
+    </li>
+  </ul>
+</li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -110,16 +155,19 @@ population size(s) and all intermediate output is discarded.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>runFAC</span>(<span class='kw'>reps</span> <span class='kw'>=</span> <span class='fl'>350</span>, <span class='kw'>Ninit</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>10</span>, <span class='fl'>0</span>, <span class='fl'>10</span>, <span class='fl'>0</span>),
-  <span class='kw'>paramsWorking</span> <span class='kw'>=</span> <span class='fu'><a href='makeParCombos.html'>makeParCombos</a></span>(), <span class='kw'>scenario</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>vary</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>check.eq</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>check.eq.after.i</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>tol.1</span> <span class='kw'>=</span> <span class='fl'>3</span>,
-  <span class='kw'>tol.2</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>diagnostic.plot</span> <span class='kw'>=</span> <span class='no'>F</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>runFAC</span>(<span class='kw'>iterations</span> <span class='kw'>=</span> <span class='fl'>350</span>, <span class='kw'>Ninit</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>10</span>, <span class='fl'>0</span>, <span class='fl'>10</span>, <span class='fl'>0</span>),
+  <span class='kw'>param.set</span> <span class='kw'>=</span> <span class='fu'><a href='param_set.html'>param_set</a></span>(), <span class='kw'>scenario</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>vary</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>check.errors</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>check.errors.in</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"B0.RM"</span>,
+  <span class='st'>"P.cgg"</span>, <span class='st'>"P.cgp"</span>, <span class='st'>"P.cpg"</span>, <span class='st'>"P.cpp"</span>, <span class='st'>"P.kgg"</span>, <span class='st'>"P.kgp"</span>, <span class='st'>"P.kpg"</span>, <span class='st'>"P.kpp"</span>,
+  <span class='st'>"Y1"</span>), <span class='kw'>check.eq</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>minimum.i</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>eq.tol</span> <span class='kw'>=</span> <span class='fl'>6</span>,
+  <span class='kw'>diagnostic.plot</span> <span class='kw'>=</span> <span class='no'>F</span>, <span class='kw'>return.output</span> <span class='kw'>=</span> <span class='no'>T</span>, <span class='kw'>save.ts</span> <span class='kw'>=</span> <span class='no'>T</span>, <span class='kw'>use.IBM</span> <span class='kw'>=</span> <span class='no'>F</span>,
+  <span class='kw'>use.IBM.S.b</span> <span class='kw'>=</span> <span class='no'>F</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>reps</th>
+      <th>iterations</th>
       <td><p>how many iterations of model to run before stopping</p></td>
     </tr>
     <tr>
@@ -127,7 +175,7 @@ population size(s) and all intermediate output is discarded.</p>
       <td><p>vector of initial abundances at the begining of winter for W.mg, W.mp, W.fg and W.fp</p></td>
     </tr>
     <tr>
-      <th>paramsWorking</th>
+      <th>param.set</th>
       <td><p>initila parameters for this run of the model.</p></td>
     </tr>
     <tr>
@@ -140,27 +188,51 @@ population size(s) and all intermediate output is discarded.</p>
     </tr>
     <tr>
       <th>verbose</th>
-      <td><p>verbose output</p></td>
+      <td><p>verbose general output</p></td>
+    </tr>
+    <tr>
+      <th>check.errors</th>
+      <td><p>Run error checks on model subcomponents</p></td>
+    </tr>
+    <tr>
+      <th>check.errors.in</th>
+      <td><p>run error checks and report</p></td>
     </tr>
     <tr>
       <th>check.eq</th>
       <td><p>should equilibrium be assessed?</p></td>
     </tr>
     <tr>
-      <th>tol.1</th>
-      <td><p>tolerance value for diagnostics checks for whether the run of the model has reached equilibrium.  Lower values are more stringent; minimum is 1, which makes the model run the full number of iterations</p></td>
+      <th>minimum.i</th>
+      <td><p>number of iterations to run if equilibrium is being checked</p></td>
     </tr>
     <tr>
-      <th>tol.2</th>
-      <td><p>secondary tolerance value for checking equilbrium; LARGER values increase stringency</p></td>
+      <th>eq.tol</th>
+      <td><p>Tolerance for equilibirum check; the number of digistic lambda and variace of lambda should be rounded to when comparing against 1.  Larger numbers reduce the likelihood of model passing the equilbirium check</p></td>
     </tr>
     <tr>
       <th>diagnostic.plot</th>
       <td><p>Return a diagnostic plot show population size over time</p></td>
     </tr>
     <tr>
-      <th>minimum</th>
-      <td><p>number of iterations to run if equilibrium is being checked</p></td>
+      <th>return.output</th>
+      <td><p>Output the full model dataframe?</p></td>
+    </tr>
+    <tr>
+      <th>save.ts</th>
+      <td><p>Save the full time series of the model run?  If FALSE then only final time point will be returned.  Additionally, equilibrium monitoring will not be done and the time series cannot be plotted</p></td>
+    </tr>
+    <tr>
+      <th>use.IBM</th>
+      <td><p>use individual based model for habitat and mate acquisition</p></td>
+    </tr>
+    <tr>
+      <th>use.IBM.S.b</th>
+      <td><p>use IBM for summer adult survival</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>other arguements passed</p></td>
     </tr>
     </table>
     
@@ -170,9 +242,27 @@ population size(s) and all intermediate output is discarded.</p>
     
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Runge, MC &amp; PP Marra 2004.  Modeling seasonal interactions in the population dynamics of migratory birds.  Birds of two words.</p>
+    <p>Runge, MC and PP Marra.  2004.  Modeling seasonal
+interactions in the population dynamics of migratory birds.
+In Greenberg, R and PP Marra, eds.  Birds of two worlds.
+Johns Hopkins University Press, Baltimore.</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># Run an FAC</span>
+<span class='no'>test.FAC</span> <span class='kw'>&lt;-</span> <span class='fu'>runFAC</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Model at equilibrium after 196 iterations</span></div><div class='input'>
+<span class='co'># Look at structure of output</span>
+<span class='fu'>str</span>(<span class='no'>test.FAC</span>,<span class='fl'>1</span>)</div><div class='output co'>#&gt; List of 8
+#&gt;  $ FAC.out.RM        :'data.frame':	350 obs. of  48 variables:
+#&gt;  $ FAC.out.IB        :'data.frame':	350 obs. of  42 variables:
+#&gt;  $ FAC.eq.state.RM   :'data.frame':	1 obs. of  48 variables:
+#&gt;  $ FAC.eq.state.IB   : logi NA
+#&gt;  $ W.mg.diagnostic.df:'data.frame':	350 obs. of  5 variables:
+#&gt;  $ param.matrices    :List of 8
+#&gt;  $ params.initial    :'data.frame':	1 obs. of  30 variables:
+#&gt;  $ use.IBM           : logi FALSE</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -182,7 +272,9 @@ population size(s) and all intermediate output is discarded.</p>
       <li><a href="#value">Value</a></li>
 
       <li><a href="#references">References</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

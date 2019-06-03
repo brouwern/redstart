@@ -5,13 +5,15 @@
 #' @param W2 population structure after winter and migration mortality
 #' @param K.bc carrying capacity of breeding ground source (._c) habitat
 #' @param K.bk carrying capacity (K) of breeding ground skin (._k) habitat
+#' @param ... additional arguements
 #'
 #' @export
 
 
 step3_substepA1_hab_acquire_RM <- function(W2,
-                                      K.bc = param.set$K.bc,
-                                      K.bk = param.set$K.bk){
+                                      K.bc,# = param.set$K.bc,
+                                      K.bk,# = param.set$K.bk
+                                      ...){
   ###########################################
   ### Summer Habitat Acquisitiom dynamics ###
   ###########################################
