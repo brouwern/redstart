@@ -3,7 +3,7 @@
 \name{test_P_df_maker}
 \alias{test_P_df_maker}
 \title{make dataframe for testing functions
-to save use usethis::use_data(test.dat.P,overwrite = T)}
+to save use usethis::use_data(test_dat_P,overwrite = T)}
 \usage{
 test_P_df_maker(wmin = 1, wmax = 100, wstep = 30, kmin = 1,
   kmax = 125, kstep = 30)
@@ -23,5 +23,5 @@ test_P_df_maker(wmin = 1, wmax = 100, wstep = 30, kmin = 1,
 }
 \description{
 make dataframe for testing functions
-to save use usethis::use_data(test.dat.P,overwrite = T)
+to save use usethis::use_data(test_dat_P,overwrite = T)
 }

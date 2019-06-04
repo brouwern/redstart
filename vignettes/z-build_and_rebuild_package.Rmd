@@ -84,6 +84,12 @@ pkgdown::build_site()
 ```
 
 
+## Explore dependencies
+
+```{r}
+report1 <- CreatePackageReport(pkg_name = "FACavian")
+```
+
 
 
 ## Rcmd.exe

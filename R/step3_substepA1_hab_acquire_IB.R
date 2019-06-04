@@ -18,7 +18,7 @@
 #' W2 <- c(10,5,10,10); names(W2) <- c("mg","mp","fg","fp")
 #'
 #'
-#' out <- substep_breed_hab_acquire_IB(W2 = W2,
+#' out <- step3_substepA1_hab_acquire_IB(W2 = W2,
 #'            K.bc =  param.set$K.bc,
 #'            K.bk = param.set$K.bk)
 #'

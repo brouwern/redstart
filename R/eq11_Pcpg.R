@@ -15,7 +15,7 @@
 #' Note  W2.mg > W2.fg in original paper.  ">" needs to be "<"  b/c poor males end up
 #' with good female when there are not enough good males for all the good females (Wmg < Wfg)
 #'
-#' @param W2 population vector; indicats where birds are coming from
+#' @param W2 population vector; indicates where birds are coming from
 #' @param K.bc females  sour.c.habitat carrying capacity
 #' @param B.mc males already in source
 #' @param B.fc females alreadiy in source

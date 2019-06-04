@@ -21,16 +21,17 @@ Step 0: Set up survival matrices &  other preliminaries
 }
 \examples{
 
-# Generate default matrices
-runFAC.i <- FACavian::runFAC_set_initial_params()
+# Initialize model
+runFAC.i <- step0_set_up()
 
 # Look at structure of list
-str(runFAC.i)
+## Elements for model output, matrices, parameters, etc
+str(runFAC.i,1)
 
 # Look at top of dataframe to hold output
-head(runFAC.i$FAC.out)[,1:5]
+head(runFAC.i$FAC.out.RM)[,1:5]
 
-# Look at 2nd matrix, winter survival
+# Look at 2nd matrix used in model, winter survival
 runFAC.i$param.matrices[2]
 runFAC.i$param.matrices$S.w
 

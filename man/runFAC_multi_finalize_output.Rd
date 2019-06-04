@@ -4,7 +4,14 @@
 \alias{runFAC_multi_finalize_output}
 \title{Finalize output from runFAC_multi}
 \usage{
-runFAC_multi_finalize_output(multiFAC.out.df, param.grid)
+runFAC_multi_finalize_output(multiFAC.out.df, param.grid, ...)
+}
+\arguments{
+\item{multiFAC.out.df}{Output of runFAC_multi}
+
+\item{param.grid}{Grid of parameters over which model was run (?)}
+
+\item{...}{Additional arguements}
 }
 \description{
 Finalize output from runFAC_multi

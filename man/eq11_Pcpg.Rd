@@ -7,7 +7,7 @@
 eq11_Pcpg(W2, K.bc, B.mc, B.fc, ...)
 }
 \arguments{
-\item{W2}{population vector; indicats where birds are coming from}
+\item{W2}{population vector; indicates where birds are coming from}
 
 \item{K.bc}{females  sour.c.habitat carrying capacity}
 

@@ -13,9 +13,9 @@
 #' Note that in the original paper, both equations 10 and 11 have the same subscripts of P.cgp, while in equation 12 it is implied they have different subscripts.  It appears that the 2nd subscript should indicate the winter habitat for males and the 3rd should indicate the winter habitat for females.  Therefore equation 10 in the original paper remains as P.cgp (P.source.male-good.female-poor) and equation 11 should be changed to P.c.pg (P.source.male-poor.female-good)
 #'
 #' @param W2 population vector
-#' @param K.bc females on sour.c.habitat
-#' @param B.mc females available in sink
-#' @param B.fc males on sour.c. habitat
+#' @param K.bc females on sour.c.e habitat (typo?)
+#' @param B.mc females available in sink (typo; males?, source?)
+#' @param B.fc males on sour.c. habitat (typo, females?)
 #' @param ... x
 #'
 #' @return xxx xxxx

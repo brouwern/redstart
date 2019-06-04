@@ -9,6 +9,8 @@
 #' @param S.f.fc survival...
 #' @param S.f.fk survival...
 #'
+#' @param S.f Matrix of fall survival probabilities
+#'
 #' @export
 
 

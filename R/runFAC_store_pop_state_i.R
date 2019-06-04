@@ -2,12 +2,14 @@
 #'
 #'
 #' @param i current iteration of model
+#' @param minimum.i Minimum number of iterations over which to run model
 #' @param FAC.out dataframe holding output of model for each iteraction
 #' @param W.list list containing state of population after winter and fall migration
 #' @param B0 vector of....
 #' @param P.breeding.pair.results vector representing pairing frequency of birds in source (".c") habitat the both originated from good (".gg") habitat on the wintering ground.
 #' @param Y2 vector of reproductive output (post migration?)
 #' @param check.eq Should lambda be calculated
+#' @param ... Additional arguements
 #'
 #' @return FAC.out dataframe updated with population sizeds from time i
 #'

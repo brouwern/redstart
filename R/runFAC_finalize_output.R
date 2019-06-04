@@ -1,8 +1,12 @@
 #' finalize output
 #'
+#' @param out.df Dataframe of output
+#' @param save.ts Should the time series of population sizes be saved
+#'
 #' @export
 
-runFAC_finalize_output <- function(out.df, save.ts = TRUE){
+runFAC_finalize_output <- function(out.df,
+                                   save.ts = TRUE){
   ### Summarize model run
 
 

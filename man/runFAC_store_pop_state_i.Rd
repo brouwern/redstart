@@ -10,6 +10,8 @@ runFAC_store_pop_state_i(i, minimum.i = 10, FAC.out, W.list, B0,
 \arguments{
 \item{i}{current iteration of model}
 
+\item{minimum.i}{Minimum number of iterations over which to run model}
+
 \item{FAC.out}{dataframe holding output of model for each iteraction}
 
 \item{W.list}{list containing state of population after winter and fall migration}
@@ -21,6 +23,8 @@ runFAC_store_pop_state_i(i, minimum.i = 10, FAC.out, W.list, B0,
 \item{Y2}{vector of reproductive output (post migration?)}
 
 \item{check.eq}{Should lambda be calculated}
+
+\item{...}{Additional arguements}
 }
 \value{
 FAC.out dataframe updated with population sizeds from time i

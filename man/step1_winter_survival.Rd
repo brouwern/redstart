@@ -2,35 +2,30 @@
 % Please edit documentation in R/step1_winter_survival.R
 \name{step1_winter_survival}
 \alias{step1_winter_survival}
-\title{Execute 1st step of Runge & Marra FAC model: overwinter survival}
+\title{Execute 1st step of Runge & Marra FAC model: overwinter survival
+#1.RM and W1.IB, the pop stucture after overwinter survival}
 \usage{
 step1_winter_survival(i, runFAC.i, use.IBM, Ninit, W.list.RM = NULL,
   W.list.IB = NULL)
 }
 \arguments{
-\item{i}{model iterations}
+\item{use.IBM}{Use individual based model submodel}
 
-\item{runFAC.i}{Initial parameters for this run of the FAC}
+\item{Ninit}{Initial population size}
 
-\item{use.IBM}{Use individual-based modeling approach instead of Runge & Marra equation (not currently implemented)}
+\item{W.list.RM}{xxx}
 
-\item{Ninit}{vector of initial population sizes for 1st iteration (i =1)}
-
-\item{W.list.RM}{List containing post-competition sub-population sizes for Runge-Marra implementation.  Takes place of Ninit on all iterations > 1}
-
-\item{W.list.IB}{As for W.list.RM but from individual-based submodel}
-}
-\value{
-W1.list list of W1.RM and W1.IB, the pop stucture after overwinter survival
+\item{W.list.IB}{xxx}
 }
 \description{
-W.list.IB List of post-comp sub-pop sizes fo IBM version.  Replace Ninit on all i > 1
+Execute 1st step of Runge & Marra FAC model: overwinter survival
+#1.RM and W1.IB, the pop stucture after overwinter survival
 }
 \examples{
 
 # Initial population size for iteration 1
-step_1_winter_survival(i = 1, use.IBM = F,Ninit = c(10,0,10,0))
-step_1_winter_survival(i = 1, use.IBM = T,Ninit = c(10,0,10,0))
+## step1_winter_survival(i = 1, use.IBM = F,Ninit = c(10,0,10,0))
+## step1_winter_survival(i = 1, use.IBM = T,Ninit = c(10,0,10,0))
 
 
 }

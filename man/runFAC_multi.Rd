@@ -8,17 +8,19 @@ runFAC_multi(param.grid = param_grid(), Ninit = c(10, 0, 10, 0),
   remakeFigure = NA, use.IBM = F, verbose = F, eq.tol = 6, ...)
 }
 \arguments{
+\item{param.grid}{Dataframe of parameters, usually with 1 or 2 that vary accross a range}
+
 \item{Ninit}{vector of initial population sizes}
 
+\item{remakeFigure}{deprecated.  Replaced by plot_Fig29_3}
+
 \item{use.IBM}{Use individual-based model (IBM) implementation}
+
+\item{verbose}{Use verbose output}
 
 \item{eq.tol}{Tolerance level for testing for equilibirum.  Smaller values are more stringent.}
 
 \item{...}{other arguements}
-
-\item{para.grid}{Dataframe of parameters, usually with 1 or 2 that vary accross a range}
-
-\item{makeFigure}{deprecated.  Replaced by plot_Fig29_3}
 }
 \description{
 Note that the "para.grid" arguement take take produced by the param_grid() function,

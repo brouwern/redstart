@@ -1,11 +1,16 @@
 #'  Make plot 28.6 - varying carry over effect c
 #'
-#'  @import graphics
+#' @import graphics
 #'
-#'  @export
+#' @param winter.lim xxx
+#' @param intermediate xxx
+#' @param summer.lim xxx
+#'
+#' @export
 #'
 #'
 #'
+
 plot_Fig28_6 <- function(winter.lim,
                          intermediate,
                          summer.lim){

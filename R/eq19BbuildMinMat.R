@@ -17,7 +17,7 @@
 
 
 eq19BbuildMinMat <- function(B.mc, B.fc,
-                            B.mk, B.fk){
+                             B.mk, B.fk){
 
   min.c <- min(B.mc, B.fc)
   min.k <- min(B.mk, B.fk)

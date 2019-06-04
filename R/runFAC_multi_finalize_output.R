@@ -2,13 +2,15 @@
 #'
 #' @param multiFAC.out.df Output of runFAC_multi
 #' @param param.grid Grid of parameters over which model was run (?)
+#' @param ... Additional arguements
 #'
 #' @export
 #'
 
 
 runFAC_multi_finalize_output <- function(multiFAC.out.df,
-                                         param.grid){
+                                         param.grid,
+                                         ...){
 
   multiFAC.out.df$B.m.tot        <- apply(multiFAC.out.df[,c("B.mc","B.mk","B.md")],1,sum)
   multiFAC.out.df$B.m.tot.no.d   <- apply(multiFAC.out.df[,c("B.mc","B.mk")],1,sum)

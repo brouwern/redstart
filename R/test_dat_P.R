@@ -1,5 +1,7 @@
 #' Test data object test.dat.P for..
 #'
+#' @docType data
 #'
-#'
-#' @export test.dat.P
+#' @usage data(test_dat_P)
+
+"test_dat_P"

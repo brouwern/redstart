@@ -6,6 +6,11 @@
 \usage{
 runFAC_finalize_output(out.df, save.ts = TRUE)
 }
+\arguments{
+\item{out.df}{Dataframe of output}
+
+\item{save.ts}{Should the time series of population sizes be saved}
+}
 \description{
 finalize output
 }

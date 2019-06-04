@@ -9,11 +9,11 @@ eq10_Pcgp(W2, K.bc, B.mc, B.fc, ...)
 \arguments{
 \item{W2}{population vector}
 
-\item{K.bc}{females on sour.c.habitat}
+\item{K.bc}{females on sour.c.e habitat (typo?)}
 
-\item{B.mc}{females available in sink}
+\item{B.mc}{females available in sink (typo; males?, source?)}
 
-\item{B.fc}{males on sour.c. habitat}
+\item{B.fc}{males on sour.c. habitat (typo, females?)}
 
 \item{...}{x}
 }

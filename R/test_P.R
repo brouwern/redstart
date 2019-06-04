@@ -2,7 +2,7 @@
 #'
 #' These equations determine pairing proportions (P) in breeding habitat.
 #'
-#' @param dat dataframe with values against which to test function.  Defaults to object named test.dat.P.
+#' @param dat dataframe with values against which to test function.  Defaults to object named test_dat_P.
 #' @param FUN function to test
 #' @param plot.test plots a histogram of the proportions calculated by tyeh function
 #' @param subsample should the test data be randomly subsampled for quick testing
@@ -14,7 +14,7 @@
 #'
 #' @export
 
-test_P <- function(dat = test.dat.P,
+test_P <- function(dat = test_dat_P,
                    FUN = eq09_Pcgg,
                    #FUN.name = "eq09",
                    plot.test = TRUE,
@@ -31,29 +31,29 @@ test_P <- function(dat = test.dat.P,
 
 
   #loop over test df
-  for(i in 1:nrow(test.dat.P)){
-    W2 <- test.dat.P[i,c("mg","mp","fg","fp")]
-    K.bc <- test.dat.P[i,c("K.bc")]
-    K.bk <- test.dat.P[i,c("K.bk")]
+  for(i in 1:nrow(test_dat_P)){
+    W2 <- test_dat_P[i,c("mg","mp","fg","fp")]
+    K.bc <- test_dat_P[i,c("K.bc")]
+    K.bk <- test_dat_P[i,c("K.bk")]
 
-    B.fc <- test.dat.P[i,c("B.fc")]
-    B.fk <- test.dat.P[i,c("B.fk")]
-    B.mc <- test.dat.P[i,c("B.mc")]
-    B.mk <- test.dat.P[i,c("B.mk")]
-    B.md <- test.dat.P[i,c("B.md")]
+    B.fc <- test_dat_P[i,c("B.fc")]
+    B.fk <- test_dat_P[i,c("B.fk")]
+    B.mc <- test_dat_P[i,c("B.mc")]
+    B.mk <- test_dat_P[i,c("B.mk")]
+    B.md <- test_dat_P[i,c("B.md")]
 
-    test.dat.P$P[i] <- FUN(W2,
+    test_dat_P$P[i] <- FUN(W2,
                            K.bc = K.bc, K.bk = K.bk,
                            B.fc = B.fc, B.fk = B.fk,
                            B.mc= B.mc, B.mk = B.mk, B.md = B.md,
                            i = i)
 
     # if(FUN.name %in% c("eq09_Pcgg", "eq09","9")){
-    #   test.dat.P$P[i] <- FUN(W2, K.bc = K.bc, B.mc = B.mc,B.fc = B.fc)
+    #   test_dat_P$P[i] <- FUN(W2, K.bc = K.bc, B.mc = B.mc,B.fc = B.fc)
     # }
     #
     # if(FUN.name == "eq10"){
-    #   test.dat.P$P[i] <- FUN(W2, K.bc = K.bc, B.fc = B.fc,B.mc = B.mc )
+    #   test_dat_P$P[i] <- FUN(W2, K.bc = K.bc, B.fc = B.fc,B.mc = B.mc )
     # }
 
   }
@@ -67,16 +67,16 @@ test_P <- function(dat = test.dat.P,
   #plot distribution of P
   if(plot.test == TRUE){
     par(mfrow = c(1,1))
-    hist(test.dat.P$P, main = paste("N = ",sample.N))
+    hist(test_dat_P$P, main = paste("N = ",sample.N))
 
   }
 
   #print summar
-  print(summary(test.dat.P$P))
+  print(summary(test_dat_P$P))
 
   #return df
   if(return.df == TRUE){
-    return(test.dat.P)
+    return(test_dat_P)
   }
 
 }

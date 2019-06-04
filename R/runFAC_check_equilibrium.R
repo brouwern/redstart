@@ -6,6 +6,7 @@
 #' @param at.eq At equilibrium
 #' @param verbose Verbose output?
 #' @param eq.tol Equilibrium tolerance level (higher is more conservative)
+#' @param ... Additional arguements
 #'
 #' @export
 

@@ -92,12 +92,12 @@
 
 #'
 #' ## This creates a large range of potenial parameters to enter the function
-#' dim(test.dat.P)
+#' dim(test_dat_P)
 #'
 #' ## Loop over all parameter combinations
 #'
 #' ## Look at distribution of P.cgg
-#' P.test.df.out <- test_P(test.dat.P, FUN = eq09_Pcgg, return.df = TRUE)
+#' P.test.df.out <- test_P(test_dat_P, FUN = eq09_Pcgg, return.df = TRUE)
 #' hist(P.test.df.out$P)
 #' summary(P.test.df.out$P)
 #' @export

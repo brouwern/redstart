@@ -16,6 +16,8 @@
 #' ## Most are constants; 3rd and 5th element vary accross a range of values
 #' params.seqs$K.wg
 #'
+#'
+#'
 #' @export
 
 param_seqs <- function(param.ranges = param_ranges(),

@@ -6,9 +6,13 @@
 \usage{
 plot_Fig28_6(winter.lim, intermediate, summer.lim)
 }
-\description{
-@import graphics
+\arguments{
+\item{winter.lim}{xxx}
+
+\item{intermediate}{xxx}
+
+\item{summer.lim}{xxx}
 }
-\details{
-@export
+\description{
+Make plot 28.6 - varying carry over effect c
 }

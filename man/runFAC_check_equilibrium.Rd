@@ -19,6 +19,8 @@ runFAC_check_equilibrium(lamb.B.mc.mean, lamb.B.mc.var, i, at.eq = FALSE,
 \item{verbose}{Verbose output?}
 
 \item{eq.tol}{Equilibrium tolerance level (higher is more conservative)}
+
+\item{...}{Additional arguements}
 }
 \description{
 check model equilibrium

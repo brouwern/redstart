@@ -5,6 +5,7 @@
 #' @param out.df OUtput from runFAC()
 #' @param y1 Label for axis
 #' @param y2 Label for axis
+#' @param ... Additional arguements
 #'
 #' @export
 #'
@@ -12,7 +13,8 @@
 
 plot_runFAC <- function(out.df,
                         y1 = "tot.W",
-                        y2="tot.B", ...){
+                        y2="tot.B",
+                        ...){
   par(mfrow = c(1,3),mar = c(3,3.2,2,0))
   ## Panel 1: TOtal winter vs. Total breeding
   plot(out.df[,y1] ~ out.df$t,
