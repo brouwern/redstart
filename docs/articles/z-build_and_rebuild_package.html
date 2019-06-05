@@ -75,9 +75,6 @@
       <a href="../articles/Runge_and_Marra_notes.html">The Full-annual cycle model of Runge &amp; Marra (2004)</a>
     </li>
     <li>
-      <a href="../articles/running_a_FAC.html">Running a full-annual cycle (FAC) model with FACavian</a>
-    </li>
-    <li>
       <a href="../articles/running_multiple_FACs.html">Running multiple FACs to explore parameter variation</a>
     </li>
     <li>
@@ -179,10 +176,15 @@
 <div id="build-piece-by-piece" class="section level4">
 <h4 class="hasAnchor">
 <a href="#build-piece-by-piece" class="anchor"></a>Build piece by piece</h4>
+<p>pkgdown::clean_site (pkg = “.”)</p>
+<p>– Initialising site</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pkgdown<span class="op">::</span><span class="kw"><a href="https://pkgdown.r-lib.org/reference/init_site.html">init_site</a></span>(<span class="dt">pkg =</span> <span class="st">"."</span>)</code></pre></div>
+<p>Building home</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pkgdown<span class="op">::</span><span class="kw"><a href="https://pkgdown.r-lib.org/reference/build_home.html">build_home</a></span>(<span class="dt">pkg =</span> <span class="st">"."</span>)</code></pre></div>
+<p>Building function reference</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pkgdown<span class="op">::</span><span class="kw"><a href="https://pkgdown.r-lib.org/reference/build_reference.html">build_reference</a></span>(<span class="dt">pkg =</span> <span class="st">"."</span>)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pkgdown<span class="op">::</span><span class="kw"><a href="https://pkgdown.r-lib.org/reference/build_articles.html">build_articles</a></span>(<span class="dt">pkg =</span> <span class="st">"."</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">build_news</span>()</code></pre></div>
 </div>
 </div>
 </div>

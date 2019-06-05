@@ -89,17 +89,22 @@ pkgdown::build_site()
 
 pkgdown::clean_site (pkg = ".")
 
+-- Initialising site
 ```{r,eval = F}
 pkgdown::init_site(pkg = ".")
 ```
 
+Building home 
+```{r, eval = F}
+pkgdown::build_home(pkg = ".")
+```
+
+Building function reference
 ```{r, eval = F}
 pkgdown::build_reference(pkg = ".")
 ```
 
-```{r, eval = F}
-build_news()
-```
+
 
 
 ```{r, eval = F}
@@ -108,7 +113,7 @@ pkgdown::build_articles(pkg = ".")
 
 
 ```{r, eval = F}
-pkgdown::build_home(pkg = ".")
+build_news()
 ```
 
 

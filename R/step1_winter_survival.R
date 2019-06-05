@@ -1,8 +1,8 @@
 #' Execute 1st step of Runge & Marra FAC model: overwinter survival
-#' #1.RM and W1.IB, the pop stucture after overwinter survival
+#' 1.RM and W1.IB, the pop stucture after overwinter survival
 #'
-#' @param i
-#' @param runFAC.i
+#' @param i xxx
+#' @param runFAC.i xxx
 #' @param use.IBM Use individual based model submodel
 #' @param Ninit Initial population size
 #' @param W.list.RM xxx

@@ -3,12 +3,16 @@
 \name{step1_winter_survival}
 \alias{step1_winter_survival}
 \title{Execute 1st step of Runge & Marra FAC model: overwinter survival
-#1.RM and W1.IB, the pop stucture after overwinter survival}
+1.RM and W1.IB, the pop stucture after overwinter survival}
 \usage{
 step1_winter_survival(i, runFAC.i, use.IBM, Ninit, W.list.RM = NULL,
   W.list.IB = NULL)
 }
 \arguments{
+\item{i}{xxx}
+
+\item{runFAC.i}{xxx}
+
 \item{use.IBM}{Use individual based model submodel}
 
 \item{Ninit}{Initial population size}
@@ -19,7 +23,7 @@ step1_winter_survival(i, runFAC.i, use.IBM, Ninit, W.list.RM = NULL,
 }
 \description{
 Execute 1st step of Runge & Marra FAC model: overwinter survival
-#1.RM and W1.IB, the pop stucture after overwinter survival
+1.RM and W1.IB, the pop stucture after overwinter survival
 }
 \examples{
 
