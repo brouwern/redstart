@@ -17,6 +17,8 @@ eq21buildSfmat(S.f.mc, S.f.mk, S.f.md, S.f.fc, S.f.fk)
 \item{S.f.fc}{survival...}
 
 \item{S.f.fk}{survival...}
+
+\item{S.f}{Matrix of fall survival probabilities}
 }
 \description{
 Aliased previously Fx.make.fall.adult.s.matrix.eq21

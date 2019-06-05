@@ -17,6 +17,9 @@ eq20buildSbmat(S.b.mc, S.b.mk, S.b.md, S.b.fc, S.b.fk)
 
 \item{S.b.fk}{survival...}
 }
+\value{
+S.b Matrix of breed-ding season survival probabilities
+}
 \description{
 Equation 20: BREEDING season mortality
 }

@@ -178,14 +178,41 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='co'># Generate default matrices</span>
-<span class='no'>runFAC.i</span> <span class='kw'>&lt;-</span> <span class='fu'>runFAC_set_initial_params</span>()</div><div class='output co'>#&gt; <span class='error'>Error in runFAC_set_initial_params(): could not find function "runFAC_set_initial_params"</span></div><div class='input'>
+<span class='co'># Initialize model</span>
+<span class='no'>runFAC.i</span> <span class='kw'>&lt;-</span> <span class='fu'>step0_set_up</span>()
+
 <span class='co'># Look at structure of list</span>
-<span class='fu'>str</span>(<span class='no'>runFAC.i</span>)</div><div class='output co'>#&gt; <span class='error'>Error in str(runFAC.i): object 'runFAC.i' not found</span></div><div class='input'>
+<span class='co'>## Elements for model output, matrices, parameters, etc</span>
+<span class='fu'>str</span>(<span class='no'>runFAC.i</span>,<span class='fl'>1</span>)</div><div class='output co'>#&gt; List of 8
+#&gt;  $ FAC.out.RM        :'data.frame':	150 obs. of  42 variables:
+#&gt;  $ FAC.out.IB        :'data.frame':	150 obs. of  42 variables:
+#&gt;  $ FAC.eq.state.RM   : logi NA
+#&gt;  $ FAC.eq.state.IB   : logi NA
+#&gt;  $ W.mg.diagnostic.df:'data.frame':	150 obs. of  5 variables:
+#&gt;  $ param.matrices    :List of 8
+#&gt;  $ params.initial    :'data.frame':	1 obs. of  30 variables:
+#&gt;  $ use.IBM           : logi FALSE</div><div class='input'>
 <span class='co'># Look at top of dataframe to hold output</span>
-<span class='fu'>head</span>(<span class='no'>runFAC.i</span>$<span class='no'>FAC.out</span>)[,<span class='fl'>1</span>:<span class='fl'>5</span>]</div><div class='output co'>#&gt; <span class='error'>Error in head(runFAC.i$FAC.out): object 'runFAC.i' not found</span></div><div class='input'>
-<span class='co'># Look at 2nd matrix, winter survival</span>
-<span class='no'>runFAC.i</span>$<span class='no'>param.matrices</span>[<span class='fl'>2</span>]</div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'runFAC.i' not found</span></div><div class='input'><span class='no'>runFAC.i</span>$<span class='no'>param.matrices</span>$<span class='no'>S.w</span></div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'runFAC.i' not found</span></div></pre>
+<span class='fu'>head</span>(<span class='no'>runFAC.i</span>$<span class='no'>FAC.out.RM</span>)[,<span class='fl'>1</span>:<span class='fl'>5</span>]</div><div class='output co'>#&gt;   W.mg W.mp W.fg W.fp B.mc
+#&gt; 1   NA   NA   NA   NA   NA
+#&gt; 2   NA   NA   NA   NA   NA
+#&gt; 3   NA   NA   NA   NA   NA
+#&gt; 4   NA   NA   NA   NA   NA
+#&gt; 5   NA   NA   NA   NA   NA
+#&gt; 6   NA   NA   NA   NA   NA</div><div class='input'>
+<span class='co'># Look at 2nd matrix used in model, winter survival</span>
+<span class='no'>runFAC.i</span>$<span class='no'>param.matrices</span>[<span class='fl'>2</span>]</div><div class='output co'>#&gt; $S.w
+#&gt;      [,1] [,2] [,3] [,4]
+#&gt; [1,]  0.8  0.0  0.0  0.0
+#&gt; [2,]  0.0  0.8  0.0  0.0
+#&gt; [3,]  0.0  0.0  0.8  0.0
+#&gt; [4,]  0.0  0.0  0.0  0.8
+#&gt; </div><div class='input'><span class='no'>runFAC.i</span>$<span class='no'>param.matrices</span>$<span class='no'>S.w</span></div><div class='output co'>#&gt;      [,1] [,2] [,3] [,4]
+#&gt; [1,]  0.8  0.0  0.0  0.0
+#&gt; [2,]  0.0  0.8  0.0  0.0
+#&gt; [3,]  0.0  0.0  0.8  0.0
+#&gt; [4,]  0.0  0.0  0.0  0.8</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

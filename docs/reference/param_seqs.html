@@ -169,12 +169,12 @@ Create sequence of parameter values between minimum and maximum.  Output is a li
       <td><p>number of increments to divide range into</p></td>
     </tr>
     <tr>
-      <th>param.ranges</th>
-      <td><p>minimum and maximum values for all parameters, generted by param_range</p></td>
+      <th>len.out</th>
+      <td><p>number of increments to divide range into</p></td>
     </tr>
     <tr>
-      <th>length.out</th>
-      <td><p>number of increments to divide range into</p></td>
+      <th>param.ranges</th>
+      <td><p>minimum and maximum values for all parameters, generted by param_range</p></td>
     </tr>
     </table>
     
@@ -191,52 +191,11 @@ Create sequence of parameter values between minimum and maximum.  Output is a li
 <span class='co'># Generate parameter sequence</span>
 <span class='no'>params.seqs</span> <span class='kw'>&lt;-</span> <span class='fu'>param_seqs</span>(<span class='kw'>param.ranges</span> <span class='kw'>=</span> <span class='no'>params</span>)
 
-<span class='co'>#show 1st 6 elements of list</span>
-<span class='co'>## Most are constants; 3rd and 5th element vary accross a range of values</span>
-<span class='no'>params.seqs</span>[<span class='fl'>1</span>:<span class='fl'>6</span>]</div><div class='output co'>#&gt; $gamma
-#&gt; [1] 5
-#&gt; 
-#&gt; $co.
-#&gt; [1] 1
-#&gt; 
-#&gt; $K.bc
-#&gt;  [1]    1  112  223  334  445  556  667  778  889 1000
-#&gt; 
-#&gt; $K.bk
-#&gt; [1] 10000
-#&gt; 
-#&gt; $K.wg
-#&gt;  [1]    1  112  223  334  445  556  667  778  889 1000
-#&gt; 
-#&gt; $S.w.mg
-#&gt; [1] 0.8
-#&gt; </div><div class='input'>
-<span class='co'>#generate min and max values for each parameter used for figure 28.3 in original paper</span>
-<span class='no'>params</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='param_ranges.html'>param_ranges</a></span>(<span class='kw'>figure</span> <span class='kw'>=</span> <span class='fl'>28.3</span>)
 
-<span class='co'># Generate parameter sequence</span>
-<span class='no'>params.seqs</span> <span class='kw'>&lt;-</span> <span class='fu'>param_seqs</span>(<span class='kw'>param.ranges</span> <span class='kw'>=</span> <span class='no'>params</span>)
-
-<span class='co'>#show 1st 6 elements of list</span>
 <span class='co'>## Most are constants; 3rd and 5th element vary accross a range of values</span>
-<span class='no'>params.seqs</span>[<span class='fl'>1</span>:<span class='fl'>6</span>]</div><div class='output co'>#&gt; $gamma
-#&gt; [1] 5
-#&gt; 
-#&gt; $co.
-#&gt; [1] 1
-#&gt; 
-#&gt; $K.bc
-#&gt;  [1]    1  112  223  334  445  556  667  778  889 1000
-#&gt; 
-#&gt; $K.bk
-#&gt; [1] 10000
-#&gt; 
-#&gt; $K.wg
-#&gt;  [1]    1  112  223  334  445  556  667  778  889 1000
-#&gt; 
-#&gt; $S.w.mg
-#&gt; [1] 0.8
-#&gt; </div><div class='input'>
+<span class='no'>params.seqs</span>$<span class='no'>K.wg</span></div><div class='output co'>#&gt;  [1]    1  112  223  334  445  556  667  778  889 1000</div><div class='input'>
+
+
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

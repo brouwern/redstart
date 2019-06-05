@@ -6,7 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Execute 1st step of Runge &amp; Marra FAC model: overwinter survival — step1_winter_survival • FACavian</title>
+<title>Execute 1st step of Runge &amp; Marra FAC model: overwinter survival
+#1.RM and W1.IB, the pop stucture after overwinter survival — step1_winter_survival • FACavian</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +31,11 @@
 
 
 
-<meta property="og:title" content="Execute 1st step of Runge &amp; Marra FAC model: overwinter survival — step1_winter_survival" />
+<meta property="og:title" content="Execute 1st step of Runge &amp; Marra FAC model: overwinter survival
+#1.RM and W1.IB, the pop stucture after overwinter survival — step1_winter_survival" />
 
-<meta property="og:description" content="W.list.IB List of post-comp sub-pop sizes fo IBM version.  Replace Ninit on all i &amp;gt; 1" />
+<meta property="og:description" content="Execute 1st step of Runge &amp;amp; Marra FAC model: overwinter survival
+#1.RM and W1.IB, the pop stucture after overwinter survival" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -140,14 +143,16 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Execute 1st step of Runge &amp; Marra FAC model: overwinter survival</h1>
+    <h1>Execute 1st step of Runge &amp; Marra FAC model: overwinter survival
+#1.RM and W1.IB, the pop stucture after overwinter survival</h1>
     
     <div class="hidden name"><code>step1_winter_survival.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>W.list.IB List of post-comp sub-pop sizes fo IBM version.  Replace Ninit on all i &gt; 1</p>
+    <p>Execute 1st step of Runge &amp; Marra FAC model: overwinter survival
+#1.RM and W1.IB, the pop stucture after overwinter survival</p>
     
     </div>
 
@@ -158,40 +163,30 @@
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>i</th>
-      <td><p>model iterations</p></td>
-    </tr>
-    <tr>
-      <th>runFAC.i</th>
-      <td><p>Initial parameters for this run of the FAC</p></td>
-    </tr>
-    <tr>
       <th>use.IBM</th>
-      <td><p>Use individual-based modeling approach instead of Runge &amp; Marra equation (not currently implemented)</p></td>
+      <td><p>Use individual based model submodel</p></td>
     </tr>
     <tr>
       <th>Ninit</th>
-      <td><p>vector of initial population sizes for 1st iteration (i =1)</p></td>
+      <td><p>Initial population size</p></td>
     </tr>
     <tr>
       <th>W.list.RM</th>
-      <td><p>List containing post-competition sub-population sizes for Runge-Marra implementation.  Takes place of Ninit on all iterations &gt; 1</p></td>
+      <td><p>xxx</p></td>
     </tr>
     <tr>
       <th>W.list.IB</th>
-      <td><p>As for W.list.RM but from individual-based submodel</p></td>
+      <td><p>xxx</p></td>
     </tr>
     </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>W1.list list of W1.RM and W1.IB, the pop stucture after overwinter survival</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='co'># Initial population size for iteration 1</span>
-<span class='fu'>step_1_winter_survival</span>(<span class='kw'>i</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>use.IBM</span> <span class='kw'>=</span> <span class='no'>F</span>,<span class='kw'>Ninit</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>10</span>,<span class='fl'>0</span>,<span class='fl'>10</span>,<span class='fl'>0</span>))</div><div class='output co'>#&gt; <span class='error'>Error in step_1_winter_survival(i = 1, use.IBM = F, Ninit = c(10, 0, 10,     0)): could not find function "step_1_winter_survival"</span></div><div class='input'><span class='fu'>step_1_winter_survival</span>(<span class='kw'>i</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>use.IBM</span> <span class='kw'>=</span> <span class='no'>T</span>,<span class='kw'>Ninit</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>10</span>,<span class='fl'>0</span>,<span class='fl'>10</span>,<span class='fl'>0</span>))</div><div class='output co'>#&gt; <span class='error'>Error in step_1_winter_survival(i = 1, use.IBM = T, Ninit = c(10, 0, 10,     0)): could not find function "step_1_winter_survival"</span></div><div class='input'>
+# Initial population size for iteration 1
+## step1_winter_survival(i = 1, use.IBM = F,Ninit = c(10,0,10,0))
+## step1_winter_survival(i = 1, use.IBM = T,Ninit = c(10,0,10,0))
+
 
 </div></pre>
   </div>
@@ -199,9 +194,7 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-      
+            
       <li><a href="#examples">Examples</a></li>
     </ul>
 

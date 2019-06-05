@@ -34,7 +34,7 @@ good habitat — eq09_Pcgg • FACavian</title>
 <meta property="og:title" content="Equation 9: Pair formation in source habitat between birds both from
 good habitat — eq09_Pcgg" />
 
-<meta property="og:description" content="Calculats the proportion of pairing in source (.c_) breeding habitat that are betwee
+<meta property="og:description" content="Calculates the proportion of pairing in source (.c_) breeding habitat that are betwee
 males that wintered in good habitat and females that wintered in good habitat." />
 <meta name="twitter:card" content="summary" />
 
@@ -151,7 +151,7 @@ good habitat</h1>
 
     <div class="ref-description">
     
-    <p>Calculats the proportion of pairing in source (.c_) breeding habitat that are betwee
+    <p>Calculates the proportion of pairing in source (.c_) breeding habitat that are betwee
 males that wintered in good habitat and females that wintered in good habitat.</p>
     
     </div>
@@ -262,11 +262,13 @@ and which sex is limiting in terms of total abundance in the breeding habitat</p
 <span class='co'>## Set up parameter combinations to test</span>
 
 <span class='co'>## This creates a large range of potenial parameters to enter the function</span>
-<span class='fu'>dim</span>(<span class='no'>test.dat.P</span>)</div><div class='output co'>#&gt; [1] 2304   12</div><div class='input'>
+<span class='fu'>dim</span>(<span class='no'>test_dat_P</span>)</div><div class='output co'>#&gt; [1] 2304   12</div><div class='input'>
 <span class='co'>## Loop over all parameter combinations</span>
 
 <span class='co'>## Look at distribution of P.cgg</span>
-<span class='no'>P.test.df.out</span> <span class='kw'>&lt;-</span> <span class='fu'>test_eq09</span>(<span class='no'>P.test.df</span>, <span class='kw'>call.browser</span> <span class='kw'>=</span> <span class='no'>F</span>, <span class='kw'>print.i</span> <span class='kw'>=</span> <span class='no'>F</span>)</div><div class='output co'>#&gt; <span class='error'>Error in test_eq09(P.test.df, call.browser = F, print.i = F): could not find function "test_eq09"</span></div><div class='input'><span class='fu'>hist</span>(<span class='no'>P.test.df.out</span>$<span class='no'>P.cgg</span>)</div><div class='output co'>#&gt; <span class='error'>Error in hist(P.test.df.out$P.cgg): object 'P.test.df.out' not found</span></div><div class='input'><span class='fu'>summary</span>(<span class='no'>P.test.df.out</span>$<span class='no'>P.cgg</span>)</div><div class='output co'>#&gt; <span class='error'>Error in summary(P.test.df.out$P.cgg): object 'P.test.df.out' not found</span></div></pre>
+<span class='no'>P.test.df.out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='test_P.html'>test_P</a></span>(<span class='no'>test_dat_P</span>, <span class='kw'>FUN</span> <span class='kw'>=</span> <span class='no'>eq09_Pcgg</span>, <span class='kw'>return.df</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='img'><img src='eq09_Pcgg-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+#&gt; 0.01087 0.33696 0.96875 0.66089 1.00000 1.00000 </div><div class='input'><span class='fu'>hist</span>(<span class='no'>P.test.df.out</span>$<span class='no'>P</span>)</div><div class='img'><img src='eq09_Pcgg-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>summary</span>(<span class='no'>P.test.df.out</span>$<span class='no'>P</span>)</div><div class='output co'>#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+#&gt; 0.01087 0.33696 0.96875 0.66089 1.00000 1.00000 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

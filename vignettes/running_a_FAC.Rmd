@@ -1,6 +1,6 @@
 ---
 title: "Running a full-annual cycle (FAC) model with FACavian"
-author: "Vignette Author"
+author: "Nathan Brouwer"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >

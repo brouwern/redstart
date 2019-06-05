@@ -79,8 +79,30 @@ check_failures
 
 ### Build package down website
 
+Single function 
 ```{r, eval = F}
 pkgdown::build_site()
+```
+
+
+#### Build piece by piece
+
+```{r,eval = F}
+pkgdown::init_site(pkg = ".")
+```
+
+```{r}
+pkgdown::build_home(pkg = ".")
+```
+
+
+```{r}
+pkgdown::build_reference(pkg = ".")
+```
+
+
+```{r}
+pkgdown::build_articles(pkg = ".")
 ```
 
 
