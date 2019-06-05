@@ -79,7 +79,8 @@ check_failures
 
 ### Build package down website
 
-Single function 
+Single function to build whole site:
+"This will generate a docs/ directory. The home page will be generated from your package’s README.md, and a function reference will be generated from the documentation in the man/ directory."
 ```{r, eval = F}
 pkgdown::build_site()
 ```
@@ -113,7 +114,7 @@ pkgdown::build_articles(pkg = ".")
 
 
 ```{r, eval = F}
-build_news()
+pkgdown::build_news()
 ```
 
 
