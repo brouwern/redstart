@@ -87,23 +87,30 @@ pkgdown::build_site()
 
 #### Build piece by piece
 
+pkgdown::clean_site (pkg = ".")
+
 ```{r,eval = F}
 pkgdown::init_site(pkg = ".")
 ```
 
-```{r}
-pkgdown::build_home(pkg = ".")
-```
-
-
-```{r}
+```{r, eval = F}
 pkgdown::build_reference(pkg = ".")
 ```
 
+```{r, eval = F}
+build_news()
+```
 
-```{r}
+
+```{r, eval = F}
 pkgdown::build_articles(pkg = ".")
 ```
+
+
+```{r, eval = F}
+pkgdown::build_home(pkg = ".")
+```
+
 
 
 ## Explore dependencies
