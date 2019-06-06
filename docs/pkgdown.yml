@@ -2,10 +2,14 @@ pandoc: 1.19.2.1
 pkgdown: 1.1.0
 pkgdown_sha: ~
 articles:
-  a-Introduction: a-Introduction.html
-  b-running_a_FAC: b-running_a_FAC.html
-  c-running_multiple_FACs: c-running_multiple_FACs.html
-  make_figure_28_5: make_figure_28_5.html
+  a-Introduction_FAC_demography: a-Introduction_FAC_demography.html
+  b-overview: b-overview.html
+  c-the_runFAC_command: c-the_runFAC_command.html
+  d-the_runFAC_multi_command: d-the_runFAC_multi_command.html
+  e-make_figure_28_3: e-make_figure_28_3.html
+  f-make_figure_28_4: f-make_figure_28_4.html
+  g-make_figure_28_5: g-make_figure_28_5.html
+  h-make_figure_28_6: h-make_figure_28_6.html
   p-tests: p-tests.html
   paper-notes: paper-notes.html
   relevant_literature: relevant_literature.html
