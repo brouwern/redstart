@@ -19,17 +19,33 @@ knitr::opts_chunk$set(
 ```
 
 
-Load the package
+## Introduction
+
+A major motivation for studying full-annual cycle population dynamics is to determine when during the annual cycle population limitation occurs.  For example, a perennial question is whether habitat loss on the breeding grounds or wintering grounds is more important for population dynamics (CITE).
+
+For standard density-independent population models, such as matrix models or integral projection models, there are analytica solutions that allow you to compare the importance of all vital rates for population growth.  These methods include sensitivity and elasticity analyses, as well as Life Table Response Experiments (LTRE).  To carry out these analyses all that is required is the parameterized model and a compute program (such as R) that can do mathematical functions such as determining the eigen values of matrices.
+
+Complex density-dependent models such as the one developed by Runge and Marra (2004) can not be assayed directly using analytical methods.  Models such as this must be run repeatedly with different parameter values and the output of the model compared as conditions change.  This requires running many indepdent models to equilibrium, each with slightly diffrent paramter values, storing the relevant output, and comparing the output.  Runge and Marra (2004) graphically explored how varying breeding season and winter carrying capacity impacted breeding ground population size (Figures 28.3  in the original paper), how breeding ground carrying capacity impacted breeding and winter population structure (28.4), and male dominance impacted the sex ratio (Figure 28.5), and the strength of carry-over effects impacted poulation size (Figure 28.6).    
+
+The FACavian package implements and extends the analyses carried out by Runge and Marra (2004) using the function runFAC_multi().  This function allows you to run multiple FAC models each with different parameter values.  The following vignette demonstrates the basic functionality of runFAC_multi().  Each of the analyses in Runge and Marra (2004) are then coverged in a seperate vignette.  
+
+
+## Preliminaries
+
 ```{r}
 library(FACavian)
 ```
 
 
+## The runFAC_multi() function
+
+runFAC_multi(param.grid = param_grid(), Ninit = c(10, 0, 10, 0),
+  remakeFigure = NA, use.IBM = F, verbose = F, eq.tol = 6, ...)
+
 ## Recreate figures in the original paper
 
 ### Figure 28.3: 3D surface
 
-The defaults for runFAC_multi() are set to reproduce Figure 28.3 in the original Runge and Marra paper.  This is a 3D surface showing th equilibrium population size XX as the amount of xxxx and yyyy is varied.
 
 ```{r}
 F28_3 <- runFAC_multi(eq.tol = 2, 

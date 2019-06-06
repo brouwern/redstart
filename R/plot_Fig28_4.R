@@ -4,14 +4,14 @@
 #'
 #' @import graphics
 #'
-#' @param runFAC.multi xxx
-#' @param plot.debug.lines Plot lines which represent ...
+#' @param runFAC.multi Output draframe from runFAC.multi()
+#' @param plot.debug.lines Plot lines to faciltate comparison of FACavian output to the original Figure 28.4.
 #'
 #' @export
 
 
 plot_Fig28_4<- function(runFAC.multi,
-                        plot.debug.lines = T){
+                        plot.debug.lines = F){
 
   #set graphical parameters
   par(mfrow = c(2,1),

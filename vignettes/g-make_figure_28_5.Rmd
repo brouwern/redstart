@@ -1,6 +1,6 @@
 ---
 title: "g) Making Runge and Mara Figure 28.5"
-author: "Vignette Author"
+author: "Nathan L. Brouwer"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -20,34 +20,42 @@ knitr::opts_chunk$set(
 
 
 
+
+
+## Introduction 
+Figure 28.5 investigates how changes in the male dominance parameter (gamma) impacts the sex ratio in the context of three scenarios
+
+1. A winter limited population (K.bc = 800 pair, K.wg = 485 individuals)
+1. A breeding season (summer) limited population (K.bc = 205, K.wg = 580)
+1. An intermediate scenario (K.bc = 205, K.wg = 900)
+
+
+
+## Making Figure 28.4 the easy way
+
 Load the package
 ```{r}
 library(FACavian)
 ```
 
+There param_ranges() function has a "figure = ..." arguement and also a "scenario = ...".  
 
-### Figure 28.5
-
-#### Create parameters
-
-#### Create the intial range of the parameters
+The intial range of the parameters are made by setting "figure = 28.5" and "scenario" to "winter", "summer", or "int".  This sets the fixed parameters for each value and the min of gamma to 1 and the max of gamma to 5.
 ```{r}
 F28.5.range.winter <- param_ranges(figure = 28.5, scenario = "winter")
-F28.5.range.inter  <- param_ranges(figure = 28.5, scenario = "int")
 F28.5.range.summer <- param_ranges(figure = 28.5, scenario = "summer")
+F28.5.range.inter  <- param_ranges(figure = 28.5, scenario = "int")
 ```
 
-Examine the parameters
+This code makes a dataframe which summaries these parameters.
 ```{r}
 data.frame(winter = head(F28.5.range.winter),
-      int = head(F28.5.range.inter),
-      summer = head(F28.5.range.summer))
+           int    = head(F28.5.range.inter),
+           summer = head(F28.5.range.summer))
 ```
 
 
-#### Turn any varying parameters into sequence
-
-For Figure 28.5 breding ground carrying capacity is varied.
+param_seqs() generates values between the minimum and the maxium.
 ```{r}
 F28.5.win.seq <- param_seqs(F28.5.range.winter)
 F28.5.int.seq <- param_seqs(F28.5.range.inter)
@@ -55,13 +63,13 @@ F28.5.sum.seq <- param_seqs(F28.5.range.summer)
 
 ```
 
+For Figure 28.5 only the breeding ground carrying capacity is varied.
 ```{r}
-head(F28.5.win.seq)
+head(F28.5.win.seq,3)
 ```
 
 
-#### Expand parameters into a grid
-Create all combinations of parameters
+All combinations of parameters are created using param_grid()
 ```{r}
 F28.5.win.grid <- param_grid(param.seqs = F28.5.win.seq)
 F28.5.int.grid <- param_grid(param.seqs = F28.5.int.seq)
@@ -69,9 +77,7 @@ F28.5.sum.grid <- param_grid(param.seqs = F28.5.sum.seq)
 ```
 
 
-
-
-#### Run multiple FACs accross the parameters
+Finally runFAC_multi() is called for each scenario's grid. 
 
 ```{r}
 F28.5.FAC.win <- runFAC_multi(param.grid = F28.5.win.grid)
@@ -80,13 +86,20 @@ F28.5.FAC.sum <- runFAC_multi(param.grid = F28.5.sum.grid)
 ```
 
 
-### Plot Figure 28.5
+Once all calls to runFAC_mulit() are done we can plot using plot_Fig28_5().
 
 ```{r}
 plot_Fig28_5(dat.winter.lim = F28.5.FAC.win$multiFAC.out.df.RM,
-                         dat.intermediate = F28.5.FAC.int$multiFAC.out.df.RM,
-                         dat.summer.lim = F28.5.FAC.sum$multiFAC.out.df.RM,
-                         drain = T)
+             dat.intermediate = F28.5.FAC.int$multiFAC.out.df.RM,
+             dat.summer.lim = F28.5.FAC.sum$multiFAC.out.df.RM,
+             drain = T)
 
 ```
 
+
+## Make Figure 28.5: Step-by-step instructions
+
+Vary gamma
+
+
+## Comparing output of FACavian to the original 
