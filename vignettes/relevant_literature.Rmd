@@ -1,5 +1,5 @@
 ---
-title: "Running a full-annual cycle model with FACavian"
+title: "Relevant literature"
 author: "Vignette Author"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette

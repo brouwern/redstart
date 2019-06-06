@@ -57,7 +57,13 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/Introduction.html">Introduction: Full Annual Cycle (FAC) Demography</a>
+      <a href="../articles/a-Introduction.html">Introduction: Full Annual Cycle (FAC) Demography</a>
+    </li>
+    <li>
+      <a href="../articles/b-running_a_FAC.html">b) Running a full-annual cycle (FAC) model with FACavian</a>
+    </li>
+    <li>
+      <a href="../articles/c-running_multiple_FACs.html">Running multiple FACs to explore parameter variation</a>
     </li>
     <li>
       <a href="../articles/make_figure_28_5.html">Vignette Title</a>
@@ -69,25 +75,22 @@
       <a href="../articles/paper-notes.html">Misc notes</a>
     </li>
     <li>
-      <a href="../articles/relevant_literature.html">Running a full-annual cycle model with FACavian</a>
+      <a href="../articles/relevant_literature.html">Relevant literature</a>
     </li>
     <li>
       <a href="../articles/Runge_and_Marra_notes.html">The Full-annual cycle model of Runge &amp; Marra (2004)</a>
     </li>
     <li>
-      <a href="../articles/running_multiple_FACs.html">Running multiple FACs to explore parameter variation</a>
-    </li>
-    <li>
       <a href="../articles/Sherry_Holmes_notes.html">The Cannonical perspective on Full-annual cycle demography in migratory passerines</a>
     </li>
     <li>
-      <a href="../articles/y-creating_a_package.html">w) Creating this package</a>
+      <a href="../articles/x-creating_a_package.html">w) Creating this package</a>
+    </li>
+    <li>
+      <a href="../articles/y-building_a_package.html">z2) Building and rebuilding vignettes - orig</a>
     </li>
     <li>
       <a href="../articles/z-build_and_rebuild_package.html">z) Building and rebuilding vignettes</a>
-    </li>
-    <li>
-      <a href="../articles/z2-building_a_package.html">z2) Building and rebuilding vignettes - orig</a>
     </li>
   </ul>
 </li>
@@ -110,9 +113,9 @@
       <h1><ol start="26" style="list-style-type: lower-alpha">
 <li>Building and rebuilding vignettes</li>
 </ol></h1>
-                        <h4 class="author">Vignette Author</h4>
+                        <h4 class="author">Nathan Brouwer</h4>
             
-            <h4 class="date">2019-06-05</h4>
+            <h4 class="date">2019-06-06</h4>
       
       
       <div class="hidden name"><code>z-build_and_rebuild_package.Rmd</code></div>
@@ -139,7 +142,7 @@
 <h3 class="hasAnchor">
 <a href="#clean-vignettes" class="anchor"></a>Clean vignettes</h3>
 <p>“This uses a fairly rudimentary algorithm where any files in ‘inst/doc’ with a name that exists in ‘vignettes’ are removed.”</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/clean_vignettes">clean_vignettes</a></span>() </code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/clean_vignettes">clean_vignettes</a></span>() </code></pre></div>
 </div>
 <div id="build-vignettes" class="section level3">
 <h3 class="hasAnchor">
@@ -183,8 +186,9 @@
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pkgdown<span class="op">::</span><span class="kw"><a href="https://pkgdown.r-lib.org/reference/build_home.html">build_home</a></span>(<span class="dt">pkg =</span> <span class="st">"."</span>)</code></pre></div>
 <p>Building function reference</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pkgdown<span class="op">::</span><span class="kw"><a href="https://pkgdown.r-lib.org/reference/build_reference.html">build_reference</a></span>(<span class="dt">pkg =</span> <span class="st">"."</span>)</code></pre></div>
+<p>Build vignettes</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pkgdown<span class="op">::</span><span class="kw"><a href="https://pkgdown.r-lib.org/reference/build_articles.html">build_articles</a></span>(<span class="dt">pkg =</span> <span class="st">"."</span>)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">build_news</span>()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pkgdown<span class="op">::</span><span class="kw"><a href="https://pkgdown.r-lib.org/reference/build_news.html">build_news</a></span>()</code></pre></div>
 </div>
 </div>
 </div>

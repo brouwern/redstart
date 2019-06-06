@@ -2,15 +2,16 @@ pandoc: 1.19.2.1
 pkgdown: 1.1.0
 pkgdown_sha: ~
 articles:
-  Introduction: Introduction.html
+  a-Introduction: a-Introduction.html
+  b-running_a_FAC: b-running_a_FAC.html
+  c-running_multiple_FACs: c-running_multiple_FACs.html
   make_figure_28_5: make_figure_28_5.html
   p-tests: p-tests.html
   paper-notes: paper-notes.html
   relevant_literature: relevant_literature.html
   Runge_and_Marra_notes: Runge_and_Marra_notes.html
-  running_multiple_FACs: running_multiple_FACs.html
   Sherry_Holmes_notes: Sherry_Holmes_notes.html
-  y-creating_a_package: y-creating_a_package.html
+  x-creating_a_package: x-creating_a_package.html
+  y-building_a_package: y-building_a_package.html
   z-build_and_rebuild_package: z-build_and_rebuild_package.html
-  z2-building_a_package: z2-building_a_package.html
 

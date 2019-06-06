@@ -1,6 +1,6 @@
 ---
 title: "z) Building and rebuilding vignettes"
-author: "Vignette Author"
+author: "Nathan Brouwer"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -40,7 +40,7 @@ library(devtools)
 "This uses a fairly rudimentary algorithm where any files in ‘inst/doc’ with a name that exists in ‘vignettes’ are removed."
 
 ```{r, eval = F}
-clean_vignettes() 
+devtools::clean_vignettes() 
 ```
 
 ### Build vignettes
@@ -91,7 +91,7 @@ pkgdown::build_site()
 pkgdown::clean_site (pkg = ".")
 
 -- Initialising site
-```{r,eval = F}
+```{r, eval = F}
 pkgdown::init_site(pkg = ".")
 ```
 
@@ -106,8 +106,7 @@ pkgdown::build_reference(pkg = ".")
 ```
 
 
-
-
+Build vignettes
 ```{r, eval = F}
 pkgdown::build_articles(pkg = ".")
 ```
