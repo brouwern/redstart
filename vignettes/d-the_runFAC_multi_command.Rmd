@@ -1,5 +1,5 @@
 ---
-title: "Running multiple FACs to explore parameter variation"
+title: "d) The runFAC_multi() command: Running multiple FACs to explore parameter variation"
 author: "Vignette Author"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette

@@ -1,5 +1,5 @@
 ---
-title: "Introduction: Full Annual Cycle (FAC) Demography"
+title: "a) Introduction: Full Annual Cycle (FAC) Demography"
 author: "Nathan Brouwer"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -17,6 +17,15 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
+
+
+
+
+
+
+
+
+
 
 
 Key quote:

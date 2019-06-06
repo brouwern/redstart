@@ -1,5 +1,5 @@
 ---
-title: "b) Running a full-annual cycle (FAC) model with FACavian"
+title: "c) The runFAC() command"
 author: "Nathan Brouwer"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
