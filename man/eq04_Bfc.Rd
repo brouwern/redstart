@@ -12,7 +12,7 @@ eq04_Bfc(W2, K.bc)
 \item{K.bc}{carrying capacity of breeding ground (.k_) source (._c) habitat}
 }
 \value{
-B.fc Abundance ...
+B.fc Total number of females (f) allocated to the source (c) habitat
 }
 \description{
 This function outputs \code{B.fc}, the number of females that acquire
@@ -20,21 +20,24 @@ high quality "source" (._c) habitat during the breeding season
 }
 \details{
 This function compares total female population size after migration (W2.fg + W2.fp)
-to K.bc the souce carrying capacity \code{K.bc}; if the total population of
-females < K.bc, all females acquire habitat in the source.
+to K.bc the source carrying capacity \code{K.bc}; if the total population of
+females < K.bc, all females acquire habitat in the source.  Therefore when the population
+is small all females are allocated to source habitat regardless of where they winter.
+
 If W2.fg + W2.fp > K.bc, then the source habitat gets filled up completely.  Any additinal
 females will be allocated to the sink (._k) habitat in a subsequent step.
 
+Note that this allocation process returns just a scalar (single number).  The origin of the
+the birds isn't tracked at this step.
+
 The output of this function is used in equation 17.
-
-Previous alias: F.2.source.eq4.c
-
-Part of summer female dynamics
 }
 \examples{
 # Set parameters:
 ## Create named population W2 vector using the eq01buildW0vect()
-W2 <- eq01buildW0vect(100,10,100,10)
+## 100 females originating from good winter habitat
+## 10 females originating from poor winter habitat
+W2 <- eq01buildW0vect(100, 10, 100, 10)
 
 W2
 
@@ -43,9 +46,24 @@ K.bc.110 <- 110
 K.bc.100 <- 100
 K.bc.10  <- 10
 
+# The maximum number of birds that can be allocated to source habitat
+# is the carrying capacity.
+# When K.bc is 110, all 110 females are allocated to source
+## No birds will end up in sink in subsequent steps
 eq04_Bfc(W2, K.bc.110)
+
+# If K.bc is 100, 100 birds will be allocated to source.
+## The 10 remaining will be shunted to sink in a subsequent step.
 eq04_Bfc(W2, K.bc.100)
+
+# If K.bc is 10, only 10 birds will be allocated to source.
+## The 100 remaining, which are a mix of birds from good and poor winter habitat
+## will be allocated to sink habitat in a subsequent step.
 eq04_Bfc(W2, K.bc.10)
+
+# If the number of birds is less than K.bc, then all will be allocated to source.
+W2 <- eq01buildW0vect(50, 10, 50, 10) # 60 total birds
+eq04_Bfc(W2, K.bc.110)                # All 60 allocated to source
 
 }
 \references{

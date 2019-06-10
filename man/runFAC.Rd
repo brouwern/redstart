@@ -2,7 +2,7 @@
 % Please edit documentation in R/runFAC.R
 \name{runFAC}
 \alias{runFAC}
-\title{Run FAC model to equilibirum}
+\title{Run a single FAC model to equilibirum}
 \usage{
 runFAC(iterations = 350, Ninit = c(10, 0, 10, 0),
   param.set = param_set(), scenario = NA, vary = NA,
@@ -48,7 +48,7 @@ runFAC(iterations = 350, Ninit = c(10, 0, 10, 0),
 \item{...}{other arguements passed}
 }
 \value{
-A dataframe containing the status of the popualtion at each time step for all parameters
+runFAC.i A dataframe containing the status of the population at each time step for all parameters
 }
 \description{
 Iterates a single parameterization of the Runge & Marra 2004 FAC model

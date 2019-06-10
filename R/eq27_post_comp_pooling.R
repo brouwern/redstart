@@ -1,8 +1,10 @@
-#' Equation 27
-#' Use of assign() here is probably inefficient/awk; put into list?
+#' Equation 27:
+#'
 #'
 #' @param A.i.G xxx
 #' @param A.i.P xxx
+#'
+#' @return W.list xxx
 #'
 #' @export
 

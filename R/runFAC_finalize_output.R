@@ -1,7 +1,9 @@
-#' finalize output
+#' Finalize output of a single run of FAC
 #'
 #' @param out.df Dataframe of output
-#' @param save.ts Should the time series of population sizes be saved
+#' @param save.ts Should the time series of population sizes be saved?
+#'
+#' @return out.df Dataframe ...
 #'
 #' @export
 

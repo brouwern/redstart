@@ -1,4 +1,4 @@
-#' Builds sequences of parameters for testing mate pairing equations
+#' QA/QC: Build sequences of parameters for testing mate pairing equations
 #'
 #' @param include.W.0 xxx
 #' @param include.K.0 xxx
@@ -12,6 +12,8 @@
 #' @param seqP.kgp xxx
 #' @param seqP.kpg xxx
 #' @param seqP.kpp xxx
+#'
+#' @return P.test.df xxxx of parameters
 #'
 #' @examples
 #' P.test.df <- error_check_build_Ptest_df()

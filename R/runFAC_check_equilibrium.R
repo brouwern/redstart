@@ -1,4 +1,4 @@
-#' check model equilibrium
+#' Check a model being run for equilibrium
 #'
 #' @param lamb.B.mc.mean Mean lambda from B.mc ..
 #' @param lamb.B.mc.var Variance of lambda from B.mc ...
@@ -7,6 +7,8 @@
 #' @param verbose Verbose output?
 #' @param eq.tol Equilibrium tolerance level (higher is more conservative)
 #' @param ... Additional arguements
+#'
+#' @references at.eq .... Logical TRUE ?
 #'
 #' @export
 

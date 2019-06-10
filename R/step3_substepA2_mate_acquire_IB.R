@@ -1,6 +1,8 @@
-#' Step 3 Substep ...
+#' FAC-IBM Step 3, Substep A2: Mate acquition
 #'
 #' @param hab.aq.results.IB Output from individuals-based model
+#'
+#' @return P.breeding.pair.results.list.IB
 #'
 #' @export
 

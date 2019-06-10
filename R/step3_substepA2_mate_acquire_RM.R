@@ -1,8 +1,10 @@
 #' Step 3 Substep A2
 #'
-#' @param W2 ...
+#' @param W2 Vector of abundances after fall migration
 #' @param param.set ...
-#' @param hab.acquire.results results from prevoushabitat acquisition step
+#' @param hab.acquire.results results from previous habitat acquisition step
+#'
+#' @return P.breeding.pair.results.RM Vector of pairing frequencies
 #'
 #' @export
 
@@ -15,7 +17,6 @@ step3_substepA2_mate_acquire_RM <- function(W2,
 
   # Equations 9 through 16
   # all output are scalars
-
   ### EQUATION 9 eq09_Pcgg()
 
   #browser()
@@ -109,8 +110,14 @@ step3_substepA2_mate_acquire_RM <- function(W2,
                                   P.kgg, P.kgp,P.kpg, P.kpp)
 
 
-  names(P.breeding.pair.results.RM) <- c("P.cgg", "P.cgp","P.cpg", "P.cpp",
-                           "P.kgg", "P.kgp","P.kpg",  "P.kpp")
+  names(P.breeding.pair.results.RM) <- c("P.cgg",
+                                         "P.cgp",
+                                         "P.cpg",
+                                         "P.cpp",
+                                         "P.kgg",
+                                         "P.kgp",
+                                         "P.kpg",
+                                         "P.kpp")
 
 
 

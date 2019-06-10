@@ -1,45 +1,45 @@
-#' Make paramater ranges
+#' Set individual parameter values.
 #'
-#' Generates a dataframe defining the minimum maximum values of each parameter;
-#' these are then turned into a matrix of all combinations by the function
-#' makeParamCombos.df()
+#' Sets individual parameter values for a single run of the model with runFAC().
+#'
+#' See param_ranges() for setting the min and max of parameters that vary when using runFAC_multi
 #'
 #'
-#' @param scenario Difference scenarios defined by Runge & Marra: "winter" limited, "intermediate", and "spring" limited.  If set overides other varibles.
-#' @param figure deprecated
-#' @param gamma. xx
-#' @param c. xxx
-#' @param K.bc. xxx
-#' @param K.bk. xxx
-#' @param K.wg. xxx
-#' @param S.w.mg. xxx
-#' @param S.w.mp. xxx
-#' @param S.w.fg. xxx
-#' @param S.w.fp. xxx
-#' @param S.m.mg. do they call this s.smg?
-#' @param S.m.mp. xxx
-#' @param S.m.fg. xxx
-#' @param S.m.fp. xxx
-#' @param R.base.rate. xxx
-#' @param R.hab.effect.  effects of pair breeding in poor habitat
-#' @param co.  magnitude of carry over effect; c 1 equals no carry over
-#' @param f.  sex ratio
-#' @param S.b.mc.  males in sour.c.e habitat
-#' @param S.b.mk.  males in sin.k. habitat
-#' @param S.b.md.  "drain" males
-#' @param S.b.fc. xxx
-#' @param S.b.fk. xxx
-#' @param S.f.mc. males from sour.c.e
-#' @param S.f.mk. xxx
-#' @param S.f.md. drain males have higher surv b/c they don't have costs of repro
-#' @param S.f.fc. xxx
-#' @param S.f.fk. xxx
-#' @param S.y.mc. xxx
-#' @param S.y.mk. xxx
-#' @param S.y.fc. xxx
-#' @param S.y.fk. xxx
+#' @param scenario Different habitat scenarios defined by Runge & Marra 2004.  In particular sets carrying capacity for breeding source habitat (K.bc) and winter good habitat (K.wg)    If set overides other varibles that may have been set using other arguements.
+#' @param figure deprecated.  See param_ranges()
+#' @param gamma. Strength of male dominance.
+#' @param c. Strength of winter to breeding season carry over.
+#' @param K.bc. Carrying capacity (K) of source (high quality) breeding habitat.
+#' @param K.bk. Carrying capacity (K) of sink (low quality) breeding habitat.
+#' @param K.wg. Carrying capacity (K) of winter good (high quality) habitat.
+#' @param S.w.mg. Survival (S) during winter (.w.) of males (.m) in good habitat (g).  Note that there is no age structure in winter.
+#' @param S.w.mp. Survival (S) during winter (.w.) of males (.m) in poor habitat (p).
+#' @param S.w.fg. Survival (S) during winter (.w.) of females (.f) in good habitat (g).
+#' @param S.w.fp. Survival (S) during winter (.w.) of females (.f) in good habitat (p).
+#' @param S.m.mg. Survival (S) during spring migration (.m.) of males (.m) originating from good (g) winter habitat.
+#' @param S.m.mp. Survival (S) during spring migration (.m.) of males (.m) originating from poor (p) winter habitat.
+#' @param S.m.fg. Survival (S) during spring migration (.m.) of females (.f) originating from good (g) winter habitat.
+#' @param S.m.fp. Survival (S) during spring migration (.m.) of females (.m) originating from poor (p) winter habitat.
+#' @param R.base.rate. Fecundity base rate (?)
+#' @param R.hab.effect.  Effect on fecundity of a pair breeding in poor habitat
+#' @param co.  Magnitude of carry over effect; c = 1 is no carry over
+#' @param f.  Sex ratio
+#' @param S.b.mc. Survival (S) during breeding (.b.) of males (.m) in source (c) habitat (source = good habitat)
+#' @param S.b.mk. Survival (S) during breeding (.b.) of males (.m) in sink (k) habitat (sink = poor habitat)
+#' @param S.b.md. Survival (S) during breeding (.b.) of males (.m) with drain (d) status (drain = floater or unpaired)
+#' @param S.b.fc. Survival (S) during breeding (.b.) of females (.f) in source (c) habitat (source = good habitat)
+#' @param S.b.fk. Survival (S) during breeding (.b.) of females (.f) in sink (k) habitat (sink = poor habitat)
+#' @param S.f.mc. Survival (S) during fall (.f.) migration of males (.m) originating from source (c) habitat
+#' @param S.f.mk. Survival (S) during fall (.f.) migration of males (.m) originating from sink (k) habitat
+#' @param S.f.md. Survival (S) during fall (.f.) migration of males (.m) with drain (d) status (aka floater, unpaired)
+#' @param S.f.fc. Survival (S) during fall (.f.) migration of females (.f) originating from source (c) habitat
+#' @param S.f.fk. Survival (S) during fall (.f.) migration of females (.f) originating from sink (k) habitat
+#' @param S.y.mc. Survival (S) during fall migration of young (.y.) males (.m) originating from source (c) habitat
+#' @param S.y.mk. Survival (S) during fall migration of young (.y.) males (.m) originating from sink (k) habitat
+#' @param S.y.fc. Survival (S) during fall migration of young (.y.) females (.f) originating from source (c) habitat
+#' @param S.y.fk. Survival (S) during fall migration of young (.y.) females (.f) originating from sink (k) habitat
 #'
-#' @return param.ranges 30 x 2 dataframe of the min. and max. parameter values that will be considered.  Often values are fixed and do not vary.
+#' @return param.set 30 x 1 dataframe of theparameter values that will be used.
 #'
 #' @references Runge, MC and PP Marra.  2004.  Modeling seasonal
 #'       interactions in the population dynamics of migratory birds.
@@ -167,7 +167,7 @@ param_set <- function(
 
 
 
-  #Ranges of parametrs to consider
+
   param.set <- data.frame(
     # scenario = scenario I would like to indicate if a scenario was used
     # this could be added as an attribute perhaps?  or use a list?

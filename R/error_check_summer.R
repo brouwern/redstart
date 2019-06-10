@@ -1,4 +1,4 @@
-#' Check output of breeding season processes for errors
+#' QA/QC: Check output of breeding season processes for errors
 #'
 #' @param B0 xxx
 #' @param W2 xxx

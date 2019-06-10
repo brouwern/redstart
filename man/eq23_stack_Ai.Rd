@@ -2,7 +2,7 @@
 % Please edit documentation in R/eq23_stack_Ai.R
 \name{eq23_stack_Ai}
 \alias{eq23_stack_Ai}
-\title{Equation 23: Build the A matrix (not implemented)}
+\title{Equation 23: Build the A matrix (A.i) (not implemented)-?????}
 \usage{
 eq23_stack_Ai(B2, Y2)
 }
@@ -12,8 +12,8 @@ eq23_stack_Ai(B2, Y2)
 \item{Y2}{Young (offspring) that survived breeding and fall migration}
 }
 \description{
-Equation 23: Build the A matrix (not implemented)
+WHat do I mean "not implemented?" ...
 }
-\details{
-...
+\references{
+A.i ....
 }

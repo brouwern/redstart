@@ -2,7 +2,7 @@
 % Please edit documentation in R/eq26_alloc_winter_P.R
 \name{eq26_alloc_winter_P}
 \alias{eq26_alloc_winter_P}
-\title{equation 26 Allocate to poor habitat}
+\title{Equation 26: Allocate to poor habitat (A.i.P)}
 \usage{
 eq26_alloc_winter_P(A.i.0, A.i.G)
 }
@@ -11,6 +11,9 @@ eq26_alloc_winter_P(A.i.0, A.i.G)
 
 \item{A.i.G}{xxx}
 }
+\value{
+A.i.P xxx
+}
 \description{
-equation 26 Allocate to poor habitat
+Equation 26: Allocate to poor habitat (A.i.P)
 }

@@ -1,4 +1,4 @@
-#' make dataframe for testing functions
+#' QA/QC: make dataframe for testing functions
 #' to save use usethis::use_data(test_dat_P,overwrite = T)
 #'
 #' @param wmin Winter carrying capacity minimum

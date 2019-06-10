@@ -2,15 +2,14 @@
 % Please edit documentation in R/eq09_Pcgg.R
 \name{eq09_Pcgg}
 \alias{eq09_Pcgg}
-\title{Equation 9: Pair formation in source habitat between birds both from
-good habitat}
+\title{Equation 9: Pair formation in source habitat between birds both from good winter habitat (P.cgg)}
 \usage{
 eq09_Pcgg(W2, K.bc, B.mc, B.fc, ...)
 }
 \arguments{
 \item{W2}{population vector}
 
-\item{K.bc}{source carrying capacity (?)  original file said "sink popualtion size" in comments}
+\item{K.bc}{source (c) carrying capacity (K) in breeding season (b)original file said "sink popualtion size" in comments}
 
 \item{B.mc}{Number of males (.m) settled into source (.xc) habitat}
 
@@ -51,8 +50,6 @@ W2.fg/B.fc = females from good winter / females settled in source
 The ratio r is tricky.  It is determined by which sex is limiting in terms of
 input from good winter habitat (numerator)
 and which sex is limiting in terms of total abundance in the breeding habitat
-
-Aliased as pairing.eq9.P.c.gg() in previous version of coad
 }
 \examples{
 

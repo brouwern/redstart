@@ -2,7 +2,7 @@
 % Please edit documentation in R/step0_set_up.R
 \name{step0_set_up}
 \alias{step0_set_up}
-\title{Step 0: Set up survival matrices &  other preliminaries}
+\title{FAC Step 0: Set up survival matrices & other preliminaries}
 \usage{
 step0_set_up(param.set = param_set(), iterations = 150, use.IBM = F,
   use.IBM.S.b = F)
@@ -16,8 +16,11 @@ step0_set_up(param.set = param_set(), iterations = 150, use.IBM = F,
 
 \item{use.IBM.S.b}{Used individual-based modeling implementation of breeding survibal.}
 }
+\value{
+runFAC.i list ...
+}
 \description{
-Step 0: Set up survival matrices &  other preliminaries
+FAC Step 0: Set up survival matrices & other preliminaries
 }
 \examples{
 

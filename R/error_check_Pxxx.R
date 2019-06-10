@@ -1,4 +1,4 @@
-#' Check for errors in pairing equations
+#' QA/QC: Check for errors in pairing equations
 #'
 #' @param P.xxx.name name of scalar to check
 #' @param P.xxx.value value for a given P.xxx

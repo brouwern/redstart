@@ -1,10 +1,9 @@
-#' Equation 20: BREEDING season mortality
+#' Equation 20: Breeding season mortality matrix (S.b)
 #'
 #' @details
 #' "adult birds experience both sex- and habitat-specific mortality
 #' over the breeding season."
 #'
-#' Previously aliased as Fx.make.breeding.s.matrix.eq20
 #'
 #' @param S.b.mc survival...
 #' @param S.b.mk survival...

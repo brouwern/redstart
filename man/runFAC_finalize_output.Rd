@@ -2,15 +2,18 @@
 % Please edit documentation in R/runFAC_finalize_output.R
 \name{runFAC_finalize_output}
 \alias{runFAC_finalize_output}
-\title{finalize output}
+\title{Finalize output of a single run of FAC}
 \usage{
 runFAC_finalize_output(out.df, save.ts = TRUE)
 }
 \arguments{
 \item{out.df}{Dataframe of output}
 
-\item{save.ts}{Should the time series of population sizes be saved}
+\item{save.ts}{Should the time series of population sizes be saved?}
+}
+\value{
+out.df Dataframe ...
 }
 \description{
-finalize output
+Finalize output of a single run of FAC
 }

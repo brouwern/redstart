@@ -1,4 +1,4 @@
-#' Equation 13: pairing in sink (.k) habitat
+#' Equation 13: pairing in sink (.k) habitat (P.kgg)
 #'
 #' @details
 #' good-good pairs that mate in SINK habitat
@@ -6,11 +6,13 @@
 #' Previously aliased as pairing.eq13.P.kgg()
 #'
 #' @param W2 population vector
-#' @param K.bc carrying capacity...
-#' @param K.bk carrying capacity...
-#' @param B.mk xxx
-#' @param B.fk xxx
-#' @param ... ...
+#' @param K.bc Carrying capacity during breeding season in source habitat
+#' @param K.bk Carrying capacity during breeding season in sink habitat
+#' @param B.mk Males (m) allocated to sink (k)
+#' @param B.fk Females allocated to sink
+#' @param ... Additional parameters
+#'
+#' @return P.kgg Proportion of pairs in sink (k) habitat where both male and female originated from good winter habitat (gg)
 #'
 #' @export
 

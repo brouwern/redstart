@@ -1,11 +1,10 @@
-#' Equation xx Fx.make.F.matrix()
+#' Equation 19: Matrix of ... (f.mat)
 #'
-#' @details
 #' sex ratio matrix (equation 19)
 #'
-#' Formerly aliased as Fx.make.F.matrix, make.F.matrix
-#'
 #' @param f Fecundity?
+#'
+#' @return f.mat matrix of xxx
 #'
 #' @export
 #'

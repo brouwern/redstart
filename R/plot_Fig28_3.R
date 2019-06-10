@@ -1,3 +1,5 @@
+#' Replicate 3D Figure 28.3 varying summar and winter carrying capacities (K)
+#'
 #' Process the output of runMultiFAC() to re-create the 3D Fig 28.3
 #'
 #' @param runFAC.multi output from runFAC_multi()

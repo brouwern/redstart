@@ -1,4 +1,4 @@
-#' Equation 12
+#' Equation 12: Proportion of prairs between a male and female both from poor habitat (P.cpp)
 #'
 #' @details
 #' SUMMER MALE (M) DYNAMICS - pairing
@@ -12,12 +12,12 @@
 #'
 #' Previously aliased as pairing.eq12.P.cpp()
 #'
-#' @param P.cgg proportion...
-#' @param P.cgp proportion...
-#' @param P.cpg proportion...
-#' @param ... xxx
+#' @param P.cgg Proportion of pairs in source (c) where male and female both originated from good (gg) winter habitat
+#' @param P.cgp Proportion of pairs in source (c) where male originated from good (g) and female originated from poor winter habitat
+#' @param P.cpg Proportion of pairs in source (c) where male originated from poor (p) and female originated from good (g) winter habitat
+#' @param ... Additional parameters
 #'
-#' @return P.cpp
+#' @return P.cpp Proportion of prairs between a male and female both from poor habitat
 #'
 #' @export
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/error_check_Pxxx.R
 \name{error_check_Pxxx}
 \alias{error_check_Pxxx}
-\title{Check for errors in pairing equations}
+\title{QA/QC: Check for errors in pairing equations}
 \usage{
 error_check_Pxxx(P.xxx.name, P.xxx.value, P.xxx.eq.name = NA, i = NA,
   ...)
@@ -19,7 +19,7 @@ error_check_Pxxx(P.xxx.name, P.xxx.value, P.xxx.eq.name = NA, i = NA,
 \item{...}{additional paramters}
 }
 \description{
-Check for errors in pairing equations
+QA/QC: Check for errors in pairing equations
 }
 \examples{
 P.xxx.names <- c("P.cgg", "P.cgp","P.cpg", "P.cpp","P.kgg", "P.kgp","P.kpg", "P.kpp")

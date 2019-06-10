@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_Fig28_4.R
 \name{plot_Fig28_4}
 \alias{plot_Fig28_4}
-\title{Replicate plot 28.4}
+\title{Replicate line graph Plot 28.4 showing changes in age structure as carrying capacity changes.}
 \usage{
 plot_Fig28_4(runFAC.multi, plot.debug.lines = F)
 }

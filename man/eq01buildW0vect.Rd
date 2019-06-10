@@ -16,7 +16,7 @@ eq01buildW0vect(W.mg, W.mp, W.fg, W.fp)
 \item{W.fp}{Number of males (.f_) wintering in poor (._p) habitat. Scalar}
 }
 \value{
-A vector containing the status of the population at the beginning of winter: \code{W.mg} , \code{W.mp} , \code{W.fg} , and \code{W.fp}
+W0 A vector containing the status of the population at the beginning of winter: \code{W.mg} , \code{W.mp} , \code{W.fg} , and \code{W.fp}
 }
 \description{
 Create a vector representing population structure at the beginning of winter (W0) after

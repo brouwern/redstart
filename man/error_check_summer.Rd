@@ -2,7 +2,7 @@
 % Please edit documentation in R/error_check_summer.R
 \name{error_check_summer}
 \alias{error_check_summer}
-\title{Check output of breeding season processes for errors}
+\title{QA/QC: Check output of breeding season processes for errors}
 \usage{
 error_check_summer(B0, W2, P.breeding.pair.results, check.errors.in, i)
 }
@@ -18,5 +18,5 @@ error_check_summer(B0, W2, P.breeding.pair.results, check.errors.in, i)
 \item{i}{index}
 }
 \description{
-Check output of breeding season processes for errors
+QA/QC: Check output of breeding season processes for errors
 }

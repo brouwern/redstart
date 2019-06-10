@@ -7,14 +7,14 @@
 eq05_Bfk(W2, K.bc, K.bk)
 }
 \arguments{
-\item{W2}{population vector}
+\item{W2}{Population vector produced by eq02buildW1Mat()}
 
-\item{K.bc}{sour.c.e K}
+\item{K.bc}{Carrying capacity (K) during breeding season (b) of source (c) habitat}
 
-\item{K.bk}{sin.k. K}
+\item{K.bk}{Carrying capacity (K) during breeding season (b) of sink (k) habitat}
 }
 \value{
-K.bk, the ... xxxx
+B.fk, the total number of females allocated to sink
 }
 \description{
 This function allocates breeding (B.) females (f) to

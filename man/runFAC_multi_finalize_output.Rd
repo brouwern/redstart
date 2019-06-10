@@ -2,7 +2,7 @@
 % Please edit documentation in R/runFAC_multi_finalize_output.R
 \name{runFAC_multi_finalize_output}
 \alias{runFAC_multi_finalize_output}
-\title{Finalize output from runFAC_multi}
+\title{Finalize output from runFAC_multi()}
 \usage{
 runFAC_multi_finalize_output(multiFAC.out.df, param.grid, ...)
 }
@@ -13,6 +13,9 @@ runFAC_multi_finalize_output(multiFAC.out.df, param.grid, ...)
 
 \item{...}{Additional arguements}
 }
+\value{
+multiFAC.out.df ...
+}
 \description{
-Finalize output from runFAC_multi
+Finalize output from runFAC_multi()
 }

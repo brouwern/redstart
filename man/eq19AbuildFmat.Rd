@@ -2,20 +2,18 @@
 % Please edit documentation in R/eq19AbuildFmat.R
 \name{eq19AbuildFmat}
 \alias{eq19AbuildFmat}
-\title{Equation xx Fx.make.F.matrix()}
+\title{Equation 19: Matrix of ... (f.mat)}
 \usage{
 eq19AbuildFmat(f = 0.5)
 }
 \arguments{
 \item{f}{Fecundity?}
 }
-\description{
-Equation xx Fx.make.F.matrix()
+\value{
+f.mat matrix of xxx
 }
-\details{
+\description{
 sex ratio matrix (equation 19)
-
-Formerly aliased as Fx.make.F.matrix, make.F.matrix
 }
 \examples{
 # Sex ratio matrix

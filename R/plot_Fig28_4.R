@@ -1,4 +1,4 @@
-#' Replicate plot 28.4
+#' Replicate line graph Plot 28.4 showing changes in age structure as carrying capacity changes.
 #'
 #' Functions to replicate plots that occur in Runge and Mara's Birds of Two Worlds Full Annual Cycle model
 #'

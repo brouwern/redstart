@@ -6,6 +6,8 @@
 #' NOTE: in previous versions of this A.i.0 was incorrectly used instead
 #' of A.i.active.j
 #'
+#' @return A.i.G.settled.cor.j ....
+#'
 #' @export
 
 eq25_comp_constrain <- function(A.i.G.settled.raw.j,

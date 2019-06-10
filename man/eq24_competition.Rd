@@ -2,7 +2,7 @@
 % Please edit documentation in R/eq24_competition.R
 \name{eq24_competition}
 \alias{eq24_competition}
-\title{Implement equation 24: competition}
+\title{Implement equation 24: competition for winter habitats}
 \usage{
 eq24_competition(A.i.j, y.i, K.wg.open.j, ...)
 }
@@ -15,6 +15,9 @@ eq24_competition(A.i.j, y.i, K.wg.open.j, ...)
 
 \item{...}{xxx}
 }
+\value{
+A.i.settled.raw.j
+}
 \description{
-Implement equation 24: competition
+Implement equation 24: competition for winter habitats
 }

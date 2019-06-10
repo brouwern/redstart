@@ -2,7 +2,7 @@
 % Please edit documentation in R/eq22buildSymat.R
 \name{eq22buildSymat}
 \alias{eq22buildSymat}
-\title{Equation 22: Mortality during migration of OFFSPRING}
+\title{Equation 22: Mortality during migration of young/offspring (S.y)}
 \usage{
 eq22buildSymat(S.y.mc, S.y.mk, S.y.fc, S.y.fk)
 }
@@ -16,7 +16,7 @@ eq22buildSymat(S.y.mc, S.y.mk, S.y.fc, S.y.fk)
 \item{S.y.fk}{survival...}
 }
 \description{
-Equation 22: Mortality during migration of OFFSPRING
+Equation 22: Mortality during migration of young/offspring (S.y)
 }
 \details{
 Previously aliased as Fx.make.fall.adult.s.matrix.eq22

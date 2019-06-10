@@ -1,15 +1,14 @@
-#' Equation 14: proportion in sink habitat, good-poor pairs
+#' Equation 14: proportion in sink habitat, good-poor pairs (P.kgp)
 #'
-#' @details
-#'
-#' Previously aliased as pairing.eq14.P.kgp()
 #'
 #' @param W2 population vector
-#' @param K.bc carrying capacity ...
-#' @param K.bk carrying capacity ...
-#' @param B.mk xxx
-#' @param B.fk xx
+#' @param K.bc Carrying capacity (K) of source (high quality) breeding habitat.
+#' @param K.bk Carrying capacity (K) of sink (low quality) breeding habitat.
+#' @param B.mk males allocated to sink
+#' @param B.fk females allocated to sink
 #' @param ... xxx
+#'
+#' @return P.kgp Proportion of pairs in sink (k) which are good-poor pairings
 #'
 #' @export
 

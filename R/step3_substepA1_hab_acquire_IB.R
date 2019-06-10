@@ -1,10 +1,12 @@
-#' Breeding habitat acquisition substep of pre-breeding step of breeding season using individual-based (IB) approach
+#' FAC-IBM Step 3, Substep A1: Breeding habitat acquisition substep of pre-breeding step of breeding season using individual-based (IB) approach
 #'
 #'
 #' @param W2 ...
 #' @param K.bc ...
 #' @param K.bk ...
 #' @param ... additional arguements
+#'
+#' @return hab.aq.results.IB Results of habitatio acquisition
 #'
 #' @examples
 #' #Set up param.set

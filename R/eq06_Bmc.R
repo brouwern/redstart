@@ -1,4 +1,4 @@
-#' Equation 6: Allocate breeding males to source habitat.
+#' Equation 6: Allocate breeding males to source habitat (B.mc)
 #'
 #' @details
 #' Summer male (M) dynamces
@@ -8,10 +8,10 @@
 #'
 #' Aliased as M.2.source.eq6.c()
 #'
-#' @param W2 Population vector produced by eq02
-#' @param K.bc carrying capacity...
+#' @param W2 Population vector produced by eq02buildW1Mat()
+#' @param K.bc Carrying capacity (K) during breeding season (b) of source (c) habitat
 #'
-#' @return B.mc
+#' @return B.mc Total number of males allocated to source habitat.
 #'
 #' @references Runge, MC and PP Marra.  2004.  Modeling seasonal
 #'       interactions in the population dynamics of migratory birds.

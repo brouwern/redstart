@@ -14,6 +14,9 @@ eq25_comp_constrain(A.i.G.settled.raw.j, A.i.active.j)
 NOTE: in previous versions of this A.i.0 was incorrectly used instead
 of A.i.active.j}
 }
+\value{
+A.i.G.settled.cor.j ....
+}
 \description{
 Equation 25: Competition A.i constraint
 }

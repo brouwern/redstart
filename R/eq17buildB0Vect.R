@@ -1,4 +1,4 @@
-#' Equation 17: Build vector of Breeding ground abundances after pairing
+#' Equation 17: Build vector of Breeding ground abundances after pairing (B0)
 #'
 #' @param B.mc Abundance of males ("m") in source ("c") habitat on the breeding ground
 #' @param B.mk Abundance of males in sink ("k") habitat on the breeding ground

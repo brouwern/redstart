@@ -1,4 +1,4 @@
-#' Execute 5th step of Runge & Mara FAC model: winter habitat acquisition
+#' FAC Step 5: winter habitat acquisition
 #'
 #' @param B2 Adult population state at end of fall migration
 #' @param Y2 Offspring population state at end of fall migration
@@ -6,6 +6,8 @@
 #' @param gamma.i Vector of parameters defining relative competitive ability for winter habitat
 #' @param i Model iteration number
 #' @param ... Additional parameters
+#'
+#' @return W.list xxx
 #'
 #' @export
 

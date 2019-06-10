@@ -2,7 +2,7 @@
 % Please edit documentation in R/eq18AbuildRvect.R
 \name{eq18AbuildRvec}
 \alias{eq18AbuildRvec}
-\title{Equation 18: R vector - build vector of reproduction/fecunity values}
+\title{Equation 18: R vector - build vector of reproduction/fecunity values (R.all)}
 \usage{
 eq18AbuildRvec(R.base.rate, R.hab.effect, co)
 }

@@ -9,7 +9,7 @@
 FACavian is an R implementation and extension of the full annual cycle (FAC) model for migratory birds developed by Michael Runge and Peter Marra and published in Birds of Two Worlds.  The original model is a periodic, 2-sex, density-dependent matrix model that incorporates seasonal dynamics, carryover effects, and two classes of habitat on both the summer breeding grounds.  FACavian is an R implementation of the model that incorporates Monte Carlo and sensitivity analyses.  Thanks goes to M. Runge for graciously answering questions and providing Matlab code snippets.
 }
 \author{
-\strong{Maintainer}: Brouwer Nathan \email{brouwern@gmail.com}
+\strong{Maintainer}: Nathan Brouwer \email{brouwern@gmail.com}
 
 }
 \keyword{internal}

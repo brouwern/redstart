@@ -7,6 +7,8 @@
 #' @param y2 Label for axis
 #' @param ... Additional arguements
 #'
+#' @return Time series plot
+#'
 #' @export
 #'
 

@@ -1,16 +1,14 @@
-#' Equation 16:
+#' Equation 16: Proportion in sink composed of poor-poor pairings (P.kpp)
 #'
-#' @details
-#' Proportion in sink composed of poor-poor
 #'
-#' Previously aliased as pairing.eq16.P.kpp
-#'
-#' @param P.kgg xxx
-#' @param P.kgp xxx
-#' @param P.kpg xxx
-#' @param B.mk xxx
-#' @param B.fk xxx
+#' @param P.kgg Proportion source (k) composed of good-good pairings.
+#' @param P.kgp Proportion source (k) composed of good-poor pairings.
+#' @param P.kpg Proportionin source (k) composed of good-good pairings.
+#' @param B.mk males (m) allocated to sink (k)
+#' @param B.fk females allocated to sink
 #' @param ... xxx
+#'
+#' @return P.kpp Proportion of pairs in sink (k) which are poor-poor pairings
 #'
 #' @export
 

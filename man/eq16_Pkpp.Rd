@@ -2,28 +2,26 @@
 % Please edit documentation in R/eq16_Pkpp.R
 \name{eq16_Pkpp}
 \alias{eq16_Pkpp}
-\title{Equation 16:}
+\title{Equation 16: Proportion in sink composed of poor-poor pairings (P.kpp)}
 \usage{
 eq16_Pkpp(P.kgg, P.kgp, P.kpg, B.mk, B.fk, ...)
 }
 \arguments{
-\item{P.kgg}{xxx}
+\item{P.kgg}{Proportion source (k) composed of good-good pairings.}
 
-\item{P.kgp}{xxx}
+\item{P.kgp}{Proportion source (k) composed of good-poor pairings.}
 
-\item{P.kpg}{xxx}
+\item{P.kpg}{Proportionin source (k) composed of good-good pairings.}
 
-\item{B.mk}{xxx}
+\item{B.mk}{males (m) allocated to sink (k)}
 
-\item{B.fk}{xxx}
+\item{B.fk}{females allocated to sink}
 
 \item{...}{xxx}
 }
-\description{
-Equation 16:
+\value{
+P.kpp Proportion of pairs in sink (k) which are poor-poor pairings
 }
-\details{
-Proportion in sink composed of poor-poor
-
-Previously aliased as pairing.eq16.P.kpp
+\description{
+Equation 16: Proportion in sink composed of poor-poor pairings (P.kpp)
 }

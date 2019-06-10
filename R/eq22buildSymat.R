@@ -1,4 +1,4 @@
-#' Equation 22: Mortality during migration of OFFSPRING
+#' Equation 22: Mortality during migration of young/offspring (S.y)
 #'
 #' @details
 #' Previously aliased as Fx.make.fall.adult.s.matrix.eq22

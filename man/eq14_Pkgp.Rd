@@ -2,26 +2,26 @@
 % Please edit documentation in R/eq14_Pkgp.R
 \name{eq14_Pkgp}
 \alias{eq14_Pkgp}
-\title{Equation 14: proportion in sink habitat, good-poor pairs}
+\title{Equation 14: proportion in sink habitat, good-poor pairs (P.kgp)}
 \usage{
 eq14_Pkgp(W2, K.bc, K.bk, B.mk, B.fk)
 }
 \arguments{
 \item{W2}{population vector}
 
-\item{K.bc}{carrying capacity ...}
+\item{K.bc}{Carrying capacity (K) of source (high quality) breeding habitat.}
 
-\item{K.bk}{carrying capacity ...}
+\item{K.bk}{Carrying capacity (K) of sink (low quality) breeding habitat.}
 
-\item{B.mk}{xxx}
+\item{B.mk}{males allocated to sink}
 
-\item{B.fk}{xx}
+\item{B.fk}{females allocated to sink}
 
 \item{...}{xxx}
 }
-\description{
-Equation 14: proportion in sink habitat, good-poor pairs
+\value{
+P.kgp Proportion of pairs in sink (k) which are good-poor pairings
 }
-\details{
-Previously aliased as pairing.eq14.P.kgp()
+\description{
+Equation 14: proportion in sink habitat, good-poor pairs (P.kgp)
 }

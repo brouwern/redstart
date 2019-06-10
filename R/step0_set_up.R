@@ -1,4 +1,4 @@
-#' Step 0: Set up survival matrices &  other preliminaries
+#' FAC Step 0: Set up survival matrices & other preliminaries
 #'
 #' @param param.set Initial parameters and population state for a single run of model to equilibirum
 #' @param iterations Number of iterations to run model to allow it to reach equilibrium
@@ -20,6 +20,8 @@
 #' # Look at 2nd matrix used in model, winter survival
 #' runFAC.i$param.matrices[2]
 #' runFAC.i$param.matrices$S.w
+#'
+#' @return runFAC.i list ...
 #'
 #' @export
 
@@ -63,7 +65,7 @@ step0_set_up <- function(param.set = param_set(),
   ### EQUATION 2: winter survival matrix
   ### Winter SURVIVAL (S.w) of birds in different habitat qualities
 
-  S.w <- eq02bulidW1Mat(param.set$S.w.mg,
+  S.w <- eq02buildW1Mat(param.set$S.w.mg,
                            param.set$S.w.mp,
                            param.set$S.w.fg,
                            param.set$S.w.fp)

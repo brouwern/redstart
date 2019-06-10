@@ -1,10 +1,8 @@
 #' Equation 5: Allocate breeding females to sink habitat (B.fk)
 #'
-#' @description This function allocates breeding (B.) females (f) to
+#' This function allocates breeding (B.) females (f) to
 #' to sink habitat (k).
 #'
-#'
-#' @details
 #' This function compares total number of females fg + fp
 #' against K.bc, the  carrying capacity ("K.") of the breeding-ground
 #' (".b.") source habiat (".c")
@@ -40,11 +38,11 @@
 #'
 #' Aliased as F.2.sink.eq5.k()
 #'
-#' @param W2 population vector
-#' @param K.bc sour.c.e K
-#' @param K.bk sin.k. K
+#' @param W2 Population vector produced by eq02buildW1Mat()
+#' @param K.bc Carrying capacity (K) during breeding season (b) of source (c) habitat
+#' @param K.bk Carrying capacity (K) during breeding season (b) of sink (k) habitat
 #'
-#' @return K.bk, the ... xxxx
+#' @return B.fk, the total number of females allocated to sink
 #'
 #' @references Runge, MC and PP Marra.  2004.  Modeling seasonal
 #'       interactions in the population dynamics of migratory birds.

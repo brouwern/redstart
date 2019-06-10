@@ -1,4 +1,4 @@
-#' Create sequence of parameter values between minimum and maximum.  Output is a list
+#' Create sequence of parameter values between minimum and maximum.
 #'
 #' @param param.ranges minimum and maximum values for all parameters
 #' @param len.out number of increments to divide range into

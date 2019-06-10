@@ -2,7 +2,7 @@
 % Please edit documentation in R/runFAC_check_equilibrium.R
 \name{runFAC_check_equilibrium}
 \alias{runFAC_check_equilibrium}
-\title{check model equilibrium}
+\title{Check a model being run for equilibrium}
 \usage{
 runFAC_check_equilibrium(lamb.B.mc.mean, lamb.B.mc.var, i, at.eq = FALSE,
   verbose = TRUE, eq.tol = 5, ...)
@@ -23,5 +23,8 @@ runFAC_check_equilibrium(lamb.B.mc.mean, lamb.B.mc.var, i, at.eq = FALSE,
 \item{...}{Additional arguements}
 }
 \description{
-check model equilibrium
+Check a model being run for equilibrium
+}
+\references{
+at.eq .... Logical TRUE ?
 }

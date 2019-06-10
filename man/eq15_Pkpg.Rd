@@ -2,7 +2,7 @@
 % Please edit documentation in R/eq15_Pkpg.R
 \name{eq15_Pkpg}
 \alias{eq15_Pkpg}
-\title{Equation 15: Proportion in sink poor-poor}
+\title{Equation 15: Proportion in sink poor-poor (P.kpg)}
 \usage{
 eq15_Pkpg(W2, K.bc, K.bk, B.mk, B.fk)
 }
@@ -13,12 +13,15 @@ eq15_Pkpg(W2, K.bc, K.bk, B.mk, B.fk)
 
 \item{K.bk}{carrying capacity}
 
-\item{B.mk}{xxx}
+\item{B.mk}{males allocated to sink}
 
-\item{B.fk}{xxx}
+\item{B.fk}{females allocated to sink}
+}
+\value{
+P.kpg Proportion of pairs in sink (k) habitat where both male originates from poor (p) and female originated from good (g) winter habitat
 }
 \description{
-Equation 15: Proportion in sink poor-poor
+Equation 15: Proportion in sink poor-poor (P.kpg)
 }
 \details{
 Aliased as pairing.eq15.P.kpg()

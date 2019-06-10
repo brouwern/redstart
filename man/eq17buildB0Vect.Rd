@@ -2,7 +2,7 @@
 % Please edit documentation in R/eq17buildB0Vect.R
 \name{eq17buildB0Vect}
 \alias{eq17buildB0Vect}
-\title{Equation 17: Build vector of Breeding ground abundances after pairing}
+\title{Equation 17: Build vector of Breeding ground abundances after pairing (B0)}
 \usage{
 eq17buildB0Vect(B.mc, B.mk, B.md, B.fc, B.fk)
 }
@@ -21,5 +21,5 @@ eq17buildB0Vect(B.mc, B.mk, B.md, B.fc, B.fk)
 B0 vector of breeding ground abundances after pairing of males and females
 }
 \description{
-Equation 17: Build vector of Breeding ground abundances after pairing
+Equation 17: Build vector of Breeding ground abundances after pairing (B0)
 }

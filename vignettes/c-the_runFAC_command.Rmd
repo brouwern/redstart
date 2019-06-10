@@ -62,7 +62,7 @@ library(FACavian)
 
 ### Getting parameters for a model run
 
-Default values are set in all of FACavian's functions so you can easily explore them without worrying about setting the underlying demographic parameters.  For a preliminary run parameters will be called automatically behind the scenes using a function called param_set(), which has defaults as givenn in Runge and Marra (2004).  
+Default values are set in all of FACavian's functions so you can easily explore them without worrying about setting the underlying demographic parameters.  For a preliminary run parameters will be called automatically behind the scenes using a function called param_set(), which has defaults as given in Runge and Marra (2004).  
 
 You can look at the parameters by calling the param_set() function.  Later we'll use param_set() to tweak a few parameters.
 
@@ -73,7 +73,7 @@ length(param_set())
 
 
 The first 10 parameters are:
-  ```{r eval=T}
+```{r eval=T}
 param_set()[1:10]
 ```
 

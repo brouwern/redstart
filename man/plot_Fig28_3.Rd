@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_Fig28_3.R
 \name{plot_Fig28_3}
 \alias{plot_Fig28_3}
-\title{Process the output of runMultiFAC() to re-create the 3D Fig 28.3}
+\title{Replicate 3D Figure 28.3 varying summar and winter carrying capacities (K)}
 \usage{
 plot_Fig28_3(runFAC.multi, plot.type = "P", scale. = T,
   tick.labs = 1)

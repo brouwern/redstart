@@ -22,6 +22,9 @@ runFAC_multi(param.grid = param_grid(), Ninit = c(10, 0, 10, 0),
 
 \item{...}{other arguements}
 }
+\value{
+multiFAC.out list ...
+}
 \description{
 Note that the "para.grid" arguement take take produced by the param_grid() function,
 which gets its name because it uses the expand.grid() function to make all

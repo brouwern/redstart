@@ -16,12 +16,12 @@ eq03buildW2Mat(S.m.mg = 0.75, S.m.mp = 0.75, S.m.fg = 0.75,
 
 \item{S.m.fp}{Migration survival of females from poor habitat}
 }
+\value{
+S.m (aka W2) Matrix of spring migration (m) survival probabilites by sex and winter habitat the bird originated from
+}
 \description{
 This function produces a diagonal matrix of northward (spring)
 migration (.m) survival rates
-}
-\details{
-Previous alias Fx.make.spring.mig.surv.eq3
 }
 \references{
 Runge, MC and PP Marra.  2004.  Modeling seasonal

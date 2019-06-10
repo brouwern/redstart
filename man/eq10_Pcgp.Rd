@@ -2,14 +2,14 @@
 % Please edit documentation in R/eq10_Pcgp.R
 \name{eq10_Pcgp}
 \alias{eq10_Pcgp}
-\title{Equation 10:}
+\title{Equation 10: proportion males from good winter habitat paired with females from poor winter habitat (P.cgp)}
 \usage{
 eq10_Pcgp(W2, K.bc, B.mc, B.fc, ...)
 }
 \arguments{
 \item{W2}{population vector}
 
-\item{K.bc}{females on sour.c.e habitat (typo?)}
+\item{K.bc}{Carrying capacity (K) during breeding season (b) of source (c) habitat}
 
 \item{B.mc}{females available in sink (typo; males?, source?)}
 
@@ -18,10 +18,10 @@ eq10_Pcgp(W2, K.bc, B.mc, B.fc, ...)
 \item{...}{x}
 }
 \value{
-xxx xxxx
+P.cgp proportion males from good winter habitat paired with females from poor winter habitat
 }
 \description{
-Equation 10:
+Equation 10: proportion males from good winter habitat paired with females from poor winter habitat (P.cgp)
 }
 \details{
 proportion of pairs on source habitat

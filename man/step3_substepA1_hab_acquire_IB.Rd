@@ -2,7 +2,7 @@
 % Please edit documentation in R/step3_substepA1_hab_acquire_IB.R
 \name{step3_substepA1_hab_acquire_IB}
 \alias{step3_substepA1_hab_acquire_IB}
-\title{Breeding habitat acquisition substep of pre-breeding step of breeding season using individual-based (IB) approach}
+\title{FAC-IBM Step 3, Substep A1: Breeding habitat acquisition substep of pre-breeding step of breeding season using individual-based (IB) approach}
 \usage{
 step3_substepA1_hab_acquire_IB(W2, K.bc, K.bk, ...)
 }
@@ -15,8 +15,11 @@ step3_substepA1_hab_acquire_IB(W2, K.bc, K.bk, ...)
 
 \item{...}{additional arguements}
 }
+\value{
+hab.aq.results.IB Results of habitatio acquisition
+}
 \description{
-Breeding habitat acquisition substep of pre-breeding step of breeding season using individual-based (IB) approach
+FAC-IBM Step 3, Substep A1: Breeding habitat acquisition substep of pre-breeding step of breeding season using individual-based (IB) approach
 }
 \examples{
 #Set up param.set

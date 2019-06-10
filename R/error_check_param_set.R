@@ -1,6 +1,10 @@
-#' Quality control on initial parameters entering runFAC()
+#' QA/QC: Check that input into runFAC() is correct size
 #'
-#' @param param.set Parameter set ...
+#' This function is used for Quality control on initial parameters entering runFAC().
+#'
+#' @param param.set Set of parameters for a single run of runFAC()
+#'
+#' @return error message
 #'
 #' @export
 
@@ -12,6 +16,6 @@ error_check_param_set <- function(param.set){
     message("Incorrect param matrix size.",
             "\nFunction runFAC() accepts only a single row of parameters at a time")
 
-    break()
+    stop()
   }
 }

@@ -15,7 +15,7 @@
 #' @param W.fg Number of females (.f_) wintering in good (._g) habitat. Scalar
 #' @param W.fp Number of males (.f_) wintering in poor (._p) habitat. Scalar
 #'
-#' @return A vector containing the status of the population at the beginning of winter: \code{W.mg} , \code{W.mp} , \code{W.fg} , and \code{W.fp}
+#' @return W0 A vector containing the status of the population at the beginning of winter: \code{W.mg} , \code{W.mp} , \code{W.fg} , and \code{W.fp}
 #'
 #' @references Runge, MC and PP Marra.  2004.  Modeling seasonal
 #'       interactions in the population dynamics of migratory birds.
@@ -28,7 +28,7 @@
 eq01buildW0vect <- function(W.mg, W.mp,
                             W.fg, W.fp){
 
-  W0 <- c(W.mg, W.mp, W.fg, W.fp)
+  W0        <- c(W.mg, W.mp, W.fg, W.fp)
   names(W0) <- c("mg","mp","fg","fp")
 
   return(W0)

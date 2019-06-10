@@ -15,6 +15,9 @@ plot_runFAC(out.df, y1 = "tot.W", y2 = "tot.B", ...)
 
 \item{...}{Additional arguements}
 }
+\value{
+Time series plot
+}
 \description{
 Plot time series of a single run of a FAC model
 }

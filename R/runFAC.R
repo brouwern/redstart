@@ -1,4 +1,4 @@
-#' Run FAC model to equilibirum
+#' Run a single FAC model to equilibirum
 #'
 #' Iterates a single parameterization of the Runge & Marra 2004 FAC model
 #' until equilbirium is reached.  Typically the desired output is the equilibrium
@@ -22,7 +22,7 @@
 #' @param use.IBM.S.b use IBM for summer adult survival
 #' @param ... other arguements passed
 #'
-#' @return A dataframe containing the status of the popualtion at each time step for all parameters
+#' @return runFAC.i A dataframe containing the status of the population at each time step for all parameters
 #'
 #'
 #' @references Runge, MC and PP Marra.  2004.  Modeling seasonal

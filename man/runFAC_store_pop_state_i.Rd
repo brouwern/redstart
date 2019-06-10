@@ -2,7 +2,7 @@
 % Please edit documentation in R/runFAC_store_pop_state_i.R
 \name{runFAC_store_pop_state_i}
 \alias{runFAC_store_pop_state_i}
-\title{Save current population state}
+\title{Save current population state of model being run}
 \usage{
 runFAC_store_pop_state_i(i, minimum.i = 10, FAC.out, W.list, B0,
   P.breeding.pair.results, Y2, check.eq = T, ...)
@@ -30,5 +30,5 @@ runFAC_store_pop_state_i(i, minimum.i = 10, FAC.out, W.list, B0,
 FAC.out dataframe updated with population sizeds from time i
 }
 \description{
-Save current population state
+Save current population state of model being run
 }

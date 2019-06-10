@@ -1,4 +1,5 @@
-#' Figure 28.5: Vary male dominance parameter
+#' Replicate line graph Figure 28.5 varying male dominance parameter gamma
+#'
 #' This varies competition for high quality winter habitat
 #'
 #' @param dat.winter.lim Dataframe from running a winter-limited FAC

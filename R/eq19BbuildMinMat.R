@@ -1,14 +1,11 @@
-#' Equation 19: Build 2 x 2 Diagonal matrix based in minimumbs of B.mc vs B.fc and B.mk vs. B.fk
+#' Equation 19: Build 2 x 2 Diagonal matrix based on minimnums of B.mc vs B.fc and B.mk vs. B.fk (min.mat)
 #'
-#' Fx.make.min.mat.eq19()
 #'
-#' @details
-#' Previously aliased as Fx.make.min.mat.eq19
 #'
-#' @param B.mc xxx
-#' @param B.fc xxx
-#' @param B.mk xxx
-#' @param B.fk xxx
+#' @param B.mc Abundance of males ("m") in source ("c") habitat on the breeding ground
+#' @param B.fc Females in source habitat
+#' @param B.mk Abundance of males in sink ("k") habitat on the breeding ground
+#' @param B.fk Females in sink habitat
 #'
 #' @return min.mat xxx
 #'

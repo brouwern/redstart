@@ -1,7 +1,9 @@
-#' equation 26 Allocate to poor habitat
+#' Equation 26: Allocate to poor habitat (A.i.P)
 #'
 #' @param A.i.0 xxx
 #' @param A.i.G xxx
+#'
+#' @return A.i.P xxx
 #'
 #' @export
 

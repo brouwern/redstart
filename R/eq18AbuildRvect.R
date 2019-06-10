@@ -1,4 +1,4 @@
-#' Equation 18: R vector - build vector of reproduction/fecunity values
+#' Equation 18: R vector - build vector of reproduction/fecunity values (R.all)
 #'
 #' fx.make.R.all.eq18()
 #' Fx.make.P.matrix.eq18()

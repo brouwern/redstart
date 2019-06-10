@@ -1,4 +1,4 @@
-#' Check for errors in B0 (vector of abundances after breeding habiatat acquisition)
+#' QA/QC: Check for errors in B0 (vector of abundances after breeding habiatat acquisition)
 #'
 #' @param B0 5 x 1 vector representing population state after breeding habitat acqusitions
 #' @param W2 4 x 1 vectir representing populati state after northward spring migration

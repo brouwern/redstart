@@ -2,13 +2,16 @@
 % Please edit documentation in R/error_check_param_set.R
 \name{error_check_param_set}
 \alias{error_check_param_set}
-\title{Quality control on initial parameters entering runFAC()}
+\title{QA/QC: Check that input into runFAC() is correct size}
 \usage{
 error_check_param_set(param.set)
 }
 \arguments{
-\item{param.set}{Parameter set ...}
+\item{param.set}{Set of parameters for a single run of runFAC()}
+}
+\value{
+error message
 }
 \description{
-Quality control on initial parameters entering runFAC()
+This function is used for Quality control on initial parameters entering runFAC().
 }

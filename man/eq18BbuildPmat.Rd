@@ -2,26 +2,26 @@
 % Please edit documentation in R/eq18BbuildPmat.R
 \name{eq18BbuildPmat}
 \alias{eq18BbuildPmat}
-\title{Equation 18: Build 2 x 8 matrix of the proporations in each habitat combo}
+\title{Equation 18: P matrix - Build 2 x 8 matrix of the proporations in each habitat combo (P.all)}
 \usage{
 eq18BbuildPmat(P.cgg, P.cgp, P.cpg, P.cpp, P.kgg, P.kgp, P.kpg, P.kpp)
 }
 \arguments{
-\item{P.cgg}{proportion ... Calculated by equation 9}
+\item{P.cgg}{From equation 9: the proportion of pairings in the "source" breeding habitat between male and females which both winter in the good habitat}
 
-\item{P.cgp}{proportion ... Calcualted by equation 10}
+\item{P.cgp}{From equation 10: proportion males from good winter habitat paired with females from poor winter habitat}
 
-\item{P.cpg}{proportion ... Calcualted by equation 11 (?)}
+\item{P.cpg}{From equation 11: the proportion of pairings in the source habitat (c) made up of males from poor winter habitat (p) and females from good winter habitat (g).}
 
-\item{P.cpp}{proportion ... Calcluated by subtraction using equation 12}
+\item{P.cpp}{From equation 12: Proportion of prairs between a male and female both from poor habitat}
 
-\item{P.kgg}{proportion ... Calcualted by eqation 13}
+\item{P.kgg}{From equation 13:Proportion of pairs in sink (k) habitat where both male and female originated from good winter habitat (gg)}
 
-\item{P.kgp}{proportion ... Calcualted by eqation 14}
+\item{P.kgp}{From equation 14: Proportion of pairs in sink (k) which are good-poor pairings4}
 
-\item{P.kpg}{proportion ... Calcualted by eqation 15}
+\item{P.kpg}{From Equation 15: Proportion of pairs in sink (k) habitat where both male originates from poor (p) and female originated from good (g) winter habitat}
 
-\item{P.kpp}{proportion ... Calcualted by eqation 16}
+\item{P.kpp}{From: Equation 16: Proportion of pairs in sink (k) which are poor-poor pairings}
 }
 \value{
 P.all 2 x 8 matrix of the proporiton in each habitat

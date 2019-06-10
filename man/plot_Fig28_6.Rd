@@ -2,17 +2,17 @@
 % Please edit documentation in R/plot_Fig28_6.R
 \name{plot_Fig28_6}
 \alias{plot_Fig28_6}
-\title{Make plot 28.6 - varying carry over effect c}
+\title{Replicate Figure 28.6 varying carryover effect c}
 \usage{
 plot_Fig28_6(winter.lim, intermediate, summer.lim)
 }
 \arguments{
-\item{winter.lim}{xxx}
+\item{winter.lim}{Dataframe from runFAC_multi() based on winter habitat limitation scenario defined by Runge and Mara (2004)}
 
-\item{intermediate}{xxx}
+\item{intermediate}{Dataframe for "Intermediate" limitaiton scenario}
 
-\item{summer.lim}{xxx}
+\item{summer.lim}{Dataframe for Summer limitation scenario}
 }
 \description{
-Make plot 28.6 - varying carry over effect c
+Replicate Figure 28.6 varying carryover effect c
 }

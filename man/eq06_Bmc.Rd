@@ -2,20 +2,20 @@
 % Please edit documentation in R/eq06_Bmc.R
 \name{eq06_Bmc}
 \alias{eq06_Bmc}
-\title{Equation 6: Allocate breeding males to source habitat.}
+\title{Equation 6: Allocate breeding males to source habitat (B.mc)}
 \usage{
 eq06_Bmc(W2, K.bc)
 }
 \arguments{
-\item{W2}{Population vector produced by eq02}
+\item{W2}{Population vector produced by eq02buildW1Mat()}
 
-\item{K.bc}{carrying capacity...}
+\item{K.bc}{Carrying capacity (K) during breeding season (b) of source (c) habitat}
 }
 \value{
-B.mc
+B.mc Total number of males allocated to source habitat.
 }
 \description{
-Equation 6: Allocate breeding males to source habitat.
+Equation 6: Allocate breeding males to source habitat (B.mc)
 }
 \details{
 Summer male (M) dynamces

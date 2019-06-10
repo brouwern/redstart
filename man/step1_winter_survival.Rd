@@ -2,7 +2,7 @@
 % Please edit documentation in R/step1_winter_survival.R
 \name{step1_winter_survival}
 \alias{step1_winter_survival}
-\title{Execute 1st step of Runge & Marra FAC model: overwinter survival
+\title{FAC step 1: Execute 1st step of Runge & Marra FAC model: overwinter survival
 1.RM and W1.IB, the pop stucture after overwinter survival}
 \usage{
 step1_winter_survival(i, runFAC.i, use.IBM, Ninit, W.list.RM = NULL,
@@ -21,8 +21,11 @@ step1_winter_survival(i, runFAC.i, use.IBM, Ninit, W.list.RM = NULL,
 
 \item{W.list.IB}{xxx}
 }
+\value{
+W1.list
+}
 \description{
-Execute 1st step of Runge & Marra FAC model: overwinter survival
+FAC step 1: Execute 1st step of Runge & Marra FAC model: overwinter survival
 1.RM and W1.IB, the pop stucture after overwinter survival
 }
 \examples{

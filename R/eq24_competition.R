@@ -1,9 +1,11 @@
-#' Implement equation 24: competition
+#' Implement equation 24: competition for winter habitats
 #'
 #' @param A.i.j xxx
 #' @param y.i xxx
 #' @param K.wg.open.j xxx
 #' @param ... xxx
+#'
+#' @return A.i.settled.raw.j
 #'
 #' @export
 

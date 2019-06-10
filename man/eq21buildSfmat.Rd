@@ -2,8 +2,7 @@
 % Please edit documentation in R/eq21buildSfmat.R
 \name{eq21buildSfmat}
 \alias{eq21buildSfmat}
-\title{Equation 21 - MIGRATION Mortality of ADULTS
-"Mort during mig depends upon the sex of the bird and breeding habitat it used}
+\title{Equation 21: Migration mortality matrix for adults (S.f)}
 \usage{
 eq21buildSfmat(S.f.mc, S.f.mk, S.f.md, S.f.fc, S.f.fk)
 }
@@ -18,8 +17,11 @@ eq21buildSfmat(S.f.mc, S.f.mk, S.f.md, S.f.fc, S.f.fk)
 
 \item{S.f.fk}{survival...}
 
-\item{S.f}{Matrix of fall survival probabilities}
+\item{S.f}{Matrix of fall survival probabilities for adults.}
 }
 \description{
+"Mort during mig depends upon the sex of the bird and breeding habitat it used
+}
+\details{
 Aliased previously Fx.make.fall.adult.s.matrix.eq21
 }

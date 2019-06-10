@@ -2,7 +2,7 @@
 % Please edit documentation in R/step5_winter_habitat_acquisition.R
 \name{step5_winter_habitat_acquisition}
 \alias{step5_winter_habitat_acquisition}
-\title{Execute 5th step of Runge & Mara FAC model: winter habitat acquisition}
+\title{FAC Step 5: winter habitat acquisition}
 \usage{
 step5_winter_habitat_acquisition(B2, Y2, param.set, gamma.i, i, ...)
 }
@@ -19,6 +19,9 @@ step5_winter_habitat_acquisition(B2, Y2, param.set, gamma.i, i, ...)
 
 \item{...}{Additional parameters}
 }
+\value{
+W.list xxx
+}
 \description{
-Execute 5th step of Runge & Mara FAC model: winter habitat acquisition
+FAC Step 5: winter habitat acquisition
 }

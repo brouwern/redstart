@@ -2,25 +2,28 @@
 % Please edit documentation in R/eq13_Pkgg.R
 \name{eq13_Pkgg}
 \alias{eq13_Pkgg}
-\title{Equation 13: pairing in sink (.k) habitat}
+\title{Equation 13: pairing in sink (.k) habitat (P.kgg)}
 \usage{
 eq13_Pkgg(W2, K.bc, K.bk, B.mk, B.fk, ...)
 }
 \arguments{
 \item{W2}{population vector}
 
-\item{K.bc}{carrying capacity...}
+\item{K.bc}{Carrying capacity during breeding season in source habitat}
 
-\item{K.bk}{carrying capacity...}
+\item{K.bk}{Carrying capacity during breeding season in sink habitat}
 
-\item{B.mk}{xxx}
+\item{B.mk}{Males (m) allocated to sink (k)}
 
-\item{B.fk}{xxx}
+\item{B.fk}{Females allocated to sink}
 
-\item{...}{...}
+\item{...}{Additional parameters}
+}
+\value{
+P.kgg Proportion of pairs in sink (k) habitat where both male and female originated from good winter habitat (gg)
 }
 \description{
-Equation 13: pairing in sink (.k) habitat
+Equation 13: pairing in sink (.k) habitat (P.kgg)
 }
 \details{
 good-good pairs that mate in SINK habitat

@@ -1,4 +1,4 @@
-#' Equation 15: Proportion in sink poor-poor
+#' Equation 15: Proportion in sink poor-poor (P.kpg)
 #'
 #'
 #' @details
@@ -8,8 +8,10 @@
 #' @param W2 Popualtion vector
 #' @param K.bc carrying capacity
 #' @param K.bk carrying capacity
-#' @param B.mk xxx
-#' @param B.fk xxx
+#' @param B.mk males allocated to sink
+#' @param B.fk females allocated to sink
+#'
+#' @return P.kpg Proportion of pairs in sink (k) habitat where both male originates from poor (p) and female originated from good (g) winter habitat
 #'
 #' @export
 

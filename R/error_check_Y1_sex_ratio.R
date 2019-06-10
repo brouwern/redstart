@@ -1,4 +1,4 @@
-#' Check offspring sex ratio
+#' QA/QC: Check offspring sex ratio
 #'
 #' @param Y1 Vector of offspring abundance
 #' @param i current iteration

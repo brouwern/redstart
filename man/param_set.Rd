@@ -2,7 +2,7 @@
 % Please edit documentation in R/param_set.R
 \name{param_set}
 \alias{param_set}
-\title{Make paramater ranges}
+\title{Set individual parameter values.}
 \usage{
 param_set(scenario = NA, figure = NA, gamma. = 5, c. = 1,
   K.bc. = 1000, K.bk. = 10000, K.wg. = 900, S.w.mg. = 0.8,
@@ -15,79 +15,80 @@ param_set(scenario = NA, figure = NA, gamma. = 5, c. = 1,
   S.y.fk. = 0.75)
 }
 \arguments{
-\item{scenario}{Difference scenarios defined by Runge & Marra: "winter" limited, "intermediate", and "spring" limited.  If set overides other varibles.}
+\item{scenario}{Different habitat scenarios defined by Runge & Marra 2004.  In particular sets carrying capacity for breeding source habitat (K.bc) and winter good habitat (K.wg)    If set overides other varibles that may have been set using other arguements.}
 
-\item{figure}{deprecated}
+\item{figure}{deprecated.  See param_ranges()}
 
-\item{gamma.}{xx}
+\item{gamma.}{Strength of male dominance.}
 
-\item{c.}{xxx}
+\item{c.}{Strength of winter to breeding season carry over.}
 
-\item{K.bc.}{xxx}
+\item{K.bc.}{Carrying capacity (K) of source (high quality) breeding habitat.}
 
-\item{K.bk.}{xxx}
+\item{K.bk.}{Carrying capacity (K) of sink (low quality) breeding habitat.}
 
-\item{K.wg.}{xxx}
+\item{K.wg.}{Carrying capacity (K) of winter good (high quality) habitat.}
 
-\item{S.w.mg.}{xxx}
+\item{S.w.mg.}{Survival (S) during winter (.w.) of males (.m) in good habitat (g).  Note that there is no age structure in winter.}
 
-\item{S.w.mp.}{xxx}
+\item{S.w.mp.}{Survival (S) during winter (.w.) of males (.m) in poor habitat (p).}
 
-\item{S.w.fg.}{xxx}
+\item{S.w.fg.}{Survival (S) during winter (.w.) of females (.f) in good habitat (g).}
 
-\item{S.w.fp.}{xxx}
+\item{S.w.fp.}{Survival (S) during winter (.w.) of females (.f) in good habitat (p).}
 
-\item{S.m.mg.}{do they call this s.smg?}
+\item{S.m.mg.}{Survival (S) during spring migration (.m.) of males (.m) originating from good (g) winter habitat.}
 
-\item{S.m.mp.}{xxx}
+\item{S.m.mp.}{Survival (S) during spring migration (.m.) of males (.m) originating from poor (p) winter habitat.}
 
-\item{S.m.fg.}{xxx}
+\item{S.m.fg.}{Survival (S) during spring migration (.m.) of females (.f) originating from good (g) winter habitat.}
 
-\item{S.m.fp.}{xxx}
+\item{S.m.fp.}{Survival (S) during spring migration (.m.) of females (.m) originating from poor (p) winter habitat.}
 
-\item{R.base.rate.}{xxx}
+\item{R.base.rate.}{Fecundity base rate (?)}
 
-\item{R.hab.effect.}{effects of pair breeding in poor habitat}
+\item{R.hab.effect.}{Effect on fecundity of a pair breeding in poor habitat}
 
-\item{co.}{magnitude of carry over effect; c 1 equals no carry over}
+\item{co.}{Magnitude of carry over effect; c = 1 is no carry over}
 
-\item{f.}{sex ratio}
+\item{f.}{Sex ratio}
 
-\item{S.b.mc.}{males in sour.c.e habitat}
+\item{S.b.mc.}{Survival (S) during breeding (.b.) of males (.m) in source (c) habitat (source = good habitat)}
 
-\item{S.b.mk.}{males in sin.k. habitat}
+\item{S.b.mk.}{Survival (S) during breeding (.b.) of males (.m) in sink (k) habitat (sink = poor habitat)}
 
-\item{S.b.md.}{"drain" males}
+\item{S.b.md.}{Survival (S) during breeding (.b.) of males (.m) with drain (d) status (drain = floater or unpaired)}
 
-\item{S.b.fc.}{xxx}
+\item{S.b.fc.}{Survival (S) during breeding (.b.) of females (.f) in source (c) habitat (source = good habitat)}
 
-\item{S.b.fk.}{xxx}
+\item{S.b.fk.}{Survival (S) during breeding (.b.) of females (.f) in sink (k) habitat (sink = poor habitat)}
 
-\item{S.f.mc.}{males from sour.c.e}
+\item{S.f.mc.}{Survival (S) during fall (.f.) migration of males (.m) originating from source (c) habitat}
 
-\item{S.f.mk.}{xxx}
+\item{S.f.mk.}{Survival (S) during fall (.f.) migration of males (.m) originating from sink (k) habitat}
 
-\item{S.f.md.}{drain males have higher surv b/c they don't have costs of repro}
+\item{S.f.md.}{Survival (S) during fall (.f.) migration of males (.m) with drain (d) status (aka floater, unpaired)}
 
-\item{S.f.fc.}{xxx}
+\item{S.f.fc.}{Survival (S) during fall (.f.) migration of females (.f) originating from source (c) habitat}
 
-\item{S.f.fk.}{xxx}
+\item{S.f.fk.}{Survival (S) during fall (.f.) migration of females (.f) originating from sink (k) habitat}
 
-\item{S.y.mc.}{xxx}
+\item{S.y.mc.}{Survival (S) during fall migration of young (.y.) males (.m) originating from source (c) habitat}
 
-\item{S.y.mk.}{xxx}
+\item{S.y.mk.}{Survival (S) during fall migration of young (.y.) males (.m) originating from sink (k) habitat}
 
-\item{S.y.fc.}{xxx}
+\item{S.y.fc.}{Survival (S) during fall migration of young (.y.) females (.f) originating from source (c) habitat}
 
-\item{S.y.fk.}{xxx}
+\item{S.y.fk.}{Survival (S) during fall migration of young (.y.) females (.f) originating from sink (k) habitat}
 }
 \value{
-param.ranges 30 x 2 dataframe of the min. and max. parameter values that will be considered.  Often values are fixed and do not vary.
+param.set 30 x 1 dataframe of theparameter values that will be used.
 }
 \description{
-Generates a dataframe defining the minimum maximum values of each parameter;
-these are then turned into a matrix of all combinations by the function
-makeParamCombos.df()
+Sets individual parameter values for a single run of the model with runFAC().
+}
+\details{
+See param_ranges() for setting the min and max of parameters that vary when using runFAC_multi
 }
 \examples{
 

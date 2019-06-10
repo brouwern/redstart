@@ -2,24 +2,24 @@
 % Please edit documentation in R/eq12_Pcpp.R
 \name{eq12_Pcpp}
 \alias{eq12_Pcpp}
-\title{Equation 12}
+\title{Equation 12: Proportion of prairs between a male and female both from poor habitat (P.cpp)}
 \usage{
 eq12_Pcpp(P.cgg, P.cgp, P.cpg, ...)
 }
 \arguments{
-\item{P.cgg}{proportion...}
+\item{P.cgg}{Proportion of pairs in source (c) where male and female both originated from good (gg) winter habitat}
 
-\item{P.cgp}{proportion...}
+\item{P.cgp}{Proportion of pairs in source (c) where male originated from good (g) and female originated from poor winter habitat}
 
-\item{P.cpg}{proportion...}
+\item{P.cpg}{Proportion of pairs in source (c) where male originated from poor (p) and female originated from good (g) winter habitat}
 
-\item{...}{xxx}
+\item{...}{Additional parameters}
 }
 \value{
-P.cpp
+P.cpp Proportion of prairs between a male and female both from poor habitat
 }
 \description{
-Equation 12
+Equation 12: Proportion of prairs between a male and female both from poor habitat (P.cpp)
 }
 \details{
 SUMMER MALE (M) DYNAMICS - pairing

@@ -17,6 +17,8 @@
 #' @param eq.tol Tolerance level for testing for equilibirum.  Smaller values are more stringent.
 #' @param ... other arguements
 #'
+#' @return multiFAC.out list ...
+#'
 #' @export
 
 
@@ -58,14 +60,51 @@ runFAC_multi <- function(param.grid = param_grid(),
       FAC.eq.state.IB <- runFAC.i$FAC.eq.state.IB
     }
 
+
+    # focal output from iteration i of multiFAC
+    browser()
     focal.out <- c("B.mc","B.mk","B.md",
                    "B.fc","B.fk",
                    "W.mg","W.mp",
                    "W.fg","W.fp")
 
 
+      #   "P.cgg"
+    # [11] "P.cgp"          "P.cpg"
+    # [13] "P.cpp"          "P.kgg"
+    # [15] "P.kgp"          "P.kpg"
+    # [17] "P.kpp"
 
+    #"y.mc"
+    # [19] "y.mk"           "y.fc"
+    # [21] "y.fk"
+
+    #"A.G.mc"
+    # [23] "A.G.mk"         "A.G.md"
+    # [25] "A.G.y.mc"       "A.G.y.mk"
+    # [27] "A.G.fc"         "A.G.fk"
+    # [29] "A.G.y.fc"       "A.G.y.fk"
+
+    # [31] "A.P.mc"         "A.P.mk"
+    # [33] "A.P.md"         "A.P.y.mc"
+    # [35] "A.P.y.mk"       "A.P.fc"
+    # [37] "A.P.fk"         "A.P.y.fc"
+    # [39] "A.P.y.fk"
+
+    #"lambda.B.mc.i"
+    # [41] "lamb.B.mc.mean" "lamb.B.mc.var"
+    # [43] "t"              "tot.B"
+    # [45] "tot.W"          "tot.P.c"
+    # [47] "tot.P.k"
+
+
+
+    # store output for iteration i
+    ## (is there a reason to split this in to two steps?)
+    ###extract focal output for iteration i
     FAC.eq.state.focal.output.RM <- FAC.eq.state.RM[focal.out]
+
+    ###pass output for iteration to storage df
     multiFAC.out.df.RM[i,focal.out] <- FAC.eq.state.focal.output.RM
 
 

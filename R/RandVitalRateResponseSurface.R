@@ -29,8 +29,8 @@ RandVitalRateResponseSurface <- function(rand_vitals = r_vitals(n = 5),
 
   # print(j)
 
-  #During each loop, the function makeParamRanges.df() is
-  #called to generate input values to the fucntion makeParamCombos.df  simulate accross
+  #During each loop, the function xxxx [check - this has changed] is
+  #called to generate input values to the fucntion makeparam.griddf  simulate accross
   #values that will vary during the simulations are given a min and
   #and a max, while those that are fixed just have the
   #same value repeated twice
@@ -40,11 +40,11 @@ RandVitalRateResponseSurface <- function(rand_vitals = r_vitals(n = 5),
   #Vital rates and other parameters are set to be constant
   #by just using rep() to replicate the same value twice
 
-  min.max.rand_vitals <- param_ranges(  #previously makeParamRanges.df()
+  min.max.rand_vitals <- param_ranges(  #
     K.bc.   = c(1,1000)  #breeding capacity is in PAIRS
     ,K.wg.   = c(1,3000)  #winter capacity is in INDIVIDUALS
     #,gamma.  = c(1,5)
-    ,co      = c(1,1)
+    ,co.      = c(1,1)
     #Winter SURVIVAL (S.w)
     ,S.w.mg. = rep(rand_vitals$S.w.fg,2)
     ,S.w.mp. = rep(rand_vitals$S.w.fp,2)
@@ -89,11 +89,11 @@ RandVitalRateResponseSurface <- function(rand_vitals = r_vitals(n = 5),
 
 
   #Generate the range of values that will be used for the simulations
-  #A parameter given a min and a max by makeParamRanges.df
+  #A parameter given a min and a max by param_range (check this)
   #will generate a sequence of values that takes on the number of different
   #values declared by var.length =
-  i.full.range.rand_vitals <- param_seqs(paramRanges = min.max.rand_vitals, #previousluy makeParamCombos.df()
-                                                   var.length = var.length.)
+  i.full.range.rand_vitals <- param_seqs(param.ranges = min.max.rand_vitals, #previousluy makeparam.griddf()
+                                         len.out = var.length.)
 
   #browser()
   ##??????
@@ -101,17 +101,17 @@ RandVitalRateResponseSurface <- function(rand_vitals = r_vitals(n = 5),
 
   #browser()
   #Run model
-  iraw.MultiFac.out <- runFAC_multi(paramCombos. = i.full.range.rand_vitals)
+  iraw.MultiFac.out <- runFAC_multi(param.grid = i.full.range.rand_vitals)
 
   #perturb Kbc
   dKbc.full.range.rand_vitals       <- i.full.range.rand_vitals
   dKbc.full.range.rand_vitals$K.bc <- i.full.range.rand_vitals$K.bc+(i.full.range.rand_vitals$K.bc/10)
-  dKbc.MultiFac.out <- runFAC_multi(paramCombos. = dKbc.full.range.rand_vitals)
+  dKbc.MultiFac.out <- runFAC_multi(param.grid = dKbc.full.range.rand_vitals)
 
   #perturb Kwg
   dKwg.full.range.rand_vitals       <- i.full.range.rand_vitals
   dKwg.full.range.rand_vitals$K.wg <- i.full.range.rand_vitals$K.wg+(i.full.range.rand_vitals$K.wg/10)
-  dKwg.MultiFac.out <- runFAC_multi(paramCombos. = dKwg.full.range.rand_vitals)
+  dKwg.MultiFac.out <- runFAC_multi(param.grid = dKwg.full.range.rand_vitals)
 
 
   # summary(lm(B.tot ~ K.bc.i*K.wg.i, data = i.MultiFac.out))

@@ -2,7 +2,7 @@
 % Please edit documentation in R/eq20buildSbmat.R
 \name{eq20buildSbmat}
 \alias{eq20buildSbmat}
-\title{Equation 20: BREEDING season mortality}
+\title{Equation 20: Breeding season mortality matrix (S.b)}
 \usage{
 eq20buildSbmat(S.b.mc, S.b.mk, S.b.md, S.b.fc, S.b.fk)
 }
@@ -21,11 +21,9 @@ eq20buildSbmat(S.b.mc, S.b.mk, S.b.md, S.b.fc, S.b.fk)
 S.b Matrix of breed-ding season survival probabilities
 }
 \description{
-Equation 20: BREEDING season mortality
+Equation 20: Breeding season mortality matrix (S.b)
 }
 \details{
 "adult birds experience both sex- and habitat-specific mortality
 over the breeding season."
-
-Previously aliased as Fx.make.breeding.s.matrix.eq20
 }

@@ -2,8 +2,7 @@
 % Please edit documentation in R/eq27_post_comp_pooling.R
 \name{eq27_post_comp_pooling}
 \alias{eq27_post_comp_pooling}
-\title{Equation 27
-Use of assign() here is probably inefficient/awk; put into list?}
+\title{Equation 27:}
 \usage{
 eq27_post_comp_pooling(A.i.G, A.i.P)
 }
@@ -12,7 +11,9 @@ eq27_post_comp_pooling(A.i.G, A.i.P)
 
 \item{A.i.P}{xxx}
 }
+\value{
+W.list xxx
+}
 \description{
-Equation 27
-Use of assign() here is probably inefficient/awk; put into list?
+Equation 27:
 }

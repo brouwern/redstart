@@ -1,4 +1,4 @@
-#' Equation 11: Proportion of males from poor winter habitat mated with females from good winter habitat
+#' Equation 11: Proportion of males from poor winter habitat mated with females from good winter habitat (P.cpg)
 #'
 #' @details
 #' Proportion of winter-poor males mated w/ winter-goods females
@@ -16,15 +16,12 @@
 #' with good female when there are not enough good males for all the good females (Wmg < Wfg)
 #'
 #' @param W2 population vector; indicates where birds are coming from
-#' @param K.bc females  sour.c.habitat carrying capacity
+#' @param K.bc Carrying capacity during breeding season in source habitat
 #' @param B.mc males already in source
 #' @param B.fc females alreadiy in source
-#' @param ... xxx
+#' @param ... Additional parameters
 #'
-#' @return P.cpg, the proportion of pairings in the source habitat (.c _ _)
-#' made up of males from poor winter habitat (.cp_) and females from good
-#' winter habitat (.c_g).  See note above about how subscripts are wrong in original
-#' paper.
+#' @return P.cpg the proportion of pairings in the source habitat (c) made up of males from poor winter habitat (p) and females from good winter habitat (g).  See note above about how subscripts are wrong in original paper.
 #'
 #' @references Runge, MC and PP Marra.  2004.  Modeling seasonal
 #'       interactions in the population dynamics of migratory birds.
@@ -55,8 +52,6 @@ eq11_Pcpg <- function(W2,
     }
 
   }
-
-
 
   return(P.cpg)
 }

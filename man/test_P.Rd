@@ -2,7 +2,7 @@
 % Please edit documentation in R/test_P.R
 \name{test_P}
 \alias{test_P}
-\title{Function to test equations 9 through 16}
+\title{QA/AC: Function to test equations 9 through 16}
 \usage{
 test_P(dat = test_dat_P, FUN = eq09_Pcgg, plot.test = TRUE,
   subsample = TRUE, sample.N = 10, return.df = FALSE, ...)

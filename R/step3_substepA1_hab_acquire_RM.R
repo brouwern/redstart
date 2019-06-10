@@ -1,4 +1,4 @@
-#' Breeding habitat acquisition substep of pre-breeding step of breeding season using original Runge & Marra allocation functions
+#' FAC Step 3, Substep A1: Breeding habitat acquisition substep of pre-breeding step of breeding season using original Runge & Marra allocation functions
 #'
 #' For an alternative individual based (IB) approach see substep_breed_hab_acquire_IB()
 #'
@@ -6,6 +6,8 @@
 #' @param K.bc carrying capacity of breeding ground source (._c) habitat
 #' @param K.bk carrying capacity (K) of breeding ground skin (._k) habitat
 #' @param ... additional arguements
+#'
+#' @return hab.acquire.results.RM
 #'
 #' @export
 

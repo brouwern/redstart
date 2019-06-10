@@ -2,7 +2,7 @@
 % Please edit documentation in R/error_check_build_Ptest_df.R
 \name{error_check_build_Ptest_df}
 \alias{error_check_build_Ptest_df}
-\title{Builds sequences of parameters for testing mate pairing equations}
+\title{QA/QC: Build sequences of parameters for testing mate pairing equations}
 \usage{
 error_check_build_Ptest_df(include.W.0 = FALSE, include.K.0 = FALSE,
   seqW = seq(1, 100, 30), seqK = seq(1, 250, 50), seqP.cgg = NA,
@@ -34,8 +34,11 @@ error_check_build_Ptest_df(include.W.0 = FALSE, include.K.0 = FALSE,
 
 \item{seqP.kpp}{xxx}
 }
+\value{
+P.test.df xxxx of parameters
+}
 \description{
-Builds sequences of parameters for testing mate pairing equations
+QA/QC: Build sequences of parameters for testing mate pairing equations
 }
 \examples{
 P.test.df <- error_check_build_Ptest_df()

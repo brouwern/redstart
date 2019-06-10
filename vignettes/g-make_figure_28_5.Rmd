@@ -31,7 +31,7 @@ Figure 28.5 investigates how changes in the male dominance parameter (gamma) imp
 
 
 
-## Making Figure 28.4 the easy way
+## Making Figure 28.5 the easy way
 
 Load the package
 ```{r}
@@ -86,6 +86,7 @@ F28.5.FAC.sum <- runFAC_multi(param.grid = F28.5.sum.grid)
 ```
 
 
+
 Once all calls to runFAC_mulit() are done we can plot using plot_Fig28_5().
 
 ```{r}
@@ -97,9 +98,14 @@ plot_Fig28_5(dat.winter.lim = F28.5.FAC.win$multiFAC.out.df.RM,
 ```
 
 
+```{r}
+str(F28.5.FAC.sum$multiFAC.out.df.RM,1)
+```
+
+
 ## Make Figure 28.5: Step-by-step instructions
 
-Vary gamma
+Vary gamma by 
 
 
 ## Comparing output of FACavian to the original 

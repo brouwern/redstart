@@ -2,8 +2,7 @@
 % Please edit documentation in R/plot_Fig28_5.R
 \name{plot_Fig28_5}
 \alias{plot_Fig28_5}
-\title{Figure 28.5: Vary male dominance parameter
-This varies competition for high quality winter habitat}
+\title{Replicate line graph Figure 28.5 varying male dominance parameter gamma}
 \usage{
 plot_Fig28_5(dat.winter.lim, dat.intermediate, dat.summer.lim, drain = T)
 }
@@ -17,6 +16,5 @@ plot_Fig28_5(dat.winter.lim, dat.intermediate, dat.summer.lim, drain = T)
 \item{drain}{Should drain males be included in plots.}
 }
 \description{
-Figure 28.5: Vary male dominance parameter
 This varies competition for high quality winter habitat
 }

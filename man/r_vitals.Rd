@@ -4,15 +4,33 @@
 \alias{r_vitals}
 \title{Generate random life histories/vital rates}
 \usage{
-r_vitals(d = 0.25, n = 10000, params. = param_ranges())
+r_vitals(d = 0.25, n = 10000, params. = param_set())
 }
 \arguments{
-\item{d}{sets range of data to draw random values from (?delta?)}
+\item{d}{sets range of data to draw random values from (delta)}
 
 \item{n}{number of simulated life histories}
 
-\item{params.}{starting values for parameters; originally makeParamCombos.df() but deprecated}
+\item{params.}{starting values for parameters. Defaults to output of param_set()}
+}
+\value{
+px2 xxx
 }
 \description{
-Generate random life histories/vital rates
+Draws values from a random uniform distribution (see function runif() ) between a minmum and maximum value.
+}
+\details{
+TODO: split this up into sep function
+1st, generate random valueas
+2nd, make sure high quality > low quaity
+3rd, contstain to a particular lambda value
+output diagnostic plots to examine
+be able to set lambda values from function (current hard coded)
+be able to allow any lambda values
+allow tolerances to be set on lambda values being used as references
+(currently use round() as a clunky way to make this work)
+}
+\examples{
+random.vitals <-r_vitals()
+head(random.vitals)
 }

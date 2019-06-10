@@ -1,4 +1,4 @@
-#' Save current population state
+#' Save current population state of model being run
 #'
 #'
 #' @param i current iteration of model

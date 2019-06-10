@@ -2,7 +2,7 @@
 % Please edit documentation in R/step3_substepA1_hab_acquire_RM.R
 \name{step3_substepA1_hab_acquire_RM}
 \alias{step3_substepA1_hab_acquire_RM}
-\title{Breeding habitat acquisition substep of pre-breeding step of breeding season using original Runge & Marra allocation functions}
+\title{FAC Step 3, Substep A1: Breeding habitat acquisition substep of pre-breeding step of breeding season using original Runge & Marra allocation functions}
 \usage{
 step3_substepA1_hab_acquire_RM(W2, K.bc, K.bk, ...)
 }
@@ -14,6 +14,9 @@ step3_substepA1_hab_acquire_RM(W2, K.bc, K.bk, ...)
 \item{K.bk}{carrying capacity (K) of breeding ground skin (._k) habitat}
 
 \item{...}{additional arguements}
+}
+\value{
+hab.acquire.results.RM
 }
 \description{
 For an alternative individual based (IB) approach see substep_breed_hab_acquire_IB()

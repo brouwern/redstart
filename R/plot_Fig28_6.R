@@ -1,15 +1,14 @@
-#'  Make plot 28.6 - varying carry over effect c
+#' Replicate Figure 28.6 varying carryover effect c
 #'
 #' @import graphics
 #'
-#' @param winter.lim xxx
-#' @param intermediate xxx
-#' @param summer.lim xxx
+#' @param winter.lim Dataframe from runFAC_multi() based on winter habitat limitation scenario defined by Runge and Mara (2004)
+#' @param intermediate Dataframe for "Intermediate" limitaiton scenario
+#' @param summer.lim Dataframe for Summer limitation scenario
 #'
 #' @export
 #'
-#'
-#'
+
 
 plot_Fig28_6 <- function(winter.lim,
                          intermediate,

@@ -1,6 +1,5 @@
 #' Equation 8: Assigning breeding males to "drain" (aka "floater") status
 #'
-#' @details
 #' SUMMER MALE (M) DYNAMICS - drain males
 #' Drain males: Males that don't find a territory AND don't find a mate (for those in sink)
 #' become "drain" males (floaters)
@@ -13,15 +12,11 @@
 #' to corred for this.
 #'
 #'
-#'
-#'
-#' Aliased previously as M.2.drain.eq8()
-#'
 #' @param W2 population vector
 #' @param K.bc source carrying capacity
 #' @param B.fk females available in sink
 #'
-#' @return xxx xxxx
+#' @return Number of males in drain habitat.
 #'
 #' @references Runge, MC and PP Marra.  2004.  Modeling seasonal
 #'       interactions in the population dynamics of migratory birds.

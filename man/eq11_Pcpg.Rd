@@ -2,29 +2,26 @@
 % Please edit documentation in R/eq11_Pcpg.R
 \name{eq11_Pcpg}
 \alias{eq11_Pcpg}
-\title{Equation 11: Proportion of males from poor winter habitat mated with females from good winter habitat}
+\title{Equation 11: Proportion of males from poor winter habitat mated with females from good winter habitat (P.cpg)}
 \usage{
 eq11_Pcpg(W2, K.bc, B.mc, B.fc, ...)
 }
 \arguments{
 \item{W2}{population vector; indicates where birds are coming from}
 
-\item{K.bc}{females  sour.c.habitat carrying capacity}
+\item{K.bc}{Carrying capacity during breeding season in source habitat}
 
 \item{B.mc}{males already in source}
 
 \item{B.fc}{females alreadiy in source}
 
-\item{...}{xxx}
+\item{...}{Additional parameters}
 }
 \value{
-P.cpg, the proportion of pairings in the source habitat (.c _ \emph{)
-made up of males from poor winter habitat (.cp}) and females from good
-winter habitat (.c_g).  See note above about how subscripts are wrong in original
-paper.
+P.cpg the proportion of pairings in the source habitat (c) made up of males from poor winter habitat (p) and females from good winter habitat (g).  See note above about how subscripts are wrong in original paper.
 }
 \description{
-Equation 11: Proportion of males from poor winter habitat mated with females from good winter habitat
+Equation 11: Proportion of males from poor winter habitat mated with females from good winter habitat (P.cpg)
 }
 \details{
 Proportion of winter-poor males mated w/ winter-goods females

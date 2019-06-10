@@ -1,4 +1,5 @@
-#' Equation 21 - MIGRATION Mortality of ADULTS
+#' Equation 21: Migration mortality matrix for adults (S.f)
+#'
 #' "Mort during mig depends upon the sex of the bird and breeding habitat it used
 #'
 #' Aliased previously Fx.make.fall.adult.s.matrix.eq21
@@ -9,7 +10,7 @@
 #' @param S.f.fc survival...
 #' @param S.f.fk survival...
 #'
-#' @param S.f Matrix of fall survival probabilities
+#' @param S.f Matrix of fall survival probabilities for adults.
 #'
 #' @export
 

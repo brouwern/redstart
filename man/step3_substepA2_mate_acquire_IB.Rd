@@ -2,13 +2,16 @@
 % Please edit documentation in R/step3_substepA2_mate_acquire_IB.R
 \name{step3_substepA2_mate_acquire_IB}
 \alias{step3_substepA2_mate_acquire_IB}
-\title{Step 3 Substep ...}
+\title{FAC-IBM Step 3, Substep A2: Mate acquition}
 \usage{
 step3_substepA2_mate_acquire_IB(hab.aq.results.IB)
 }
 \arguments{
 \item{hab.aq.results.IB}{Output from individuals-based model}
 }
+\value{
+P.breeding.pair.results.list.IB
+}
 \description{
-Step 3 Substep ...
+FAC-IBM Step 3, Substep A2: Mate acquition
 }

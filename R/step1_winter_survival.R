@@ -1,4 +1,4 @@
-#' Execute 1st step of Runge & Marra FAC model: overwinter survival
+#' FAC step 1: Execute 1st step of Runge & Marra FAC model: overwinter survival
 #' 1.RM and W1.IB, the pop stucture after overwinter survival
 #'
 #' @param i xxx
@@ -7,6 +7,8 @@
 #' @param Ninit Initial population size
 #' @param W.list.RM xxx
 #' @param W.list.IB xxx
+#'
+#' @return W1.list
 #'
 #' @examples
 #'

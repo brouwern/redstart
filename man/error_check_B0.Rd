@@ -2,7 +2,7 @@
 % Please edit documentation in R/error_check_B0.R
 \name{error_check_B0}
 \alias{error_check_B0}
-\title{Check for errors in B0 (vector of abundances after breeding habiatat acquisition)}
+\title{QA/QC: Check for errors in B0 (vector of abundances after breeding habiatat acquisition)}
 \usage{
 error_check_B0(B0, W2, check.errors.in, i, ...)
 }
@@ -18,7 +18,7 @@ error_check_B0(B0, W2, check.errors.in, i, ...)
 \item{...}{additional parameters}
 }
 \description{
-Check for errors in B0 (vector of abundances after breeding habiatat acquisition)
+QA/QC: Check for errors in B0 (vector of abundances after breeding habiatat acquisition)
 }
 \examples{
 B0 <- c(10,20,30,40,50)

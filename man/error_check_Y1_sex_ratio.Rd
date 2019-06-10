@@ -2,7 +2,7 @@
 % Please edit documentation in R/error_check_Y1_sex_ratio.R
 \name{error_check_Y1_sex_ratio}
 \alias{error_check_Y1_sex_ratio}
-\title{Check offspring sex ratio}
+\title{QA/QC: Check offspring sex ratio}
 \usage{
 error_check_Y1_sex_ratio(Y1, i, ...)
 }
@@ -14,5 +14,5 @@ error_check_Y1_sex_ratio(Y1, i, ...)
 \item{...}{...}
 }
 \description{
-Check offspring sex ratio
+QA/QC: Check offspring sex ratio
 }
