@@ -1,6 +1,5 @@
 #' Equation 20: Breeding season mortality matrix (S.b)
 #'
-#' @details
 #' "adult birds experience both sex- and habitat-specific mortality
 #' over the breeding season."
 #'
@@ -13,14 +12,17 @@
 #'
 #' @return S.b Matrix of breed-ding season survival probabilities
 #'
+#' @example
+#' eq20buildSbmat()
+#'
 #' @export
 
 
-eq20buildSbmat <- function(S.b.mc,
-                 S.b.mk,
-                 S.b.md,
-                 S.b.fc,
-                 S.b.fk){
+eq20buildSbmat <- function(S.b.mc = 0.95,
+                 S.b.mk = 0.85,
+                 S.b.md = 0.80,
+                 S.b.fc = 0.95,
+                 S.b.fk = 0.85){
   S.b <- c(S.b.mc, 0.0,    0.0,    0.0,      0.0,
            0.0,    S.b.mk, 0.0,    0.0,      0.0,
            0.0,    0.0,    S.b.md, 0.0,      0.0,

@@ -9,17 +9,21 @@
 #'
 #' @return min.mat xxx
 #'
+#' @example
+#' eq19BbuildMinMat()
+#'
 #' @export
 
 
 
-eq19BbuildMinMat <- function(B.mc, B.fc,
-                             B.mk, B.fk){
+eq19BbuildMinMat <- function(B.mc= 100, B.fc = 10,
+                             B.mk=10, B.fk=1){
 
   min.c <- min(B.mc, B.fc)
   min.k <- min(B.mk, B.fk)
 
-  min.mat <- c(min.c, 0, min.k, 0)
+  min.mat <- c(min.c, 0,
+                   0, min.k)
   min.mat <- matrix(min.mat, nrow = 2, byrow = T)
 
   return(min.mat)

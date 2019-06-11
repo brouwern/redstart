@@ -62,34 +62,23 @@ runFAC_multi <- function(param.grid = param_grid(),
 
 
     # focal output from iteration i of multiFAC
-    browser()
+    #browser()
     focal.out <- c("B.mc","B.mk","B.md",
                    "B.fc","B.fk",
                    "W.mg","W.mp",
                    "W.fg","W.fp")
 
+    ancillary.out <- c("P.cgg"  ,"P.cgp" ,"P.cpg"
+                       ,"P.cpp" ,"P.kgg" ,"P.kgp"
+                       ,"P.kpg" ,"P.kpp"
+                       ,"y.mc"  ,"y.mk" ,"y.fc" ,"y.fk"
+                       ,"A.G.mc","A.G.mk" ,"A.G.md" ,"A.G.y.mc"
+                       ,"A.G.y.mk" ,"A.G.fc" ,"A.G.fk" ,"A.G.y.fc" ,
+                       "A.G.y.fk"
 
-      #   "P.cgg"
-    # [11] "P.cgp"          "P.cpg"
-    # [13] "P.cpp"          "P.kgg"
-    # [15] "P.kgp"          "P.kpg"
-    # [17] "P.kpp"
-
-    #"y.mc"
-    # [19] "y.mk"           "y.fc"
-    # [21] "y.fk"
-
-    #"A.G.mc"
-    # [23] "A.G.mk"         "A.G.md"
-    # [25] "A.G.y.mc"       "A.G.y.mk"
-    # [27] "A.G.fc"         "A.G.fk"
-    # [29] "A.G.y.fc"       "A.G.y.fk"
-
-    # [31] "A.P.mc"         "A.P.mk"
-    # [33] "A.P.md"         "A.P.y.mc"
-    # [35] "A.P.y.mk"       "A.P.fc"
-    # [37] "A.P.fk"         "A.P.y.fc"
-    # [39] "A.P.y.fk"
+                       ,"A.P.mc" ,"A.P.mk" ,"A.P.md" ,"A.P.y.mc"
+                       ,"A.P.y.mk" ,"A.P.fc" ,"A.P.fk" ,"A.P.y.fc"
+                       ,"A.P.y.fk" )
 
     #"lambda.B.mc.i"
     # [41] "lamb.B.mc.mean" "lamb.B.mc.var"
@@ -102,15 +91,15 @@ runFAC_multi <- function(param.grid = param_grid(),
     # store output for iteration i
     ## (is there a reason to split this in to two steps?)
     ###extract focal output for iteration i
-    FAC.eq.state.focal.output.RM <- FAC.eq.state.RM[focal.out]
+    FAC.eq.state.focal.output.RM <- FAC.eq.state.RM[c(focal.out,ancillary.out)]
 
     ###pass output for iteration to storage df
-    multiFAC.out.df.RM[i,focal.out] <- FAC.eq.state.focal.output.RM
+    multiFAC.out.df.RM[i,c(focal.out,ancillary.out)] <- FAC.eq.state.focal.output.RM
 
 
     if(use.IBM == TRUE){
-      FAC.eq.state.focal.output.IB <- FAC.eq.state.IB[focal.out]
-      multiFAC.out.df.IB[i,focal.out] <- FAC.eq.state.focal.output.IB
+      FAC.eq.state.focal.output.IB <- FAC.eq.state.IB[c(focal.out,ancillary.out)]
+      multiFAC.out.df.IB[i,c(focal.out,ancillary.out)] <- FAC.eq.state.focal.output.IB
     }
 
 

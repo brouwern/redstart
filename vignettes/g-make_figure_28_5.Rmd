@@ -59,7 +59,7 @@ param_seqs() generates values between the minimum and the maxium.
 ```{r}
 F28.5.win.seq <- param_seqs(F28.5.range.winter)
 F28.5.int.seq <- param_seqs(F28.5.range.inter)
-F28.5.sum.seq <- param_seqs(F28.5.range.summer)
+F28.5.sum.seq <- param_seqs(F28.5.range.summer,len.out= 20)
 
 ```
 
@@ -97,10 +97,10 @@ plot_Fig28_5(dat.winter.lim = F28.5.FAC.win$multiFAC.out.df.RM,
 
 ```
 
-
-```{r}
-str(F28.5.FAC.sum$multiFAC.out.df.RM,1)
-```
+""          ""          ""         
+[13] ""          ""          ""         
+[16] ""          ""          "y.mc"          
+[19] "y.mk"           "y.fc"           "y.fk"   
 
 
 ## Make Figure 28.5: Step-by-step instructions

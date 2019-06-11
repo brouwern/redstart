@@ -8,14 +8,17 @@
 #' @param S.y.fc survival...
 #' @param S.y.fk survival...
 #'
+#' @example
+#' eq22buildSymat()
+#'
 #' @export
 
 
 
-eq22buildSymat <- function(S.y.mc,
-                 S.y.mk,
-                 S.y.fc,
-                 S.y.fk){
+eq22buildSymat <- function(S.y.mc = 0.80,
+                 S.y.mk = 0.75,
+                 S.y.fc = 0.80,
+                 S.y.fk = 0.75){
   S.y <- c(S.y.mc, 0.0,    0.0,      0.0,
            0.0,    S.y.mk, 0.0,      0.0,
            0.0,    0.0,    S.y.fc,   0.0,

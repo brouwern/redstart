@@ -22,7 +22,7 @@
 #' @param S.m.mp. Survival (S) during spring migration (.m.) of males (.m) originating from poor (p) winter habitat.
 #' @param S.m.fg. Survival (S) during spring migration (.m.) of females (.f) originating from good (g) winter habitat.
 #' @param S.m.fp. Survival (S) during spring migration (.m.) of females (.m) originating from poor (p) winter habitat.
-#' @param R.base.rate. Fecundity base rate (?)
+#' @param R.base.rate. Fecundity base rate
 #' @param R.hab.effect.  Effect on fecundity of a pair breeding in poor habitat
 #' @param co.  Magnitude of carry over effect; c = 1 is no carry over
 #' @param f.  Sex ratio
@@ -98,7 +98,7 @@ param_ranges <- function(
   ,S.m.fp. = c(0.80,0.80)
 
   #FECUNDITIES
-  ,R.base.rate. = c(1.8,1.8)
+  ,R.base.rate.  = c(1.8,1.8)
   ,R.hab.effect. = c(0.5,0.5)   #effects of pair breeding in poor habitat
   ,co. = c(1,1)    #2              #magnitude of carry over effect; c =1 equals no carry over
 

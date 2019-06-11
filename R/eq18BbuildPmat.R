@@ -20,8 +20,8 @@
 #' @export
 
 
-eq18BbuildPmat <- function(P.cgg, P.cgp,P.cpg, P.cpp,
-                                           P.kgg, P.kgp, P.kpg, P.kpp){
+eq18BbuildPmat <- function(P.cgg = 1, P.cgp =0,P.cpg = 0, P.cpp = 0,
+                           P.kgg = 1, P.kgp = 0, P.kpg = 0, P.kpp =0){
   P.all <- c(P.cgg, P.cgp,P.cpg, P.cpp,    0,     0,     0,     0,
              0,     0,     0,     0,   P.kgg, P.kgp, P.kpg, P.kpp)
 

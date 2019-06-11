@@ -12,14 +12,17 @@
 #'
 #' @param S.f Matrix of fall survival probabilities for adults.
 #'
+#' @example
+#' eq21buildSfmat()
+#'
 #' @export
 
 
-eq21buildSfmat <- function(S.f.mc,
-                 S.f.mk,
-                 S.f.md,
-                 S.f.fc,
-                 S.f.fk){
+eq21buildSfmat <- function(S.f.mc = 0.80,
+                 S.f.mk = 0.75,
+                 S.f.md = 0.80,
+                 S.f.fc = 0.80,
+                 S.f.fk = 0.75){
   S.f <- c(S.f.mc, 0.0,    0.0,    0.0,      0.0,
            0.0,    S.f.mk, 0.0,    0.0,      0.0,
            0.0,    0.0,    S.f.md, 0.0,      0.0,
