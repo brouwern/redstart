@@ -97,10 +97,6 @@ plot_Fig28_5(dat.winter.lim = F28.5.FAC.win$multiFAC.out.df.RM,
 
 ```
 
-""          ""          ""         
-[13] ""          ""          ""         
-[16] ""          ""          "y.mc"          
-[19] "y.mk"           "y.fc"           "y.fk"   
 
 
 ## Make Figure 28.5: Step-by-step instructions

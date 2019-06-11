@@ -17,6 +17,9 @@
 #'
 #' @return P.all 2 x 8 matrix of the proporiton in each habitat
 #'
+#' @example
+#' eq18BbuildPmat()
+#'
 #' @export
 
 

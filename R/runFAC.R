@@ -388,6 +388,7 @@ for(i in 1:iterations){
 
     ### Apply equation 19
     #### Cacluate reproductive output
+
     Y1.RM <- runFAC.i$param.matrices$f.mat%*%eq19.min.mat.RM%*%R.RM
     names(Y1.RM) <- c("mc","mk","fc","fk")
 
