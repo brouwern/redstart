@@ -1,4 +1,4 @@
-#' Implement equation 24: competition for winter habitats
+#'Equation 24: competition for winter habitats
 #'
 #' @param A.i.j xxx
 #' @param y.i xxx

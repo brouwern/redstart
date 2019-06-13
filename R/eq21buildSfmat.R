@@ -1,16 +1,14 @@
 #' Equation 21: Migration mortality matrix for adults (S.f)
 #'
-#' "Mort during mig depends upon the sex of the bird and breeding habitat it used
+#' "Mort during migration depends upon the sex of the bird and breeding habitat it used" (Runge and Marra 2004, page xxx)
 #'
-#' Aliased previously Fx.make.fall.adult.s.matrix.eq21
+#' @param S.f.mc Survival (S) during fall migration (f) of males (m) originating from source (c) habitat.
+#' @param S.f.mk Survival (S) during fall migration (f) of males (m) originating from sink (k) habitat.
+#' @param S.f.md Survival (S) during vall migration (f) of males (m) who had "drain" (d) status, aka floaters or unpaired males.
+#' @param S.f.fc Survival (S) during fall migration (f) of females (f) originating from source (c) habitat.
+#' @param S.f.fk Survival (S) during fall migration (f) of females (f) originating from sink (k) habitat.
 #'
-#' @param S.f.mc survival...
-#' @param S.f.mk survival...
-#' @param S.f.md survival...
-#' @param S.f.fc survival...
-#' @param S.f.fk survival...
-#'
-#' @param S.f Matrix of fall survival probabilities for adults.
+#' @param S.f Diagnoal matrix of fall survival probabilities for adults
 #'
 #' @example
 #' eq21buildSfmat()

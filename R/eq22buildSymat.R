@@ -1,12 +1,12 @@
 #' Equation 22: Mortality during migration of young/offspring (S.y)
 #'
-#' @details
-#' Previously aliased as Fx.make.fall.adult.s.matrix.eq22
 #'
-#' @param S.y.mc survival...
-#' @param S.y.mk survival...
-#' @param S.y.fc survival...
-#' @param S.y.fk survival...
+#' @param S.y.mc Survival of young (y; aka juveniles) males (m) originating from source (c) habitat
+#' @param S.y.mk Survival of young (y) males (m) originating from sink (k) habitat
+#' @param S.y.fc Survival of young (y) females (f) originating from source (c) habitat
+#' @param S.y.fk Survival of young (y) females (f) originating from sink (k) habitat
+#'
+#' @return S.y Matrix of survival probabilities
 #'
 #' @example
 #' eq22buildSymat()

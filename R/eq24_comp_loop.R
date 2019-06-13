@@ -1,4 +1,4 @@
-#' Competition loop
+#' Equation 24: Competition loop
 #'
 #' @param A.i.0 xxx
 #' @param K.wg.0 xxx
@@ -8,6 +8,8 @@
 #' @param i xxx
 #' @param debug.continue xxx
 #' @param internal.error.check xxx
+#'
+#' @return comp.list ...
 #'
 #' @export
 

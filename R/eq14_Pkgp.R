@@ -1,12 +1,14 @@
-#' Equation 14: proportion in sink habitat, good-poor pairs (P.kgp)
+#' Equation 14: Proportion of pairs in sink habitat (k) good-poor pairs (P.kgp)
 #'
 #'
-#' @param W2 population vector
+#' @param W2 Population vector
 #' @param K.bc Carrying capacity (K) of source (high quality) breeding habitat.
 #' @param K.bk Carrying capacity (K) of sink (low quality) breeding habitat.
 #' @param B.mk males allocated to sink
 #' @param B.fk females allocated to sink
 #' @param ... xxx
+#'
+#' @references Runge, MC and PP Marra.  2004.  Modeling seasonal interactions in the population dynamics of migratory birds. In Greenberg, R and PP Marra, eds.  Birds of two worlds. Johns Hopkins University Press, Baltimore.
 #'
 #' @return P.kgp Proportion of pairs in sink (k) which are good-poor pairings
 #'

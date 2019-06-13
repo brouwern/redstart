@@ -20,10 +20,7 @@
 #'
 #' @return B.mk, the number of breeding males in sink (.k) habitat
 #'
-#' @references Runge, MC and PP Marra.  2004.  Modeling seasonal
-#'       interactions in the population dynamics of migratory birds.
-#'       In Greenberg, R and PP Marra, eds.  Birds of two worlds.
-#'       Johns Hopkins University Press, Baltimore.
+#' @references Runge, MC and PP Marra.  2004.  Modeling seasonal interactions in the population dynamics of migratory birds. In Greenberg, R and PP Marra, eds.  Birds of two worlds. Johns Hopkins University Press, Baltimore.
 #'
 #' @export
 

@@ -21,10 +21,7 @@
 #'
 #' @return B.fc Total number of females (f) allocated to the source (c) habitat
 #'
-#' @references Runge, MC and PP Marra.  2004.  Modeling seasonal
-#'       interactions in the population dynamics of migratory birds.
-#'       In Greenberg, R and PP Marra, eds.  Birds of two worlds.
-#'       Johns Hopkins University Press, Baltimore.
+#'@references Runge, MC and PP Marra.  2004.  Modeling seasonal interactions in the population dynamics of migratory birds. In Greenberg, R and PP Marra, eds.  Birds of two worlds. Johns Hopkins University Press, Baltimore.
 #'
 #' @examples
 #' # Set parameters:

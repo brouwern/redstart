@@ -7,7 +7,7 @@
 #' if none vary, then a single row of data is returned
 #'
 #'
-#' @param param.seqs sequence of parameters to use
+#' @param param.seqs sequence of parameters to use (in form of vector)
 #'
 #' @return param.grid Dataframe of parameter combinations
 #'

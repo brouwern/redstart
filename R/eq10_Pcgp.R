@@ -1,14 +1,8 @@
 #' Equation 10: proportion males from good winter habitat paired with females from poor winter habitat (P.cgp)
 #'
-#' @details
-#' proportion of pairs on source habitat
-#' composed of MALES   from GOOD and
-#'           females from poor
-#'  1)If the number of males from good winter habitat is greater than the
-#'    the number of females from good habitat
-#'    AND the number of females from good is less than the total K for sour.c.e habitat
-#'    Then the number of good-poor pairings is determined by...
-#'  2)other, the number of good-poor pairings is zero (all pairings are good-good)
+#' The logic of this function is:
+#'  1) IF (the number of males from good winter habitat) > (the number of females from good habitat) AND (the number of females from good) <  (the total K for source habitat), THEN the number of good-poor pairings is determined xxx
+#'  2) ELSE, the number of good-poor pairings is zero (all pairings are good-good)
 #'
 #' Note that in the original paper, both equations 10 and 11 have the same subscripts of P.cgp, while in equation 12 it is implied they have different subscripts.  It appears that the 2nd subscript should indicate the winter habitat for males and the 3rd should indicate the winter habitat for females.  Therefore equation 10 in the original paper remains as P.cgp (P.source.male-good.female-poor) and equation 11 should be changed to P.c.pg (P.source.male-poor.female-good)
 #'
@@ -20,15 +14,10 @@
 #'
 #' @return P.cgp proportion males from good winter habitat paired with females from poor winter habitat
 #'
-#' @references Runge, MC and PP Marra.  2004.  Modeling seasonal
-#'       interactions in the population dynamics of migratory birds.
-#'       In Greenberg, R and PP Marra, eds.  Birds of 2 worlds
+#' @references Runge, MC and PP Marra.  2004.  Modeling seasonal interactions in the population dynamics of migratory birds. In Greenberg, R and PP Marra, eds.  Birds of two worlds. Johns Hopkins University Press, Baltimore.
 #'
 #'
 #' @export
-
-
-
 
 eq10_Pcgp <- function(W2,
                  K.bc,
@@ -44,7 +33,6 @@ eq10_Pcgp <- function(W2,
      denominator <-  min(unlist(B.mc),     unlist(B.fc))
 
     #calcualte P.cgp
-     #browser()
      P.cgp <- numerator/denominator
     }
   }

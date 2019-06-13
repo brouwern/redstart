@@ -1,4 +1,4 @@
-#' Equation 16: Proportion in sink composed of poor-poor pairings (P.kpp)
+#' Equation 16: Proportion of pairs in sink (k) composed of poor-poor pairings (P.kpp)
 #'
 #'
 #' @param P.kgg Proportion source (k) composed of good-good pairings.
@@ -9,6 +9,8 @@
 #' @param ... xxx
 #'
 #' @return P.kpp Proportion of pairs in sink (k) which are poor-poor pairings
+#'
+#' @references Runge, MC and PP Marra.  2004.  Modeling seasonal interactions in the population dynamics of migratory birds. In Greenberg, R and PP Marra, eds.  Birds of two worlds. Johns Hopkins University Press, Baltimore.
 #'
 #' @export
 
@@ -30,7 +32,7 @@ eq16_Pkpp <- function(P.kgg,
 
   #error check
   if(P.kpp > 1 | P.kpp < 0){
-    browser()
+    warning("Equation produces invalied value")
     }
 
   return(P.kpp)

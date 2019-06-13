@@ -17,10 +17,7 @@
 #'
 #' @return W0 A vector containing the status of the population at the beginning of winter: \code{W.mg} , \code{W.mp} , \code{W.fg} , and \code{W.fp}
 #'
-#' @references Runge, MC and PP Marra.  2004.  Modeling seasonal
-#'       interactions in the population dynamics of migratory birds.
-#'       In Greenberg, R and PP Marra, eds.  Birds of two worlds.
-#'       Johns Hopkins University Press, Baltimore.
+#' @references Runge, MC and PP Marra.  2004.  Modeling seasonal interactions in the population dynamics of migratory birds. In Greenberg, R and PP Marra, eds.  Birds of two worlds. Johns Hopkins University Press, Baltimore.
 #'
 #' @export
 

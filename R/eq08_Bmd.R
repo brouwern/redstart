@@ -18,16 +18,14 @@
 #'
 #' @return Number of males in drain habitat.
 #'
-#' @references Runge, MC and PP Marra.  2004.  Modeling seasonal
-#'       interactions in the population dynamics of migratory birds.
-#'       In Greenberg, R and PP Marra, eds.  Birds o
+#' @references Runge, MC and PP Marra.  2004.  Modeling seasonal interactions in the population dynamics of migratory birds. In Greenberg, R and PP Marra, eds.  Birds of Two Worlds.
 #'
 #' @export
 
 
 eq08_Bmd <- function(W2,
-                           K.bc,
-                           B.fk){
+                     K.bc,
+                     B.fk){
   max(0,
       (unlist(W2["mg"])+unlist(W2["mp"]) - K.bc - unlist(B.fk)) )
 }

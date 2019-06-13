@@ -11,10 +11,7 @@
 #'
 #' @return S.m (aka W2) Matrix of spring migration (m) survival probabilites by sex and winter habitat the bird originated from
 #'
-#' @references Runge, MC and PP Marra.  2004.  Modeling seasonal
-#'       interactions in the population dynamics of migratory birds.
-#'       In Greenberg, R and PP Marra, eds.  Birds of two worlds.
-#'       Johns Hopkins University Press, Baltimore.
+#' @references Runge, MC and PP Marra.  2004.  Modeling seasonal interactions in the population dynamics of migratory birds. In Greenberg, R and PP Marra, eds.  Birds of two worlds. Johns Hopkins University Press, Baltimore.
 #'
 #' @export
 

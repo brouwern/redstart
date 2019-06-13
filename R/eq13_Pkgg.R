@@ -1,9 +1,7 @@
-#' Equation 13: pairing in sink (.k) habitat (P.kgg)
+#' Equation 13: Pairing in sink (.k) habitat (P.kgg)
 #'
-#' @details
 #' good-good pairs that mate in SINK habitat
 #'
-#' Previously aliased as pairing.eq13.P.kgg()
 #'
 #' @param W2 population vector
 #' @param K.bc Carrying capacity during breeding season in source habitat
@@ -11,6 +9,15 @@
 #' @param B.mk Males (m) allocated to sink (k)
 #' @param B.fk Females allocated to sink
 #' @param ... Additional parameters
+#'
+#' @references Runge, MC and PP Marra.  2004.  Modeling seasonal interactions in the population dynamics of migratory birds. In Greenberg, R and PP Marra, eds.  Birds of two worlds. Johns Hopkins University Press, Baltimore.
+#'
+#' @example
+#' W2 <- c(10,10,10,10)
+#' names(W2) <- c("mg","fg","mp","fp")
+#' eq13_Pkgg(W2 = W2, K.bc = 0, K.bk = 10, B.mk = 5, B.fk =5)
+#'
+#'
 #'
 #' @return P.kgg Proportion of pairs in sink (k) habitat where both male and female originated from good winter habitat (gg)
 #'
@@ -48,7 +55,7 @@ eq13_Pkgg <- function(W2,
 
   ## error check
   if(P.kgg > 1| P.kgg < 0){
-    browser()
+    warning("Equation produces invalied value")
   }
 
   return(P.kgg)

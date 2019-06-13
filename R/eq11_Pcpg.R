@@ -1,12 +1,10 @@
-#' Equation 11: Proportion of males from poor winter habitat mated with females from good winter habitat (P.cpg)
+#' Equation 11: Proportion of males in source (c) from poor winter habitat (p) mated with females from good (g) winter habitat (P.cpg)
 #'
-#' @details
 #' Proportion of winter-poor males mated w/ winter-goods females
-#' 1)If males that wintered in good habitat > females that wintered in good habitat
-#'     BUT males that wintered in good less than source K
-#'     Then the proportion of poor-good pairings is
-#'     a function of
-#'   Otherwise, there are no poor-good pairings
+#'
+#' The logic of this function is:
+#' IF (abundance of males that wintered in good habitat) > (abundance of females that wintered in good habitat), BUT (abundance of males that wintered in good) < than source K, THEN the proportion of poor-good pairings is a function of xxx.
+#'   ELSE, there are no poor-good pairings
 #'
 #' Note that in the original paper, both equations 10 and 11 have the same subscripts of P.cgp, while in equation 12 it is implied they have different subscripts.
 #' It appears that the 2nd subscript should indicate the winter habitat for males and the 3rd should indicate the winter habitat for females.
@@ -21,7 +19,7 @@
 #' @param B.fc females alreadiy in source
 #' @param ... Additional parameters
 #'
-#' @return P.cpg the proportion of pairings in the source habitat (c) made up of males from poor winter habitat (p) and females from good winter habitat (g).  See note above about how subscripts are wrong in original paper.
+#' @return P.cpg (vector):  the proportion of pairings in the source habitat (c) made up of males from poor winter habitat (p) and females from good winter habitat (g).  See note above about how subscripts are wrong in original paper.
 #'
 #' @references Runge, MC and PP Marra.  2004.  Modeling seasonal
 #'       interactions in the population dynamics of migratory birds.

@@ -1,16 +1,16 @@
 #' Equation 20: Breeding season mortality matrix (S.b)
 #'
-#' "adult birds experience both sex- and habitat-specific mortality
-#' over the breeding season."
+#' "Adult birds experience both sex- and habitat-specific mortality
+#' over the breeding season" (Runge and Marra 2004, page xxx)
 #'
 #'
-#' @param S.b.mc survival...
-#' @param S.b.mk survival...
-#' @param S.b.md survival...
-#' @param S.b.fc survival...
-#' @param S.b.fk survival...
+#' @param S.b.mc Survival (S) during summer breeding season (b) of adult males (m) who hold territories on source (c) habitat.
+#' @param S.b.mk Survival (S) during summer breeding season (b) of adult males (m) who are nesting in sink (k) habitat.
+#' @param S.b.md Survival (S) during summer breeding season (b) of adult males (m) who have "drain" (d) status and do not hold a territory or have a make (aka unpaired males, floaters)
+#' @param S.b.fc Survival (S) during summer breeding season (b) of adult females (f) who are nesting source (c) habitat.
+#' @param S.b.fk Survival (S) during summer breeding season (b) of adult females (f) who are nesting in on sink (k) habitat.
 #'
-#' @return S.b Matrix of breed-ding season survival probabilities
+#' @return S.b Diagnoal matrix of breeding-season survival probabilities
 #'
 #' @example
 #' eq20buildSbmat()

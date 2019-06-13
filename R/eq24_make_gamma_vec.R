@@ -1,25 +1,29 @@
-#' Equation 24 - Competition parameters (gamma)
+#' Equation 24: Make relative competitivness parameters for winter habitat acquition
 #'
-#' Calculates gammas based on gamma.base provided in function call
+#' Competitive ability depends on "an intrsince age-,sex- and condition(habitat)-specific competitive factor gamma and the number of birds in each class" (Runge and Mara, 2004; page 380, column 2).  THis function calculates gammas for each class of birds based on gamma.base provided in function call.  Currently competitiveness for winter habitat is primarily determined by age and the habitat a bird originated (source vs. sink).  Changing gamma.base decreases the competitiveness of females relative to males.
 #'
-#' @details
-#' NB: breeding K is based on pairs,
-#'    winter K is based on individuals!
-#' competition ability depends on "an intrsince age-,sex-
-#' and condition(habitat)-specific competitive factor
-#' gamma and the number of birds in each class"
+#' Note: breeding K is based on pairs,winter K is based on individuals.
 #'
 #'
-#'    gamma represents "an instrinsic age-,sex,- and condition (habitat)-specific...factor" pg380 col 2
 #'
-#' previously aliased as fx.make.gamma.i.eq24
+#' @param gamma.base Base competition value of females relative to males.   Higher values make females LESS competitive.
 #'
-#' @param gamma.base Competition
+#' @return gamma.i Vector of competiveness values for each class of birds
+#'
+#' @examples
+#'
+#' # Default relative competitiveness is that males = females
+#' gamma.1 <- eq24_make_gamma_vec()
+#'
+#' # Make females more competitive than males
+#' gamma.1.2 <- eq24_make_gamma_vec(gamma.base = 1.2)
+#'
+#' data.frame(gamma.1, gamma.1.2)
 #'
 #' @export
 
 
-eq24_make_gamma_vec <- function(gamma.base){
+eq24_make_gamma_vec <- function(gamma.base = 2){
   gamma.i <-  c(
     #Adult males
     1,

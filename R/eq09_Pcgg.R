@@ -26,6 +26,8 @@
 #' @param B.fc females available in sink
 #' @param ... Aditional parameters
 #'
+#' @references Runge, MC and PP Marra.  2004.  Modeling seasonal interactions in the population dynamics of migratory birds. In Greenberg, R and PP Marra, eds.  Birds of two worlds. Johns Hopkins University Press, Baltimore.
+#'
 #' @return P.cgg, the proportion of pairings in the "source" breeding habitat between male and females which both wintered in the good habitat
 #'
 #' @examples

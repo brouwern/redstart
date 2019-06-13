@@ -13,10 +13,14 @@
 #'
 #' @return S.w (W1) matrix of winter (w) survival probabilities by sex and winter habitat
 #'
-#' @references Runge, MC and PP Marra.  2004.  Modeling seasonal
-#'       interactions in the population dynamics of migratory birds.
-#'       In Greenberg, R and PP Marra, eds.  Birds of two worlds.
-#'       Johns Hopkins University Press, Baltimore.
+#' @examples
+#' # Default winter survival matrix
+#' eq02buildW1Mat()
+#'
+#' # Errors thrown in values exceed 1 or are less than 0
+#' \donttest{eq02buildW1Mat(S.w.mg = 10)}
+#'
+#' @references Runge, MC and PP Marra.  2004.  Modeling seasonal interactions in the population dynamics of migratory birds. In Greenberg, R and PP Marra, eds.  Birds of two worlds. Johns Hopkins University Press, Baltimore.
 #'
 #' @export
 
@@ -31,6 +35,10 @@ eq02buildW1Mat <- function(S.w.mg = 0.80, #survival-winter-male-good habitat
            0.00,      0.00,   0.00,    S.w.fp)
 
   S.w <- matrix(data = S.w, nrow = 4, byrow = T)
+
+  if(any(S.w < 0 | S.w > 1)){
+    warning("Matrix contains invalied value")
+  }
 
   return(S.w) #CHange this to W1?
  }

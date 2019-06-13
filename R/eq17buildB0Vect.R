@@ -6,6 +6,8 @@
 #' @param B.fc Females in source habitat
 #' @param B.fk Females in sink habitat
 #'
+#' @references Runge, MC and PP Marra.  2004.  Modeling seasonal interactions in the population dynamics of migratory birds. In Greenberg, R and PP Marra, eds.  Birds of two worlds. Johns Hopkins University Press, Baltimore.
+#'
 #' @return B0 vector of breeding ground abundances after pairing of males and females
 #'
 #' @export

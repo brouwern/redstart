@@ -44,11 +44,7 @@
 #'
 #' @return B.fk, the total number of females allocated to sink
 #'
-#' @references Runge, MC and PP Marra.  2004.  Modeling seasonal
-#'       interactions in the population dynamics of migratory birds.
-#'       In Greenberg, R and PP Marra, eds.  Birds of two worlds.
-#'       Johns Hopkins University Press, Baltimore.
-#'
+#'@references Runge, MC and PP Marra.  2004.  Modeling seasonal interactions in the population dynamics of migratory birds. In Greenberg, R and PP Marra, eds.  Birds of two worlds. Johns Hopkins University Press, Baltimore.
 #' @examples
 #' # Set parameters:
 #' ## Create named population W2 vector using the eq01buildW0vect()

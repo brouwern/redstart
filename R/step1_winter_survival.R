@@ -75,7 +75,7 @@ step1_winter_survival <- function(i,
 
   }
 
-  #### All iteractions except the 1st
+  #### All iterations except the 1st
   if(i > 1){
 
     W0.RM <- eq01buildW0vect(W.list.RM$W.mg,
