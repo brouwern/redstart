@@ -2,10 +2,18 @@
 % Please edit documentation in R/eq24_comp_loop.R
 \name{eq24_comp_loop}
 \alias{eq24_comp_loop}
-\title{Competition loop}
+\title{Equation 24: Competition loop}
 \usage{
-eq24_comp_loop(A.i.0, K.wg.0, y.i, comp.df, j, i, debug.continue = FALSE,
-  internal.error.check = FALSE)
+eq24_comp_loop(
+  A.i.0,
+  K.wg.0,
+  y.i,
+  comp.df,
+  j,
+  i,
+  debug.continue = FALSE,
+  internal.error.check = FALSE
+)
 }
 \arguments{
 \item{A.i.0}{xxx}
@@ -24,6 +32,9 @@ eq24_comp_loop(A.i.0, K.wg.0, y.i, comp.df, j, i, debug.continue = FALSE,
 
 \item{internal.error.check}{xxx}
 }
+\value{
+comp.list ...
+}
 \description{
-Competition loop
+Equation 24: Competition loop
 }

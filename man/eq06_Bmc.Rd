@@ -15,19 +15,20 @@ eq06_Bmc(W2, K.bc)
 B.mc Total number of males allocated to source habitat.
 }
 \description{
-Equation 6: Allocate breeding males to source habitat (B.mc)
+I believe this allows males to be holding territories without pairing with a female.
 }
 \details{
-Summer male (M) dynamces
-males acquiring  source habitat
-I believe this allows males to be holding territories
-w/o pairing w/ a female
+TODO(): Check this
+}
+\examples{
+# Standard example
+## Set population vector and carrying capacities
+W2. <- c(10, 10,10, 10)
+W2. <- setNames(W2., c("mg","fg","mp","fp"))
+K.bc. <- 10
+eq06_Bmc(W2 = W2., K.bc = K.bc.)
 
-Aliased as M.2.source.eq6.c()
 }
 \references{
-Runge, MC and PP Marra.  2004.  Modeling seasonal
-interactions in the population dynamics of migratory birds.
-In Greenberg, R and PP Marra, eds.  Birds of two worlds.
-Johns Hopkins University Press, Baltimore.
+Runge, MC and PP Marra.  2004.  Modeling seasonal interactions in the population dynamics of migratory birds. In Greenberg, R and PP Marra, eds.  Birds of two worlds. Johns Hopkins University Press, Baltimore.
 }

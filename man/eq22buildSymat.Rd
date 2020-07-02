@@ -4,20 +4,26 @@
 \alias{eq22buildSymat}
 \title{Equation 22: Mortality during migration of young/offspring (S.y)}
 \usage{
-eq22buildSymat(S.y.mc, S.y.mk, S.y.fc, S.y.fk)
+eq22buildSymat(S.y.mc = 0.8, S.y.mk = 0.75, S.y.fc = 0.8, S.y.fk = 0.75)
 }
 \arguments{
-\item{S.y.mc}{survival...}
+\item{S.y.mc}{Survival of young (y; aka juveniles) males (m) originating from source (c) habitat}
 
-\item{S.y.mk}{survival...}
+\item{S.y.mk}{Survival of young (y) males (m) originating from sink (k) habitat}
 
-\item{S.y.fc}{survival...}
+\item{S.y.fc}{Survival of young (y) females (f) originating from source (c) habitat}
 
-\item{S.y.fk}{survival...}
+\item{S.y.fk}{Survival of young (y) females (f) originating from sink (k) habitat}
+}
+\value{
+S.y Matrix of survival probabilities for young.
 }
 \description{
 Equation 22: Mortality during migration of young/offspring (S.y)
 }
-\details{
-Previously aliased as Fx.make.fall.adult.s.matrix.eq22
+\examples{
+
+# Return default values
+eq22buildSymat()
+
 }

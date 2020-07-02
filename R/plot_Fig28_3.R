@@ -26,7 +26,7 @@ plot_Fig28_3 <- function(runFAC.multi,
   x.K.bc.i <- cast.out$K.bc.i
   y.K.wg.i <- as.numeric(names(cast.out)[-1])
 
-  #create z matrix; this is necessary b/c of formatting problems created by dcast()
+  #create z matrix; this is necessary because of formatting problems created by dcast()
   z0 <- cast.out[,-1] #unprocessed data
   z1 <- matrix(data = NA, nrow = dim(z0)[1], ncol = dim(z0)[1]) #blank matrix
 

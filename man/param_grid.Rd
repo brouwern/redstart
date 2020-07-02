@@ -7,7 +7,7 @@
 param_grid(param.seqs = param_seqs(param_ranges(figure = 28.3)))
 }
 \arguments{
-\item{param.seqs}{sequence of parameters to use}
+\item{param.seqs}{sequence of parameters to use (in form of vector)}
 }
 \value{
 param.grid Dataframe of parameter combinations

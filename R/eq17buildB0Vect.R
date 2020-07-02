@@ -10,6 +10,9 @@
 #'
 #' @return B0 vector of breeding ground abundances after pairing of males and females
 #'
+#' @examples
+#' eq17buildB0Vect(B.mc = 10, B.mk = 10, B.md = 10, B.fc = 10, B.fk = 10)
+#'
 #' @export
 
 eq17buildB0Vect <- function(B.mc,
@@ -27,11 +30,11 @@ B0 <-   c(B.mc,
           B.fk)
 
 #name
-names(B0) <- c("mc",
-               "mk",
-               "md",
-               "fc",
-               "fk")
+# names(B0) <- c("mc",
+#                "mk",
+#                "md",
+#                "fc",
+#                "fk")
 
 return(B0)
 }

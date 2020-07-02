@@ -116,7 +116,7 @@ param_ranges <- function(
   #pg 381; Table 28.2
   ,S.f.mc. = c(0.80,0.80) # c(0.80,0.80)#males from sour.c.e
   ,S.f.mk. = c(0.75,0.75) #c(0.75,0.75)
-  ,S.f.md. = c(0.80,0.80) #drain males have higher surv b/c they don't have costs of repro
+  ,S.f.md. = c(0.80,0.80) #drain males have higher surv because they don't have costs of repro
   ,S.f.fc. = c(0.80,0.80)
   ,S.f.fk. = c(0.75,0.75)
 
@@ -264,7 +264,7 @@ param_ranges <- function(
     #pg 381; Table 28.2
     ,S.f.mc = S.f.mc. #males from sour.c.e
     ,S.f.mk = S.f.mk.
-    ,S.f.md = S.f.md. #drain males have higher surv b/c they don't have costs of repro
+    ,S.f.md = S.f.md. #drain males have higher surv because they don't have costs of repro
     ,S.f.fc = S.f.fc.
     ,S.f.fk = S.f.fk.
 

@@ -4,7 +4,7 @@ author: "Nathan Brouwer"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{w) Creating this package}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
@@ -17,9 +17,8 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 
 ## Introduction
 
-The following code outlines the key steps I did, principally using the usethis package, to set up a this package for containing code relate to this paper:
+The following code outlines the key steps I did, principally using the usethis package.
 
-**Skibiel et al 2013.**  The evolution of the nutrient composition of mammalian milks.  Journal of Animal Ecology 82: 1254-1264.  https://doi.org/10.1111/1365-2656.12095 
 
 ## Packages
 
@@ -32,7 +31,7 @@ library(here)
 
 ## Create repository
 
-I create a shroom git repo then cloned into it by hand by creating an RStudio Project.
+I create git repo then cloned into it by hand by creating an RStudio Project.
 
 ## Set up package with usethis
 

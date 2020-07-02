@@ -4,10 +4,20 @@
 \alias{error_check_build_Ptest_df}
 \title{QA/QC: Build sequences of parameters for testing mate pairing equations}
 \usage{
-error_check_build_Ptest_df(include.W.0 = FALSE, include.K.0 = FALSE,
-  seqW = seq(1, 100, 30), seqK = seq(1, 250, 50), seqP.cgg = NA,
-  seqP.cgp = NA, seqP.cpg = NA, seqP.cpp = NA, seqP.kgg = NA,
-  seqP.kgp = NA, seqP.kpg = NA, seqP.kpp = NA)
+error_check_build_Ptest_df(
+  include.W.0 = FALSE,
+  include.K.0 = FALSE,
+  seqW = seq(1, 100, 30),
+  seqK = seq(1, 250, 50),
+  seqP.cgg = NA,
+  seqP.cgp = NA,
+  seqP.cpg = NA,
+  seqP.cpp = NA,
+  seqP.kgg = NA,
+  seqP.kgp = NA,
+  seqP.kpg = NA,
+  seqP.kpp = NA
+)
 }
 \arguments{
 \item{include.W.0}{xxx}

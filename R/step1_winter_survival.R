@@ -1,5 +1,4 @@
-#' FAC step 1: Execute 1st step of Runge & Marra FAC model: overwinter survival
-#' 1.RM and W1.IB, the pop stucture after overwinter survival
+#' FAC step 1: Execute 1st step of Runge & Marra FAC model: overwinter survival 1.RM and W1.IB, the pop stucture after overwinter survival
 #'
 #' @param i xxx
 #' @param runFAC.i xxx
@@ -55,7 +54,7 @@ step1_winter_survival <- function(i,
 
   if(i == 1){
 
-    # Populate list w/ initial population sizes from main function call
+    # Populate list with initial population sizes from main function call
     W.list <- list(W.mg = Ninit[1]
                    ,W.mp = Ninit[2]
                    ,W.fg = Ninit[3]

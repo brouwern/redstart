@@ -62,7 +62,7 @@ runFAC_multi <- function(param.grid = param_grid(),
 
 
     # focal output from iteration i of multiFAC
-    #browser()
+    
     focal.out <- c("B.mc","B.mk","B.md",
                    "B.fc","B.fk",
                    "W.mg","W.mp",

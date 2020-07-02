@@ -1,10 +1,10 @@
 ---
-title: "The Full-annual cycle model of Runge & Marra (2004)"
+title: "b) Model Introduction: The Runge & Marra (2005) Full Annual Cycle Model"
 author: "Nathan Brouwer"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{b) Model Introduction: The Runge & Marra (2005) Full Annual Cycle Model}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
@@ -17,6 +17,17 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
+
+
+TODO: include representation of figure 28.1 and 28.2
+TODO: include equations?  include note that some "equations" are just indications of the structure of vectors
+
+TODO: present tables; perhaps make separate vignette just on the defaults?
+tables 28.1, 28.2, 28.3, 28.4
+
+Outline the key simulation studies run - what factors were varied
+
+
 
 
 > "The factors that limit and the mechanisms that regulate the dynamics of bird populations are often poorly understood ... especially for migratory birds. " (Runge & Marra 2004, pg 376)

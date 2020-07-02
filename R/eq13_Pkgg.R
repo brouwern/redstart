@@ -1,6 +1,5 @@
-#' Equation 13: Pairing in sink (.k) habitat (P.kgg)
+#' Equation 13: Pairing in sink (k) habitat of good-good pairs (P.kgg)
 #'
-#' good-good pairs that mate in SINK habitat
 #'
 #'
 #' @param W2 population vector
@@ -12,10 +11,11 @@
 #'
 #' @references Runge, MC and PP Marra.  2004.  Modeling seasonal interactions in the population dynamics of migratory birds. In Greenberg, R and PP Marra, eds.  Birds of two worlds. Johns Hopkins University Press, Baltimore.
 #'
-#' @example
-#' W2 <- c(10,10,10,10)
-#' names(W2) <- c("mg","fg","mp","fp")
-#' eq13_Pkgg(W2 = W2, K.bc = 0, K.bk = 10, B.mk = 5, B.fk =5)
+#' @examples
+#' #Trivial example
+#' W2. <- c(10,10,10,10)
+#' names(W2.) <- c("mg","fg","mp","fp")
+#' eq13_Pkgg(W2 = W2., K.bc = 0, K.bk = 10, B.mk = 5, B.fk =5)
 #'
 #'
 #'

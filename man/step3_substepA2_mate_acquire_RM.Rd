@@ -7,11 +7,14 @@
 step3_substepA2_mate_acquire_RM(W2, param.set, hab.acquire.results)
 }
 \arguments{
-\item{W2}{...}
+\item{W2}{Vector of abundances after fall migration}
 
 \item{param.set}{...}
 
-\item{hab.acquire.results}{results from prevoushabitat acquisition step}
+\item{hab.acquire.results}{results from previous habitat acquisition step}
+}
+\value{
+P.breeding.pair.results.RM Vector of pairing frequencies
 }
 \description{
 Step 3 Substep A2

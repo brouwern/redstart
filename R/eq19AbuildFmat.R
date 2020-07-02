@@ -1,10 +1,9 @@
-#' Equation 19: Matrix of ... (f.mat)
+#' Equation 19: Matrix of sex ratios at birth (f.mat)
 #'
-#' sex ratio matrix (equation 19)
 #'
-#' @param f Fecundity?
+#' @param f Proportion of females
 #'
-#' @return f.mat matrix of xxx
+#' @return f.mat matrix of sex ratios at bird
 #'
 #' @export
 #'

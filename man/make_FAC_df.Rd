@@ -18,6 +18,3 @@ of a Runge & Marra (2004) FAC model Model is run over a certain number of
 iterations (reps) inorder to reach equilibrium. The main output of a full run
 of model is the equilibrium population size.
 }
-\details{
-Formerly aliased as fx.create.out.df
-}

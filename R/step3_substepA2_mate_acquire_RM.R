@@ -19,7 +19,7 @@ step3_substepA2_mate_acquire_RM <- function(W2,
   # all output are scalars
   ### EQUATION 9 eq09_Pcgg()
 
-  #browser()
+  
   P.cgg <- eq09_Pcgg(W2,
                      K.bc = param.set$K.bc,
                      B.mc = hab.acquire.results$B.mc,
@@ -38,7 +38,7 @@ step3_substepA2_mate_acquire_RM <- function(W2,
 
 
   ### EQUATION 11:  eq11()
-  ### Proportion of poor males mated w/ "good" female
+  ### Proportion of poor males mated with "good" female
   #### NOte: subscripts wrong in original paper
 
   P.cpg <- eq11_Pcpg(W2 = W2,

@@ -2,7 +2,7 @@
 % Please edit documentation in R/eq16_Pkpp.R
 \name{eq16_Pkpp}
 \alias{eq16_Pkpp}
-\title{Equation 16: Proportion in sink composed of poor-poor pairings (P.kpp)}
+\title{Equation 16: Proportion of pairs in sink (k) composed of poor-poor pairings (P.kpp)}
 \usage{
 eq16_Pkpp(P.kgg, P.kgp, P.kpg, B.mk, B.fk, ...)
 }
@@ -23,5 +23,16 @@ eq16_Pkpp(P.kgg, P.kgp, P.kpg, B.mk, B.fk, ...)
 P.kpp Proportion of pairs in sink (k) which are poor-poor pairings
 }
 \description{
-Equation 16: Proportion in sink composed of poor-poor pairings (P.kpp)
+Equation 16: Proportion of pairs in sink (k) composed of poor-poor pairings (P.kpp)
+}
+\examples{
+# Trivial example
+W2. <- c(10,10,10,10)
+names(W2.) <- c("mg","fg","mp","fp")
+eq16_Pkpp(P.kgg = 1, P.kgp = 0, P.kpg = 0, B.mk = 5, B.fk =5)
+
+
+}
+\references{
+Runge, MC and PP Marra.  2004.  Modeling seasonal interactions in the population dynamics of migratory birds. In Greenberg, R and PP Marra, eds.  Birds of two worlds. Johns Hopkins University Press, Baltimore.
 }

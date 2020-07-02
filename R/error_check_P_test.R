@@ -1,8 +1,8 @@
 #' Test mate pairing equation against test dataframe
 #'
+#'
 #' @param equation Mate pairing equation to test.
 #' @param P.test.df A dataframe
-#' @param call.browser Open debuggin browser when error encounters
 #' @param print.i print iteration number for debugging
 #'
 #' @examples
@@ -17,7 +17,6 @@
 
 error_check_P_test <- function(equation = "eq9",
                                P.test.df  = error_check_build_Ptest_df(),
-                               call.browser = FALSE,
                                print.i = FALSE){
 
   for(i in 1:nrow(P.test.df)){
@@ -138,34 +137,27 @@ error_check_P_test <- function(equation = "eq9",
     if(is.nan(P.test.df[i,P.focal])      == T|
        is.na(P.test.df[i,P.focal])       == T|
        is.infinite(P.test.df[i,P.focal]) == T){
-      if(call.browser == TRUE){
-        browser()
-      }
+      warning("NaN,NA, or Inf errors in error check")
+
     }
 
   ## P > 1 error
      if(P.test.df[i,P.focal] > 1){
-      message("iteration ",i,
+       warning("iteration ",i,
               "\n", P.focal,"> 1 for",
               "\n W2 = ",W2.i$mg," ",W2.i$fg,
               "\n B.mc.i = ",B.mc.i,
               "\n B.fc.i = ",B.fc.i,
               "\n Ks in param.set.i = ",param.set.i[1]," ",param.set.i[2])
        print(P.test.df[i,])
-      if(call.browser == TRUE){
-        browser()
-      }
 
     }
 
   ## P < 1 error
     if(P.test.df[i,P.focal] < 0){
-      message("P.cgg < 0 for W2 = ",W2.i,
+      warning("P.cgg < 0 for W2 = ",W2.i,
               "and param.set.i = ",param.set.i)
 
-      if(call.browser == TRUE){
-        browser()
-      }
       }
 
   }

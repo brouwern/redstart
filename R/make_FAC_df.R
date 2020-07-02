@@ -5,7 +5,6 @@
 #' iterations (reps) inorder to reach equilibrium. The main output of a full run
 #' of model is the equilibrium population size.
 #'
-#' Formerly aliased as fx.create.out.df
 #'
 #' @param iterations Number of iterations to run basic FAC model. Defaults to 300.
 #'

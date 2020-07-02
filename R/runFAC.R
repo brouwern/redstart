@@ -197,7 +197,7 @@ for(i in 1:iterations){
 
 
       # Runge & Marra habitat acquitions allocation functions
-      ## returns list w/ 5 elements, one scaler for each subset of the breeding populations
+      ## returns list with 5 elements, one scaler for each subset of the breeding populations
 
       hab.acquire.results.RM <- step3_substepA1_hab_acquire_RM(W2.RM,
                                                           K.bc = param.set$K.bc,
@@ -209,7 +209,7 @@ for(i in 1:iterations){
           #                 to allow habitat to vary continuously in quality
           #debugonce(substep_B_hab_acquire_IB)
 
-          #returns list w/ 6 elements
+          #returns list with 6 elements
           #   1st 5 are the 5 subsets of the popualtion
           #   last element is a dataframe with individual based data
 
@@ -443,7 +443,7 @@ for(i in 1:iterations){
 
         # experimental code for IBM
         # if(use.IBM.S.b == TRUE){
-        #   browser()
+    
         #   P.breeding.pair.results.list.IB$df
         # }
 

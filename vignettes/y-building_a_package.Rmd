@@ -1,10 +1,10 @@
 ---
-title: "z2) Building and rebuilding vignettes - orig"
+title: "z) Building and rebuilding vignettes - orig"
 author: "Vignette Author"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{z) Building and rebuilding vignettes - orig}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 

@@ -5,7 +5,7 @@
 #' @param B2 Adults that survived breeding and fall migration
 #' @param Y2 Young (offspring) that survived breeding and fall migration
 #'
-#' @references A.i ....
+#' @return A.i TODO()
 #'
 #'
 #' @export

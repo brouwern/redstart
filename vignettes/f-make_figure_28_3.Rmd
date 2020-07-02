@@ -1,0 +1,155 @@
+---
+title: "e) Making Runge and Mara Figure 28.3"
+author: "Nathan Brouwer"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{e) Making Runge and Mara Figure 28.3}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+
+## Introduction
+
+Figure 28.3 is a 3D surface showing how the overall equilibrium population size (TODO: how defined - all summer individuals?) of the population changes as the amount of high-qualty "source" breeding habitat and high-equality winter habitat varies.  Limitation is indicated by ... TODO
+
+
+## Preliminaries
+
+Load the FACavian package  
+TODO add download instructions for development version
+
+```{r}
+library(FACavian)
+```
+
+
+## Making Figure 28.3 the easy way
+
+
+As inputs the **runFAC_multi()** function takes a dataframe with two or more parameters varied.  In Figure 28.3 summer (TODO K.x?) and winter (TODOL: K.x?) carrying capacities are each varied systematically from 0 to 1000 (TODO: number of source habitats?).  This range is set up using two functions,  **param_ranges()** and **param_seqs()**.  **param_ranges()** sets the end points of the range, and **param_seqs()** generates the intervening values between the endpoints to actually input into the model.
+
+The defaults for **runFAC_multi()** are set to run param_ranges() and param_seqs() behind the scenes to reproduce Figure 28.3 in Runge and Marra (2004).  The data underlying the figure can therefore be generated just by calling runFAC_multi().  Below, I'll first show how to quickly create the figure using the defaults.  I'll then gradually show how the functions work.
+
+TODO: indicate that breeding carrying capacity is in pairs and winter is in idividuals 
+
+### Making Figure 28.3 automatically
+
+We can generate figure 28.4 by running runFAC_multi() without any arguments.  This may take a minute or two.
+
+```{r}
+F28_3 <- runFAC_multi()
+```
+
+This produces a list; one of the elements of this list is as dataframe called "multiFAC.out.df.RM" ("multi-FAC output dataframe - Runge and Marra version"), which contains all the equilibirum population sizes which make up the figure.
+
+This dataframe can be plotted with the function **plot_Fig28_3()**.  
+
+First, let's extract out the dataframe with our information
+```{r}
+F28_3_data <- F28_3$multiFAC.out.df.RM
+```
+
+Now build the plot.
+TODO: oritation of plot - I have K.wg on the left instead of the right
+```{r}
+par(mfrow = c(1,1))
+plot_Fig28_3(F28_3_data)
+```
+
+
+### Making Figure 28.3: some details on the "easy way"
+
+Below are some insights into what's going on behind the scenes above.  This will set us up for a detailed explanation in the next sections.
+
+The **param_ranges()** functions has a "figure = ..." arguement that allows you to specify a particular figure to generate.  This allows you to set the parameters used for a particular figure in the paper.  The default is for figure 28.3  So whne you call just runFAC_multi() interally what's happneing is this:
+
+```{r}
+F28.3.range <- param_ranges(figure = 28.3)
+```
+
+Note that K.bc and K.wg both vary from 1 to 1000.
+```{r}
+head(F28.3.range)
+```
+
+Once the endpoints of the ranges are set param_seqs() generates the intervening values.  So, what's happening internally is this:
+
+```{r}
+F28.3.seq <- param_seqs(F28.3.range)
+```
+
+We can see some of the fixed and also the varying parameters here
+```{r}
+head(F28.3.seq)
+```
+
+These vectors are then transformed internally into a "grid" of all possible combinations using param_grid()
+```{r}
+F28.3.grid <- param_grid(param.seqs = F28.3.seq)
+```
+
+This produces a big matrix!
+```{r}
+dim(F28.3.grid)
+```
+
+We can get a peak at the variation here.
+```{r}
+head(F28.3.grid[,c(1:5)],12)
+```
+
+Once the grid is generated we can plug it into runFAC_multi() the param.grid = ... arguement of runFAC_multi().  This happened automatically above, but we could do this explicitly like this:
+```{r, eval = F}
+F28_3 <-runFAC_multi(param.grid = F28.3.grid)
+```
+
+The output is then plotted as above using plot_Fig28_3().
+
+## Make Figure 28.3: Step-by-step instructions
+
+To make Figure 28.3 *de novo* we need specify more information in **param_ranges()**.  This function takes as its arguements all the parameters in the model, though defaults are set so we only have to change what we are spefically interested in.
+
+You can see the defaults by calling up the help file.  Its unforuntaely a bit dense since the input is a range of the minimum and maxium.
+```{r, eval = F}
+?param_ranges
+```
+
+
+For generating Figure 28.3 want to work with **K.bc** (carrying capacity of breeding "source" habitat) and **K.wg** (carrying capacity of good winter habitat).  We want to vary each from 1 to 1000 (note that K.bc is in terms of pairs while K.wg is individuals).
+
+```{r}
+F28.3.range <- param_ranges(K.bc. = c(1, 1000),
+                            K.wg. = c(1, 1000))
+```
+
+We can then proceed as  with param_seqs() and param_grid() to generate the necessary dataframe.
+```{r}
+F28.3.seq  <- param_seqs(F28.3.range)
+F28.3.grid <- param_grid(param.seqs = F28.3.seq)
+```
+
+We then run the model and plot it like this (not run)
+```{r, eval = F}
+#run the model
+F28_3 <-runFAC_multi(param.grid = F28.3.grid)
+
+#plot
+plot_Fig28_3(F28_3$multiFAC.out.df.RM)
+```
+
+
+## Comparing output of FACavian to the original 
+
+TODO

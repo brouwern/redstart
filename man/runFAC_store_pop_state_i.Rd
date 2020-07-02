@@ -4,8 +4,17 @@
 \alias{runFAC_store_pop_state_i}
 \title{Save current population state of model being run}
 \usage{
-runFAC_store_pop_state_i(i, minimum.i = 10, FAC.out, W.list, B0,
-  P.breeding.pair.results, Y2, check.eq = T, ...)
+runFAC_store_pop_state_i(
+  i,
+  minimum.i = 10,
+  FAC.out,
+  W.list,
+  B0,
+  P.breeding.pair.results,
+  Y2,
+  check.eq = T,
+  ...
+)
 }
 \arguments{
 \item{i}{current iteration of model}

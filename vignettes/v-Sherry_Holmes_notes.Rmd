@@ -1,0 +1,46 @@
+---
+title: "v) Sherry-Holmes Notes"
+author: "Nathan Brouwer"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{v) Sherry-Holmes Notes}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+
+
+
+
+The cannonical model of population dynamics in migratory landbirds was present by Sherry and Holmes (1995)
+"Summer versus winter limitation of populations: what are the issues and what is the evidence?, p. 85–120. Ecology and management of Neotropical migratory"
+
+"We envision the life cycle of Neotropical-Neartic migrant birds as compsied, in simplest terms. of two major aseson of selecting a habitat and either breeding (Summer) or surviving (summar and winter).  Between these two seasons is a migration period that also can invovle selection of habitat and certainly mortality..." (pg 87)  
+
+"Neotropical-Neacrtic migrant birds often occupy mulitpole habitats and disperse widely....compared to most other organisms, suggesting that population dynamics must be examined at multiple-habitat or greater spatial scales, a relatively neglected toic in many past studies of population regulation.  Models of how animals use habitats assume that, at times of low population density individual will occupy those habitats in which they can acheive greatest fitness, referred to here as the primary habitats.  Fretweel and Lucal (1970; Frewell 1972) and brouwer (1969b) devised explicity graphical models for the declin in fitness...as the density of animals increases in the primary habitat.  Furthermore, they noted that continued increase in density willo depress suitability of primary habitat to the level acheived by individuals settling in a secondary habitat, at which point they should settle in both habitats.  Increasing density shoudl cause further suitablity declines in both habitats as animals continue to settle both areas.  At some point, further increases in density cause suitability to decline to such a level that individula scannot reproduce or even maintina themselves, at which point they become 'floaters,' searching for unoccupied patches or newly created habitat vacancies.... Fretwell and Lucas also distinquish two habitat-settlement mechanisms with correspondingly different patterns of density dependent distributions of abundances and suitabilites among the habitats.  IN the 'ideal-free' case, individuals settle independnetly (Free) of each other in the optimum habitat, such that at any given density fitnesses and suitabilities are equalitzed among all occupeid habitats.  In the 'ideal despotic' case, individuals settling first in preferred habitats constrain the settlement of subsequence individuals, e.g. via territorial behavior, such that fitness of individuals in secondary habitats is less that that of individuals in primary habitats." (pg 89)
+Further research
+Rosenzweig, Morris, Puliam, Bernstein
+
+"density-dependent habitat use...leads to potentially powerful regulatory mechanisms, which could operate widely in Neotropical-Nearctic mgirant birds.  Specifically, despotic habitat selection could stabilize population dynamcis in multiple-habitat landscapes, both via increased dispersal at grater poulation densities and via declining per capitat fitness as a population in constrained at greater densities to occupy increasinly less suitable habitat"
+Lomnicki, O'Connor, NEwton, ANdre, Dhodnt
+
+"Dhondt et al (1992) for example showed that clutch size in European tits decliens with density not b/c average clutch size declines within good habitat, but because small clutches are produced in secondary habitats.  This idea of reduced average per captiat fitness at higher densities ...leads to an asumptotic relatiosnhip between the total number of young produces (or survival, depending on season) and population density.  In other words, above some desnity at which suitable habitats become saturated, either no more young will be produced and/or adult [average?] survival will decline -- a crucial relationship for understanding the joint influence of summar and winter habitats on population size...." (pg 89)
+
+"This mechanism of density-dependnet fitness variation may be widspread in Neotropic-Neacrtic migrants if despotic habitat-use patterns cause fitness to decline in secondary habitats.  Some evidence suggests that fitness does depend on habiatt, often in (89) relation to bird age in migrant species ....  Such a mechanism could operate both in the breeding season and during witner, particularly if birds compete for limited amoutns of the highest quality habitats."  There is strong evdience of the and they "emphasize the possiblity that such density dependent habitat selection may have a major impact on population dynamics" (90)
+
+"Most explicity theoretical discussion of seasonal populations model: (1) population size in autumn as a functio f that in spring (Basedon on summer habitat-selection processes, related primarily to nest site choice and reproduction); (2) spring population size as a functio of that in autumn (taking into consdieration witner habiat-selection processes, related to winter survival); and (3) combine thse two sets of events mathematically or graphically.  We fllow PUlliam's (1987) treatment here...to dedeuce the possible shapes of the curve of autumn poulation size as a function of that in spring.  His ideal-domiance curve...seems most appropriate for N/N migrants, based on their widespread territoriality and intraspectific compeititon for preferred breeding and witnering sites...A similar ideal-domiance curve is probably most appropriate for spring populations asa fucntio nof those in teh fall...The 'ideal' part of the model assumes both that birds can disperse widely among an array of habiatats and can assess their quality.." (pg 91)
+
+* Fretwell 1972
+* PUlliam 1987 (1988?).  Sources, sinks, and poulation regulation.  Am. Nat 132.  652-661.
+* LeBreton and Clobert 1991.  Bird population dynamics, management, and conservation: the role of mathematical modelling.  in Bird population studies: relevance to conservation and management.

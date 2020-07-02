@@ -4,8 +4,7 @@
 \alias{RandVitalRateResponseSurface}
 \title{Random Vital Rate Response surface}
 \usage{
-RandVitalRateResponseSurface(rand_vitals = r_vitals(n = 5),
-  var.length. = 5)
+RandVitalRateResponseSurface(rand_vitals = r_vitals(n = 5), var.length. = 5)
 }
 \arguments{
 \item{rand_vitals}{Random vital rates (?)}

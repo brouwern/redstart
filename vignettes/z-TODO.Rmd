@@ -1,0 +1,87 @@
+---
+title: "TO DO"
+author: "Nathan Brouwer"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{TO DO}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+??
+Warning: [/Users/nlb24/Box Sync/R/13_FAC_avian/FACavian/R/eq18BbuildPmat.R:17] @example '/Users/nlb24/Box Sync/R/13_FAC_avian/FACavian/eq18BbuildPmat()' doesn't exist
+
+??
+Warning: [/Users/nlb24/Box Sync/R/13_FAC_avian/FACavian/R/eq19BbuildMinMat.R:12] @example '/Users/nlb24/Box Sync/R/13_FAC_avian/FACavian/eq19BbuildMinMat()' doesn't exist
+
+not currently used
+Removed empty directory ‘FACavian/inst/extdata’
+   
+ 
+??  
+─  building ‘FACavian_0.0.0.9000.tar.gz’
+   Warning: invalid uid value replaced by that for user 'nobody'
+   Warning: invalid gid value replaced by that for user 'nobody'
+   
+   
+Non-standard files/directories found at top level:
+     ‘LICENSE.md’ ‘_pkgdown.yml’ ‘docs’
+??  
+there is a LICENSE AND LICENSE.md file
+BOTH are created by use_this()
+
+docs - contains vigenettes/packagedown?
+
+_pkgdown.yml - blank
+
+
+test_P: no visible binding for global variable ‘test_dat_P’
+ Undefined global functions or variables:
+     test_dat_P
+
+??
+This is some kind of test data I use for something
+probably haven't written documentation correctly
+
+     
+   
+
+
+
+
+
+
+
+
+> checking Rd \usage sections ... WARNING
+  Documented arguments not in \usage in documentation object 'eq14_Pkgp':
+    ‘...’
+  
+  Functions with \usage entries need to have the appropriate \alias
+  entries, and all their arguments documented.
+  The \usage entries must correspond to syntactically valid R code.
+  See chapter ‘Writing R documentation files’ in the ‘Writing R
+  Extensions’ manual.
+
+> checking top-level files ... NOTE
+  Non-standard files/directories found at top level:
+    ‘LICENSE.md’ ‘_pkgdown.yml’ ‘docs’
+
+> checking R code for possible problems ... NOTE
+  test_P: no visible binding for global variable ‘test_dat_P’
+  Undefined global functions or variables:
+    test_dat_P
+
+0 errors ✓ | 1 warning x | 2 notes x
+Error: R CMD check found WARNINGs

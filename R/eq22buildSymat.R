@@ -6,9 +6,11 @@
 #' @param S.y.fc Survival of young (y) females (f) originating from source (c) habitat
 #' @param S.y.fk Survival of young (y) females (f) originating from sink (k) habitat
 #'
-#' @return S.y Matrix of survival probabilities
+#' @return S.y Matrix of survival probabilities for young.
 #'
-#' @example
+#' @examples
+#'
+#' # Return default values
 #' eq22buildSymat()
 #'
 #' @export

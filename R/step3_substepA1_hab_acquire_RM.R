@@ -55,7 +55,7 @@ step3_substepA1_hab_acquire_RM <- function(W2,
   ### Males acquiring  source habitat
 
   #males from good winter habitat preferentially acquire source
-  #habitat during summer and therefore pair w/females most likely
+  #habitat during summer and therefore pair withfemales most likely
   #to have wintered in good habitat
   #
   # Note: Density dependence occurs via a ceiling function
@@ -75,7 +75,7 @@ step3_substepA1_hab_acquire_RM <- function(W2,
 
   #   W2["mg"]+W2["mp"] = total male population
   #   minus those that ended up in source habitat (K.bc)
-  #   minus those that paired w/female in sink habitat (B.fk)
+  #   minus those that paired withfemale in sink habitat (B.fk)
 
   B.md <-eq08_Bmd(W2,
                         K.bc,

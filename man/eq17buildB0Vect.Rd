@@ -23,3 +23,10 @@ B0 vector of breeding ground abundances after pairing of males and females
 \description{
 Equation 17: Build vector of Breeding ground abundances after pairing (B0)
 }
+\examples{
+eq17buildB0Vect(B.mc = 10, B.mk = 10, B.md = 10, B.fc = 10, B.fk = 10)
+
+}
+\references{
+Runge, MC and PP Marra.  2004.  Modeling seasonal interactions in the population dynamics of migratory birds. In Greenberg, R and PP Marra, eds.  Birds of two worlds. Johns Hopkins University Press, Baltimore.
+}

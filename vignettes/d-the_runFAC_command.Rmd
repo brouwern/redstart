@@ -1,0 +1,275 @@
+---
+title: "d) The runFAC() command"
+author: "Nathan L. Brouwer"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{d) The runFAC() command}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+## Introduction
+
+In the FACavian package, a single run of a FAC is done using the **runFAC()** function.  **runFAC()** is the engine underlying the core of the FACavian package.  You'll rarely have to actually use this function except for diagnostic purposes.  Its worthwhile to know what its doing to understanding how higher-level output is being generated.
+
+The user gives this function 3 bundles of information:
+
+1. The demographic parameters for the model, including surival rates and fecundities
+1. The habitat carrying capacities (breeding and winter)
+1. The intial population state.  Specifically the abundance and age structure of male and females on the wintering ground in "good" and "poor" habitat.
+
+**runFAC()** then builds all of the matrices that describe the FAC, plugs in the starting population state, and turns the crank on the model for either a given number of iterations (the default is 300) or, if specified, until a stability criteria is met.
+
+**runFAC()** can be set to run and either keep track of everything that happens during the entire model run (save.ts = T, the default), or just the final time point which (save.ts = F);  ...
+
+TODO: what is this fragment of a sentence for?
+if the model reach equilibrium, represents that stable population size, stage, and sex structure of the model during each time point.
+
+Examining the entire time series ("ts") of the model is mostly useful for understanding what the model does and for diagnostics purposes, e.g. to makes sure it is reaching equilbrium.  For most subsequent analyses just the equilibrium state is needed; a typical analysis of a FAC model involves running the model many times while systematically varying one or two key parameters to understand how they impact the equilibrium population state.
+
+In this vignette I'll demonstrate what **runFAC()** does and what the output of a single run the FAC looks like.  In subsequent vignettes we'll using a wrapper function, **runFAC_multi()** to run the model repeatedly to equilibirum while varying parameters such as carrying capacity (K).  When doing simple explorations of how the function works I'll set return.output = F so that the full output dataframe isn't printed out into the R terminal.
+
+
+## Preliminaries
+
+### Getting the FACavian package
+
+The most recent version of FACavian is available from github and can be downloaded directly using hte devtools package
+```{r eval=FALSE}
+#load devtools
+library(devtools)
+
+#download FACavian from github
+devtools::install_github("brouwern/FACavian")
+```
+
+
+Load FACavian into your current R sessions
+```{r eval=T}
+library(FACavian)
+```
+
+
+### Getting parameters for a model run
+
+Default values are set in all of FACavian's functions so you can easily explore them without worrying about setting the underlying demographic parameters.  For a preliminary run parameters will be called automatically behind the scenes using a function called **param_set()**, which has default to the parameters used in Runge and Marra (2004).  
+
+You can look at the default parameters by calling the **param_set()** function.  Later we'll use **param_set()** to tweak a few parameters.
+
+To view the parameter, call param_set() with empty parentheses (Output not shown)
+```{r, eval = F}
+param_set()
+```
+
+Counting the 3 carrying capacities (K.bc, K.bk, K.wg) there are 30 parameters in a single run of the FAC.  We can see this using the length command.
+```{r eval=T}
+length(param_set())
+```
+
+The first 10 parameters are:
+```{r eval=T}
+param_set()[1:10]
+```
+
+For information on each parameter call the helpfile like this
+```{r eval = F}
+?param_set
+```
+
+Additionally, there are four intial population size values for males and females in the two types of winter habitats.  Defaults are set for these using the arguement "Ninint = c(....) within the **runFAC()** command itself.  Call the help file on runFAC for more information (?runFAC)
+
+
+## Let's do this!  Running a FAC
+
+When you call the **runFAC()** function an R **list** object is created is created.  This list contains everything you put into runFAC() (the intial parameters) AND everyting the model produced. 
+
+We can run the model and save its output to an object (Note that since there are defaults set within runFAC() you don't have to include anything in the parentheses).
+```{r eval=T}
+my.fac <- runFAC()
+```
+
+This should only take a few seconds, and you should get a short message about how many iteractions it took to reach equilibrium.
+
+
+The output of runFAC() is a **list**.
+```{r eval=T}
+is(my.fac)
+```
+
+Lists are common R **data structures** but can take some getting used to when your first encounter them.  The list produced by runFAC() has 8 elements.
+```{r eval=T}
+length(my.fac)
+```
+
+We can see the names of the 8 elements like this:
+```{r}
+names(my.fac)
+```
+
+Again, this is dense object - some of the elements in the list are list themselves!  For example, the element "param.matrices" is a list which contains all of the parametrized transition matrices for the model.  We can check what each element of the my.fac list by using dollar sign notation to select the name of the element.  Here is the parameter matrix element.
+
+```{r eval=T}
+is(my.fac$param.matrices)
+```
+
+We can check how many matrices there are by again using the length() function
+
+```{r}
+length(my.fac$param.matrices)
+```
+
+
+To look at the names of all the elements of the list we can also use the str() command to look at the output.   The "1" tells str() to just give us the names of the elements inthe list.  This provides some more output than using names():
+
+```{r eval=T}
+str(my.fac,1)
+```
+
+The elements of the list are
+
+1. **FAC.out.RM**: a dataframe containing the outputs from the original Runge and Mara FAC model (rmFAC)
+1. **FAC.out.IB**: a daframe containing the output from a slightly modified version of the model which uses an individual-based modeling (IBM) submodel (ibFAC) for some calculations.  TODO: which ones
+1. **FAC.eq.state.RM**: a vector with the state of the original rmFAC when the model reaches equilibrium
+1.  **FAC.eq.state.IB**: a vector with the state of the  ibFAC when the model reaches equilibrium.
+1. **W.mg.diagnostic.df**:  TODO()
+1. **param.matrices**: All of the parameterized transition matrices describing the model
+1. **params.initial**: initial parameters used to set up the transition matrices
+1. **use.IBM**: indicater (TRUE/FALSE) if the individual-based (IBM) sub-model was run.
+
+The main output of runFAC() is "FAC.out.RM" and "FAC.eq.state.RM." When many runs of the model are required we can just save the equilibrium state to improve performace of the model. 
+
+
+
+### A basic run of the FAC
+
+We'll call runFAC() with the argument return.output set to FALSE to supress the output of full time series.  We'll Also set diagnostic.plot = T to see plot of the time series.
+
+To be clear about what the options do, if I ran just this
+```{r, eval=FALSE}
+my.fac <- runFAC()
+```
+
+I'd run then model and then get a big list with all the data output to my R terminal if I call up the my.fac object..  
+
+In contrast, the code below will run the model to equilibrium but won't output anything - my.fac will be empty (NULL).
+```{r eval=T}
+my.fac <- runFAC(return.output = F)
+```
+
+We can see how the model progresses to equilbibrium by setting the arguement diagnostic.plot = T.  The my.fac object will be empty, but a diagnostic plot will be produced.
+```{r, eval=T}
+my.fac <- runFAC(return.output = F, diagnostic.plot = T)
+```
+
+The diagnostic plot has three panels.  On the left hand size is a graph of total winter population size (tot.W; black) and total breeding poulation size (tot.B, red).  Winter population size is larger because birds die ocer the course of the winter and spring migration  The middle panel of the graph shows the realized population growth rate, calcualted simply as winter population size in year t+1 divided by winter populationsize in year t.  When growth stabilizes at 1.0, the model is at equilibrium.
+
+The third panel of the diagnostic plot shows the winter stucture of the population based on sex and habitat,
+
+TODO: the sex ratio for the default parameters is highly skewed. Is this how its suppossed to be?  I think the figure lengend might be labeled wrong.  Cross reference with the barplot produced below.
+
+The default behavior of runFAC() is save time by monitoring a run of the model for equilibrium.  If you want to make sure your model is at equilibrium you can turn off the  equilibirum monitoring using the check.eq arguement; the model will then run for a default of 350 iterations.
+
+```{r, eval=T}
+runFAC(return.output = F,
+       check.eq = FALSE,
+       diagnostic.plot = T)
+```
+
+You can also specify a specific number of iterations
+```{r, eval=FALSE}
+## TODO: total pop size plot returned here is off; doesn't include zero
+runFAC(return.output = F,
+       iterations = 20,
+       diagnostic.plot = T)
+```
+
+
+We can also have it run longer by making the equilibrium checker -- which checks the time series for an asymptote -- stricter.  This can be done by increasing the "equilibrium tolerance", eq.tol.  The model will still check if the time series has reached an asymptote (check.eq = TRUE) but will be stricter about judging equilibrium.  The default value of eq.tol ot 6.
+
+TODO: how is this scaled?
+
+```{r, eval=FALSE}
+runFAC(return.output = F,
+       eq.to = 10,
+       diagnostic.plot = T)
+```
+
+
+After we run a model we can also create the plot after the fact if we want using the fuhction plot_runFAC().  First, let me re-run the model and save the object
+
+```{r}
+my.fac <- runFAC(iterations = 150)
+```
+
+Now use plot_runFAC()
+```{r, eval=FALSE}
+plot_runFAC(my.fac$FAC.out.RM)
+```
+
+
+
+### Time series dataframe
+
+The main output of runFAC() is a dataframe containing the status of the population at each timestep.  This dataframe is contined in the FAC.out.RM component of the list output by runFAC()
+
+```{r}
+head(my.fac$FAC.out.RM)
+```
+
+
+This time series contains information about how **everything** in the model changes over time and is the basis for the diagnostic plot.  As implied above, we can have access this dataframe by removing "return.output = F".  (The default of runFAC() is returnet.output = T, but we've set it to false sometimes above so we don't have to see all the crazy  output. )
+
+
+The dataframe is 45 columns wide and has the state variables for each step in the model, such as population sizes in each habitat
+```{r}
+j.abundance.columns <- c("W.mg","W.mp","W.fg","W.fp","B.mc","B.mk","B.md")
+head(my.fac$FAC.out.RM[,j.abundance.columns ])
+```
+
+The dataframe also has summary stats (eg sums of several column) such as the total breeding (tot.B),  winter (tot.W) populations, and realized lambda ("lambda").
+```{r}
+j.summary.columns <- c("tot.B","tot.W","tot.P.c","tot.P.k","lambda")
+head(my.fac$FAC.out.RM[,j.summary.columns ])
+```
+
+
+
+Each row in this dataframe is from one iteration of the model.  NAs are VERY common in this dataframe and don't indicate a problem - they occur when the model didn't run long enough to assign values to that iteration because equlibirum was met.
+```{r eval=T}
+tail(my.fac$FAC.out.RM[,c("tot.B","tot.W","lambda")])
+```
+
+
+### Returning just the equilibrium state
+
+Typically when doing an analysis of a FAC model we'll just be interested in the final equilibrium state of the population.  The information in the "FAC.out.RM" part of the output will be tossed and instead we'll keep the information in "FAC.eq.state.RM"
+
+```{r eval=T}
+my.fac$FAC.eq.state.RM
+```
+
+This is just all the information the last (TODO - is this true) row from the main output dataframe (FAC.out.RM).
+
+TODO(): simplfy output of equilibrium output
+TODO: create summary function which makes a barplot of relevant information
+
+```{r}
+x <- unlist(my.fac$FAC.eq.state.RM[1:7])
+par(mfrow = c(1,1))
+barplot(height = x)
+abline(v = 4.85, col = 2, lwd = 2)
+```
+
+
+

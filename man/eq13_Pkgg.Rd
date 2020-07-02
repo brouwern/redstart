@@ -2,7 +2,7 @@
 % Please edit documentation in R/eq13_Pkgg.R
 \name{eq13_Pkgg}
 \alias{eq13_Pkgg}
-\title{Equation 13: pairing in sink (.k) habitat (P.kgg)}
+\title{Equation 13: Pairing in sink (k) habitat of good-good pairs (P.kgg)}
 \usage{
 eq13_Pkgg(W2, K.bc, K.bk, B.mk, B.fk, ...)
 }
@@ -23,10 +23,17 @@ eq13_Pkgg(W2, K.bc, K.bk, B.mk, B.fk, ...)
 P.kgg Proportion of pairs in sink (k) habitat where both male and female originated from good winter habitat (gg)
 }
 \description{
-Equation 13: pairing in sink (.k) habitat (P.kgg)
+Equation 13: Pairing in sink (k) habitat of good-good pairs (P.kgg)
 }
-\details{
-good-good pairs that mate in SINK habitat
+\examples{
+#Trivial example
+W2. <- c(10,10,10,10)
+names(W2.) <- c("mg","fg","mp","fp")
+eq13_Pkgg(W2 = W2., K.bc = 0, K.bk = 10, B.mk = 5, B.fk =5)
 
-Previously aliased as pairing.eq13.P.kgg()
+
+
+}
+\references{
+Runge, MC and PP Marra.  2004.  Modeling seasonal interactions in the population dynamics of migratory birds. In Greenberg, R and PP Marra, eds.  Birds of two worlds. Johns Hopkins University Press, Baltimore.
 }

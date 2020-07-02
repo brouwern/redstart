@@ -19,7 +19,7 @@ plot_Fig28_5 <- function(dat.winter.lim,
   par(mfrow = c(1,1))
 
 
-  #Plot w/drain males
+  #Plot withdrain males
   if(drain == T){
     plot(sex.ratio ~ gamma.i , data = dat.winter.lim, type = "l",
          lty = 1,col = 1,ylim = c(0.98,1.12))
@@ -30,7 +30,7 @@ plot_Fig28_5 <- function(dat.winter.lim,
   }
 
 
-  #Plot w/0 drain males
+  #Plot with0 drain males
   if(drain == F){
     plot(sex.ratio.no.d ~ gamma.i , data = dat.winter.lim, type = "l",
          lty = 1,col = 1,ylim = c(0.98,1.12))

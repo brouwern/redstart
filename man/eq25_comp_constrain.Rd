@@ -11,11 +11,10 @@ eq25_comp_constrain(A.i.G.settled.raw.j, A.i.active.j)
 
 \item{A.i.active.j}{The number of birds that were actively looking for nests.
 
-NOTE: in previous versions of this A.i.0 was incorrectly used instead
-of A.i.active.j}
+NOTE: in previous versions of this A.i.0 was incorrectly used instead of A.i.active.j}
 }
 \value{
-A.i.G.settled.cor.j ....
+A.i.G.settled.cor.j .... TODO()
 }
 \description{
 Equation 25: Competition A.i constraint

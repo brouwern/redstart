@@ -1,10 +1,10 @@
 ---
-title: "d) The runFAC_multi() command: Running multiple FACs to explore parameter variation"
-author: "Vignette Author"
+title: "e) The runFAC_multi() command: Running multiple FACs to explore the effects varying parameters"
+author: "Nathan L. Brouwer"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{e) The runFAC_multi() command: Running multiple FACs to explore the effects varying parameters}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
@@ -21,13 +21,19 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-A major motivation for studying full-annual cycle population dynamics is to determine when during the annual cycle population limitation occurs.  For example, a perennial question is whether habitat loss on the breeding grounds or wintering grounds is more important for population dynamics (CITE).
+A major motivation for studying full-annual cycle population dynamics is to determine when during the annual cycle population limitation occurs.  For example, a perennial question is whether habitat loss on the breeding grounds or wintering grounds is more important for population dynamics (TODO: CITE).
 
-For standard density-independent population models, such as matrix models or integral projection models, there are analytica solutions that allow you to compare the importance of all vital rates for population growth.  These methods include sensitivity and elasticity analyses, as well as Life Table Response Experiments (LTRE).  To carry out these analyses all that is required is the parameterized model and a compute program (such as R) that can do mathematical functions such as determining the eigen values of matrices.
+For standard density-independent (di) population models , such as matrix models (TODO: CITE) or integral projection models (TODO: CITE), there are analytical solutions that allow you to compare the importance of vital rates for population growth.  These methods include sensitivity and elasticity analyses (TODO: CITE), as well as Life Table Response Experiments (LTRE; (TODO: CITE)).  To carry out these analyses all that is required is the parameterized model and a program (such as R) that can do mathematical functions such as determinie what are known as the the eigenvalues of matrices.  For an introduction to matrix models and eigenanlysis in R see ... (TODO: CITE).  For a general introduction to matrix models with worked examples see Morris and Doak 200x and the R package based on it popbio (TODO: CITE).
 
-Complex density-dependent models such as the one developed by Runge and Marra (2004) can not be assayed directly using analytical methods.  Models such as this must be run repeatedly with different parameter values and the output of the model compared as conditions change.  This requires running many indepdent models to equilibrium, each with slightly diffrent paramter values, storing the relevant output, and comparing the output.  Runge and Marra (2004) graphically explored how varying breeding season and winter carrying capacity impacted breeding ground population size (Figures 28.3  in the original paper), how breeding ground carrying capacity impacted breeding and winter population structure (28.4), and male dominance impacted the sex ratio (Figure 28.5), and the strength of carry-over effects impacted poulation size (Figure 28.6).    
+Density-dependent (dd) models are analyzed very differently than density-independent models (TODO: CITE).  The add complexities of building and anlysing dd has made them relatively rare.  Moreover, most dd models use functions similar to the classic logistic growth curve ((TODO: add figure of curve) to model have vital rates change as a function of density.  For birds the primary form of density dependence is suspected to be due to the constrains imposed by a limited number of territories.  This has been called **site-dependence** in the bird literature (TODo: cite Rodenhouse etc) and corresponds with what is called **celing model** of density depencence elsewhere (cite Morris and Doak, etc).
 
-The FACavian package implements and extends the analyses carried out by Runge and Marra (2004) using the function runFAC_multi().  This function allows you to run multiple FAC models each with different parameter values.  The following vignette demonstrates the basic functionality of runFAC_multi().  Each of the analyses in Runge and Marra (2004) are then coverged in a seperate vignette.  
+Complex dd models such as the one developed by Runge and Marra (2004) can not be assayed directly using analytical methods.  Models such as this must be run repeatedly with different parameter values and the output of the model compared as conditions change.  This requires running many indepdent models to equilibrium, each with slightly diffrent paramter values, storing the relevant output, and comparing the output.  Runge and Marra (2004) graphically explored how 
+
+1. varying breeding season and winter carrying capacity impacted breeding ground population size (Figures 28.3in the original paper), 
+1. how breeding ground carrying capacity impacted breeding and winter population structure (28.4), and male dominance impacted the sex ratio (Figure 28.5), and 
+1. the strength of carry-over effects impacted population size (Figure 28.6).    
+
+The FACavian package implements and extends the analyses carried out by Runge and Marra (2004) using the function **runFAC_multi()**.  This function allows you to run multiple FAC models each with different parameter values.  The following vignette demonstrates the basic functionality of runFAC_multi().  Each of the analyses in Runge and Marra (2004) are then coverged in a seperate vignette.  
 
 
 ## Preliminaries
@@ -61,19 +67,19 @@ length(F28_3)
 ```
 
 
-One holds the output for the original model of Runge and Marra (rmFAC; multiFAC.out.df.RM), while the holds the output for from a model with individual-based submodels (ibFAC; multiFAC.out.df.IB:'data.frame). We'll focus on rmFAC. 
+One holds the output for the original model of Runge and Marra (rmFAC; multiFAC.out.df.RM), while the other holds the output for from a model with individual-based submodels (ibFAC; multiFAC.out.df.IB:'data.frame). We'll focus on rmFAC. 
 
 ```{r}
 str(F28_3, 1)
 ```
 
-The rmFAC element is dataframe.
+The rmFAC element is a dataframe.
 
 ```{r}
 is(F28_3$multiFAC.out.df.RM)
 ```
 
-This dataframe. contains information on the output dozens of individual FAC models run to equilibrium so it very large
+This dataframe contains information on the output of dozens of individual runs of the FAC model  to equilibrium, so it very large
 
 ```{r}
 dim(F28_3$multiFAC.out.df.RM)

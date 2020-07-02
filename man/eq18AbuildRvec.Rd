@@ -2,32 +2,28 @@
 % Please edit documentation in R/eq18AbuildRvect.R
 \name{eq18AbuildRvec}
 \alias{eq18AbuildRvec}
-\title{Equation 18: R vector - build vector of reproduction/fecunity values (R.all)}
+\title{Equation 18: Build vector of reproduction/fecundity values (R.all)}
 \usage{
-eq18AbuildRvec(R.base.rate, R.hab.effect, co)
+eq18AbuildRvec(R.base.rate = 1.8, R.hab.effect = 0.5, co = 1)
 }
 \arguments{
-\item{R.base.rate}{Base rate of...}
+\item{R.base.rate}{Base rate of TODO wbhat}
 
-\item{R.hab.effect}{Effect of breeding in poor habitat; in table 28.3 base fec is 1.8, while in poor habitat it is 0.9}
+\item{R.hab.effect}{Effect of breeding in poor habitat; in table 28.3 base fec is 1.8, while in poor habitat it is 0.9, so habitat effect is 0.5}
 
 \item{co}{strength of carry over effect}
 }
 \value{
-R.all All reproductive values (?)
+R.all All reproductive values (TODO check)
 }
 \description{
-fx.make.R.all.eq18()
-Fx.make.P.matrix.eq18()
-LOAD EQUATION 18b
+"average fecunidty for pairs in source and sink habitat" is a function of how the proportion of pairs in that habitat that are good-good, good-poor etc.  (Runge and Marra 2004, pg TOD())
 }
 \details{
-REPRODUCTION
-"average fecunidty for pairs in source and sink habitat"
-is a function of how the proportion of pairs in that
-habitat that are good-good, good-poor etc
-
-These are fixed for the entire duratin of the study
+By default these are fixed for the entire duration of the study.
 
 Calculations are found in Table 28.3.
+}
+\references{
+Runge, MC and PP Marra.  2004.  Modeling seasonal interactions in the population dynamics of migratory birds. In Greenberg, R and PP Marra, eds.  Birds of two worlds. Johns Hopkins University Press, Baltimore.
 }

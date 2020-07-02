@@ -2,7 +2,7 @@
 % Please edit documentation in R/eq12_Pcpp.R
 \name{eq12_Pcpp}
 \alias{eq12_Pcpp}
-\title{Equation 12: Proportion of prairs between a male and female both from poor habitat (P.cpp)}
+\title{Equation 12: Proportion of pairs between a male and female both from poor habitat (P.cpp)}
 \usage{
 eq12_Pcpp(P.cgg, P.cgp, P.cpg, ...)
 }
@@ -16,20 +16,15 @@ eq12_Pcpp(P.cgg, P.cgp, P.cpg, ...)
 \item{...}{Additional parameters}
 }
 \value{
-P.cpp Proportion of prairs between a male and female both from poor habitat
+P.cpp: Scalar - Proportion of pairs between a male and female both from poor habitat
 }
 \description{
-Equation 12: Proportion of prairs between a male and female both from poor habitat (P.cpp)
+The proportion of pairings between a male and female both originating from poor winter habitat  is calculated by subtraction using values calcualted by previous equations.
 }
 \details{
-SUMMER MALE (M) DYNAMICS - pairing
-proportion composed of a male and female both from poor habitat
-This is calculated by subtraction
+Note that in the original paper, equations 10 and 11 both are named "P.cgp" but in equation 12 it is implied that 10 should be P.cgp while 11 should P.cpg.  This would maake the 2nd subscript for the male condition (P.cg_) and the 3rd subscript for the female condition (P.c_p)
+}
+\examples{
+eq12_Pcpp(P.cgg = 1, P.cgp = 0.0, P.cpg = 0.0)
 
-Note that in the original paper, equations 10 and 11 both are named "P.cgp" but
-in equation 12 it is implied that 10 should be P.cgp while 11 should P.cpg.  THis
-would mnake the 2nd subscript for the male condition (P.cg_) and the 3rd subscript
-for the female condition (P.c_p)
-
-Previously aliased as pairing.eq12.P.cpp()
 }

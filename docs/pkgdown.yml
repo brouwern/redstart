@@ -1,21 +1,23 @@
-pandoc: 1.19.2.1
-pkgdown: 1.1.0
+pandoc: 2.3.1
+pkgdown: 1.5.1
 pkgdown_sha: ~
 articles:
-  a-Introduction_FAC_demography: a-Introduction_FAC_demography.html
-  b-overview: b-overview.html
-  c-the_runFAC_command: c-the_runFAC_command.html
-  d-the_runFAC_multi_command: d-the_runFAC_multi_command.html
-  e-make_figure_28_3: e-make_figure_28_3.html
-  f-make_figure_28_4: f-make_figure_28_4.html
-  g-make_figure_28_5: g-make_figure_28_5.html
-  h-make_figure_28_6: h-make_figure_28_6.html
-  p-tests: p-tests.html
-  paper-notes: paper-notes.html
-  relevant_literature: relevant_literature.html
-  Runge_and_Marra_notes: Runge_and_Marra_notes.html
-  Sherry_Holmes_notes: Sherry_Holmes_notes.html
+  a-Bio_Intro-FAC_demography: a-Bio_Intro-FAC_demography.html
+  b-model_intro-RM_FAC_model: b-model_intro-RM_FAC_model.html
+  c-software_intro_rmFAC: c-software_intro_rmFAC.html
+  d-the_runFAC_command: d-the_runFAC_command.html
+  e-the_runFAC_multi_command: e-the_runFAC_multi_command.html
+  f-make_figure_28_3: f-make_figure_28_3.html
+  g-make_figure_28_4: g-make_figure_28_4.html
+  h-make_figure_28_5: h-make_figure_28_5.html
+  i-make_figure_28_6: i-make_figure_28_6.html
+  p-software_checks: p-software_checks.html
+  v-Sherry_Holmes_notes: v-Sherry_Holmes_notes.html
+  w-annotated_bib: w-annotated_bib.html
   x-creating_a_package: x-creating_a_package.html
   y-building_a_package: y-building_a_package.html
+  z-MANUSCRIPT: z-MANUSCRIPT.html
+  z-TODO: z-TODO.html
   z-build_and_rebuild_package: z-build_and_rebuild_package.html
+last_built: 2020-07-02T17:53Z
 

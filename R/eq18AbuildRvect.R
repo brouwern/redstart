@@ -1,26 +1,21 @@
-#' Equation 18: R vector - build vector of reproduction/fecundity values (R.all)
+#' Equation 18: Build vector of reproduction/fecundity values (R.all)
 #'
-#' fx.make.R.all.eq18()
-#' Fx.make.P.matrix.eq18()
-#' LOAD EQUATION 18b
+#' "average fecunidty for pairs in source and sink habitat" is a function of how the proportion of pairs in that habitat that are good-good, good-poor etc.  (Runge and Marra 2004, pg TOD())
 #'
-#' @details
-#' REPRODUCTION
-#' "average fecunidty for pairs in source and sink habitat"
-#' is a function of how the proportion of pairs in that
-#' habitat that are good-good, good-poor etc
-#'
-#' These are fixed for the entire duration of the study
+#' By default these are fixed for the entire duration of the study.
 #'
 #' Calculations are found in Table 28.3.
 #'
-#' @param R.base.rate Base rate of...
+#' @param R.base.rate Base rate of TODO wbhat
 #' @param R.hab.effect Effect of breeding in poor habitat; in table 28.3 base fec is 1.8, while in poor habitat it is 0.9, so habitat effect is 0.5
 #' @param co strength of carry over effect
 #'
-#' @return R.all All reproductive values (?)
+#' @return R.all All reproductive values (TODO check)
 #'
-#' @example
+#' @references Runge, MC and PP Marra.  2004.  Modeling seasonal interactions in the population dynamics of migratory birds. In Greenberg, R and PP Marra, eds.  Birds of two worlds. Johns Hopkins University Press, Baltimore.
+#'
+#' @examples
+#' #Show contents of the vector
 #' eq18AbuildRvec()
 #'
 #' @export

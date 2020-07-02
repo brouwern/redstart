@@ -1,24 +1,25 @@
 #' Equation 9: Pair formation in source habitat between birds which both originated from good winter habitat (P.cgg)
 #'
-#' Calculates the proportion of pairs in source (.c) breeding habitat that occur between males that wintered in good habitat and females that wintered in good habitat.
+#' Calculates the proportion of pairs in source ("c") breeding habitat that occur between males that wintered in good habitat and females that wintered in good habitat ("gg").
 #'
-#' This function determines how many females from good winter habitat pair w/ males
-#' from good habitat.  The logic of this function is:
-#' 1)If mg > K.bc  (number of males from good habitat > source K) AND fg > K.bc (number of females from good > source K) THEN all of the pairs on the source habitat will be good-good pairs.  That is, if there are enough males and females to fill up the source then the good-good the pairing rate will be 100%. This would only occur when there are not many birds
-#' 2)ELSE, the ratio of good-good pairs will be determined by the ratio of
+#' The logic of this function is:
+#' 1) IF \code{mg > K.bc}  (number of males from good habitat > source K)
+#' AND \code{fg > K.bc} (number of females from good > source K)
+#' THEN all of the pairs on the source habitat will be good-good pairs.
+#' That is, if there are enough males and females to fill up the source then the good-good pairing rate will be 100%. This will typically only occur when there are not many birds.
+#' 2) ELSE, the ratio of good-good pairs will be determined by the ratio of:
 #'    2a) The number of males OR females from good habitat, whichever is less
 #'    2b) AND the number of males or females on source habitat, whichever is less
 #'
-#'
 #'  B.fc should usually be lower than B.mc because females have lower survival and/or are forced by competition into poor habitat in the winter, resulting in carry over effects.
 #'
-#' Possible ratios for the 2nd condition
-#' W2.mg/B.mc = males from good winter / males settled in source
-#' W2.fg/B.mc = females from good winter / males settled in source
-#' W2.mg/B.fc = males from good winter / females settled in source
-#' W2.fg/B.fc = females from good winter / females settled in source
+#' Possible ratios for the 2nd condition of the equation::
+#' 1) W2.mg/B.mc = males from good winter / males settled in source
+#' 2) W2.fg/B.mc = females from good winter / males settled in source
+#' 3) W2.mg/B.fc = males from good winter / females settled in source
+#' 4)W2.fg/B.fc = females from good winter / females settled in source
 #'
-#' The ratio r is tricky.  It is determined by which sex is limiting in terms of input from good winter habitat (numerator) AND which sex is limiting in terms of total abundance in the breeding habitat.
+#' The ratio is tricky.  It is determined by which sex is limiting in terms of input from good winter habitat (numerator) AND which sex is limiting in terms of total abundance in the breeding habitat.
 #'
 #' @param W2 population vector
 #' @param K.bc source (c) carrying capacity (K) in breeding season (b)original file said "sink popualtion size" in comments

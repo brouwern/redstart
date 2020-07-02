@@ -71,7 +71,7 @@ r_vitals <- function(d = 0.25,   #
 
   # Check to make sure parameters in source habitat are not
   # less than parameters in sink habitat
-  #browser()
+  
   i.bad0 <- with(px, which(S.w.fg <=  S.w.fp))#
   i.bad1 <- with(px, which(S.m.fg <= S.m.fp))
   i.bad2 <- with(px, which(S.b.fc <= S.b.fk))
@@ -150,7 +150,7 @@ r_vitals <- function(d = 0.25,   #
   #with(px, #hist(Lamb.lo))
 
   #extract values approx equal to average lambda from R&M
-  #browser()
+  
   i.1.06  <- which(round(px$Lamb.hi,1) == round(1.06,1))
   i.0.624 <- which(round(px$Lamb.lo,1) == round(0.624,1))
 

@@ -3,10 +3,9 @@
 #' @param A.i.G.settled.raw.j The raw number of birds that eq24_competition indicates have setteled.  This number needs to be trimmed if necessary so that the number settling cannot exceed the number actively looking for territories
 #' @param A.i.active.j The number of birds that were actively looking for nests.
 #'
-#' NOTE: in previous versions of this A.i.0 was incorrectly used instead
-#' of A.i.active.j
+#' NOTE: in previous versions of this A.i.0 was incorrectly used instead of A.i.active.j
 #'
-#' @return A.i.G.settled.cor.j ....
+#' @return A.i.G.settled.cor.j .... TODO()
 #'
 #' @export
 

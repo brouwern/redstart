@@ -1,0 +1,45 @@
+---
+title: "(RE) Modeling Seasonal Interactions in the Population Dynamics of Migratory Birds"
+author: "Nathan Brouwer"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteEncoding{UTF-8}
+  %\VignetteIndexEntry{(RE) Modeling Seasonal Interactions in the Population Dynamics of Migratory Birds}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+## Abstract
+
+...
+
+## Introduction
+
+Population models in ecology typically have an annual time step and most model parameters represent annualized vital rates such as annual survival or annual fecundity.  Most organism live in seasonal enviroments, and vital rates, stressors, and population limiting factors vary between seasons.  Migratory animals such as birds can experience dramatically different ecological condistions such as weather and density between seasons.
+
+For birds the cannonical considerations for Full-Annual Cycle (FAC) models were articulated by ...   Runge and Marra (2004) build a simulation model instantiating the key ideas of xxx and yyy.  Runge and Marra (2004) analyzed their model to address the following questions.
+
+The original model of Runge and Marra (2004) was written in Matlab and the code was never publisehd.  Runge and Marra (2004) are consistently cited in discussion of full-annual cycle ecology but to our knowledge the model has never been re-used.  To validate its original conclusions to re-implemented the Runge and Marra (2004) model in R (CITE) and have released the code on CRAN.  Our re-implementation closely reproduces the original results, though we did identify x minor errors in the original reporting of the model.
+
+### Original analyses
+
+Runge and Marra (2004) used their model to produce 3 major results
+
+1. Result 1: Impact of ...Figure x
+1. Results 2: Impact of...Figure y
+1. Results 3: Impact of ...Figure z
+
+In the following sections we reproduce each of these results
+
+
+### Results 1:

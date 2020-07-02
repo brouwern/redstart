@@ -2,7 +2,7 @@
 % Please edit documentation in R/eq11_Pcpg.R
 \name{eq11_Pcpg}
 \alias{eq11_Pcpg}
-\title{Equation 11: Proportion of males from poor winter habitat mated with females from good winter habitat (P.cpg)}
+\title{Equation 11: Proportion of males in source (c) from poor winter habitat (p) mated with females from good (g) winter habitat (P.cpg)}
 \usage{
 eq11_Pcpg(W2, K.bc, B.mc, B.fc, ...)
 }
@@ -18,28 +18,31 @@ eq11_Pcpg(W2, K.bc, B.mc, B.fc, ...)
 \item{...}{Additional parameters}
 }
 \value{
-P.cpg the proportion of pairings in the source habitat (c) made up of males from poor winter habitat (p) and females from good winter habitat (g).  See note above about how subscripts are wrong in original paper.
+P.cpg (vector):  the proportion of pairings in the source habitat (c) made up of males from poor winter habitat (p) and females from good winter habitat (g).  See note above about how subscripts are wrong in original paper.
 }
 \description{
-Equation 11: Proportion of males from poor winter habitat mated with females from good winter habitat (P.cpg)
+The logic of this function is:
+IF (abundance of males that wintered in good habitat) > (abundance of females that wintered in good habitat)
+BUT (abundance of males that wintered in good) < than source K,
+THEN the proportion of poor-good pairings is a function of xxx.
+ELSE, there are no poor-good pairings
 }
 \details{
-Proportion of winter-poor males mated w/ winter-goods females
-1)If males that wintered in good habitat > females that wintered in good habitat
-BUT males that wintered in good less than source K
-Then the proportion of poor-good pairings is
-a function of
-Otherwise, there are no poor-good pairings
-
 Note that in the original paper, both equations 10 and 11 have the same subscripts of P.cgp, while in equation 12 it is implied they have different subscripts.
 It appears that the 2nd subscript should indicate the winter habitat for males and the 3rd should indicate the winter habitat for females.
 Therefore equation 10 in the original paper remains as P.cgp (P.source.male-good.female-poor) and equation 11 should be changed to P.c.pg (P.source.male-poor.female-good)
 
-Note  W2.mg > W2.fg in original paper.  ">" needs to be "<"  b/c poor males end up
+Note  W2.mg > W2.fg in original paper.  "\code{>}" needs to be "code{<}"  because poor males end up
 with good female when there are not enough good males for all the good females (Wmg < Wfg)
 }
+\examples{
+# Trivial example
+W2. <- c(10,10,10,10)
+names(W2.) <- c("mg","fg","mp","fp")
+eq11_Pcpg(W2 = W2., K.bc = 0, K.bk = 10, B.mc = 5, B.fc =5)
+
+
+}
 \references{
-Runge, MC and PP Marra.  2004.  Modeling seasonal
-interactions in the population dynamics of migratory birds.
-In Greenberg, R and PP Marra, eds.  Birds of two worlds.
+Runge, MC and PP Marra.  2004.  Modeling seasonal interactions in the population dynamics of migratory birds. In Greenberg, R and PP Marra, eds.  Birds of two worlds. Johns Hopkins University Press, Baltimore.
 }

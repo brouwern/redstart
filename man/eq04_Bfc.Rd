@@ -15,20 +15,14 @@ eq04_Bfc(W2, K.bc)
 B.fc Total number of females (f) allocated to the source (c) habitat
 }
 \description{
-This function outputs \code{B.fc}, the number of females that acquire
-high quality "source" (._c) habitat during the breeding season
+This function outputs \code{B.fc}, the number of females that acquire high quality "source" (._c) habitat during the breeding season
 }
 \details{
-This function compares total female population size after migration (W2.fg + W2.fp)
-to K.bc the source carrying capacity \code{K.bc}; if the total population of
-females < K.bc, all females acquire habitat in the source.  Therefore when the population
-is small all females are allocated to source habitat regardless of where they winter.
+This function compares total female population size after migration (\code{W2.fg + W2.fp}) to \code{K.bc} the source carrying capacity; if the total population of females is less than the carrying capacity (eg, code{(W2.fg + W2.fp) < K.bc}), all females acquire habitat in the source.  Therefore when the population is small all females are allocated to source habitat regardless of where they wintered.
 
-If W2.fg + W2.fp > K.bc, then the source habitat gets filled up completely.  Any additinal
-females will be allocated to the sink (._k) habitat in a subsequent step.
+If \code{W2.fg + W2.fp > K.bc}, then the source habitat gets filled up completely.  Any additinal females will be allocated to the sink (._k) habitat in a subsequent step using a different allocation equation.
 
-Note that this allocation process returns just a scalar (single number).  The origin of the
-the birds isn't tracked at this step.
+Note that this allocation process returns just a scalar (single number).  The origin of the the birds isn't tracked at this step.
 
 The output of this function is used in equation 17.
 }
@@ -67,8 +61,5 @@ eq04_Bfc(W2, K.bc.110)                # All 60 allocated to source
 
 }
 \references{
-Runge, MC and PP Marra.  2004.  Modeling seasonal
-interactions in the population dynamics of migratory birds.
-In Greenberg, R and PP Marra, eds.  Birds of two worlds.
-Johns Hopkins University Press, Baltimore.
+Runge, MC and PP Marra.  2004.  Modeling seasonal interactions in the population dynamics of migratory birds. In Greenberg, R and PP Marra, eds.  Birds of two worlds. Johns Hopkins University Press, Baltimore.
 }

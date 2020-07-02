@@ -4,24 +4,31 @@
 \alias{eq21buildSfmat}
 \title{Equation 21: Migration mortality matrix for adults (S.f)}
 \usage{
-eq21buildSfmat(S.f.mc, S.f.mk, S.f.md, S.f.fc, S.f.fk)
+eq21buildSfmat(
+  S.f.mc = 0.8,
+  S.f.mk = 0.75,
+  S.f.md = 0.8,
+  S.f.fc = 0.8,
+  S.f.fk = 0.75
+)
 }
 \arguments{
-\item{S.f.mc}{survival...}
+\item{S.f.mc}{Survival (S) during fall migration (f) of males (m) originating from source (c) habitat.}
 
-\item{S.f.mk}{survival...}
+\item{S.f.mk}{Survival (S) during fall migration (f) of males (m) originating from sink (k) habitat.}
 
-\item{S.f.md}{survival...}
+\item{S.f.md}{Survival (S) during vall migration (f) of males (m) who had "drain" (d) status, aka floaters or unpaired males.}
 
-\item{S.f.fc}{survival...}
+\item{S.f.fc}{Survival (S) during fall migration (f) of females (f) originating from source (c) habitat.}
 
-\item{S.f.fk}{survival...}
+\item{S.f.fk}{Survival (S) during fall migration (f) of females (f) originating from sink (k) habitat.}
 
-\item{S.f}{Matrix of fall survival probabilities for adults.}
+\item{S.f}{Diagonal matrix of fall survival probabilities for adults}
 }
 \description{
-"Mort during mig depends upon the sex of the bird and breeding habitat it used
+"Mortality during migration depends upon the sex of the bird and breeding habitat it used" (Runge and Marra 2004, page TOD())
 }
-\details{
-Aliased previously Fx.make.fall.adult.s.matrix.eq21
+\examples{
+eq21buildSfmat()
+
 }

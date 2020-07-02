@@ -1,10 +1,10 @@
 ---
-title: "The Cannonical perspective on Full-annual cycle demography in migratory passerines"
-author: "Nathan Brouwer"
+title: "w) Annotated bibliography"
+author: "Nathan L. Brouwer"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{w) Annotated bibliography}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
@@ -20,7 +20,70 @@ knitr::opts_chunk$set(
 
 
 
+Paxton et al 2017.  Journal of Avian Biology.  Survivorship across the annual cycle of a migratory passerine, the willow flycatcher.
+https://onlinelibrary.wiley.com/doi/abs/10.1111/jav.01371
 
+Abstract
+Annual survivorship in migratory birds is a product of survival across the different periods of the annual cycle (i.e. breeding, wintering, and migration), and may vary substantially among these periods. Determining which periods have the highest mortality, and thus are potentially limiting a population, is important especially for species of conservation concern. To estimate survival probabilities of the willow flycatcher Empidonax traillii in each of the different periods, we combined demographic data from a 10‐year breeding season study with that from a 5‐year wintering grounds study. Estimates of annual apparent survival for breeding and wintering periods were nearly identical (65–66%), as were estimates of monthly apparent survival for both breeding and wintering stationary periods (98–99%). Because flycatchers spend at least half the year on the wintering grounds, overall apparent survivorship was lower (88%) on the wintering grounds than on the breeding grounds (97%). The migratory period had the highest mortality rate, accounting for 62% of the estimated annual mortality even though it comprises only one quarter or less of the annual cycle. The migratory period in the willow flycatcher and many other neotropical migrants is poorly understood, and further research is needed to identify sources of mortality during this crucial period.
+
+
+Saino et al.  2016.  Sex‐dependent carry‐over effects on timing of reproduction and fecundity of a migratory bird.  Journal of Animal Ecology. 
+https://besjournals.onlinelibrary.wiley.com/doi/abs/10.1111/1365-2656.12625
+
+Abstract
+Life of many organisms flows as a sequence of annual cycles. Timing of cyclical events is shaped by natural selection also via the domino effects that any life history stage has on the stages that follow. Such ‘carry‐over effects’ have major consequences for evolutionary, ecological and demographic processes, but the causes that generate their individual‐level variation, including the effect of sex, are poorly understood.
+We used light‐level geolocators to study carry‐over effects on the year‐round life cycle of the long‐distance migratory barn swallow (Hirundo rustica) and sex‐dependent variation in their strength.
+Correlation analyses showed that timing of breeding influenced departure time for autumn migration in females but not in males. In addition, strong, time‐mediated carry‐over effects of timing of departure from the wintering areas in sub‐Saharan Africa for spring migration on timing of arrival to the breeding grounds in Italy and Switzerland operated in both sexes. However, carry‐over effects of spring migration phenology on breeding date and seasonal fecundity were observed among females but not among males.
+We used partial least squares path modelling to unveil the complex carry‐over effects of phenology during the non‐breeding season in combination with the ecological conditions experienced by individual swallows in the wintering area, as gauged by Normalized Difference Vegetation Index values (NDVI), on breeding performance. Phenology during the non‐breeding season combined with NDVI during wintering accounted for as much as 65–70% of variation in subsequent seasonal fecundity in females, while such carry‐over effects on breeding success of males were weaker.
+Intense, sex‐specific carry‐over effects can have impacted on evolutionary processes, including sexual selection, and affected phenological response to climate change, causing the large population decline observed in this species.
+
+
+
+
+Peele 2015.  Population regulation of a migratory songbird in the non-breeding season: A test of buffer and crowding effects.  Dissertation.
+https://search.proquest.com/openview/afa435cdcbb66666b151bc84b35a781a/1?pq-origsite=gscholar&cbl=18750&diss=y
+
+
+## Preceding models
+
+### Carry-over effect
+
+eg spring to fall
+
+* Pulliam 1987?
+
+### FAC
+
+* Fretwell 1972
+  - Graphical?
+  - Analytical
+* Sherry & Holmes 1972
+  - Graphical
+
+
+Lebreton & CLobert 1991?
+
+Density dependence occurs when the rate at which an ecological process occurs
+Density dependence plays a central role in population ecology, community ecology, and evolutionary biology
+While there are a multitude of theoretical models which incorporate dd few of these are demographic-explicit models which incoporate key factors such as ....
+Density dependnet matrix, integral proejction, individual-based, and integrated popualtion but they are the exception rather than the rule.
+
+Bird p
+
+
+
+
+Pulliam
+
+"ecologists often study population growth and regulation with little or no attention paid to the differences in birth and death rates that occur in different habitats"
+
+Pulliam is not the 1st to talk about source/sinks or the 1st to model it
+"Several authors (Lidicker 1975; Van Horne 1983) have discussed the need to distinguish between source and sink habitats in field studies of population regula- tion; however, most theoretical treatments (Gadgil 1971; Levin 1976; McMurtie 1978; Vance 1984) of the dynamics of single-species populations in spatially subdivided habitats have not explicitly addressed the maintenance of populations in habitats where reproduction fails to keep pace with local mortality. Holt (1985) considered the dynamics of a food-limited predator that occupied both a source habitat containing prey and a sink habitat with no prey. He demonstrated that passive dispersal from the source can maintain a population in the sink and that the joint sink and source populations can exceed what could be maintained in the source alone."
+
+
+
+
+## Sherry & Holmes 1995
 
 
 The cannonical model of population dynamics in migratory landbirds was present by Sherry and Holmes (1995)
@@ -44,3 +107,4 @@ Lomnicki, O'Connor, NEwton, ANdre, Dhodnt
 * Fretwell 1972
 * PUlliam 1987 (1988?).  Sources, sinks, and poulation regulation.  Am. Nat 132.  652-661.
 * LeBreton and Clobert 1991.  Bird population dynamics, management, and conservation: the role of mathematical modelling.  in Bird population studies: relevance to conservation and management.
+

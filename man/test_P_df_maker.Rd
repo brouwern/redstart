@@ -2,11 +2,16 @@
 % Please edit documentation in R/test_P_df_maker.R
 \name{test_P_df_maker}
 \alias{test_P_df_maker}
-\title{QA/QC: make dataframe for testing functions
-to save use usethis::use_data(test_dat_P,overwrite = T)}
+\title{QA/QC: Make dataframe for testing functions (internal function)}
 \usage{
-test_P_df_maker(wmin = 1, wmax = 100, wstep = 30, kmin = 1,
-  kmax = 125, kstep = 30)
+test_P_df_maker(
+  wmin = 1,
+  wmax = 100,
+  wstep = 30,
+  kmin = 1,
+  kmax = 125,
+  kstep = 30
+)
 }
 \arguments{
 \item{wmin}{Winter carrying capacity minimum}
@@ -19,9 +24,23 @@ test_P_df_maker(wmin = 1, wmax = 100, wstep = 30, kmin = 1,
 
 \item{kmax}{Summer carrying capacity maximum}
 
-\item{kstep}{step size for creating vector of values between min ans max}
+\item{kstep}{step size for creating vector of values between min and max}
 }
 \description{
-QA/QC: make dataframe for testing functions
-to save use usethis::use_data(test_dat_P,overwrite = T)
+This function generates sets of parameters against which to test the equations 10 to 16, which set up the pairiing frequencies during the breeding seas.  This function has two uses.  First, single sets of parameters can be generated for illustrating that logic of each equation, eg, a population vector (W,) set of carrying capacities (K) and the consequent territory allocations for plugging in to equations 10 to 16.  Second, this function can create an an array of values to plug in to the equations to test that there are no situations where the function generates erroneous output.  Such an array is already stored as test_dat_P
+}
+\details{
+Note that the equations sometimes don't work as expected when a K = 0, but this is a special case that isn't likely to be applicable.
+}
+\examples{
+
+test_P_df_maker(wmin=1,   wmax=10, wstep=5,kmin = 1, kmax=10, kstep=5)
+
+
+# Make a single vector of values
+## This is useful for generating data for testing simple conditions;
+## this is used in the examples of other function documentation
+test_P_df_maker(wmin=10,   wmax=10, wstep=1,kmin = 10, kmax=10, kstep=1)
+
+
 }

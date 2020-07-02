@@ -4,8 +4,7 @@
 \alias{eq03buildW2Mat}
 \title{Equation 3: Make northward migration survival matrix (S.m)}
 \usage{
-eq03buildW2Mat(S.m.mg = 0.75, S.m.mp = 0.75, S.m.fg = 0.75,
-  S.m.fp = 0.75)
+eq03buildW2Mat(S.m.mg = 0.75, S.m.mp = 0.75, S.m.fg = 0.75, S.m.fp = 0.75)
 }
 \arguments{
 \item{S.m.mg}{Survival (S.) during migration (.m.) of males (.m) originating from good (g) habitat}
@@ -20,12 +19,14 @@ eq03buildW2Mat(S.m.mg = 0.75, S.m.mp = 0.75, S.m.fg = 0.75,
 S.m (aka W2) Matrix of spring migration (m) survival probabilites by sex and winter habitat the bird originated from
 }
 \description{
-This function produces a diagonal matrix of northward (spring)
-migration (.m) survival rates
+This function produces a diagonal matrix of northward (spring) migration (.m) survival rates
+}
+\examples{
+
+# The function produces a diagonal matrix of survival probabilites
+eq03buildW2Mat()
+
 }
 \references{
-Runge, MC and PP Marra.  2004.  Modeling seasonal
-interactions in the population dynamics of migratory birds.
-In Greenberg, R and PP Marra, eds.  Birds of two worlds.
-Johns Hopkins University Press, Baltimore.
+Runge, MC and PP Marra.  2004.  Modeling seasonal interactions in the population dynamics of migratory birds. In Greenberg, R and PP Marra, eds.  Birds of two worlds. Johns Hopkins University Press, Baltimore.
 }

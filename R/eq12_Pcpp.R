@@ -1,9 +1,8 @@
 #' Equation 12: Proportion of pairs between a male and female both from poor habitat (P.cpp)
 #'
-#' SUMMER MALE (M) DYNAMICS - pairing
-#'  Proportion composed of a male and female both from poor habitat this is calculated by subtraction using values calcualted by previous equations
+#'  The proportion of pairings between a male and female both originating from poor winter habitat  is calculated by subtraction using values calcualted by previous equations.
 #'
-#' Note that in the original paper, equations 10 and 11 both are named "P.cgp" but in equation 12 it is implied that 10 should be P.cgp while 11 should P.cpg.  Thiwould maake the 2nd subscript for the male condition (P.cg_) and the 3rd subscript for the female condition (P.c_p)
+#' Note that in the original paper, equations 10 and 11 both are named "P.cgp" but in equation 12 it is implied that 10 should be P.cgp while 11 should P.cpg.  This would maake the 2nd subscript for the male condition (P.cg_) and the 3rd subscript for the female condition (P.c_p)
 #'
 #'
 #' @param P.cgg Proportion of pairs in source (c) where male and female both originated from good (gg) winter habitat
@@ -13,7 +12,7 @@
 #'
 #' @return P.cpp: Scalar - Proportion of pairs between a male and female both from poor habitat
 #'
-#' @example
+#' @examples
 #' eq12_Pcpp(P.cgg = 1, P.cgp = 0.0, P.cpg = 0.0)
 #'
 #' @export

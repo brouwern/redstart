@@ -4,7 +4,7 @@
 \alias{eq19BbuildMinMat}
 \title{Equation 19: Build 2 x 2 Diagonal matrix based on minimnums of B.mc vs B.fc and B.mk vs. B.fk (min.mat)}
 \usage{
-eq19BbuildMinMat(B.mc, B.fc, B.mk, B.fk)
+eq19BbuildMinMat(B.mc = 100, B.fc = 10, B.mk = 10, B.fk = 1)
 }
 \arguments{
 \item{B.mc}{Abundance of males ("m") in source ("c") habitat on the breeding ground}

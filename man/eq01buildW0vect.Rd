@@ -19,20 +19,17 @@ eq01buildW0vect(W.mg, W.mp, W.fg, W.fp)
 W0 A vector containing the status of the population at the beginning of winter: \code{W.mg} , \code{W.mp} , \code{W.fg} , and \code{W.fp}
 }
 \description{
-Create a vector representing population structure at the beginning of winter (W0) after
-competition for territories has occured but before winter mortality.
+Create a vector representing population structure at the beginning of winter (W0) after competition for territories has occured but before winter mortality.
 }
 \details{
-During 1st iteration (i=1) the population status taken from the runFAC() function call.
-W0 is then updated during every iteration by taking values of \code{W.mg} , \code{W.mp},
-etc that were calculated in equation 27 at the end of the last iteration (i-1)
+During 1st iteration (\code{i=1}) the population status is taken from the \code{runFAC()} function call as it was set by the user.  \code{W0} is then updated during every iteration by taking values of \code{W.mg}, \code{W.mp}, etc that were calculated in Equation 27 at the end of the last iteration (\code{i-1})
 
-Formalizing this into an equation may not be strictly necessary but helps with aliginging
-how the model is implemented with how it is described in the original Rung and Marra paper.
+Formalizing this into an equation may not be strictly necessary but helps with aliginging how the model is implemented in \code{FACavian} how it is described in the original Runge and Marra (2004) paper.
+}
+\examples{
+eq01buildW0vect(W.mg = 10, W.mp = 10, W.fg = 10, W.fp = 10)
+
 }
 \references{
-Runge, MC and PP Marra.  2004.  Modeling seasonal
-interactions in the population dynamics of migratory birds.
-In Greenberg, R and PP Marra, eds.  Birds of two worlds.
-Johns Hopkins University Press, Baltimore.
+Runge, MC and PP Marra.  2004.  Modeling seasonal interactions in the population dynamics of migratory birds. In Greenberg, R and PP Marra, eds.  Birds of two worlds. Johns Hopkins University Press, Baltimore.
 }

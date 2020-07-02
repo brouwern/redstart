@@ -3,12 +3,14 @@
 \docType{data}
 \name{test_dat_P}
 \alias{test_dat_P}
-\title{Test data object test.dat.P for..}
-\format{An object of class \code{data.frame} with 2304 rows and 12 columns.}
+\title{Test data object test.dat.P for DOTO what for}
+\format{
+An object of class \code{data.frame} with 2304 rows and 12 columns.
+}
 \usage{
-data(test_dat_P)
+test_dat_P
 }
 \description{
-Test data object test.dat.P for..
+Test data object test.dat.P for DOTO what for
 }
 \keyword{datasets}

@@ -1,11 +1,11 @@
 ---
-title: "a) Introduction: Full Annual Cycle (FAC) Demography"
+title: "a) Biology Introduction: Full Annual Cycle (FAC) Demography"
 author: "Nathan Brouwer"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
   %\VignetteEncoding{UTF-8}
+  %\VignetteIndexEntry{a) Biology Introduction: Full Annual Cycle (FAC) Demography}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
   chunk_output_type: console
@@ -19,18 +19,12 @@ knitr::opts_chunk$set(
 ```
 
 
-
-
-
-
-
-
-
+TODO:write intro to packge
 
 
 Key quote:
 
-> "Research not incorporating prior seasons may misclassify mechanisms underlying individual variation in the season under consideration and numerical changes in populations. Furthermore, full annual cycle approaches are essential for interpreting potential effects of major stressors like climate change " Marra et al 2015 (BIology Letters)
+> "Research not incorporating prior seasons may misclassify mechanisms underlying individual variation in the season under consideration and numerical changes in populations. Furthermore, full annual cycle approaches are essential for interpreting potential effects of major stressors like climate change " Marra et al 2015 (Biology Letters)
 
 Adahl E, Lundberg P, Jonzén N. 2006 From climate change to population change: the need to consider annual life cycles. Glob. Change Biol. 12, 1627–1633.
 
@@ -74,6 +68,7 @@ Marra et al 2015 (Biology Letters) "severe breeding season bias": "Although ther
 * Fretwell: "Fretwell [5] argued that population dynamics of organisms living in seasonal environments result from events occurring between seasons [5]. He presented a theoretical case that breeding densities are determined in part by overwinter survival, which in turn, is related to events occurring during the preceding breeding season"
 
 
+## Increase in studies on FAC models 
 
 ```{r echo=FALSE}
 # references to "full annual cycle" (FAC) in titles / abstracts; in 2015 2 major papers 

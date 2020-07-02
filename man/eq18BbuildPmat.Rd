@@ -4,7 +4,16 @@
 \alias{eq18BbuildPmat}
 \title{Equation 18: P matrix - Build 2 x 8 matrix of the proporations in each habitat combo (P.all)}
 \usage{
-eq18BbuildPmat(P.cgg, P.cgp, P.cpg, P.cpp, P.kgg, P.kgp, P.kpg, P.kpp)
+eq18BbuildPmat(
+  P.cgg = 1,
+  P.cgp = 0,
+  P.cpg = 0,
+  P.cpp = 0,
+  P.kgg = 1,
+  P.kgp = 0,
+  P.kpg = 0,
+  P.kpp = 0
+)
 }
 \arguments{
 \item{P.cgg}{From equation 9: the proportion of pairings in the "source" breeding habitat between male and females which both winter in the good habitat}
@@ -27,10 +36,5 @@ eq18BbuildPmat(P.cgg, P.cgp, P.cpg, P.cpp, P.kgg, P.kgp, P.kpg, P.kpp)
 P.all 2 x 8 matrix of the proporiton in each habitat
 }
 \description{
-Average fecunidty for pairs in source and sink habitat"
-is a function of how the proportion of pairs in that
-habitat that are good-good, good-poor etc
-}
-\details{
-Previously aliased as Fx.make.P.matrix.eq18
+"Average fecunidty for pairs in source and sink habitat" is a function of how the proportion of pairs in that habitat that are good-good, good-poor etc (Runge and Marra 2004, pg TOD())
 }

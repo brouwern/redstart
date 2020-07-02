@@ -6,11 +6,18 @@
 #' @param K.bk Carrying capacity (K) of sink (low quality) breeding habitat.
 #' @param B.mk males allocated to sink
 #' @param B.fk females allocated to sink
-#' @param ... xxx
+#' @param ... additional parameters
 #'
 #' @references Runge, MC and PP Marra.  2004.  Modeling seasonal interactions in the population dynamics of migratory birds. In Greenberg, R and PP Marra, eds.  Birds of two worlds. Johns Hopkins University Press, Baltimore.
 #'
 #' @return P.kgp Proportion of pairs in sink (k) which are good-poor pairings
+#'
+#' @examples
+#' # Trivial example
+#' W2. <- c(10,10,10,10)
+#' names(W2.) <- c("mg","fg","mp","fp")
+#' eq14_Pkgp(W2 = W2., K.bc = 0, K.bk = 10, B.mk = 5, B.fk =5)
+#'
 #'
 #' @export
 
@@ -18,7 +25,7 @@ eq14_Pkgp <- function(W2,
                  K.bc,
                  K.bk,
                  B.mk,
-                 B.fk){
+                 B.fk, ...){
 
   #equation 14 last line
   P.kgp <- 0
@@ -46,7 +53,7 @@ eq14_Pkgp <- function(W2,
 
         #error check
         if(P.kgp > 1){
-          browser()}
+          warning()}
 
         }
 
@@ -78,7 +85,7 @@ eq14_Pkgp <- function(W2,
 
 
   if(P.kgp > 1 |  P.kgp < 0){
-    browser()
+    warning()
   }
 
   return(P.kgp)

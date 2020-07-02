@@ -4,15 +4,41 @@
 \alias{param_set}
 \title{Set individual parameter values.}
 \usage{
-param_set(scenario = NA, figure = NA, gamma. = 5, c. = 1,
-  K.bc. = 1000, K.bk. = 10000, K.wg. = 900, S.w.mg. = 0.8,
-  S.w.mp. = 0.8, S.w.fg. = 0.8, S.w.fp. = 0.8, S.m.mg. = 0.9,
-  S.m.mp. = 0.9, S.m.fg. = 0.9, S.m.fp. = 0.9, R.base.rate. = 1.8,
-  R.hab.effect. = 0.5, co. = 1, f. = 0.5, S.b.mc. = 0.95,
-  S.b.mk. = 0.85, S.b.md. = 0.8, S.b.fc. = 0.95, S.b.fk. = 0.85,
-  S.f.mc. = 0.8, S.f.mk. = 0.75, S.f.md. = 0.8, S.f.fc. = 0.8,
-  S.f.fk. = 0.75, S.y.mc. = 0.8, S.y.mk. = 0.75, S.y.fc. = 0.8,
-  S.y.fk. = 0.75)
+param_set(
+  scenario = NA,
+  figure = NA,
+  gamma. = 5,
+  c. = 1,
+  K.bc. = 1000,
+  K.bk. = 10000,
+  K.wg. = 900,
+  S.w.mg. = 0.8,
+  S.w.mp. = 0.8,
+  S.w.fg. = 0.8,
+  S.w.fp. = 0.8,
+  S.m.mg. = 0.9,
+  S.m.mp. = 0.9,
+  S.m.fg. = 0.9,
+  S.m.fp. = 0.9,
+  R.base.rate. = 1.8,
+  R.hab.effect. = 0.5,
+  co. = 1,
+  f. = 0.5,
+  S.b.mc. = 0.95,
+  S.b.mk. = 0.85,
+  S.b.md. = 0.8,
+  S.b.fc. = 0.95,
+  S.b.fk. = 0.85,
+  S.f.mc. = 0.8,
+  S.f.mk. = 0.75,
+  S.f.md. = 0.8,
+  S.f.fc. = 0.8,
+  S.f.fk. = 0.75,
+  S.y.mc. = 0.8,
+  S.y.mk. = 0.75,
+  S.y.fc. = 0.8,
+  S.y.fk. = 0.75
+)
 }
 \arguments{
 \item{scenario}{Different habitat scenarios defined by Runge & Marra 2004.  In particular sets carrying capacity for breeding source habitat (K.bc) and winter good habitat (K.wg)    If set overides other varibles that may have been set using other arguements.}

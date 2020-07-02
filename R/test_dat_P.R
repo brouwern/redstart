@@ -1,7 +1,2 @@
-#' Test data object test.dat.P for..
-#'
-#' @docType data
-#'
-#' @usage data(test_dat_P)
-
+#' Test data object test.dat.P for DOTO what for
 "test_dat_P"

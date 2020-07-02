@@ -24,7 +24,7 @@ eq24_comp_loop <- function(A.i.0,
                            internal.error.check = FALSE
                            ){
 
-  #if(i == 60){browser()}
+
   #number of iterations to loop
   ## Based on size of df used to track competition process
   ## Is artbitrary
@@ -90,14 +90,14 @@ eq24_comp_loop <- function(A.i.0,
     #available
     ###  Originally I did this as just a 1 step process
     ###  not 2 step
-    ####   first, make sure more don't settle w/in a time j step than began the step
+    ####   first, make sure more don't settle within a time j step than began the step
     ####   2nd, make sure the total number that have settle isn't greater than began
     ####        the overall time step of the model
     A.i.G.settled.tot.j2b <- ifelse(A.i.G.settled.tot.j2a >= A.i.0,
                                   A.i.0, A.i.G.settled.tot.j2a)
 
     ## Update carrying capacity
-    ###   NOTE: use K.wg.0 NOT K.wg.open.j b/c A.i.G.settled.tot.j has
+    ###   NOTE: use K.wg.0 NOT K.wg.open.j because A.i.G.settled.tot.j has
     ###         just been updated to reflect TOTAL number settled
     K.wg.open.j2 <- K.wg.0 - sum(A.i.G.settled.tot.j2b)
 
@@ -150,23 +150,24 @@ eq24_comp_loop <- function(A.i.0,
             if(internal.error.check == TRUE){
               if(any(A.i.G.settled.tot.j2a > A.i.0)){
                 #message("Competition error in eq24_comp_loop: A.i.G > A.i.0 on iteration ", i)
-                #browser()
+
               }
 
               if(sum(A.i.G.settled.tot.j2a) > K.wg.0){
-                #message("Competition error eq24_comp_loop: sum(A.i.G) > K.wg on iteration ", i, " ",
-                #        sum(A.i.G.settled.tot.j)," vs ",K.wg.0)
-                #browser()
+                message("Competition error eq24_comp_loop: sum(A.i.G) > K.wg on iteration ", i, " ",
+                        sum(A.i.G.settled.tot.j)," vs ",K.wg.0)
+                warning()
+
               }
 
               if(any(A.i.unsettled.j) < 0){
-               # message("Competition error eq24_comp_loop: any(A.i.P) < 0 on iteration ", i, " ")
-                browser()
+               message("Competition error eq24_comp_loop: any(A.i.P) < 0 on iteration ", i, " ")
+                warning()
               }
 
               if(any(A.i.active.j2) < 0){
-               # message("Competition error eq24_comp_loop: any(A.i.P) < 0 on iteration ", i, " ")
-                browser()
+               message("Competition error eq24_comp_loop: any(A.i.P) < 0 on iteration ", i, " ")
+                warning()
               }
 
             }

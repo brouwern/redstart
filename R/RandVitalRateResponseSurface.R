@@ -76,7 +76,7 @@ RandVitalRateResponseSurface <- function(rand_vitals = r_vitals(n = 5),
     #pg 381; Table 28.2
     ,S.f.mc. = rep(rand_vitals$S.f.fc,2) #males from sour.c.e
     ,S.f.mk. = rep(rand_vitals$S.f.fk,2)
-    ,S.f.md. = rep(rand_vitals$S.f.fc,2) #drain males have higher surv b/c they dont have costs of repro
+    ,S.f.md. = rep(rand_vitals$S.f.fc,2) #drain males have higher surv because they dont have costs of repro
     ,S.f.fc. = rep(rand_vitals$S.f.fc,2)
     ,S.f.fk. = rep(rand_vitals$S.f.fk,2)
 
@@ -95,11 +95,11 @@ RandVitalRateResponseSurface <- function(rand_vitals = r_vitals(n = 5),
   i.full.range.rand_vitals <- param_seqs(param.ranges = min.max.rand_vitals, #previousluy makeparam.griddf()
                                          len.out = var.length.)
 
-  #browser()
+  
   ##??????
   ##????? need to add call to param_grid() here I think
 
-  #browser()
+  
   #Run model
   iraw.MultiFac.out <- runFAC_multi(param.grid = i.full.range.rand_vitals)
 

@@ -4,8 +4,15 @@
 \alias{runFAC_multi}
 \title{Run multiple FAC models to equilibirum accross a range of parameters}
 \usage{
-runFAC_multi(param.grid = param_grid(), Ninit = c(10, 0, 10, 0),
-  remakeFigure = NA, use.IBM = F, verbose = F, eq.tol = 6, ...)
+runFAC_multi(
+  param.grid = param_grid(),
+  Ninit = c(10, 0, 10, 0),
+  remakeFigure = NA,
+  use.IBM = F,
+  verbose = F,
+  eq.tol = 6,
+  ...
+)
 }
 \arguments{
 \item{param.grid}{Dataframe of parameters, usually with 1 or 2 that vary accross a range}

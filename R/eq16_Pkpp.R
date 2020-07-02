@@ -12,6 +12,13 @@
 #'
 #' @references Runge, MC and PP Marra.  2004.  Modeling seasonal interactions in the population dynamics of migratory birds. In Greenberg, R and PP Marra, eds.  Birds of two worlds. Johns Hopkins University Press, Baltimore.
 #'
+#' @examples
+#' # Trivial example
+#' W2. <- c(10,10,10,10)
+#' names(W2.) <- c("mg","fg","mp","fp")
+#' eq16_Pkpp(P.kgg = 1, P.kgp = 0, P.kpg = 0, B.mk = 5, B.fk =5)
+#'
+#'
 #' @export
 
 eq16_Pkpp <- function(P.kgg,

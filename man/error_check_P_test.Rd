@@ -4,16 +4,16 @@
 \alias{error_check_P_test}
 \title{Test mate pairing equation against test dataframe}
 \usage{
-error_check_P_test(equation = "eq9",
-  P.test.df = error_check_build_Ptest_df(), call.browser = FALSE,
-  print.i = FALSE)
+error_check_P_test(
+  equation = "eq9",
+  P.test.df = error_check_build_Ptest_df(),
+  print.i = FALSE
+)
 }
 \arguments{
 \item{equation}{Mate pairing equation to test.}
 
 \item{P.test.df}{A dataframe}
-
-\item{call.browser}{Open debuggin browser when error encounters}
 
 \item{print.i}{print iteration number for debugging}
 }

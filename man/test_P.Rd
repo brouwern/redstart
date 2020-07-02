@@ -4,8 +4,15 @@
 \alias{test_P}
 \title{QA/AC: Function to test equations 9 through 16}
 \usage{
-test_P(dat = test_dat_P, FUN = eq09_Pcgg, plot.test = TRUE,
-  subsample = TRUE, sample.N = 10, return.df = FALSE, ...)
+test_P(
+  dat = test_dat_P,
+  FUN = eq09_Pcgg,
+  plot.test = TRUE,
+  subsample = TRUE,
+  sample.N = 10,
+  return.df = FALSE,
+  ...
+)
 }
 \arguments{
 \item{dat}{dataframe with values against which to test function.  Defaults to object named test_dat_P.}

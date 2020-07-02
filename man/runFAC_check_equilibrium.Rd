@@ -4,8 +4,15 @@
 \alias{runFAC_check_equilibrium}
 \title{Check a model being run for equilibrium}
 \usage{
-runFAC_check_equilibrium(lamb.B.mc.mean, lamb.B.mc.var, i, at.eq = FALSE,
-  verbose = TRUE, eq.tol = 5, ...)
+runFAC_check_equilibrium(
+  lamb.B.mc.mean,
+  lamb.B.mc.var,
+  i,
+  at.eq = FALSE,
+  verbose = TRUE,
+  eq.tol = 5,
+  ...
+)
 }
 \arguments{
 \item{lamb.B.mc.mean}{Mean lambda from B.mc ..}

@@ -2,12 +2,12 @@
 % Please edit documentation in R/eq14_Pkgp.R
 \name{eq14_Pkgp}
 \alias{eq14_Pkgp}
-\title{Equation 14: proportion in sink habitat, good-poor pairs (P.kgp)}
+\title{Equation 14: Proportion of pairs in sink habitat (k) good-poor pairs (P.kgp)}
 \usage{
-eq14_Pkgp(W2, K.bc, K.bk, B.mk, B.fk)
+eq14_Pkgp(W2, K.bc, K.bk, B.mk, B.fk, ...)
 }
 \arguments{
-\item{W2}{population vector}
+\item{W2}{Population vector}
 
 \item{K.bc}{Carrying capacity (K) of source (high quality) breeding habitat.}
 
@@ -17,11 +17,22 @@ eq14_Pkgp(W2, K.bc, K.bk, B.mk, B.fk)
 
 \item{B.fk}{females allocated to sink}
 
-\item{...}{xxx}
+\item{...}{additional parameters}
 }
 \value{
 P.kgp Proportion of pairs in sink (k) which are good-poor pairings
 }
 \description{
-Equation 14: proportion in sink habitat, good-poor pairs (P.kgp)
+Equation 14: Proportion of pairs in sink habitat (k) good-poor pairs (P.kgp)
+}
+\examples{
+# Trivial example
+W2. <- c(10,10,10,10)
+names(W2.) <- c("mg","fg","mp","fp")
+eq14_Pkgp(W2 = W2., K.bc = 0, K.bk = 10, B.mk = 5, B.fk =5)
+
+
+}
+\references{
+Runge, MC and PP Marra.  2004.  Modeling seasonal interactions in the population dynamics of migratory birds. In Greenberg, R and PP Marra, eds.  Birds of two worlds. Johns Hopkins University Press, Baltimore.
 }

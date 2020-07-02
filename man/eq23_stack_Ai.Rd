@@ -11,9 +11,9 @@ eq23_stack_Ai(B2, Y2)
 
 \item{Y2}{Young (offspring) that survived breeding and fall migration}
 }
+\value{
+A.i TODO()
+}
 \description{
 WHat do I mean "not implemented?" ...
-}
-\references{
-A.i ....
 }

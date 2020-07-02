@@ -105,7 +105,7 @@ step3_substepA1_hab_acquire_IB <- function(W2,
                                hab.aq.results.IB$pair)] <-"empty"
 
   # 2) males
-  # 2a) males unpaired but w/ territory
+  # 2a) males unpaired but with territory
   #males paired with "NA" = unpaired
   ## unpaired in source
   hab.aq.results.IB$pair[grep("^[b][c].[m]..[N][A]",

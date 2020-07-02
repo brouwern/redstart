@@ -2,12 +2,12 @@
 % Please edit documentation in R/eq15_Pkpg.R
 \name{eq15_Pkpg}
 \alias{eq15_Pkpg}
-\title{Equation 15: Proportion in sink poor-poor (P.kpg)}
+\title{Equation 15: Proportion in of pairsin sink habitat which are between poor males and good females (P.kpg)}
 \usage{
 eq15_Pkpg(W2, K.bc, K.bk, B.mk, B.fk)
 }
 \arguments{
-\item{W2}{Popualtion vector}
+\item{W2}{Population vector}
 
 \item{K.bc}{carrying capacity}
 
@@ -18,11 +18,33 @@ eq15_Pkpg(W2, K.bc, K.bk, B.mk, B.fk)
 \item{B.fk}{females allocated to sink}
 }
 \value{
-P.kpg Proportion of pairs in sink (k) habitat where both male originates from poor (p) and female originated from good (g) winter habitat
+P.kpg Proportion of pairs in sink (k) habitat where male originates from poor (p) and female originated from good (g) winter habitat
 }
 \description{
-Equation 15: Proportion in sink poor-poor (P.kpg)
+Equation 15: Proportion in of pairsin sink habitat which are between poor males and good females (P.kpg)
 }
-\details{
-Aliased as pairing.eq15.P.kpg()
+\examples{
+# Standard example
+## Set population vector and carrying capacities
+W2. <- c(10, 10,10, 10)
+W2. <- setNames(W2., c("mg","fg","mp","fp"))
+K.bc. <- 10
+K.bk. <- 10
+
+## Assign birds from populatin vector to source or sink habitat using "Bxx" equation
+B.fc.  <- eq04_Bfc(W2 = W2., K.bc.)
+B.fk.  <- eq05_Bfk(W2 = W2., K.bc = K.bc., K.bk = K.bk.)
+B.mc.  <- eq06_Bmc(W2 = W2., K.bc = K.bc.)
+B.mk.  <- eq07_Bmk(W2 = W2., K.bc = K.bc., B.fk = B.fk.)
+
+## Set up pairings between poor and good using equation 15
+eq15_Pkpg(W2 = W2., K.bc = K.bc., K.bk = K.bk., B.mk = B.mk., B.fk =B.fk.)
+
+# Use the test_P_df_maker() function to generate data
+## This isn't very efficient but gets the job done of making test data with less code.
+## Note that all classes have the same number of birds
+td <- test_P_df_maker(wmin=10, wmax=10, wstep=1, kmin = 10, kmax=10, kstep=1)
+W2. <- setNames(td[1:4], c("mg","fg","mp","fp"))
+eq15_Pkpg(W2 = W2., K.bc = td$K.bc, K.bk = td$K.bk, B.mk = td$B.mk, B.fk = td$B.fk)
+
 }

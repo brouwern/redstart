@@ -1,15 +1,9 @@
 #' Equation 8: Assigning breeding males to "drain" (aka "floater") status
 #'
-#' SUMMER MALE (M) DYNAMICS - drain males
-#' Drain males: Males that don't find a territory AND don't find a mate (for those in sink)
-#' become "drain" males (floaters)
-#' mg+mp = total male population
-#' minus those that ended up in source habitat (K.bc)
-#' minus those that paired w/female in sink habitat (B.fk)
+#' Males that don't find a territory AND don't find a mate become "drain" males (floaters).
+#' \code{W2.mg+W2.mp} = total male population at the end of spring migration.  From thid gets subtracted birds that ended up in source habitat (\code{K.bc}) and  those that paired with female in sink habitat (\code{B.fk})
 #'
-#' Note that it is possible for the equation W2.mg+W2.mp - K.bc to return a negative value if the number
-#' of males is less than the source habitat size K.bc.  This is why  max() is used
-#' to corred for this.
+#' Note that it is possible for the equation \code{W2.mg+W2.mp - K.b} to return a negative value if the number of males is less than the source habitat size (\code{K.bc}).  The use of \code{max()} corrects for this.
 #'
 #'
 #' @param W2 population vector
@@ -19,6 +13,12 @@
 #' @return Number of males in drain habitat.
 #'
 #' @references Runge, MC and PP Marra.  2004.  Modeling seasonal interactions in the population dynamics of migratory birds. In Greenberg, R and PP Marra, eds.  Birds of Two Worlds.
+#'
+#' @examples
+#' W2. <- c(10,10,10,10)
+#' names(W2.) <- c("mg","fg","mp","fp")
+#' eq08_Bmd(W2 = W2., K.bc = 0, B.fk =5)
+#'
 #'
 #' @export
 

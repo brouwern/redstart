@@ -1,0 +1,21 @@
+---
+title: "c) Software introduction: The FACavian package"
+author: "Nathan Brouwer"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteEncoding{UTF-8}
+  %\VignetteIndexEntry{c) Software introduction: The FACavian package}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The full-annual cycle (FAC) model of Runge and Marra (2004) is a density-dependent (dd) matrix model.  The principal output of a density-dependent model is the **equilibrium population size**.  An important issue with dd models is that you can only determine the equilibrium population size using numerical simulation.  This means that you actually have to plug information -- particularly initial population sizes -- into the model and run it through many iterations and monitor the output until you see that it stabilizes or converges to a stable state. This is in contrast to traditional matrix models (and their cousin, integral projection model) which can be analyzed mathematically without specifying a starting population state or iterating the model (Footnote: assuming they are ergodic; Stott et al 2010 Method E&E)

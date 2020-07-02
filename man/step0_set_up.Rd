@@ -4,8 +4,12 @@
 \alias{step0_set_up}
 \title{FAC Step 0: Set up survival matrices & other preliminaries}
 \usage{
-step0_set_up(param.set = param_set(), iterations = 150, use.IBM = F,
-  use.IBM.S.b = F)
+step0_set_up(
+  param.set = param_set(),
+  iterations = 150,
+  use.IBM = F,
+  use.IBM.S.b = F
+)
 }
 \arguments{
 \item{param.set}{Initial parameters and population state for a single run of model to equilibirum}

@@ -4,8 +4,7 @@
 \alias{plot_Fig28_3}
 \title{Replicate 3D Figure 28.3 varying summar and winter carrying capacities (K)}
 \usage{
-plot_Fig28_3(runFAC.multi, plot.type = "P", scale. = T,
-  tick.labs = 1)
+plot_Fig28_3(runFAC.multi, plot.type = "P", scale. = T, tick.labs = 1)
 }
 \arguments{
 \item{runFAC.multi}{output from runFAC_multi()}
