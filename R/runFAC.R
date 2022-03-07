@@ -443,7 +443,7 @@ for(i in 1:iterations){
 
         # experimental code for IBM
         # if(use.IBM.S.b == TRUE){
-    
+
         #   P.breeding.pair.results.list.IB$df
         # }
 

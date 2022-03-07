@@ -9,8 +9,6 @@
 #'
 #' @return min.mat xxx
 #'
-#' @example
-#' eq19BbuildMinMat()
 #'
 #' @export
 

@@ -24,6 +24,11 @@ By default these are fixed for the entire duration of the study.
 
 Calculations are found in Table 28.3.
 }
+\examples{
+#Show contents of the vector
+eq18AbuildRvec()
+
+}
 \references{
 Runge, MC and PP Marra.  2004.  Modeling seasonal interactions in the population dynamics of migratory birds. In Greenberg, R and PP Marra, eds.  Birds of two worlds. Johns Hopkins University Press, Baltimore.
 }

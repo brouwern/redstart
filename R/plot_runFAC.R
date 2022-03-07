@@ -41,12 +41,13 @@ plot_runFAC <- function(out.df,
   mtext(text = "Summer Population growth (lambda)",side = 2,line = 1.9)
   abline(h = 1, col = 2)
 
-  ## Panel 3: winter populatison
+  ## Panel 3: winter population
   graphics::plot(out.df[,"W.mg"] ~ out.df$t,
                  xlab = "",
                  ylab = "",
                  main = "Winter populations",
-                 ylim = c(0,1000))
+                 ylim = c(0,2000)
+                 )
   mtext(text = "Iteration",side = 1,line = 2.1)
   mtext(text = "Winter population structure",side = 2,line = 1.9)
   graphics::points(out.df[,"W.mp"] ~ out.df$t,  #why *2?

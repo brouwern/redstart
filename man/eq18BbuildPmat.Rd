@@ -16,7 +16,7 @@ eq18BbuildPmat(
 )
 }
 \arguments{
-\item{P.cgg}{From equation 9: the proportion of pairings in the "source" breeding habitat between male and females which both winter in the good habitat}
+\item{P.cgg}{From equation 9: the proportion of pairings in the source breeding habitat between male and females which both winter in the good habitat}
 
 \item{P.cgp}{From equation 10: proportion males from good winter habitat paired with females from poor winter habitat}
 
@@ -37,4 +37,9 @@ P.all 2 x 8 matrix of the proporiton in each habitat
 }
 \description{
 "Average fecunidty for pairs in source and sink habitat" is a function of how the proportion of pairs in that habitat that are good-good, good-poor etc (Runge and Marra 2004, pg TOD())
+}
+\examples{
+# Shows contents of the vector
+eq18BbuildPmat()
+
 }

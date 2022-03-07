@@ -5,7 +5,7 @@
 \title{QA/AC: Function to test equations 9 through 16}
 \usage{
 test_P(
-  dat = test_dat_P,
+  dat,
   FUN = eq09_Pcgg,
   plot.test = TRUE,
   subsample = TRUE,
@@ -15,7 +15,7 @@ test_P(
 )
 }
 \arguments{
-\item{dat}{dataframe with values against which to test function.  Defaults to object named test_dat_P.}
+\item{dat}{dataframe with values against which to test function.  An object named test_dat_P is available for testing.}
 
 \item{FUN}{function to test}
 
@@ -23,7 +23,7 @@ test_P(
 
 \item{subsample}{should the test data be randomly subsampled for quick testing}
 
-\item{sample.N}{how many subsamples of datarame to take}
+\item{sample.N}{how many subsamples of dataframe to take}
 
 \item{return.df}{return the full dataframe with original test values}
 

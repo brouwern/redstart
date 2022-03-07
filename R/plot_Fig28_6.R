@@ -13,22 +13,35 @@
 plot_Fig28_6 <- function(winter.lim,
                          intermediate,
                          summer.lim){
-  plot(B.tot ~   co.i, data = winter.lim,
-       type = "l",ylim = c(350,750))
-  points(B.tot ~ co.i, lty = 2,col = 2,data = intermediate, type = "l")
-  points(B.tot ~ co.i, data = summer.lim, type = "l")
-  abline(h = 500, lty = 3,col = 3)
+  plot(B.tot ~   c.i, data = winter.lim,
+       type = "l",ylim = c(350,750),
+       lwd = 2,
+       lty = 1)
+  points(B.tot ~ c.i,
+         lty = 1,
+         col = 1,
+         lwd = 2,
+         data = intermediate,
+         type = "l") # carry over previous was c.i in output used here; currently c.i
+  points(B.tot ~ c.i,
+         data = summer.lim,
+         type = "l",
+         col = 1,
+         lty = 1,
+         lwd = 2)
 
-  text(y = 1.1,
-       x = 510,
-       "summer limited")
+  #abline(h = 500, lty = 3,col = 3)
 
-  text(y = 1.5,
-       x = 745,
+  text(y = 510,
+       x = 1.2,
+       "Summer limited")
+
+  text(y = 485,
+       x = 1.5,
        "Intermediate case")
 
-  text(y = 1.8,
-       x = 425,
-       "Intermediate case")
+  text(y = 415,
+       x = 1.8,
+       "Winter limited")
 }
 

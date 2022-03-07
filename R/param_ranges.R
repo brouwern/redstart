@@ -202,13 +202,13 @@ param_ranges <- function(
     ## Figure 28.6: vary carry over effect
     if(figure == 28.6){
       message("Setting carry over effect to vary from 1 to 2")
-      gamma. <- c(1,5)
+      co. <- c(1,2)
     }
   }
 
 
   #check for zeros in carrying capacities
-  #should add messge about this: 0s can result in model not running so they
+  #should add message about this: 0s can result in model not running so they
   # are changed in to 1
   min.K <- min(c(K.bc.,K.bk.,K.wg.))
 

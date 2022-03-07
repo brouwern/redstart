@@ -29,29 +29,46 @@ library(redstart)
 ### Figure 28.6
 
 ```{r}
-F28.6_range <- param_ranges(figure = 28.6,scenario = )
+F28.6_range_winter <- param_ranges(figure = 28.6,scenario = "winter.limited")
+F28.6_range_intermediate <- param_ranges(figure = 28.6,scenario = "intermediate")
+F28.6_range_summer <- param_ranges(figure = 28.6,scenario = "summer.limited")
 ```
 
 ```{r}
-head(F28.6_range)
+head(F28.6_range_winter)
 ```
 
 ```{r}
-F28.6_seq <- param_seqs(F28.6)
-```
-
-
-```{r}
-F28.6_grid <- param_grid(param.seqs = F28.6_seq)
-```
-
-
-```{r}
-F28.6 <-runFAC_multi(param.grid = F28.6_grid, verbose = F)
+F28.6_seq_winter <- param_seqs(F28.6_range_winter)
+F28.6_seq_intermed <- param_seqs(F28.6_range_intermediate)
+F28.6_seq_summer <- param_seqs(F28.6_range_summer)
 ```
 
 
 ```{r}
-plot_Fig28_6
+F28.6_grid_winter <- param_grid(param.seqs = F28.6_seq_winter)
+F28.6_grid_intermed <- param_grid(param.seqs = F28.6_seq_intermed)
+F28.6_grid_summer <- param_grid(param.seqs = F28.6_seq_summer)
+```
+
+
+```{r}
+F28.6_winter <-runFAC_multi(param.grid = F28.6_grid_winter, 
+                     verbose = F)
+F28.6_intermed <-runFAC_multi(param.grid = F28.6_grid_intermed, 
+                     verbose = F)
+F28.6_summer <-runFAC_multi(param.grid = F28.6_grid_summer, 
+                     verbose = F)
+```
+
+
+```{r}
+plot_Fig28_6(winter.lim   = F28.6_winter$multiFAC.out.df.RM,
+             summer.lim   = F28.6_intermed$multiFAC.out.df.RM,
+             intermediate = F28.6_summer$multiFAC.out.df.RM)
+```
+
+```{r}
+
 ```
 
