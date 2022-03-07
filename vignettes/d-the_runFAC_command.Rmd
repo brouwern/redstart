@@ -21,17 +21,17 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-In the FACavian package, a single run of a FAC is done using the **runFAC()** function.  **runFAC()** is the engine underlying the core of the FACavian package.  You'll rarely have to actually use this function except for diagnostic purposes.  Its worthwhile to know what its doing to understanding how higher-level output is being generated.
+In the redstart package, a single run of a the full-annual cycle (FAC) is done using the `r runFAC() eval = F` function.  `r runFAC() eval = F` is the engine underlying the core of the entire redstart package.  You'll rarely have to actually use this function except for diagnostic purposes.  However, its worthwhile to know what its doing to understand how higher-level output is being generated.
 
 The user gives this function 3 bundles of information:
 
-1. The demographic parameters for the model, including surival rates and fecundities
+1. The demographic parameters for the model, including survival rates and fecundities
 1. The habitat carrying capacities (breeding and winter)
-1. The intial population state.  Specifically the abundance and age structure of male and females on the wintering ground in "good" and "poor" habitat.
+1. The initial population state.  Specifically the abundance and age structure of male and females on the wintering ground in "good" and "poor" habitat.
 
-**runFAC()** then builds all of the matrices that describe the FAC, plugs in the starting population state, and turns the crank on the model for either a given number of iterations (the default is 300) or, if specified, until a stability criteria is met.
+`r runFAC() eval = F` then builds all of the matrices that describe the FAC, plugs in the starting population state, and turns the crank on the model for either a given number of iterations (the default is 300) or, if specified, until a stability criteria is met.
 
-**runFAC()** can be set to run and either keep track of everything that happens during the entire model run (save.ts = T, the default), or just the final time point which (save.ts = F);  ...
+`r runFAC() eval = F` can be set to run and either keep track of everything that happens during the entire model run (save.ts = T, the default), or just the final time point which (save.ts = F);  ...
 
 TODO: what is this fragment of a sentence for?
 if the model reach equilibrium, represents that stable population size, stage, and sex structure of the model during each time point.
@@ -43,27 +43,27 @@ In this vignette I'll demonstrate what **runFAC()** does and what the output of 
 
 ## Preliminaries
 
-### Getting the FACavian package
+### Getting the redstart package
 
-The most recent version of FACavian is available from github and can be downloaded directly using hte devtools package
+The most recent version of redstart is available from github and can be downloaded directly using hte devtools package
 ```{r eval=FALSE}
 #load devtools
 library(devtools)
 
-#download FACavian from github
-devtools::install_github("brouwern/FACavian")
+#download redstart from github
+devtools::install_github("brouwern/redstart")
 ```
 
 
-Load FACavian into your current R sessions
+Load redstart into your current R sessions
 ```{r eval=T}
-library(FACavian)
+library(redstart)
 ```
 
 
 ### Getting parameters for a model run
 
-Default values are set in all of FACavian's functions so you can easily explore them without worrying about setting the underlying demographic parameters.  For a preliminary run parameters will be called automatically behind the scenes using a function called **param_set()**, which has default to the parameters used in Runge and Marra (2004).  
+Default values are set in all of redstart's functions so you can easily explore them without worrying about setting the underlying demographic parameters.  For a preliminary run parameters will be called automatically behind the scenes using a function called **param_set()**, which has default to the parameters used in Runge and Marra (2004).  
 
 You can look at the default parameters by calling the **param_set()** function.  Later we'll use **param_set()** to tweak a few parameters.
 

@@ -1,8 +1,8 @@
-* using log directory 'C:/Users/lisanjie/Documents/1_R/git/git-aviary/FACavian/FACavian.Rcheck'
+* using log directory 'C:/Users/lisanjie/Documents/1_R/git/git-aviary/redstart/redstart.Rcheck'
 * using R version 3.5.3 (2019-03-11)
 * using platform: x86_64-w64-mingw32 (64-bit)
 * using session charset: ISO8859-1
-* checking for file 'FACavian/DESCRIPTION' ... ERROR
+* checking for file 'redstart/DESCRIPTION' ... ERROR
 Required fields missing or empty:
   'Author' 'Maintainer'
 * DONE

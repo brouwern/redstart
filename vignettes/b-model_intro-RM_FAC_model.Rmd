@@ -4,8 +4,8 @@ author: "Nathan Brouwer"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{b) Model Introduction: The Runge & Marra (2005) Full Annual Cycle Model}
   %\VignetteEncoding{UTF-8}
+  %\VignetteIndexEntry{b) Model Introduction: The Runge & Marra (2005) Full Annual Cycle Model}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
   chunk_output_type: console
@@ -40,6 +40,7 @@ Outline the key simulation studies run - what factors were varied
 * Winter to breeding season carry over effects can be important "carry-over effects can be strong, especially when winter events are limiting."
 
 ## Conventional wisdom: winter limitation
+
 Until recently, the prevailing view was that mi- gratory bird populations were limited primarily by events on their wintering grounds (e.g., Fretwell 1972; Alerstam and Högstedt 1982; Robbins et al. 1989; Baillie and Peach 1992; Rappole and MacDonald 1994).
 
 Pinning limitation to a single season is too simplisitc: "Periods of the annual cycle appear to be linked inextricably, such that ecological circumstances within one season subsequently influence reproductive success and/or survival in a subsequent season, effects we term 'seasonal interactions' "
@@ -52,9 +53,10 @@ Pinning limitation to a single season is too simplisitc: "Periods of the annual 
 
 
 ## Issues/Ideas
+
 * breeding to wintering carry over; how much did they look at this?
 * is dd habitat use a "potentially powerful regulatory mechanism" as Sherry and HOlmes (1995) state.  What does this mean?
-* ideal despotic distribution should result in decliens in mean fitness as population increases; this would be good to plot
-* compare despotic vs. ideal free dynamics (recent overnbird paper?).  How would ideal free be modeled?  Habitat settlement randomly allocated?
+* ideal despotic distribution should result in declines in mean fitness as population increases; this would be good to plot
+* compare despotic vs. ideal free dynamics (recent ovenbird paper?).  How would ideal free be modeled?  Habitat settlement randomly allocated?
 * Summer-winter w/ despotic-despotic, vs. despotic-ideal free?  Selection for a given type of system?
 * Seasonal compensation "...as in Sutherland (1996), loss of winter habitat does not result in as severe a decline in equilibrium population size as might otherwise be expected, because increased production (due to density dependence on the breeding grounds) partially offsets the impact of the habitat loss. Understanding sea- sonal compensation thus requires understanding how the seasons interact with one another through population-level effects, especially as mediated by seasonal density-depend- ent processes. Direct"

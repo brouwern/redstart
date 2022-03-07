@@ -20,17 +20,17 @@ knitr::opts_chunk$set(
 
 
 ??
-Warning: [/Users/nlb24/Box Sync/R/13_FAC_avian/FACavian/R/eq18BbuildPmat.R:17] @example '/Users/nlb24/Box Sync/R/13_FAC_avian/FACavian/eq18BbuildPmat()' doesn't exist
+Warning: [/Users/nlb24/Box Sync/R/13_FAC_avian/redstart/R/eq18BbuildPmat.R:17] @example '/Users/nlb24/Box Sync/R/13_FAC_avian/redstart/eq18BbuildPmat()' doesn't exist
 
 ??
-Warning: [/Users/nlb24/Box Sync/R/13_FAC_avian/FACavian/R/eq19BbuildMinMat.R:12] @example '/Users/nlb24/Box Sync/R/13_FAC_avian/FACavian/eq19BbuildMinMat()' doesn't exist
+Warning: [/Users/nlb24/Box Sync/R/13_FAC_avian/redstart/R/eq19BbuildMinMat.R:12] @example '/Users/nlb24/Box Sync/R/13_FAC_avian/redstart/eq19BbuildMinMat()' doesn't exist
 
 not currently used
-Removed empty directory ‘FACavian/inst/extdata’
+Removed empty directory ‘redstart/inst/extdata’
    
  
 ??  
-─  building ‘FACavian_0.0.0.9000.tar.gz’
+─  building ‘redstart_0.0.0.9000.tar.gz’
    Warning: invalid uid value replaced by that for user 'nobody'
    Warning: invalid gid value replaced by that for user 'nobody'
    

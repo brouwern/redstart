@@ -4,7 +4,7 @@
 #'
 #' During 1st iteration (\code{i=1}) the population status is taken from the \code{runFAC()} function call as it was set by the user.  \code{W0} is then updated during every iteration by taking values of \code{W.mg}, \code{W.mp}, etc that were calculated in Equation 27 at the end of the last iteration (\code{i-1})
 #'
-#' Formalizing this into an equation may not be strictly necessary but helps with aliginging how the model is implemented in \code{FACavian} how it is described in the original Runge and Marra (2004) paper.
+#' Formalizing this into an equation may not be strictly necessary but helps with aliginging how the model is implemented in \code{redstart} how it is described in the original Runge and Marra (2004) paper.
 #'
 #' @param W.mg Number of males (.m_) wintering in good (._g) habitat.  Scalar
 #' @param W.mp Number of males (.m_) wintering in poor (._p) habitat.  Scalar

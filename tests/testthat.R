@@ -1,4 +1,4 @@
 library(testthat)
-library(FACavian)
+library(redstart)
 
-test_check("FACavian")
+test_check("redstart")

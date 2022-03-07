@@ -33,13 +33,13 @@ Complex dd models such as the one developed by Runge and Marra (2004) can not be
 1. how breeding ground carrying capacity impacted breeding and winter population structure (28.4), and male dominance impacted the sex ratio (Figure 28.5), and 
 1. the strength of carry-over effects impacted population size (Figure 28.6).    
 
-The FACavian package implements and extends the analyses carried out by Runge and Marra (2004) using the function **runFAC_multi()**.  This function allows you to run multiple FAC models each with different parameter values.  The following vignette demonstrates the basic functionality of runFAC_multi().  Each of the analyses in Runge and Marra (2004) are then coverged in a seperate vignette.  
+The redstart package implements and extends the analyses carried out by Runge and Marra (2004) using the function **runFAC_multi()**.  This function allows you to run multiple FAC models each with different parameter values.  The following vignette demonstrates the basic functionality of runFAC_multi().  Each of the analyses in Runge and Marra (2004) are then coverged in a seperate vignette.  
 
 
 ## Preliminaries
 
 ```{r}
-library(FACavian)
+library(redstart)
 ```
 
 

@@ -27,11 +27,11 @@ Figure 28.3 is a 3D surface showing how the overall equilibrium population size 
 
 ## Preliminaries
 
-Load the FACavian package  
+Load the redstart package  
 TODO add download instructions for development version
 
 ```{r}
-library(FACavian)
+library(redstart)
 ```
 
 
@@ -112,7 +112,7 @@ head(F28.3.grid[,c(1:5)],12)
 
 Once the grid is generated we can plug it into runFAC_multi() the param.grid = ... arguement of runFAC_multi().  This happened automatically above, but we could do this explicitly like this:
 ```{r, eval = F}
-F28_3 <-runFAC_multi(param.grid = F28.3.grid)
+F28_3 <-runFAC_multi(param.grid = F28.3.grid, verbose = F)
 ```
 
 The output is then plotted as above using plot_Fig28_3().
@@ -150,6 +150,6 @@ plot_Fig28_3(F28_3$multiFAC.out.df.RM)
 ```
 
 
-## Comparing output of FACavian to the original 
+## Comparing output of redstart to the original 
 
 TODO

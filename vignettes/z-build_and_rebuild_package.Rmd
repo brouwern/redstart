@@ -121,7 +121,7 @@ pkgdown::build_news()
 ## Explore dependencies
 
 ```{r}
-report1 <- CreatePackageReport(pkg_name = "FACavian")
+report1 <- CreatePackageReport(pkg_name = "redstart")
 ```
 
 
@@ -133,7 +133,7 @@ R CMD Rd2pdf mypackage
 
 https://stackoverflow.com/questions/30607496/making-an-r-package-pdf-manual-using-devtools
 ```{r, eval = F}
-pack <- "FACavian"
+pack <- "redstart"
 path <- find.package(pack)
 system(paste(shQuote(file.path(R.home("bin"), "R")),
     "CMD", "Rd2pdf", shQuote(path)))
@@ -141,7 +141,7 @@ system(paste(shQuote(file.path(R.home("bin"), "R")),
 
 remove manual
 ```{r, eval = F}
-file.remove("FACavian.pdf")
+file.remove("redstart.pdf")
 ```
 
 
@@ -175,7 +175,7 @@ devtools::check(env_vars = )
 
 devtools::check()
 
-See 'C:/Users/lisanjie/Documents/1_R/git/git-aviary/FACavian.Rcheck/00install.out' for details.
+See 'C:/Users/lisanjie/Documents/1_R/git/git-aviary/redstart.Rcheck/00install.out' for details.
 Information on the location(s) of code generating the 'Note's can be
 obtained by re-running with environment variable R_KEEP_PKG_SOURCE set
 to 'yes'.

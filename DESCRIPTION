@@ -1,7 +1,7 @@
-Package: FACavian
+Package: redstart
 Version: 0.0.0.9000
-Title: An R implementation and extention of full-annual cycle (FAC) model of Runge & Marra 2004
-Description: FACavian is an R implementation and extension of the full annual cycle (FAC) model for migratory birds developed by Michael Runge and Peter Marra and published in Birds of Two Worlds.  The original model is a periodic, 2-sex, density-dependent matrix model that incorporates seasonal dynamics, carryover effects, and two classes of habitat on both the summer breeding grounds.  FACavian is an R implementation of the model that incorporates Monte Carlo and sensitivity analyses.  Thanks goes to M. Runge for graciously answering questions and providing Matlab code snippets.
+Title: An R implementation and extension of full-annual cycle (FAC) model of Runge & Marra *2005)
+Description: redstart is an R implementation and extension of the full annual cycle (FAC) model for migratory birds developed by Michael Runge and Peter Marra and published in the monograph Birds of Two Worlds: The ecology and evolution of migration.  The original model is a periodic, 2-sex, density-dependent matrix model that incorporates seasonal dynamics, carryover effects, and two classes of habitat on both the summer breeding grounds and wintering grounds.  redstart is an R implementation of the model that incorporates Monte Carlo and sensitivity analyses of results produced by the original model.  Thanks goes to M. Runge for graciously answering questions and providing Matlab code snippets.
 Authors@R: person("Nathan", "Brouwer", email = "brouwern@gmail.com",
                   role = c("aut", "cre"))
 License: MIT + file LICENSE

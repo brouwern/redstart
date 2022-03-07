@@ -9,7 +9,7 @@ plot_Fig28_4(runFAC.multi, plot.debug.lines = F)
 \arguments{
 \item{runFAC.multi}{Output draframe from runFAC.multi()}
 
-\item{plot.debug.lines}{Plot lines to faciltate comparison of FACavian output to the original Figure 28.4.}
+\item{plot.debug.lines}{Plot lines to faciltate comparison of redstart output to the original Figure 28.4.}
 }
 \description{
 Functions to replicate plots that occur in Runge and Mara's Birds of Two Worlds Full Annual Cycle model

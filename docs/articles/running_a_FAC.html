@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Running a full-annual cycle (FAC) model with FACavian • FACavian</title>
+<title>Running a full-annual cycle (FAC) model with redstart • redstart</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,7 +30,7 @@
 
 
 
-<meta property="og:title" content="Running a full-annual cycle (FAC) model with FACavian" />
+<meta property="og:title" content="Running a full-annual cycle (FAC) model with redstart" />
 
 <meta property="og:description" content="" />
 <meta name="twitter:card" content="summary" />
@@ -60,7 +60,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">FACavian</a>
+        <a class="navbar-link" href="../index.html">redstart</a>
         <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.0.9000</span>
       </span>
     </div>
@@ -102,7 +102,7 @@
       <a href="../articles/Runge_and_Marra_notes.html">The Full-annual cycle model of Runge &amp; Marra (2004)</a>
     </li>
     <li>
-      <a href="../articles/running_a_FAC.html">Running a full-annual cycle (FAC) model with FACavian</a>
+      <a href="../articles/running_a_FAC.html">Running a full-annual cycle (FAC) model with redstart</a>
     </li>
     <li>
       <a href="../articles/running_multiple_FACs.html">Running multiple FACs to explore parameter variation</a>
@@ -141,7 +141,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Running a full-annual cycle (FAC) model with FACavian</h1>
+      <h1>Running a full-annual cycle (FAC) model with redstart</h1>
                         <h4 class="author">Nathan Brouwer</h4>
             
             <h4 class="date">2019-06-06</h4>
@@ -156,7 +156,7 @@
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
 <p>The full-annual cycle (FAC) model of Runge and Marra (2004) is a density-dependent (dd) matrix model. The principal output of a density-dependent model is the <strong>equilibrium population size</strong>. An important issue with dd models is that you can only determine the equilibrium population size using numerical simulation. This means that you actually have to plug information – particularly initial population sizes – into the model and run it through many iterations and monitor the output until you see that it stabilizes or converges to a stable state. This is in contrast to traditional matrix models (and their cousin, integral projection model) which can be analyzed mathematically without specifying a starting population state or iterating the model (Footnote: assuming they are ergodic; Stott et al 2010 Method E&amp;E)</p>
-<p>In the FACavian package, a single run of a FAC is done using the runFAC() function. The user gives this function three bundles of information:</p>
+<p>In the redstart package, a single run of a FAC is done using the runFAC() function. The user gives this function three bundles of information:</p>
 <ol style="list-style-type: decimal">
 <li>The demographic parameters for the model, including surival rates and fecundities</li>
 <li>The habitat carrying capacities</li>
@@ -169,20 +169,20 @@
 </div>
 <div id="preliminaries" class="section level2">
 <h2>Preliminaries</h2>
-<div id="getting-the-facavian-package" class="section level3">
-<h3>Getting the FACavian package</h3>
-<p>The most recent version of FACavian is available from github and can be downloaded directly using hte devtools package</p>
+<div id="getting-the-redstart-package" class="section level3">
+<h3>Getting the redstart package</h3>
+<p>The most recent version of redstart is available from github and can be downloaded directly using hte devtools package</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#load devtools</span>
 <span class="kw">library</span>(devtools)
 
-<span class="co">#download FACavian from github</span>
-devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;brouwern/FACavian&quot;</span>)</code></pre></div>
-<p>Load FACavian into your current R sessions</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(FACavian)</code></pre></div>
+<span class="co">#download redstart from github</span>
+devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;brouwern/redstart&quot;</span>)</code></pre></div>
+<p>Load redstart into your current R sessions</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(redstart)</code></pre></div>
 </div>
 <div id="getting-parameters-for-a-model-run" class="section level3">
 <h3>Getting parameters for a model run</h3>
-<p>Default values are set in all of FACavian’s functions so you can easily explore them without worrying about setting the underlying demographic parameters. For a preliminary run parameters will be called automatically behind the scenes using a function called param_set(), which has defaults as givenn in Runge and Marra (2004).</p>
+<p>Default values are set in all of redstart’s functions so you can easily explore them without worrying about setting the underlying demographic parameters. For a preliminary run parameters will be called automatically behind the scenes using a function called param_set(), which has defaults as givenn in Runge and Marra (2004).</p>
 <p>You can look at the parameters by calling the param_set() function. Later we’ll use param_set() to tweak a few parameters.</p>
 <p>Counting the 3 carrying capacities there are 30 parameters in a single run of the rnFAC.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(<span class="kw">param_set</span>())

@@ -5,7 +5,7 @@
 #' @import graphics
 #'
 #' @param runFAC.multi Output draframe from runFAC.multi()
-#' @param plot.debug.lines Plot lines to faciltate comparison of FACavian output to the original Figure 28.4.
+#' @param plot.debug.lines Plot lines to faciltate comparison of redstart output to the original Figure 28.4.
 #'
 #' @export
 

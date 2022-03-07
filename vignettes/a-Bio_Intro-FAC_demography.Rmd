@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 ```
 
 
-TODO:write intro to packge
+TODO:write intro to package
 
 
 Key quote:

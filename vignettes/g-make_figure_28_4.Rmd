@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 
 Load the package
 ```{r}
-library(FACavian)
+library(redstart)
 ```
 
 
@@ -59,6 +59,8 @@ F28.4.grid <- param_grid(param.seqs = F28.4.seq)
 ```
 
 We can then run the necessary models by passing the grid tothe "param.grid" arguement of runFAC_multi()
+
+TODO: verbose = F isn't working
 ```{r}
 F28.4.FAC <- runFAC_multi(param.grid = F28.4.grid,
                           verbose = F)
@@ -83,4 +85,4 @@ The plot can then be created as above using param_seqs(), param_grid(), runFAC_m
 
 
 
-## Comparing output of FACavian to the original 
+## Comparing output of redstart to the original 

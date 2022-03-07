@@ -35,7 +35,7 @@ Figure 28.5 investigates how changes in the male dominance parameter (gamma) imp
 
 Load the package
 ```{r}
-library(FACavian)
+library(redstart)
 ```
 
 There param_ranges() function has a "figure = ..." arguement and also a "scenario = ...".  
@@ -104,4 +104,4 @@ plot_Fig28_5(dat.winter.lim = F28.5.FAC.win$multiFAC.out.df.RM,
 Vary gamma by 
 
 
-## Comparing output of FACavian to the original 
+## Comparing output of redstart to the original 

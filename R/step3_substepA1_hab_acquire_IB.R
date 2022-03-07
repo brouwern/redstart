@@ -10,7 +10,7 @@
 #'
 #' @examples
 #' #Set up param.set
-#' param.set <- FACavian::param_set()
+#' param.set <- redstart::param_set()
 #'
 #' #set breeding carrying capacities to be relatively small
 #' param.set$K.bc <- 50

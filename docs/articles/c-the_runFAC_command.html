@@ -8,7 +8,7 @@
 <title>
 <ol start="3" style="list-style-type: lower-alpha">
 <li>The runFAC() command</li>
-</ol> • FACavian</title>
+</ol> • redstart</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
@@ -33,7 +33,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">FACavian</a>
+        <a class="navbar-link" href="../index.html">redstart</a>
         <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.0.9000</span>
       </span>
     </div>
@@ -60,7 +60,7 @@
       <a href="../articles/a-Introduction_FAC_demography.html">a) Introduction: Full Annual Cycle (FAC) Demography</a>
     </li>
     <li>
-      <a href="../articles/b-overview.html">b) Overview of FACavian functionality</a>
+      <a href="../articles/b-overview.html">b) Overview of redstart functionality</a>
     </li>
     <li>
       <a href="../articles/c-the_runFAC_command.html">c) The runFAC() command</a>
@@ -140,7 +140,7 @@
 <h2 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h2>
 <p>The full-annual cycle (FAC) model of Runge and Marra (2004) is a density-dependent (dd) matrix model. The principal output of a density-dependent model is the <strong>equilibrium population size</strong>. An important issue with dd models is that you can only determine the equilibrium population size using numerical simulation. This means that you actually have to plug information – particularly initial population sizes – into the model and run it through many iterations and monitor the output until you see that it stabilizes or converges to a stable state. This is in contrast to traditional matrix models (and their cousin, integral projection model) which can be analyzed mathematically without specifying a starting population state or iterating the model (Footnote: assuming they are ergodic; Stott et al 2010 Method E&amp;E)</p>
-<p>In the FACavian package, a single run of a FAC is done using the runFAC() function. The user gives this function three bundles of information:</p>
+<p>In the redstart package, a single run of a FAC is done using the runFAC() function. The user gives this function three bundles of information:</p>
 <ol style="list-style-type: decimal">
 <li>The demographic parameters for the model, including surival rates and fecundities</li>
 <li>The habitat carrying capacities</li>
@@ -154,22 +154,22 @@
 <div id="preliminaries" class="section level2">
 <h2 class="hasAnchor">
 <a href="#preliminaries" class="anchor"></a>Preliminaries</h2>
-<div id="getting-the-facavian-package" class="section level3">
+<div id="getting-the-redstart-package" class="section level3">
 <h3 class="hasAnchor">
-<a href="#getting-the-facavian-package" class="anchor"></a>Getting the FACavian package</h3>
-<p>The most recent version of FACavian is available from github and can be downloaded directly using hte devtools package</p>
+<a href="#getting-the-redstart-package" class="anchor"></a>Getting the redstart package</h3>
+<p>The most recent version of redstart is available from github and can be downloaded directly using hte devtools package</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#load devtools</span>
 <span class="kw">library</span>(devtools)
 
-<span class="co">#download FACavian from github</span>
-devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"brouwern/FACavian"</span>)</code></pre></div>
-<p>Load FACavian into your current R sessions</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(FACavian)</code></pre></div>
+<span class="co">#download redstart from github</span>
+devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"brouwern/redstart"</span>)</code></pre></div>
+<p>Load redstart into your current R sessions</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(redstart)</code></pre></div>
 </div>
 <div id="getting-parameters-for-a-model-run" class="section level3">
 <h3 class="hasAnchor">
 <a href="#getting-parameters-for-a-model-run" class="anchor"></a>Getting parameters for a model run</h3>
-<p>Default values are set in all of FACavian’s functions so you can easily explore them without worrying about setting the underlying demographic parameters. For a preliminary run parameters will be called automatically behind the scenes using a function called param_set(), which has defaults as givenn in Runge and Marra (2004).</p>
+<p>Default values are set in all of redstart’s functions so you can easily explore them without worrying about setting the underlying demographic parameters. For a preliminary run parameters will be called automatically behind the scenes using a function called param_set(), which has defaults as givenn in Runge and Marra (2004).</p>
 <p>You can look at the parameters by calling the param_set() function. Later we’ll use param_set() to tweak a few parameters.</p>
 <p>Counting the 3 carrying capacities there are 30 parameters in a single run of the rnFAC.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(<span class="kw"><a href="../reference/param_set.html">param_set</a></span>())

@@ -22,9 +22,36 @@ knitr::opts_chunk$set(
 
 Load the package
 ```{r}
-library(FACavian)
+library(redstart)
 ```
 
 
 ### Figure 28.6
+
+```{r}
+F28.6_range <- param_ranges(figure = 28.6,scenario = )
+```
+
+```{r}
+head(F28.6_range)
+```
+
+```{r}
+F28.6_seq <- param_seqs(F28.6)
+```
+
+
+```{r}
+F28.6_grid <- param_grid(param.seqs = F28.6_seq)
+```
+
+
+```{r}
+F28.6 <-runFAC_multi(param.grid = F28.6_grid, verbose = F)
+```
+
+
+```{r}
+plot_Fig28_6
+```
 
