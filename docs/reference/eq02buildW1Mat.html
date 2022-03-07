@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -175,7 +175,7 @@
     <p>This function produces a diagonal matrix of survival (S.) values. in winter (S.w) for males (.m) and females (.f) in both good (._g) and poor (._p) habitat</p>
     </div>
 
-    <pre class="usage"><span class='fu'>eq02buildW1Mat</span>(<span class='kw'>S.w.mg</span> <span class='kw'>=</span> <span class='fl'>0.8</span>, <span class='kw'>S.w.mp</span> <span class='kw'>=</span> <span class='fl'>0.8</span>, <span class='kw'>S.w.fg</span> <span class='kw'>=</span> <span class='fl'>0.8</span>, <span class='kw'>S.w.fp</span> <span class='kw'>=</span> <span class='fl'>0.8</span>)</pre>
+    <pre class="usage"><span class='fu'>eq02buildW1Mat</span><span class='op'>(</span>S.w.mg <span class='op'>=</span> <span class='fl'>0.8</span>, S.w.mp <span class='op'>=</span> <span class='fl'>0.8</span>, S.w.fg <span class='op'>=</span> <span class='fl'>0.8</span>, S.w.fp <span class='op'>=</span> <span class='fl'>0.8</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -209,19 +209,24 @@
     <p>Runge, MC and PP Marra.  2004.  Modeling seasonal interactions in the population dynamics of migratory birds. In Greenberg, R and PP Marra, eds.  Birds of two worlds. Johns Hopkins University Press, Baltimore.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Default winter survival matrix</span>
-<span class='fu'>eq02buildW1Mat</span>()</div><div class='output co'>#&gt;      [,1] [,2] [,3] [,4]
-#&gt; [1,]  0.8  0.0  0.0  0.0
-#&gt; [2,]  0.0  0.8  0.0  0.0
-#&gt; [3,]  0.0  0.0  0.8  0.0
-#&gt; [4,]  0.0  0.0  0.0  0.8</div><div class='input'>
-<span class='co'># Errors thrown in values exceed 1 or are less than 0</span>
-<span class='fu'>eq02buildW1Mat</span>(<span class='kw'>S.w.mg</span> <span class='kw'>=</span> <span class='fl'>10</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Matrix contains invalied value</span></div><div class='output co'>#&gt;      [,1] [,2] [,3] [,4]
-#&gt; [1,]   10  0.0  0.0  0.0
-#&gt; [2,]    0  0.8  0.0  0.0
-#&gt; [3,]    0  0.0  0.8  0.0
-#&gt; [4,]    0  0.0  0.0  0.8</div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># Default winter survival matrix</span></span>
+<span class='r-in'><span class='fu'>eq02buildW1Mat</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      [,1] [,2] [,3] [,4]</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1,]  0.8  0.0  0.0  0.0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [2,]  0.0  0.8  0.0  0.0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [3,]  0.0  0.0  0.8  0.0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [4,]  0.0  0.0  0.0  0.8</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Errors thrown in values exceed 1 or are less than 0</span></span>
+<span class='r-in'><span class='fu'>eq02buildW1Mat</span><span class='op'>(</span>S.w.mg <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span></span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span class='warning'>Warning: </span>Matrix contains invalied value</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      [,1] [,2] [,3] [,4]</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1,]   10  0.0  0.0  0.0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [2,]    0  0.8  0.0  0.0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [3,]    0  0.0  0.8  0.0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [4,]    0  0.0  0.0  0.8</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -237,7 +242,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

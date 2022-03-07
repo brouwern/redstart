@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -120,13 +120,13 @@
 
       
 
-      </header><div class="row">
+      </header><script src="x-creating_a_package_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>w) Creating this package</h1>
                         <h4 class="author">Nathan Brouwer</h4>
             
-            <h4 class="date">2020-07-02</h4>
+            <h4 class="date">2022-03-07</h4>
       
       
       <div class="hidden name"><code>x-creating_a_package.Rmd</code></div>
@@ -144,9 +144,10 @@
 <h2 class="hasAnchor">
 <a href="#packages" class="anchor"></a>Packages</h2>
 <p>I use these packages for setting things up</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">devtools</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">usethis</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">here</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/">devtools</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://usethis.r-lib.org">usethis</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://here.r-lib.org/">here</a></span><span class="op">)</span></code></pre></div>
 </div>
 <div id="create-repository" class="section level2">
 <h2 class="hasAnchor">
@@ -157,72 +158,81 @@
 <h2 class="hasAnchor">
 <a href="#set-up-package-with-usethis" class="anchor"></a>Set up package with usethis</h2>
 <p>I then used create_package() within my project directory to build the basic package infrastructure This overights the initial project (after a handy prompt in the console).</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu"><a href="https://usethis.r-lib.org/reference/create_package.html">create_package</a></span>(<span class="kw">path</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span>())</pre></body></html></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://usethis.r-lib.org/reference/create_package.html">create_package</a></span><span class="op">(</span>path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div id="create-vignette-infrastructure" class="section level3">
 <h3 class="hasAnchor">
 <a href="#create-vignette-infrastructure" class="anchor"></a>Create vignette infrastructure</h3>
 <p>Create a vignette infrastructure and dummy vignette</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="kw pkg">usethis</span><span class="kw ns">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_vignette.html">use_vignette</a></span>(<span class="st">"temp"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_vignette.html">use_vignette</a></span><span class="op">(</span><span class="st">"temp"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="create-readme-and-news-files" class="section level3">
 <h3 class="hasAnchor">
 <a href="#create-readme-and-news-files" class="anchor"></a>Create “readme” and “news” files</h3>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="https://usethis.r-lib.org/reference/use_readme_rmd.html">use_readme_md</a></span>()
-<span class="fu"><a href="https://usethis.r-lib.org/reference/use_news_md.html">use_news_md</a></span>()</pre></body></html></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://usethis.r-lib.org/reference/use_readme_rmd.html">use_readme_md</a></span><span class="op">(</span><span class="op">)</span>
+<span class="fu"><a href="https://usethis.r-lib.org/reference/use_news_md.html">use_news_md</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="create-git-ignore" class="section level3">
 <h3 class="hasAnchor">
 <a href="#create-git-ignore" class="anchor"></a>Create git ignore</h3>
 <p>Am not sure how to use this properly yet</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu"><a href="https://usethis.r-lib.org/reference/use_git_ignore.html">use_git_ignore</a></span>(<span class="st">".pdf"</span>, <span class="kw">directory</span> <span class="kw">=</span> <span class="st">"."</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://usethis.r-lib.org/reference/use_git_ignore.html">use_git_ignore</a></span><span class="op">(</span><span class="st">".pdf"</span>, directory <span class="op">=</span> <span class="st">"."</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="add-required-packages" class="section level3">
 <h3 class="hasAnchor">
 <a href="#add-required-packages" class="anchor"></a>Add required packages</h3>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_package</a></span>(<span class="st">"dplyr"</span>, <span class="st">"Imports"</span>)
-<span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_package</a></span>(<span class="st">"tidyr"</span>, <span class="st">"Imports"</span>)
-<span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_package</a></span>(<span class="st">"ggplot2"</span>, <span class="st">"Imports"</span>)
-<span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_package</a></span>(<span class="st">"ggpubr"</span>, <span class="st">"Imports"</span>)
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_package</a></span><span class="op">(</span><span class="st">"dplyr"</span>, <span class="st">"Imports"</span><span class="op">)</span>
+<span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_package</a></span><span class="op">(</span><span class="st">"tidyr"</span>, <span class="st">"Imports"</span><span class="op">)</span>
+<span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_package</a></span><span class="op">(</span><span class="st">"ggplot2"</span>, <span class="st">"Imports"</span><span class="op">)</span>
+<span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_package</a></span><span class="op">(</span><span class="st">"ggpubr"</span>, <span class="st">"Imports"</span><span class="op">)</span>
 
-<span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_package</a></span>(<span class="st">"nlme"</span>, <span class="st">"Imports"</span>)
-<span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_package</a></span>(<span class="st">"lme4"</span>, <span class="st">"Imports"</span>)
-<span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_package</a></span>(<span class="st">"bbmle"</span>, <span class="st">"Imports"</span>)
-<span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_package</a></span>(<span class="st">"RCurl"</span>, <span class="st">"Imports"</span>)
-<span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_package</a></span>(<span class="st">"GGally"</span>, <span class="st">"Imports"</span>)
-<span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_package</a></span>(<span class="st">"broom"</span>, <span class="st">"Imports"</span>)
+<span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_package</a></span><span class="op">(</span><span class="st">"nlme"</span>, <span class="st">"Imports"</span><span class="op">)</span>
+<span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_package</a></span><span class="op">(</span><span class="st">"lme4"</span>, <span class="st">"Imports"</span><span class="op">)</span>
+<span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_package</a></span><span class="op">(</span><span class="st">"bbmle"</span>, <span class="st">"Imports"</span><span class="op">)</span>
+<span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_package</a></span><span class="op">(</span><span class="st">"RCurl"</span>, <span class="st">"Imports"</span><span class="op">)</span>
+<span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_package</a></span><span class="op">(</span><span class="st">"GGally"</span>, <span class="st">"Imports"</span><span class="op">)</span>
+<span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_package</a></span><span class="op">(</span><span class="st">"broom"</span>, <span class="st">"Imports"</span><span class="op">)</span>
 
-<span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_package</a></span>(<span class="st">"arm"</span>, <span class="st">"Imports"</span>)
+<span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_package</a></span><span class="op">(</span><span class="st">"arm"</span>, <span class="st">"Imports"</span><span class="op">)</span>
 
-<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu">use_package</span>(<span class="st">"data.table"</span>, <span class="st">"Imports"</span>)
-<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu">use_package</span>(<span class="st">"car"</span>, <span class="st">"Imports"</span>)
-<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu">use_package</span>(<span class="st">"lawstat"</span>, <span class="st">"Imports"</span>)
-<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu">use_package</span>(<span class="st">"effsize"</span>, <span class="st">"Imports"</span>)
-<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu">use_package</span>(<span class="st">"here"</span>, <span class="st">"Imports"</span>)
-<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu">use_package</span>(<span class="st">"metafor"</span>, <span class="st">"Imports"</span>)
-<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu">use_package</span>(<span class="st">"Formula"</span>, <span class="st">"Imports"</span>)
-<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu">use_package</span>(<span class="st">"data.tree"</span>, <span class="st">"Imports"</span>)</pre></body></html></div>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu">use_package</span><span class="op">(</span><span class="st">"data.table"</span>, <span class="st">"Imports"</span><span class="op">)</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu">use_package</span><span class="op">(</span><span class="st">"car"</span>, <span class="st">"Imports"</span><span class="op">)</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu">use_package</span><span class="op">(</span><span class="st">"lawstat"</span>, <span class="st">"Imports"</span><span class="op">)</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu">use_package</span><span class="op">(</span><span class="st">"effsize"</span>, <span class="st">"Imports"</span><span class="op">)</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu">use_package</span><span class="op">(</span><span class="st">"here"</span>, <span class="st">"Imports"</span><span class="op">)</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu">use_package</span><span class="op">(</span><span class="st">"metafor"</span>, <span class="st">"Imports"</span><span class="op">)</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu">use_package</span><span class="op">(</span><span class="st">"Formula"</span>, <span class="st">"Imports"</span><span class="op">)</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu">use_package</span><span class="op">(</span><span class="st">"data.tree"</span>, <span class="st">"Imports"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="dont-saveload-user-workspace-between-sessions" class="section level3">
 <h3 class="hasAnchor">
 <a href="#dont-saveload-user-workspace-between-sessions" class="anchor"></a>Don’t save/load user workspace between sessions</h3>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="fu"><a href="https://usethis.r-lib.org/reference/use_blank_slate.html">use_blank_slate</a></span>()</pre></body></html></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://usethis.r-lib.org/reference/use_blank_slate.html">use_blank_slate</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="use-roxygen-for-documentation" class="section level3">
 <h3 class="hasAnchor">
 <a href="#use-roxygen-for-documentation" class="anchor"></a>Use roxygen for documentation</h3>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="fu"><a href="https://usethis.r-lib.org/reference/use_roxygen_md.html">use_roxygen_md</a></span>()</pre></body></html></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://usethis.r-lib.org/reference/use_roxygen_md.html">use_roxygen_md</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="package-level-documents" class="section level3">
 <h3 class="hasAnchor">
 <a href="#package-level-documents" class="anchor"></a>Package-level documents</h3>
 <p>“Adds a dummy .R file that will prompt roxygen to generate basic package-level documentation.”</p>
-<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="fu"><a href="https://usethis.r-lib.org/reference/use_package_doc.html">use_package_doc</a></span>()</pre></body></html></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://usethis.r-lib.org/reference/use_package_doc.html">use_package_doc</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="use-pkgdown" class="section level3">
 <h3 class="hasAnchor">
 <a href="#use-pkgdown" class="anchor"></a>Use pkgdown</h3>
 <p>For making front end website</p>
-<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="fu"><a href="https://usethis.r-lib.org/reference/use_pkgdown.html">use_pkgdown</a></span>()</pre></body></html></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://usethis.r-lib.org/reference/use_pkgdown.html">use_pkgdown</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
 <div id="set-up-data" class="section level2">
@@ -232,37 +242,42 @@
 <h3 class="hasAnchor">
 <a href="#look-at-data-in-my-extdata-file" class="anchor"></a>Look at data in my extdata file</h3>
 <p>External data is stored in “/inst/extdata”</p>
-<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span>(<span class="kw pkg">here</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/here/man/here.html">here</a></span>(<span class="st">"/inst/extdata"</span>))</pre></body></html></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"/inst/extdata"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div id="raw-data" class="section level4">
 <h4 class="hasAnchor">
 <a href="#raw-data" class="anchor"></a>Raw data</h4>
-<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="no">milk_raw</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span>(<span class="kw pkg">here</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/here/man/here.html">here</a></span>(<span class="st">"/inst/extdata"</span>,
-                    <span class="st">"skibiel_mammalsmilk_raw.csv"</span>))
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">milk_raw</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"/inst/extdata"</span>,
+                    <span class="st">"skibiel_mammalsmilk_raw.csv"</span><span class="op">)</span><span class="op">)</span>
 
-<span class="fu"><a href="https://usethis.r-lib.org/reference/use_data.html">use_data</a></span>(<span class="no">milk_raw</span>)
-<span class="fu"><a href="https://usethis.r-lib.org/reference/use_r.html">use_r</a></span>(<span class="st">"milk_raw"</span>)</pre></body></html></div>
+<span class="fu"><a href="https://usethis.r-lib.org/reference/use_data.html">use_data</a></span><span class="op">(</span><span class="va">milk_raw</span><span class="op">)</span>
+<span class="fu"><a href="https://usethis.r-lib.org/reference/use_r.html">use_r</a></span><span class="op">(</span><span class="st">"milk_raw"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="other-data-data" class="section level4">
 <h4 class="hasAnchor">
 <a href="#other-data-data" class="anchor"></a>Other data data</h4>
 <p>Just the fat column</p>
-<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="no">milk</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span>(<span class="kw pkg">here</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/here/man/here.html">here</a></span>(<span class="st">"/inst/extdata"</span>,
-                    <span class="st">"skibiel_mammalsmilk.csv"</span>))
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">milk</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"/inst/extdata"</span>,
+                    <span class="st">"skibiel_mammalsmilk.csv"</span><span class="op">)</span><span class="op">)</span>
 
-<span class="fu"><a href="https://usethis.r-lib.org/reference/use_data.html">use_data</a></span>(<span class="no">milk</span>)
-<span class="fu"><a href="https://usethis.r-lib.org/reference/use_r.html">use_r</a></span>(<span class="st">"milk"</span>)</pre></body></html></div>
+<span class="fu"><a href="https://usethis.r-lib.org/reference/use_data.html">use_data</a></span><span class="op">(</span><span class="va">milk</span><span class="op">)</span>
+<span class="fu"><a href="https://usethis.r-lib.org/reference/use_r.html">use_r</a></span><span class="op">(</span><span class="st">"milk"</span><span class="op">)</span></code></pre></div>
 <p>Just the primates and relatives rows</p>
-<div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="no">milk_primates</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span>(<span class="kw pkg">here</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/here/man/here.html">here</a></span>(<span class="st">"/inst/extdata"</span>,
-                    <span class="st">"skibiel_primate_fat.csv"</span>))
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">milk_primates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"/inst/extdata"</span>,
+                    <span class="st">"skibiel_primate_fat.csv"</span><span class="op">)</span><span class="op">)</span>
 
-<span class="fu"><a href="https://usethis.r-lib.org/reference/use_data.html">use_data</a></span>(<span class="no">milk_primates</span>)
-<span class="fu"><a href="https://usethis.r-lib.org/reference/use_r.html">use_r</a></span>(<span class="st">"milk_primates"</span>)</pre></body></html></div>
+<span class="fu"><a href="https://usethis.r-lib.org/reference/use_data.html">use_data</a></span><span class="op">(</span><span class="va">milk_primates</span><span class="op">)</span>
+<span class="fu"><a href="https://usethis.r-lib.org/reference/use_r.html">use_r</a></span><span class="op">(</span><span class="st">"milk_primates"</span><span class="op">)</span></code></pre></div>
 <p>Just the fat column</p>
-<div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="no">milk_fat</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span>(<span class="kw pkg">here</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/here/man/here.html">here</a></span>(<span class="st">"/inst/extdata"</span>,
-                    <span class="st">"skibiel_fat.csv"</span>))
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">milk_fat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"/inst/extdata"</span>,
+                    <span class="st">"skibiel_fat.csv"</span><span class="op">)</span><span class="op">)</span>
 
-<span class="fu"><a href="https://usethis.r-lib.org/reference/use_data.html">use_data</a></span>(<span class="no">milk_fat</span>)
-<span class="fu"><a href="https://usethis.r-lib.org/reference/use_r.html">use_r</a></span>(<span class="st">"milk_fat"</span>)</pre></body></html></div>
+<span class="fu"><a href="https://usethis.r-lib.org/reference/use_data.html">use_data</a></span><span class="op">(</span><span class="va">milk_fat</span><span class="op">)</span>
+<span class="fu"><a href="https://usethis.r-lib.org/reference/use_r.html">use_r</a></span><span class="op">(</span><span class="st">"milk_fat"</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
 </div>
@@ -270,8 +285,10 @@
 <h2 class="hasAnchor">
 <a href="#license" class="anchor"></a>License</h2>
 <p><a href="http://kbroman.org/pkg_primer/pages/licenses.html" class="uri">http://kbroman.org/pkg_primer/pages/licenses.html</a></p>
-<div class="sourceCode" id="cb16"><html><body><pre class="r"><span class="kw pkg">usethis</span><span class="kw ns">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/licenses.html">use_mit_license</a></span>(<span class="kw">name</span> <span class="kw">=</span> <span class="st">"Nathan Brouwer"</span>)</pre></body></html></div>
-<div class="sourceCode" id="cb17"><html><body><pre class="r">#use_data_raw()</pre></body></html></div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/licenses.html">use_mit_license</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Nathan Brouwer"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">#use_data_raw()</span></code></pre></div>
 <div id="spell-check" class="section level3">
 <h3 class="hasAnchor">
 <a href="#spell-check" class="anchor"></a>Spell check</h3>
@@ -304,7 +321,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

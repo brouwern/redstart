@@ -82,7 +82,7 @@ and vectors for numbers that do vary by the function param_seqs().  A dataframe 
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -179,42 +179,42 @@ This dataframe of minimums and maximums is then turned into a list if scalers (s
 and vectors for numbers that do vary by the function param_seqs().  A dataframe of all possible parameter combinatnsion (aka, a parameter grid) is then made with param_grid().</p>
     </div>
 
-    <pre class="usage"><span class='fu'>param_ranges</span>(
-  <span class='kw'>scenario</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>figure</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>gamma.</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>5</span>, <span class='fl'>5</span>),
-  <span class='kw'>c.</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>),
-  <span class='kw'>K.bc.</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1000</span>, <span class='fl'>1000</span>),
-  <span class='kw'>K.bk.</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>10000</span>, <span class='fl'>10000</span>),
-  <span class='kw'>K.wg.</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>900</span>, <span class='fl'>900</span>),
-  <span class='kw'>S.w.mg.</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.8</span>, <span class='fl'>0.8</span>),
-  <span class='kw'>S.w.mp.</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.8</span>, <span class='fl'>0.8</span>),
-  <span class='kw'>S.w.fg.</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.8</span>, <span class='fl'>0.8</span>),
-  <span class='kw'>S.w.fp.</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.8</span>, <span class='fl'>0.8</span>),
-  <span class='kw'>S.m.mg.</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.9</span>, <span class='fl'>0.9</span>),
-  <span class='kw'>S.m.mp.</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.8</span>, <span class='fl'>0.8</span>),
-  <span class='kw'>S.m.fg.</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.9</span>, <span class='fl'>0.9</span>),
-  <span class='kw'>S.m.fp.</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.8</span>, <span class='fl'>0.8</span>),
-  <span class='kw'>R.base.rate.</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1.8</span>, <span class='fl'>1.8</span>),
-  <span class='kw'>R.hab.effect.</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.5</span>, <span class='fl'>0.5</span>),
-  <span class='kw'>co.</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>),
-  <span class='kw'>f.</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.5</span>, <span class='fl'>0.5</span>),
-  <span class='kw'>S.b.mc.</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.95</span>, <span class='fl'>0.95</span>),
-  <span class='kw'>S.b.mk.</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.85</span>, <span class='fl'>0.85</span>),
-  <span class='kw'>S.b.md.</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.8</span>, <span class='fl'>0.8</span>),
-  <span class='kw'>S.b.fc.</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.95</span>, <span class='fl'>0.95</span>),
-  <span class='kw'>S.b.fk.</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.85</span>, <span class='fl'>0.85</span>),
-  <span class='kw'>S.f.mc.</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.8</span>, <span class='fl'>0.8</span>),
-  <span class='kw'>S.f.mk.</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.75</span>, <span class='fl'>0.75</span>),
-  <span class='kw'>S.f.md.</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.8</span>, <span class='fl'>0.8</span>),
-  <span class='kw'>S.f.fc.</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.8</span>, <span class='fl'>0.8</span>),
-  <span class='kw'>S.f.fk.</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.75</span>, <span class='fl'>0.75</span>),
-  <span class='kw'>S.y.mc.</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.8</span>, <span class='fl'>0.8</span>),
-  <span class='kw'>S.y.mk.</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.75</span>, <span class='fl'>0.75</span>),
-  <span class='kw'>S.y.fc.</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.8</span>, <span class='fl'>0.8</span>),
-  <span class='kw'>S.y.fk.</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.75</span>, <span class='fl'>0.75</span>),
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
-)</pre>
+    <pre class="usage"><span class='fu'>param_ranges</span><span class='op'>(</span>
+  scenario <span class='op'>=</span> <span class='cn'>NA</span>,
+  figure <span class='op'>=</span> <span class='cn'>NA</span>,
+  gamma. <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>5</span>, <span class='fl'>5</span><span class='op'>)</span>,
+  c. <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span>,
+  K.bc. <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1000</span>, <span class='fl'>1000</span><span class='op'>)</span>,
+  K.bk. <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>10000</span>, <span class='fl'>10000</span><span class='op'>)</span>,
+  K.wg. <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>900</span>, <span class='fl'>900</span><span class='op'>)</span>,
+  S.w.mg. <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.8</span>, <span class='fl'>0.8</span><span class='op'>)</span>,
+  S.w.mp. <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.8</span>, <span class='fl'>0.8</span><span class='op'>)</span>,
+  S.w.fg. <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.8</span>, <span class='fl'>0.8</span><span class='op'>)</span>,
+  S.w.fp. <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.8</span>, <span class='fl'>0.8</span><span class='op'>)</span>,
+  S.m.mg. <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.9</span>, <span class='fl'>0.9</span><span class='op'>)</span>,
+  S.m.mp. <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.8</span>, <span class='fl'>0.8</span><span class='op'>)</span>,
+  S.m.fg. <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.9</span>, <span class='fl'>0.9</span><span class='op'>)</span>,
+  S.m.fp. <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.8</span>, <span class='fl'>0.8</span><span class='op'>)</span>,
+  R.base.rate. <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1.8</span>, <span class='fl'>1.8</span><span class='op'>)</span>,
+  R.hab.effect. <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.5</span>, <span class='fl'>0.5</span><span class='op'>)</span>,
+  co. <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span>,
+  f. <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.5</span>, <span class='fl'>0.5</span><span class='op'>)</span>,
+  S.b.mc. <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.95</span>, <span class='fl'>0.95</span><span class='op'>)</span>,
+  S.b.mk. <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.85</span>, <span class='fl'>0.85</span><span class='op'>)</span>,
+  S.b.md. <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.8</span>, <span class='fl'>0.8</span><span class='op'>)</span>,
+  S.b.fc. <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.95</span>, <span class='fl'>0.95</span><span class='op'>)</span>,
+  S.b.fk. <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.85</span>, <span class='fl'>0.85</span><span class='op'>)</span>,
+  S.f.mc. <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.8</span>, <span class='fl'>0.8</span><span class='op'>)</span>,
+  S.f.mk. <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.75</span>, <span class='fl'>0.75</span><span class='op'>)</span>,
+  S.f.md. <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.8</span>, <span class='fl'>0.8</span><span class='op'>)</span>,
+  S.f.fc. <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.8</span>, <span class='fl'>0.8</span><span class='op'>)</span>,
+  S.f.fk. <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.75</span>, <span class='fl'>0.75</span><span class='op'>)</span>,
+  S.y.mc. <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.8</span>, <span class='fl'>0.8</span><span class='op'>)</span>,
+  S.y.mk. <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.75</span>, <span class='fl'>0.75</span><span class='op'>)</span>,
+  S.y.fc. <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.8</span>, <span class='fl'>0.8</span><span class='op'>)</span>,
+  S.y.fk. <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.75</span>, <span class='fl'>0.75</span><span class='op'>)</span>,
+  verbose <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -371,42 +371,60 @@ In Greenberg, R and PP Marra, eds.  Birds of two worlds: The ecology &amp; evolu
 Johns Hopkins University Press, Baltimore.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='co'># Set parameters for the winter limited scenario in original paper (Runge &amp; Marra 2004)</span>
-<span class='no'>param.ranges</span> <span class='kw'>&lt;-</span> <span class='fu'>param_ranges</span>(<span class='kw'>scenario</span> <span class='kw'>=</span> <span class='st'>"winter.limited"</span>)</div><div class='output co'>#&gt; <span class='message'>Setting breeding 'source' carrying capacity K.bc to 800</span>
-#&gt; <span class='message'>Setting winter   'good'   carrying capacity K.wg to 484</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>param.ranges</span>)</div><div class='output co'>#&gt;            min     max
-#&gt; gamma      5.0     5.0
-#&gt; co.        1.0     1.0
-#&gt; K.bc     800.0   800.0
-#&gt; K.bk   10000.0 10000.0
-#&gt; K.wg     485.0   485.0
-#&gt; S.w.mg     0.8     0.8</div><div class='input'>
-<span class='co'># Parameters to remake Figure 28.3 in original paper (Runge &amp; Marra 2004)</span>
-<span class='no'>param.ranges</span> <span class='kw'>&lt;-</span> <span class='fu'>param_ranges</span>(<span class='kw'>figure</span> <span class='kw'>=</span> <span class='fl'>28.3</span>)
-<span class='no'>param.ranges</span>[<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"K.bc"</span>,<span class='st'>"K.wg"</span>), ]</div><div class='output co'>#&gt;      min  max
-#&gt; K.bc   1 1000
-#&gt; K.wg   1 1000</div><div class='input'>
-<span class='co'># Setting carrying capacities to 0 causes errors when running model</span>
-<span class='co'>## param_ranges() therefore automatically changes to prevent this bug</span>
-<span class='no'>param.ranges</span> <span class='kw'>&lt;-</span> <span class='fu'>param_ranges</span>(<span class='kw'>K.bc.</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>100</span>))</div><div class='output co'>#&gt; <span class='message'>One of your carrying capacities is set to 0, which due to an unresolved bug can cause problems.  This value has been set to 1.  Sorry.</span></div><div class='input'><span class='no'>param.ranges</span>[<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"K.bc"</span>,<span class='st'>"K.wg"</span>), ]</div><div class='output co'>#&gt;      min max
-#&gt; K.bc   1 100
-#&gt; K.wg 900 900</div><div class='input'>
-<span class='co'># Set up different scenarios</span>
-<span class='co'>## this is similar to data for figure 28.5, but without gamma varying</span>
-<span class='no'>winter.lim</span> <span class='kw'>&lt;-</span> <span class='fu'>param_ranges</span>(<span class='kw'>scenario</span> <span class='kw'>=</span> <span class='st'>"winter"</span>)</div><div class='output co'>#&gt; <span class='message'>Setting breeding 'source' carrying capacity K.bc to 800</span>
-#&gt; <span class='message'>Setting winter   'good'   carrying capacity K.wg to 484</span></div><div class='input'><span class='no'>intermed</span> <span class='kw'>&lt;-</span> <span class='fu'>param_ranges</span>(<span class='kw'>scenario</span> <span class='kw'>=</span> <span class='st'>"intermediate"</span>)</div><div class='output co'>#&gt; <span class='message'>Setting breeding 'source' carrying capacity K.bc to 224</span>
-#&gt; <span class='message'>Setting winter   'good'   carrying capacity K.wg to 580</span></div><div class='input'><span class='no'>summer.lim</span> <span class='kw'>&lt;-</span> <span class='fu'>param_ranges</span>(<span class='kw'>scenario</span> <span class='kw'>=</span> <span class='st'>"summer"</span>)</div><div class='output co'>#&gt; <span class='message'>Setting breeding 'source' carrying capacity K.bc to 205</span>
-#&gt; <span class='message'>Setting winter   'good'   carrying capacity K.wg to 900</span></div><div class='input'>
-<span class='co'># Show data</span>
-<span class='co'>## Note only 1st 6 rows shown; delete "[1:6,]" to show all.</span>
-<span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='no'>winter.lim</span>, <span class='no'>intermed</span>, <span class='no'>summer.lim</span>)[<span class='fl'>1</span>:<span class='fl'>6</span>,]</div><div class='output co'>#&gt;            min     max   min.1   max.1   min.2   max.2
-#&gt; gamma      5.0     5.0     5.0     5.0     5.0     5.0
-#&gt; co.        1.0     1.0     1.0     1.0     1.0     1.0
-#&gt; K.bc     800.0   800.0   224.0   224.0   205.0   205.0
-#&gt; K.bk   10000.0 10000.0 10000.0 10000.0 10000.0 10000.0
-#&gt; K.wg     485.0   485.0   580.0   580.0   900.0   900.0
-#&gt; S.w.mg     0.8     0.8     0.8     0.8     0.8     0.8</div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'></span>
+<span class='r-in'><span class='co'># Set parameters for the winter limited scenario in original paper (Runge &amp; Marra 2004)</span></span>
+<span class='r-in'><span class='va'>param.ranges</span> <span class='op'>&lt;-</span> <span class='fu'>param_ranges</span><span class='op'>(</span>scenario <span class='op'>=</span> <span class='st'>"winter.limited"</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Setting breeding 'source' carrying capacity K.bc to 800</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Setting winter   'good'   carrying capacity K.wg to 484</span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>param.ranges</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>            min     max</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> gamma      5.0     5.0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> co.        1.0     1.0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> K.bc     800.0   800.0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> K.bk   10000.0 10000.0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> K.wg     485.0   485.0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> S.w.mg     0.8     0.8</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Parameters to remake Figure 28.3 in original paper (Runge &amp; Marra 2004)</span></span>
+<span class='r-in'><span class='va'>param.ranges</span> <span class='op'>&lt;-</span> <span class='fu'>param_ranges</span><span class='op'>(</span>figure <span class='op'>=</span> <span class='fl'>28.3</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>param.ranges</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"K.bc"</span>,<span class='st'>"K.wg"</span><span class='op'>)</span>, <span class='op'>]</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      min  max</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> K.bc   1 1000</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> K.wg   1 1000</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Setting carrying capacities to 0 causes errors when running model</span></span>
+<span class='r-in'><span class='co'>## param_ranges() therefore automatically changes to prevent this bug</span></span>
+<span class='r-in'><span class='va'>param.ranges</span> <span class='op'>&lt;-</span> <span class='fu'>param_ranges</span><span class='op'>(</span>K.bc. <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fl'>100</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> One of your carrying capacities is set to 0, which due to an unresolved bug can cause problems.  This value has been set to 1.  Sorry.</span>
+<span class='r-in'><span class='va'>param.ranges</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"K.bc"</span>,<span class='st'>"K.wg"</span><span class='op'>)</span>, <span class='op'>]</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      min max</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> K.bc   1 100</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> K.wg 900 900</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Set up different scenarios</span></span>
+<span class='r-in'><span class='co'>## this is similar to data for figure 28.5, but without gamma varying</span></span>
+<span class='r-in'><span class='va'>winter.lim</span> <span class='op'>&lt;-</span> <span class='fu'>param_ranges</span><span class='op'>(</span>scenario <span class='op'>=</span> <span class='st'>"winter"</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Setting breeding 'source' carrying capacity K.bc to 800</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Setting winter   'good'   carrying capacity K.wg to 484</span>
+<span class='r-in'><span class='va'>intermed</span> <span class='op'>&lt;-</span> <span class='fu'>param_ranges</span><span class='op'>(</span>scenario <span class='op'>=</span> <span class='st'>"intermediate"</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Setting breeding 'source' carrying capacity K.bc to 224</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Setting winter   'good'   carrying capacity K.wg to 580</span>
+<span class='r-in'><span class='va'>summer.lim</span> <span class='op'>&lt;-</span> <span class='fu'>param_ranges</span><span class='op'>(</span>scenario <span class='op'>=</span> <span class='st'>"summer"</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Setting breeding 'source' carrying capacity K.bc to 205</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Setting winter   'good'   carrying capacity K.wg to 900</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Show data</span></span>
+<span class='r-in'><span class='co'>## Note only 1st 6 rows shown; delete "[1:6,]" to show all.</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='va'>winter.lim</span>, <span class='va'>intermed</span>, <span class='va'>summer.lim</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>6</span>,<span class='op'>]</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>            min     max   min.1   max.1   min.2   max.2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> gamma      5.0     5.0     5.0     5.0     5.0     5.0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> co.        1.0     1.0     1.0     1.0     1.0     1.0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> K.bc     800.0   800.0   224.0   224.0   205.0   205.0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> K.bk   10000.0 10000.0 10000.0 10000.0 10000.0 10000.0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> K.wg     485.0   485.0   580.0   580.0   900.0   900.0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> S.w.mg     0.8     0.8     0.8     0.8     0.8     0.8</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -422,7 +440,7 @@ Johns Hopkins University Press, Baltimore.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

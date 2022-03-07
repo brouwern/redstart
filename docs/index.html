@@ -5,14 +5,14 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>An R implementation and extention of full-annual cycle (FAC) model of Runge &amp; Marra 2004 • redstart</title>
+<title>An R implementation and extension of full-annual cycle (FAC) model of Runge &amp; Marra *2005) • redstart</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="An R implementation and extention of full-annual cycle (FAC) model of Runge &amp; Marra 2004">
-<meta property="og:description" content="redstart is an R implementation and extension of the full annual cycle (FAC) model for migratory birds developed by Michael Runge and Peter Marra and published in Birds of Two Worlds.  The original model is a periodic, 2-sex, density-dependent matrix model that incorporates seasonal dynamics, carryover effects, and two classes of habitat on both the summer breeding grounds.  redstart is an R implementation of the model that incorporates Monte Carlo and sensitivity analyses.  Thanks goes to M. Runge for graciously answering questions and providing Matlab code snippets.">
+<script src="pkgdown.js"></script><meta property="og:title" content="An R implementation and extension of full-annual cycle (FAC) model of Runge &amp; Marra *2005)">
+<meta property="og:description" content="redstart is an R implementation and extension of the full annual cycle (FAC) model for migratory birds developed by Michael Runge and Peter Marra and published in the monograph Birds of Two Worlds: The ecology and evolution of migration.  The original model is a periodic, 2-sex, density-dependent matrix model that incorporates seasonal dynamics, carryover effects, and two classes of habitat on both the summer breeding grounds and wintering grounds.  redstart is an R implementation of the model that incorporates Monte Carlo and sensitivity analyses of results produced by the original model.  Thanks goes to M. Runge for graciously answering questions and providing Matlab code snippets.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -125,13 +125,14 @@
 <div id="redstart" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#redstart" class="anchor"></a>redstart</h1></div>
-<p>The goal of redstart is to simulate the dynamics of migratory birds throughout the entire annual cycle using a model developed by Runge &amp; Marra (2004) “Modeling seasonal interactions in the population dynamics of migratory birds.”</p>
+<p>The goal of redstart is to simulate the dynamics of migratory birds throughout the entire annual cycle using a model developed by Runge and Marra (2004) “Modeling seasonal interactions in the population dynamics of migratory birds,” from the Monograph Birds of Two Worlds The Ecology and Evolution of Migration, edited by Russell Greenberg and Peter Marra.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install the development version from <a href="https://github.com/">GitHub</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="r"><span class="co"># install.packages("devtools")</span>
-<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"brouwern/redstart"</span>)</pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"brouwern/redstart"</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
   </div>
@@ -160,7 +161,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

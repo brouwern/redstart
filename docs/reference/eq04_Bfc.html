@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -175,7 +175,7 @@
     <p>This function outputs <code>B.fc</code>, the number of females that acquire high quality "source" (._c) habitat during the breeding season</p>
     </div>
 
-    <pre class="usage"><span class='fu'>eq04_Bfc</span>(<span class='no'>W2</span>, <span class='no'>K.bc</span>)</pre>
+    <pre class="usage"><span class='fu'>eq04_Bfc</span><span class='op'>(</span><span class='va'>W2</span>, <span class='va'>K.bc</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -204,36 +204,46 @@
     <p>Runge, MC and PP Marra.  2004.  Modeling seasonal interactions in the population dynamics of migratory birds. In Greenberg, R and PP Marra, eds.  Birds of two worlds. Johns Hopkins University Press, Baltimore.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Set parameters:</span>
-<span class='co'>## Create named population W2 vector using the eq01buildW0vect()</span>
-<span class='co'>## 100 females originating from good winter habitat</span>
-<span class='co'>## 10 females originating from poor winter habitat</span>
-<span class='no'>W2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='eq01buildW0vect.html'>eq01buildW0vect</a></span>(<span class='fl'>100</span>, <span class='fl'>10</span>, <span class='fl'>100</span>, <span class='fl'>10</span>)
-
-<span class='no'>W2</span></div><div class='output co'>#&gt;  mg  mp  fg  fp 
-#&gt; 100  10 100  10 </div><div class='input'>
-<span class='co'>#Breeding habitat carrying capacity</span>
-<span class='no'>K.bc.110</span> <span class='kw'>&lt;-</span> <span class='fl'>110</span>
-<span class='no'>K.bc.100</span> <span class='kw'>&lt;-</span> <span class='fl'>100</span>
-<span class='no'>K.bc.10</span>  <span class='kw'>&lt;-</span> <span class='fl'>10</span>
-
-<span class='co'># The maximum number of birds that can be allocated to source habitat</span>
-<span class='co'># is the carrying capacity.</span>
-<span class='co'># When K.bc is 110, all 110 females are allocated to source</span>
-<span class='co'>## No birds will end up in sink in subsequent steps</span>
-<span class='fu'>eq04_Bfc</span>(<span class='no'>W2</span>, <span class='no'>K.bc.110</span>)</div><div class='output co'>#&gt; [1] 110</div><div class='input'>
-<span class='co'># If K.bc is 100, 100 birds will be allocated to source.</span>
-<span class='co'>## The 10 remaining will be shunted to sink in a subsequent step.</span>
-<span class='fu'>eq04_Bfc</span>(<span class='no'>W2</span>, <span class='no'>K.bc.100</span>)</div><div class='output co'>#&gt; [1] 100</div><div class='input'>
-<span class='co'># If K.bc is 10, only 10 birds will be allocated to source.</span>
-<span class='co'>## The 100 remaining, which are a mix of birds from good and poor winter habitat</span>
-<span class='co'>## will be allocated to sink habitat in a subsequent step.</span>
-<span class='fu'>eq04_Bfc</span>(<span class='no'>W2</span>, <span class='no'>K.bc.10</span>)</div><div class='output co'>#&gt; [1] 10</div><div class='input'>
-<span class='co'># If the number of birds is less than K.bc, then all will be allocated to source.</span>
-<span class='no'>W2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='eq01buildW0vect.html'>eq01buildW0vect</a></span>(<span class='fl'>50</span>, <span class='fl'>10</span>, <span class='fl'>50</span>, <span class='fl'>10</span>) <span class='co'># 60 total birds</span>
-<span class='fu'>eq04_Bfc</span>(<span class='no'>W2</span>, <span class='no'>K.bc.110</span>)                <span class='co'># All 60 allocated to source</span></div><div class='output co'>#&gt; fg 
-#&gt; 60 </div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># Set parameters:</span></span>
+<span class='r-in'><span class='co'>## Create named population W2 vector using the eq01buildW0vect()</span></span>
+<span class='r-in'><span class='co'>## 100 females originating from good winter habitat</span></span>
+<span class='r-in'><span class='co'>## 10 females originating from poor winter habitat</span></span>
+<span class='r-in'><span class='va'>W2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='eq01buildW0vect.html'>eq01buildW0vect</a></span><span class='op'>(</span><span class='fl'>100</span>, <span class='fl'>10</span>, <span class='fl'>100</span>, <span class='fl'>10</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>W2</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  mg  mp  fg  fp </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 100  10 100  10 </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>#Breeding habitat carrying capacity</span></span>
+<span class='r-in'><span class='va'>K.bc.110</span> <span class='op'>&lt;-</span> <span class='fl'>110</span></span>
+<span class='r-in'><span class='va'>K.bc.100</span> <span class='op'>&lt;-</span> <span class='fl'>100</span></span>
+<span class='r-in'><span class='va'>K.bc.10</span>  <span class='op'>&lt;-</span> <span class='fl'>10</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># The maximum number of birds that can be allocated to source habitat</span></span>
+<span class='r-in'><span class='co'># is the carrying capacity.</span></span>
+<span class='r-in'><span class='co'># When K.bc is 110, all 110 females are allocated to source</span></span>
+<span class='r-in'><span class='co'>## No birds will end up in sink in subsequent steps</span></span>
+<span class='r-in'><span class='fu'>eq04_Bfc</span><span class='op'>(</span><span class='va'>W2</span>, <span class='va'>K.bc.110</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 110</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># If K.bc is 100, 100 birds will be allocated to source.</span></span>
+<span class='r-in'><span class='co'>## The 10 remaining will be shunted to sink in a subsequent step.</span></span>
+<span class='r-in'><span class='fu'>eq04_Bfc</span><span class='op'>(</span><span class='va'>W2</span>, <span class='va'>K.bc.100</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 100</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># If K.bc is 10, only 10 birds will be allocated to source.</span></span>
+<span class='r-in'><span class='co'>## The 100 remaining, which are a mix of birds from good and poor winter habitat</span></span>
+<span class='r-in'><span class='co'>## will be allocated to sink habitat in a subsequent step.</span></span>
+<span class='r-in'><span class='fu'>eq04_Bfc</span><span class='op'>(</span><span class='va'>W2</span>, <span class='va'>K.bc.10</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 10</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># If the number of birds is less than K.bc, then all will be allocated to source.</span></span>
+<span class='r-in'><span class='va'>W2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='eq01buildW0vect.html'>eq01buildW0vect</a></span><span class='op'>(</span><span class='fl'>50</span>, <span class='fl'>10</span>, <span class='fl'>50</span>, <span class='fl'>10</span><span class='op'>)</span> <span class='co'># 60 total birds</span></span>
+<span class='r-in'><span class='fu'>eq04_Bfc</span><span class='op'>(</span><span class='va'>W2</span>, <span class='va'>K.bc.110</span><span class='op'>)</span>                <span class='co'># All 60 allocated to source</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> fg </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 60 </span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -249,7 +259,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

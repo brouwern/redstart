@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -175,14 +175,14 @@
     <p>"average fecunidty for pairs in source and sink habitat" is a function of how the proportion of pairs in that habitat that are good-good, good-poor etc.  (Runge and Marra 2004, pg TOD())</p>
     </div>
 
-    <pre class="usage"><span class='fu'>eq18AbuildRvec</span>(<span class='kw'>R.base.rate</span> <span class='kw'>=</span> <span class='fl'>1.8</span>, <span class='kw'>R.hab.effect</span> <span class='kw'>=</span> <span class='fl'>0.5</span>, <span class='kw'>co</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
+    <pre class="usage"><span class='fu'>eq18AbuildRvec</span><span class='op'>(</span>R.base.rate <span class='op'>=</span> <span class='fl'>1.8</span>, R.hab.effect <span class='op'>=</span> <span class='fl'>0.5</span>, co <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>R.base.rate</th>
-      <td><p>Base rate of...</p></td>
+      <td><p>Base rate of TODO wbhat</p></td>
     </tr>
     <tr>
       <th>R.hab.effect</th>
@@ -196,12 +196,21 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>R.all All reproductive values (?)</p>
+    <p>R.all All reproductive values (TODO check)</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>By default these are fixed for the entire duration of the study.</p>
 <p>Calculations are found in Table 28.3.</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
+    <p>Runge, MC and PP Marra.  2004.  Modeling seasonal interactions in the population dynamics of migratory birds. In Greenberg, R and PP Marra, eds.  Birds of two worlds. Johns Hopkins University Press, Baltimore.</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='r-in'><span class='co'>#Show contents of the vector</span></span>
+<span class='r-in'><span class='fu'>eq18AbuildRvec</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 1.8 1.8 1.8 1.8 0.9 0.9 0.9 0.9</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -217,7 +226,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

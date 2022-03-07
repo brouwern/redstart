@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -175,7 +175,7 @@
     <p>Equation 15: Proportion in of pairsin sink habitat which are between poor males and good females (P.kpg)</p>
     </div>
 
-    <pre class="usage"><span class='fu'>eq15_Pkpg</span>(<span class='no'>W2</span>, <span class='no'>K.bc</span>, <span class='no'>K.bk</span>, <span class='no'>B.mk</span>, <span class='no'>B.fk</span>)</pre>
+    <pre class="usage"><span class='fu'>eq15_Pkpg</span><span class='op'>(</span><span class='va'>W2</span>, <span class='va'>K.bc</span>, <span class='va'>K.bk</span>, <span class='va'>B.mk</span>, <span class='va'>B.fk</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -207,28 +207,32 @@
     <p>P.kpg Proportion of pairs in sink (k) habitat where male originates from poor (p) and female originated from good (g) winter habitat</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Standard example</span>
-<span class='co'>## Set population vector and carrying capacities</span>
-<span class='no'>W2.</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>10</span>, <span class='fl'>10</span>,<span class='fl'>10</span>, <span class='fl'>10</span>)
-<span class='no'>W2.</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/setNames.html'>setNames</a></span>(<span class='no'>W2.</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"mg"</span>,<span class='st'>"fg"</span>,<span class='st'>"mp"</span>,<span class='st'>"fp"</span>))
-<span class='no'>K.bc.</span> <span class='kw'>&lt;-</span> <span class='fl'>10</span>
-<span class='no'>K.bk.</span> <span class='kw'>&lt;-</span> <span class='fl'>10</span>
-
-<span class='co'>## Assign birds from populatin vector to source or sink habitat using "Bxx" equation</span>
-<span class='no'>B.fc.</span>  <span class='kw'>&lt;-</span> <span class='fu'><a href='eq04_Bfc.html'>eq04_Bfc</a></span>(<span class='kw'>W2</span> <span class='kw'>=</span> <span class='no'>W2.</span>, <span class='no'>K.bc.</span>)
-<span class='no'>B.fk.</span>  <span class='kw'>&lt;-</span> <span class='fu'><a href='eq05_Bfk.html'>eq05_Bfk</a></span>(<span class='kw'>W2</span> <span class='kw'>=</span> <span class='no'>W2.</span>, <span class='kw'>K.bc</span> <span class='kw'>=</span> <span class='no'>K.bc.</span>, <span class='kw'>K.bk</span> <span class='kw'>=</span> <span class='no'>K.bk.</span>)
-<span class='no'>B.mc.</span>  <span class='kw'>&lt;-</span> <span class='fu'><a href='eq06_Bmc.html'>eq06_Bmc</a></span>(<span class='kw'>W2</span> <span class='kw'>=</span> <span class='no'>W2.</span>, <span class='kw'>K.bc</span> <span class='kw'>=</span> <span class='no'>K.bc.</span>)
-<span class='no'>B.mk.</span>  <span class='kw'>&lt;-</span> <span class='fu'><a href='eq07_Bmk.html'>eq07_Bmk</a></span>(<span class='kw'>W2</span> <span class='kw'>=</span> <span class='no'>W2.</span>, <span class='kw'>K.bc</span> <span class='kw'>=</span> <span class='no'>K.bc.</span>, <span class='kw'>B.fk</span> <span class='kw'>=</span> <span class='no'>B.fk.</span>)
-
-<span class='co'>## Set up pairings between poor and good using equation 15</span>
-<span class='fu'>eq15_Pkpg</span>(<span class='kw'>W2</span> <span class='kw'>=</span> <span class='no'>W2.</span>, <span class='kw'>K.bc</span> <span class='kw'>=</span> <span class='no'>K.bc.</span>, <span class='kw'>K.bk</span> <span class='kw'>=</span> <span class='no'>K.bk.</span>, <span class='kw'>B.mk</span> <span class='kw'>=</span> <span class='no'>B.mk.</span>, <span class='kw'>B.fk</span> <span class='kw'>=</span><span class='no'>B.fk.</span>)</div><div class='output co'>#&gt; [1] 0</div><div class='input'>
-<span class='co'># Use the test_P_df_maker() function to generate data</span>
-<span class='co'>## This isn't very efficient but gets the job done of making test data with less code.</span>
-<span class='co'>## Note that all classes have the same number of birds</span>
-<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='test_P_df_maker.html'>test_P_df_maker</a></span>(<span class='kw'>wmin</span><span class='kw'>=</span><span class='fl'>10</span>, <span class='kw'>wmax</span><span class='kw'>=</span><span class='fl'>10</span>, <span class='kw'>wstep</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>kmin</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>kmax</span><span class='kw'>=</span><span class='fl'>10</span>, <span class='kw'>kstep</span><span class='kw'>=</span><span class='fl'>1</span>)
-<span class='no'>W2.</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/setNames.html'>setNames</a></span>(<span class='no'>td</span>[<span class='fl'>1</span>:<span class='fl'>4</span>], <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"mg"</span>,<span class='st'>"fg"</span>,<span class='st'>"mp"</span>,<span class='st'>"fp"</span>))
-<span class='fu'>eq15_Pkpg</span>(<span class='kw'>W2</span> <span class='kw'>=</span> <span class='no'>W2.</span>, <span class='kw'>K.bc</span> <span class='kw'>=</span> <span class='no'>td</span>$<span class='no'>K.bc</span>, <span class='kw'>K.bk</span> <span class='kw'>=</span> <span class='no'>td</span>$<span class='no'>K.bk</span>, <span class='kw'>B.mk</span> <span class='kw'>=</span> <span class='no'>td</span>$<span class='no'>B.mk</span>, <span class='kw'>B.fk</span> <span class='kw'>=</span> <span class='no'>td</span>$<span class='no'>B.fk</span>)</div><div class='output co'>#&gt; [1] 0</div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># Standard example</span></span>
+<span class='r-in'><span class='co'>## Set population vector and carrying capacities</span></span>
+<span class='r-in'><span class='va'>W2.</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>10</span>, <span class='fl'>10</span>,<span class='fl'>10</span>, <span class='fl'>10</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>W2.</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/setNames.html'>setNames</a></span><span class='op'>(</span><span class='va'>W2.</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"mg"</span>,<span class='st'>"fg"</span>,<span class='st'>"mp"</span>,<span class='st'>"fp"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>K.bc.</span> <span class='op'>&lt;-</span> <span class='fl'>10</span></span>
+<span class='r-in'><span class='va'>K.bk.</span> <span class='op'>&lt;-</span> <span class='fl'>10</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Assign birds from populatin vector to source or sink habitat using "Bxx" equation</span></span>
+<span class='r-in'><span class='va'>B.fc.</span>  <span class='op'>&lt;-</span> <span class='fu'><a href='eq04_Bfc.html'>eq04_Bfc</a></span><span class='op'>(</span>W2 <span class='op'>=</span> <span class='va'>W2.</span>, <span class='va'>K.bc.</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>B.fk.</span>  <span class='op'>&lt;-</span> <span class='fu'><a href='eq05_Bfk.html'>eq05_Bfk</a></span><span class='op'>(</span>W2 <span class='op'>=</span> <span class='va'>W2.</span>, K.bc <span class='op'>=</span> <span class='va'>K.bc.</span>, K.bk <span class='op'>=</span> <span class='va'>K.bk.</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>B.mc.</span>  <span class='op'>&lt;-</span> <span class='fu'><a href='eq06_Bmc.html'>eq06_Bmc</a></span><span class='op'>(</span>W2 <span class='op'>=</span> <span class='va'>W2.</span>, K.bc <span class='op'>=</span> <span class='va'>K.bc.</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>B.mk.</span>  <span class='op'>&lt;-</span> <span class='fu'><a href='eq07_Bmk.html'>eq07_Bmk</a></span><span class='op'>(</span>W2 <span class='op'>=</span> <span class='va'>W2.</span>, K.bc <span class='op'>=</span> <span class='va'>K.bc.</span>, B.fk <span class='op'>=</span> <span class='va'>B.fk.</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Set up pairings between poor and good using equation 15</span></span>
+<span class='r-in'><span class='fu'>eq15_Pkpg</span><span class='op'>(</span>W2 <span class='op'>=</span> <span class='va'>W2.</span>, K.bc <span class='op'>=</span> <span class='va'>K.bc.</span>, K.bk <span class='op'>=</span> <span class='va'>K.bk.</span>, B.mk <span class='op'>=</span> <span class='va'>B.mk.</span>, B.fk <span class='op'>=</span><span class='va'>B.fk.</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 0</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Use the test_P_df_maker() function to generate data</span></span>
+<span class='r-in'><span class='co'>## This isn't very efficient but gets the job done of making test data with less code.</span></span>
+<span class='r-in'><span class='co'>## Note that all classes have the same number of birds</span></span>
+<span class='r-in'><span class='va'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='test_P_df_maker.html'>test_P_df_maker</a></span><span class='op'>(</span>wmin<span class='op'>=</span><span class='fl'>10</span>, wmax<span class='op'>=</span><span class='fl'>10</span>, wstep<span class='op'>=</span><span class='fl'>1</span>, kmin <span class='op'>=</span> <span class='fl'>10</span>, kmax<span class='op'>=</span><span class='fl'>10</span>, kstep<span class='op'>=</span><span class='fl'>1</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>W2.</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/setNames.html'>setNames</a></span><span class='op'>(</span><span class='va'>td</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span><span class='op'>]</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"mg"</span>,<span class='st'>"fg"</span>,<span class='st'>"mp"</span>,<span class='st'>"fp"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>eq15_Pkpg</span><span class='op'>(</span>W2 <span class='op'>=</span> <span class='va'>W2.</span>, K.bc <span class='op'>=</span> <span class='va'>td</span><span class='op'>$</span><span class='va'>K.bc</span>, K.bk <span class='op'>=</span> <span class='va'>td</span><span class='op'>$</span><span class='va'>K.bk</span>, B.mk <span class='op'>=</span> <span class='va'>td</span><span class='op'>$</span><span class='va'>B.mk</span>, B.fk <span class='op'>=</span> <span class='va'>td</span><span class='op'>$</span><span class='va'>B.fk</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 0</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -244,7 +248,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

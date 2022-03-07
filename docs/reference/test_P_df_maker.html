@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -175,14 +175,14 @@
     <p>This function generates sets of parameters against which to test the equations 10 to 16, which set up the pairiing frequencies during the breeding seas.  This function has two uses.  First, single sets of parameters can be generated for illustrating that logic of each equation, eg, a population vector (W,) set of carrying capacities (K) and the consequent territory allocations for plugging in to equations 10 to 16.  Second, this function can create an an array of values to plug in to the equations to test that there are no situations where the function generates erroneous output.  Such an array is already stored as test_dat_P</p>
     </div>
 
-    <pre class="usage"><span class='fu'>test_P_df_maker</span>(
-  <span class='kw'>wmin</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>wmax</span> <span class='kw'>=</span> <span class='fl'>100</span>,
-  <span class='kw'>wstep</span> <span class='kw'>=</span> <span class='fl'>30</span>,
-  <span class='kw'>kmin</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>kmax</span> <span class='kw'>=</span> <span class='fl'>125</span>,
-  <span class='kw'>kstep</span> <span class='kw'>=</span> <span class='fl'>30</span>
-)</pre>
+    <pre class="usage"><span class='fu'>test_P_df_maker</span><span class='op'>(</span>
+  wmin <span class='op'>=</span> <span class='fl'>1</span>,
+  wmax <span class='op'>=</span> <span class='fl'>100</span>,
+  wstep <span class='op'>=</span> <span class='fl'>30</span>,
+  kmin <span class='op'>=</span> <span class='fl'>1</span>,
+  kmax <span class='op'>=</span> <span class='fl'>125</span>,
+  kstep <span class='op'>=</span> <span class='fl'>30</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -218,80 +218,84 @@
     <p>Note that the equations sometimes don't work as expected when a K = 0, but this is a special case that isn't likely to be applicable.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='fu'>test_P_df_maker</span>(<span class='kw'>wmin</span><span class='kw'>=</span><span class='fl'>1</span>,   <span class='kw'>wmax</span><span class='kw'>=</span><span class='fl'>10</span>, <span class='kw'>wstep</span><span class='kw'>=</span><span class='fl'>5</span>,<span class='kw'>kmin</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>kmax</span><span class='kw'>=</span><span class='fl'>10</span>, <span class='kw'>kstep</span><span class='kw'>=</span><span class='fl'>5</span>)</div><div class='output co'>#&gt;    mg mp fg fp K.bc K.bk B.fc B.fk B.mc B.mk B.md  P
-#&gt; 1   1  1  1  1    1    1    1    1    1    1    0 NA
-#&gt; 2   6  1  1  1    1    1    1    1    1    1    5 NA
-#&gt; 3   1  6  1  1    1    1    1    1    1    1    5 NA
-#&gt; 4   6  6  1  1    1    1    1    1    1    1   10 NA
-#&gt; 5   1  1  6  1    1    1    1    1    1    1    0 NA
-#&gt; 6   6  1  6  1    1    1    1    1    1    1    5 NA
-#&gt; 7   1  6  6  1    1    1    1    1    1    1    5 NA
-#&gt; 8   6  6  6  1    1    1    1    1    1    1   10 NA
-#&gt; 9   1  1  1  6    1    1    1    1    1    1    0 NA
-#&gt; 10  6  1  1  6    1    1    1    1    1    1    5 NA
-#&gt; 11  1  6  1  6    1    1    1    1    1    1    5 NA
-#&gt; 12  6  6  1  6    1    1    1    1    1    1   10 NA
-#&gt; 13  1  1  6  6    1    1    1    1    1    1    0 NA
-#&gt; 14  6  1  6  6    1    1    1    1    1    1    5 NA
-#&gt; 15  1  6  6  6    1    1    1    1    1    1    5 NA
-#&gt; 16  6  6  6  6    1    1    1    1    1    1   10 NA
-#&gt; 17  1  1  1  1    6    1    2    0    2    0    0 NA
-#&gt; 18  6  1  1  1    6    1    2    0    6    0    1 NA
-#&gt; 19  1  6  1  1    6    1    2    0    6    0    1 NA
-#&gt; 20  6  6  1  1    6    1    2    0    6    0    6 NA
-#&gt; 21  1  1  6  1    6    1    6    1    2    0    0 NA
-#&gt; 22  6  1  6  1    6    1    6    1    6    1    0 NA
-#&gt; 23  1  6  6  1    6    1    6    1    6    1    0 NA
-#&gt; 24  6  6  6  1    6    1    6    1    6    1    5 NA
-#&gt; 25  1  1  1  6    6    1    6    1    2    0    0 NA
-#&gt; 26  6  1  1  6    6    1    6    1    6    1    0 NA
-#&gt; 27  1  6  1  6    6    1    6    1    6    1    0 NA
-#&gt; 28  6  6  1  6    6    1    6    1    6    1    5 NA
-#&gt; 29  1  1  6  6    6    1    6    1    2    0    0 NA
-#&gt; 30  6  1  6  6    6    1    6    1    6    1    0 NA
-#&gt; 31  1  6  6  6    6    1    6    1    6    1    0 NA
-#&gt; 32  6  6  6  6    6    1    6    1    6    1    5 NA
-#&gt; 33  1  1  1  1    1    6    1    1    1    1    0 NA
-#&gt; 34  6  1  1  1    1    6    1    1    1    1    5 NA
-#&gt; 35  1  6  1  1    1    6    1    1    1    1    5 NA
-#&gt; 36  6  6  1  1    1    6    1    1    1    1   10 NA
-#&gt; 37  1  1  6  1    1    6    1    6    1    1    0 NA
-#&gt; 38  6  1  6  1    1    6    1    6    1    6    0 NA
-#&gt; 39  1  6  6  1    1    6    1    6    1    6    0 NA
-#&gt; 40  6  6  6  1    1    6    1    6    1    6    5 NA
-#&gt; 41  1  1  1  6    1    6    1    6    1    1    0 NA
-#&gt; 42  6  1  1  6    1    6    1    6    1    6    0 NA
-#&gt; 43  1  6  1  6    1    6    1    6    1    6    0 NA
-#&gt; 44  6  6  1  6    1    6    1    6    1    6    5 NA
-#&gt; 45  1  1  6  6    1    6    1    6    1    1    0 NA
-#&gt; 46  6  1  6  6    1    6    1    6    1    6    0 NA
-#&gt; 47  1  6  6  6    1    6    1    6    1    6    0 NA
-#&gt; 48  6  6  6  6    1    6    1    6    1    6    5 NA
-#&gt; 49  1  1  1  1    6    6    2    0    2    0    0 NA
-#&gt; 50  6  1  1  1    6    6    2    0    6    0    1 NA
-#&gt; 51  1  6  1  1    6    6    2    0    6    0    1 NA
-#&gt; 52  6  6  1  1    6    6    2    0    6    0    6 NA
-#&gt; 53  1  1  6  1    6    6    6    1    2    0    0 NA
-#&gt; 54  6  1  6  1    6    6    6    1    6    1    0 NA
-#&gt; 55  1  6  6  1    6    6    6    1    6    1    0 NA
-#&gt; 56  6  6  6  1    6    6    6    1    6    1    5 NA
-#&gt; 57  1  1  1  6    6    6    6    1    2    0    0 NA
-#&gt; 58  6  1  1  6    6    6    6    1    6    1    0 NA
-#&gt; 59  1  6  1  6    6    6    6    1    6    1    0 NA
-#&gt; 60  6  6  1  6    6    6    6    1    6    1    5 NA
-#&gt; 61  1  1  6  6    6    6    6    6    2    0    0 NA
-#&gt; 62  6  1  6  6    6    6    6    6    6    1    0 NA
-#&gt; 63  1  6  6  6    6    6    6    6    6    1    0 NA
-#&gt; 64  6  6  6  6    6    6    6    6    6    6    0 NA</div><div class='input'>
-
-<span class='co'># Make a single vector of values</span>
-<span class='co'>## This is useful for generating data for testing simple conditions;</span>
-<span class='co'>## this is used in the examples of other function documentation</span>
-<span class='fu'>test_P_df_maker</span>(<span class='kw'>wmin</span><span class='kw'>=</span><span class='fl'>10</span>,   <span class='kw'>wmax</span><span class='kw'>=</span><span class='fl'>10</span>, <span class='kw'>wstep</span><span class='kw'>=</span><span class='fl'>1</span>,<span class='kw'>kmin</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>kmax</span><span class='kw'>=</span><span class='fl'>10</span>, <span class='kw'>kstep</span><span class='kw'>=</span><span class='fl'>1</span>)</div><div class='output co'>#&gt;   mg mp fg fp K.bc K.bk B.fc B.fk B.mc B.mk B.md  P
-#&gt; 1 10 10 10 10   10   10   10   10   10   10    0 NA</div><div class='input'>
-
-</div></pre>
+    <pre class="examples"><span class='r-in'></span>
+<span class='r-in'><span class='fu'>test_P_df_maker</span><span class='op'>(</span>wmin<span class='op'>=</span><span class='fl'>1</span>,   wmax<span class='op'>=</span><span class='fl'>10</span>, wstep<span class='op'>=</span><span class='fl'>5</span>,kmin <span class='op'>=</span> <span class='fl'>1</span>, kmax<span class='op'>=</span><span class='fl'>10</span>, kstep<span class='op'>=</span><span class='fl'>5</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    mg mp fg fp K.bc K.bk B.fc B.fk B.mc B.mk B.md  P</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1   1  1  1  1    1    1    1    1    1    1    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2   6  1  1  1    1    1    1    1    1    1    5 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3   1  6  1  1    1    1    1    1    1    1    5 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4   6  6  1  1    1    1    1    1    1    1   10 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5   1  1  6  1    1    1    1    1    1    1    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6   6  1  6  1    1    1    1    1    1    1    5 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 7   1  6  6  1    1    1    1    1    1    1    5 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 8   6  6  6  1    1    1    1    1    1    1   10 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 9   1  1  1  6    1    1    1    1    1    1    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 10  6  1  1  6    1    1    1    1    1    1    5 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 11  1  6  1  6    1    1    1    1    1    1    5 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 12  6  6  1  6    1    1    1    1    1    1   10 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 13  1  1  6  6    1    1    1    1    1    1    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 14  6  1  6  6    1    1    1    1    1    1    5 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 15  1  6  6  6    1    1    1    1    1    1    5 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 16  6  6  6  6    1    1    1    1    1    1   10 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 17  1  1  1  1    6    1    2    0    2    0    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 18  6  1  1  1    6    1    2    0    6    0    1 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 19  1  6  1  1    6    1    2    0    6    0    1 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 20  6  6  1  1    6    1    2    0    6    0    6 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 21  1  1  6  1    6    1    6    1    2    0    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 22  6  1  6  1    6    1    6    1    6    1    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 23  1  6  6  1    6    1    6    1    6    1    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 24  6  6  6  1    6    1    6    1    6    1    5 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 25  1  1  1  6    6    1    6    1    2    0    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 26  6  1  1  6    6    1    6    1    6    1    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 27  1  6  1  6    6    1    6    1    6    1    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 28  6  6  1  6    6    1    6    1    6    1    5 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 29  1  1  6  6    6    1    6    1    2    0    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 30  6  1  6  6    6    1    6    1    6    1    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 31  1  6  6  6    6    1    6    1    6    1    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 32  6  6  6  6    6    1    6    1    6    1    5 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 33  1  1  1  1    1    6    1    1    1    1    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 34  6  1  1  1    1    6    1    1    1    1    5 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 35  1  6  1  1    1    6    1    1    1    1    5 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 36  6  6  1  1    1    6    1    1    1    1   10 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 37  1  1  6  1    1    6    1    6    1    1    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 38  6  1  6  1    1    6    1    6    1    6    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 39  1  6  6  1    1    6    1    6    1    6    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 40  6  6  6  1    1    6    1    6    1    6    5 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 41  1  1  1  6    1    6    1    6    1    1    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 42  6  1  1  6    1    6    1    6    1    6    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 43  1  6  1  6    1    6    1    6    1    6    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 44  6  6  1  6    1    6    1    6    1    6    5 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 45  1  1  6  6    1    6    1    6    1    1    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 46  6  1  6  6    1    6    1    6    1    6    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 47  1  6  6  6    1    6    1    6    1    6    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 48  6  6  6  6    1    6    1    6    1    6    5 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 49  1  1  1  1    6    6    2    0    2    0    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 50  6  1  1  1    6    6    2    0    6    0    1 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 51  1  6  1  1    6    6    2    0    6    0    1 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 52  6  6  1  1    6    6    2    0    6    0    6 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 53  1  1  6  1    6    6    6    1    2    0    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 54  6  1  6  1    6    6    6    1    6    1    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 55  1  6  6  1    6    6    6    1    6    1    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 56  6  6  6  1    6    6    6    1    6    1    5 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 57  1  1  1  6    6    6    6    1    2    0    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 58  6  1  1  6    6    6    6    1    6    1    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 59  1  6  1  6    6    6    6    1    6    1    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 60  6  6  1  6    6    6    6    1    6    1    5 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 61  1  1  6  6    6    6    6    6    2    0    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 62  6  1  6  6    6    6    6    6    6    1    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 63  1  6  6  6    6    6    6    6    6    1    0 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 64  6  6  6  6    6    6    6    6    6    6    0 NA</span>
+<span class='r-in'></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Make a single vector of values</span></span>
+<span class='r-in'><span class='co'>## This is useful for generating data for testing simple conditions;</span></span>
+<span class='r-in'><span class='co'>## this is used in the examples of other function documentation</span></span>
+<span class='r-in'><span class='fu'>test_P_df_maker</span><span class='op'>(</span>wmin<span class='op'>=</span><span class='fl'>10</span>,   wmax<span class='op'>=</span><span class='fl'>10</span>, wstep<span class='op'>=</span><span class='fl'>1</span>,kmin <span class='op'>=</span> <span class='fl'>10</span>, kmax<span class='op'>=</span><span class='fl'>10</span>, kstep<span class='op'>=</span><span class='fl'>1</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   mg mp fg fp K.bc K.bk B.fc B.fk B.mc B.mk B.md  P</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 10 10 10 10   10   10   10   10   10   10    0 NA</span>
+<span class='r-in'></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -307,7 +311,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

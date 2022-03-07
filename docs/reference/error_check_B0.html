@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -175,7 +175,7 @@
     <p>QA/QC: Check for errors in B0 (vector of abundances after breeding habiatat acquisition)</p>
     </div>
 
-    <pre class="usage"><span class='fu'>error_check_B0</span>(<span class='no'>B0</span>, <span class='no'>W2</span>, <span class='no'>check.errors.in</span>, <span class='no'>i</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>error_check_B0</span><span class='op'>(</span><span class='va'>B0</span>, <span class='va'>W2</span>, <span class='va'>check.errors.in</span>, <span class='va'>i</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -204,13 +204,17 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>B0</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>10</span>,<span class='fl'>20</span>,<span class='fl'>30</span>,<span class='fl'>40</span>,<span class='fl'>50</span>)
-<span class='no'>W2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>10</span>,<span class='fl'>20</span>,<span class='fl'>30</span>,<span class='fl'>40</span>)
-<span class='fu'>error_check_B0</span>(<span class='kw'>B0</span> <span class='kw'>=</span> <span class='no'>B0</span>,
-<span class='kw'>W2</span> <span class='kw'>=</span> <span class='no'>W2</span>,
-<span class='kw'>check.errors.in</span> <span class='kw'>=</span> <span class='st'>"B0"</span>,
-<span class='kw'>i</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='output co'>#&gt; <span class='message'>Element of B0 does not equal an element of W2 on iteration 1</span></div><div class='output co'>#&gt; <span class='message'>Element of B0 does not equal an element of W2 on iteration 1-males</span></div><div class='output co'>#&gt; <span class='message'>Element of B0 does not equal an element of W2 on iteration 1-females</span></div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>B0</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>10</span>,<span class='fl'>20</span>,<span class='fl'>30</span>,<span class='fl'>40</span>,<span class='fl'>50</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>W2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>10</span>,<span class='fl'>20</span>,<span class='fl'>30</span>,<span class='fl'>40</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>error_check_B0</span><span class='op'>(</span>B0 <span class='op'>=</span> <span class='va'>B0</span>,</span>
+<span class='r-in'>W2 <span class='op'>=</span> <span class='va'>W2</span>,</span>
+<span class='r-in'>check.errors.in <span class='op'>=</span> <span class='st'>"B0"</span>,</span>
+<span class='r-in'>i <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Element of B0 does not equal an element of W2 on iteration 1</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Element of B0 does not equal an element of W2 on iteration 1-males</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Element of B0 does not equal an element of W2 on iteration 1-females</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -226,7 +230,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

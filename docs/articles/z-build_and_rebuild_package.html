@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -120,13 +120,13 @@
 
       
 
-      </header><div class="row">
+      </header><script src="z-build_and_rebuild_package_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>z) Building and rebuilding vignettes</h1>
                         <h4 class="author">Nathan Brouwer</h4>
             
-            <h4 class="date">2020-07-02</h4>
+            <h4 class="date">2022-03-07</h4>
       
       
       <div class="hidden name"><code>z-build_and_rebuild_package.Rmd</code></div>
@@ -148,34 +148,40 @@
 <div id="devtools-functions" class="section level2">
 <h2 class="hasAnchor">
 <a href="#devtools-functions" class="anchor"></a>devtools functions</h2>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">devtools</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/">devtools</a></span><span class="op">)</span></code></pre></div>
 <div id="clean-vignettes" class="section level3">
 <h3 class="hasAnchor">
 <a href="#clean-vignettes" class="anchor"></a>Clean vignettes</h3>
 <p>“This uses a fairly rudimentary algorithm where any files in ‘inst/doc’ with a name that exists in ‘vignettes’ are removed.”</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/clean_vignettes.html">clean_vignettes</a></span>()</pre></body></html></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/clean_vignettes.html">clean_vignettes</a></span><span class="op">(</span><span class="op">)</span> </code></pre></div>
 </div>
 <div id="build-vignettes" class="section level3">
 <h3 class="hasAnchor">
 <a href="#build-vignettes" class="anchor"></a>Build vignettes</h3>
 <p>“Builds package vignettes using the same algorithm that R CMD build does”</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/build_vignettes.html">build_vignettes</a></span>()</pre></body></html></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/build_vignettes.html">build_vignettes</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="build-documentation" class="section level3">
 <h3 class="hasAnchor">
 <a href="#build-documentation" class="anchor"></a>Build documentation</h3>
 <p>document()</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/document.html">document</a></span>(<span class="kw">roclets</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'rd'</span>, <span class="st">'collate'</span>, <span class="st">'namespace'</span>))</pre></body></html></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/document.html">document</a></span><span class="op">(</span>roclets<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'rd'</span>, <span class="st">'collate'</span>, <span class="st">'namespace'</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="load-all" class="section level3">
 <h3 class="hasAnchor">
 <a href="#load-all" class="anchor"></a>Load all</h3>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/load_all.html">load_all</a></span>(<span class="st">"."</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/load_all.html">load_all</a></span><span class="op">(</span><span class="st">"."</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="check" class="section level3">
 <h3 class="hasAnchor">
 <a href="#check" class="anchor"></a>Check</h3>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/check.html">check</a></span>()</pre></body></html></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/check.html">check</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>check_failures</p>
 </div>
 </div>
@@ -186,53 +192,65 @@
 <h3 class="hasAnchor">
 <a href="#build-package-down-website" class="anchor"></a>Build package down website</h3>
 <p>Single function to build whole site: “This will generate a docs/ directory. The home page will be generated from your package’s README.md, and a function reference will be generated from the documentation in the man/ directory.”</p>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="kw pkg">pkgdown</span><span class="kw ns">::</span><span class="fu"><a href="https://pkgdown.r-lib.org/reference/build_site.html">build_site</a></span>()</pre></body></html></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">pkgdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgdown.r-lib.org/reference/build_site.html">build_site</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div id="build-piece-by-piece" class="section level4">
 <h4 class="hasAnchor">
 <a href="#build-piece-by-piece" class="anchor"></a>Build piece by piece</h4>
 <p>pkgdown::clean_site (pkg = “.”)</p>
 <p>– Initialising site</p>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="kw pkg">pkgdown</span><span class="kw ns">::</span><span class="fu"><a href="https://pkgdown.r-lib.org/reference/init_site.html">init_site</a></span>(<span class="kw">pkg</span> <span class="kw">=</span> <span class="st">"."</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">pkgdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgdown.r-lib.org/reference/init_site.html">init_site</a></span><span class="op">(</span>pkg <span class="op">=</span> <span class="st">"."</span><span class="op">)</span></code></pre></div>
 <p>Building home</p>
-<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="kw pkg">pkgdown</span><span class="kw ns">::</span><span class="fu"><a href="https://pkgdown.r-lib.org/reference/build_home.html">build_home</a></span>(<span class="kw">pkg</span> <span class="kw">=</span> <span class="st">"."</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">pkgdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgdown.r-lib.org/reference/build_home.html">build_home</a></span><span class="op">(</span>pkg <span class="op">=</span> <span class="st">"."</span><span class="op">)</span></code></pre></div>
 <p>Building function reference</p>
-<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="kw pkg">pkgdown</span><span class="kw ns">::</span><span class="fu"><a href="https://pkgdown.r-lib.org/reference/build_reference.html">build_reference</a></span>(<span class="kw">pkg</span> <span class="kw">=</span> <span class="st">"."</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">pkgdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgdown.r-lib.org/reference/build_reference.html">build_reference</a></span><span class="op">(</span>pkg <span class="op">=</span> <span class="st">"."</span><span class="op">)</span></code></pre></div>
 <p>Build vignettes</p>
-<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="kw pkg">pkgdown</span><span class="kw ns">::</span><span class="fu"><a href="https://pkgdown.r-lib.org/reference/build_articles.html">build_articles</a></span>(<span class="kw">pkg</span> <span class="kw">=</span> <span class="st">"."</span>)</pre></body></html></div>
-<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="kw pkg">pkgdown</span><span class="kw ns">::</span><span class="fu"><a href="https://pkgdown.r-lib.org/reference/build_news.html">build_news</a></span>()</pre></body></html></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">pkgdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgdown.r-lib.org/reference/build_articles.html">build_articles</a></span><span class="op">(</span>pkg <span class="op">=</span> <span class="st">"."</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">pkgdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgdown.r-lib.org/reference/build_news.html">build_news</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
 </div>
 <div id="explore-dependencies" class="section level2">
 <h2 class="hasAnchor">
 <a href="#explore-dependencies" class="anchor"></a>Explore dependencies</h2>
-<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="no">report1</span> <span class="kw">&lt;-</span> <span class="fu">CreatePackageReport</span>(<span class="kw">pkg_name</span> <span class="kw">=</span> <span class="st">"redstart"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">report1</span> <span class="op">&lt;-</span> <span class="fu">CreatePackageReport</span><span class="op">(</span>pkg_name <span class="op">=</span> <span class="st">"redstart"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="build-pdf-manual" class="section level2">
 <h2 class="hasAnchor">
 <a href="#build-pdf-manual" class="anchor"></a>Build pdf manual</h2>
 <p><a href="https://stackoverflow.com/questions/16986422/r-create-reference-manual-with-r-cmd-check" class="uri">https://stackoverflow.com/questions/16986422/r-create-reference-manual-with-r-cmd-check</a> R CMD Rd2pdf mypackage</p>
 <p><a href="https://stackoverflow.com/questions/30607496/making-an-r-package-pdf-manual-using-devtools" class="uri">https://stackoverflow.com/questions/30607496/making-an-r-package-pdf-manual-using-devtools</a></p>
-<div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="no">pack</span> <span class="kw">&lt;-</span> <span class="st">"redstart"</span>
-<span class="no">path</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/find.package.html">find.package</a></span>(<span class="no">pack</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/system.html">system</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/shQuote.html">shQuote</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/Rhome.html">R.home</a></span>(<span class="st">"bin"</span>), <span class="st">"R"</span>)),
-    <span class="st">"CMD"</span>, <span class="st">"Rd2pdf"</span>, <span class="fu"><a href="https://rdrr.io/r/base/shQuote.html">shQuote</a></span>(<span class="no">path</span>)))</pre></body></html></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pack</span> <span class="op">&lt;-</span> <span class="st">"redstart"</span>
+<span class="va">path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/find.package.html">find.package</a></span><span class="op">(</span><span class="va">pack</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/system.html">system</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/shQuote.html">shQuote</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Rhome.html">R.home</a></span><span class="op">(</span><span class="st">"bin"</span><span class="op">)</span>, <span class="st">"R"</span><span class="op">)</span><span class="op">)</span>,
+    <span class="st">"CMD"</span>, <span class="st">"Rd2pdf"</span>, <span class="fu"><a href="https://rdrr.io/r/base/shQuote.html">shQuote</a></span><span class="op">(</span><span class="va">path</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>remove manual</p>
-<div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/files.html">file.remove</a></span>(<span class="st">"redstart.pdf"</span>)</pre></body></html></div>
-<div class="sourceCode" id="cb16"><html><body><pre class="r"><span class="fu"><a href="https://devtools.r-lib.org//reference/check.html">check</a></span>(<span class="kw">cleanup</span> <span class="kw">=</span> <span class="fl">FALSE</span>,<span class="kw">manual</span> <span class="kw">=</span> <span class="fl">TRUE</span>,<span class="kw">path</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span>())</pre></body></html></div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/files.html">file.remove</a></span><span class="op">(</span><span class="st">"redstart.pdf"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://devtools.r-lib.org/reference/check.html">check</a></span><span class="op">(</span>cleanup <span class="op">=</span> <span class="cn">FALSE</span>,manual <span class="op">=</span> <span class="cn">TRUE</span>,path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="keep-logs-files" class="section level2">
 <h2 class="hasAnchor">
 <a href="#keep-logs-files" class="anchor"></a>Keep logs files (?)</h2>
-<div class="sourceCode" id="cb17"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="kw">keep.source.pkgs</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
-<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/check.html">check</a></span>()</pre></body></html></div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>keep.source.pkgs <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/check.html">check</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="rcmd-exe" class="section level2">
 <h2 class="hasAnchor">
 <a href="#rcmd-exe" class="anchor"></a>Rcmd.exe</h2>
 <p>“Clean and rebuild” ==&gt; Rcmd.exe INSTALL –preclean –no-multiarch –with-keep.source mammalsmilk</p>
 <p>“Install restart” ==&gt; Rcmd.exe INSTALL –no-multiarch –with-keep.source mammalsmilk</p>
-<div class="sourceCode" id="cb18"><html><body><pre class="r"><span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/check.html">check</a></span>(<span class="kw">env_vars</span> <span class="kw">=</span> )</pre></body></html></div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/check.html">check</a></span><span class="op">(</span>env_vars <span class="op">=</span> <span class="op">)</span></code></pre></div>
 <p>devtools::check()</p>
 <p>See ‘C:/Users/lisanjie/Documents/1_R/git/git-aviary/redstart.Rcheck/00install.out’ for details. Information on the location(s) of code generating the ‘Note’s can be obtained by re-running with environment variable R_KEEP_PKG_SOURCE set to ’yes’.</p>
 </div>
@@ -253,7 +271,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

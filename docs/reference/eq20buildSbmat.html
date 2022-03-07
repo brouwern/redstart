@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -175,13 +175,13 @@
     <p>"Adult birds experience both sex- and habitat-specific mortality over the breeding season" (Runge and Marra 2004, page TODO())</p>
     </div>
 
-    <pre class="usage"><span class='fu'>eq20buildSbmat</span>(
-  <span class='kw'>S.b.mc</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
-  <span class='kw'>S.b.mk</span> <span class='kw'>=</span> <span class='fl'>0.85</span>,
-  <span class='kw'>S.b.md</span> <span class='kw'>=</span> <span class='fl'>0.8</span>,
-  <span class='kw'>S.b.fc</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
-  <span class='kw'>S.b.fk</span> <span class='kw'>=</span> <span class='fl'>0.85</span>
-)</pre>
+    <pre class="usage"><span class='fu'>eq20buildSbmat</span><span class='op'>(</span>
+  S.b.mc <span class='op'>=</span> <span class='fl'>0.95</span>,
+  S.b.mk <span class='op'>=</span> <span class='fl'>0.85</span>,
+  S.b.md <span class='op'>=</span> <span class='fl'>0.8</span>,
+  S.b.fc <span class='op'>=</span> <span class='fl'>0.95</span>,
+  S.b.fk <span class='op'>=</span> <span class='fl'>0.85</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -213,13 +213,15 @@
     <p>S.b Diagonal matrix of breeding-season survival probabilities</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>eq20buildSbmat</span>()</div><div class='output co'>#&gt;      [,1] [,2] [,3] [,4] [,5]
-#&gt; [1,] 0.95 0.00  0.0 0.00 0.00
-#&gt; [2,] 0.00 0.85  0.0 0.00 0.00
-#&gt; [3,] 0.00 0.00  0.8 0.00 0.00
-#&gt; [4,] 0.00 0.00  0.0 0.95 0.00
-#&gt; [5,] 0.00 0.00  0.0 0.00 0.85</div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='fu'>eq20buildSbmat</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      [,1] [,2] [,3] [,4] [,5]</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1,] 0.95 0.00  0.0 0.00 0.00</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [2,] 0.00 0.85  0.0 0.00 0.00</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [3,] 0.00 0.00  0.8 0.00 0.00</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [4,] 0.00 0.00  0.0 0.95 0.00</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [5,] 0.00 0.00  0.0 0.00 0.85</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -235,7 +237,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

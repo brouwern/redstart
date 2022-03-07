@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -120,13 +120,13 @@
 
       
 
-      </header><div class="row">
+      </header><script src="h-make_figure_28_5_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>g) Making Runge and Mara Figure 28.5</h1>
                         <h4 class="author">Nathan L. Brouwer</h4>
             
-            <h4 class="date">2020-07-02</h4>
+            <h4 class="date">2022-03-07</h4>
       
       
       <div class="hidden name"><code>h-make_figure_28_5.Rmd</code></div>
@@ -149,41 +149,46 @@
 <h2 class="hasAnchor">
 <a href="#making-figure-28-5-the-easy-way" class="anchor"></a>Making Figure 28.5 the easy way</h2>
 <p>Load the package</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">redstart</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">redstart</span><span class="op">)</span></code></pre></div>
 <p>There param_ranges() function has a “figure = …” arguement and also a “scenario = …”.</p>
 <p>The intial range of the parameters are made by setting “figure = 28.5” and “scenario” to “winter”, “summer”, or “int”. This sets the fixed parameters for each value and the min of gamma to 1 and the max of gamma to 5.</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">F28.5.range.winter</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/param_ranges.html">param_ranges</a></span>(<span class="kw">figure</span> <span class="kw">=</span> <span class="fl">28.5</span>, <span class="kw">scenario</span> <span class="kw">=</span> <span class="st">"winter"</span>)
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">F28.5.range.winter</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/param_ranges.html">param_ranges</a></span><span class="op">(</span>figure <span class="op">=</span> <span class="fl">28.5</span>, scenario <span class="op">=</span> <span class="st">"winter"</span><span class="op">)</span>
 <span class="co">#&gt; Setting breeding 'source' carrying capacity K.bc to 800</span>
 <span class="co">#&gt; Setting winter   'good'   carrying capacity K.wg to 484</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Setting male winter dominance parameter to vary from 1 to 5</span>
-<span class="no">F28.5.range.summer</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/param_ranges.html">param_ranges</a></span>(<span class="kw">figure</span> <span class="kw">=</span> <span class="fl">28.5</span>, <span class="kw">scenario</span> <span class="kw">=</span> <span class="st">"summer"</span>)
+<span class="va">F28.5.range.summer</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/param_ranges.html">param_ranges</a></span><span class="op">(</span>figure <span class="op">=</span> <span class="fl">28.5</span>, scenario <span class="op">=</span> <span class="st">"summer"</span><span class="op">)</span>
 <span class="co">#&gt; Setting breeding 'source' carrying capacity K.bc to 205</span>
 <span class="co">#&gt; Setting winter   'good'   carrying capacity K.wg to 900</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Setting male winter dominance parameter to vary from 1 to 5</span>
-<span class="no">F28.5.range.inter</span>  <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/param_ranges.html">param_ranges</a></span>(<span class="kw">figure</span> <span class="kw">=</span> <span class="fl">28.5</span>, <span class="kw">scenario</span> <span class="kw">=</span> <span class="st">"int"</span>)
+<span class="va">F28.5.range.inter</span>  <span class="op">&lt;-</span> <span class="fu"><a href="../reference/param_ranges.html">param_ranges</a></span><span class="op">(</span>figure <span class="op">=</span> <span class="fl">28.5</span>, scenario <span class="op">=</span> <span class="st">"int"</span><span class="op">)</span>
 <span class="co">#&gt; Setting breeding 'source' carrying capacity K.bc to 224</span>
 <span class="co">#&gt; Setting winter   'good'   carrying capacity K.wg to 580</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; Setting male winter dominance parameter to vary from 1 to 5</span></pre></body></html></div>
+<span class="co">#&gt; Setting male winter dominance parameter to vary from 1 to 5</span></code></pre></div>
 <p>This code makes a dataframe which summaries these parameters.</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="kw">winter</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">F28.5.range.winter</span>),
-           <span class="kw">int</span>    <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">F28.5.range.inter</span>),
-           <span class="kw">summer</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">F28.5.range.summer</span>))
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>winter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">F28.5.range.winter</span><span class="op">)</span>,
+           int    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">F28.5.range.inter</span><span class="op">)</span>,
+           summer <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">F28.5.range.summer</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt;        winter.min winter.max int.min int.max summer.min summer.max</span>
 <span class="co">#&gt; gamma         1.0        5.0     1.0     5.0        1.0        5.0</span>
 <span class="co">#&gt; co.           1.0        1.0     1.0     1.0        1.0        1.0</span>
 <span class="co">#&gt; K.bc        800.0      800.0   224.0   224.0      205.0      205.0</span>
 <span class="co">#&gt; K.bk      10000.0    10000.0 10000.0 10000.0    10000.0    10000.0</span>
 <span class="co">#&gt; K.wg        485.0      485.0   580.0   580.0      900.0      900.0</span>
-<span class="co">#&gt; S.w.mg        0.8        0.8     0.8     0.8        0.8        0.8</span></pre></body></html></div>
+<span class="co">#&gt; S.w.mg        0.8        0.8     0.8     0.8        0.8        0.8</span></code></pre></div>
 <p>param_seqs() generates values between the minimum and the maxium.</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">F28.5.win.seq</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/param_seqs.html">param_seqs</a></span>(<span class="no">F28.5.range.winter</span>)
-<span class="no">F28.5.int.seq</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/param_seqs.html">param_seqs</a></span>(<span class="no">F28.5.range.inter</span>)
-<span class="no">F28.5.sum.seq</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/param_seqs.html">param_seqs</a></span>(<span class="no">F28.5.range.summer</span>,<span class="kw">len.out</span><span class="kw">=</span> <span class="fl">20</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">F28.5.win.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/param_seqs.html">param_seqs</a></span><span class="op">(</span><span class="va">F28.5.range.winter</span><span class="op">)</span>
+<span class="va">F28.5.int.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/param_seqs.html">param_seqs</a></span><span class="op">(</span><span class="va">F28.5.range.inter</span><span class="op">)</span>
+<span class="va">F28.5.sum.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/param_seqs.html">param_seqs</a></span><span class="op">(</span><span class="va">F28.5.range.summer</span>,len.out<span class="op">=</span> <span class="fl">20</span><span class="op">)</span></code></pre></div>
 <p>For Figure 28.5 only the breeding ground carrying capacity is varied.</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">F28.5.win.seq</span>,<span class="fl">3</span>)
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">F28.5.win.seq</span>,<span class="fl">3</span><span class="op">)</span>
 <span class="co">#&gt; $gamma</span>
 <span class="co">#&gt;  [1] 1.000000 1.444444 1.888889 2.333333 2.777778 3.222222 3.666667 4.111111</span>
 <span class="co">#&gt;  [9] 4.555556 5.000000</span>
@@ -192,19 +197,21 @@
 <span class="co">#&gt; [1] 1</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $K.bc</span>
-<span class="co">#&gt; [1] 800</span></pre></body></html></div>
+<span class="co">#&gt; [1] 800</span></code></pre></div>
 <p>All combinations of parameters are created using param_grid()</p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">F28.5.win.grid</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/param_grid.html">param_grid</a></span>(<span class="kw">param.seqs</span> <span class="kw">=</span> <span class="no">F28.5.win.seq</span>)
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">F28.5.win.grid</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/param_grid.html">param_grid</a></span><span class="op">(</span>param.seqs <span class="op">=</span> <span class="va">F28.5.win.seq</span><span class="op">)</span>
 <span class="co">#&gt; The dimension of the fully expanded dataframe is: </span>
 <span class="co">#&gt; 10 by 30</span>
-<span class="no">F28.5.int.grid</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/param_grid.html">param_grid</a></span>(<span class="kw">param.seqs</span> <span class="kw">=</span> <span class="no">F28.5.int.seq</span>)
+<span class="va">F28.5.int.grid</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/param_grid.html">param_grid</a></span><span class="op">(</span>param.seqs <span class="op">=</span> <span class="va">F28.5.int.seq</span><span class="op">)</span>
 <span class="co">#&gt; The dimension of the fully expanded dataframe is: </span>
 <span class="co">#&gt; 10 by 30</span>
-<span class="no">F28.5.sum.grid</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/param_grid.html">param_grid</a></span>(<span class="kw">param.seqs</span> <span class="kw">=</span> <span class="no">F28.5.sum.seq</span>)
+<span class="va">F28.5.sum.grid</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/param_grid.html">param_grid</a></span><span class="op">(</span>param.seqs <span class="op">=</span> <span class="va">F28.5.sum.seq</span><span class="op">)</span>
 <span class="co">#&gt; The dimension of the fully expanded dataframe is: </span>
-<span class="co">#&gt; 20 by 30</span></pre></body></html></div>
+<span class="co">#&gt; 20 by 30</span></code></pre></div>
 <p>Finally runFAC_multi() is called for each scenario’s grid.</p>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">F28.5.FAC.win</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/runFAC_multi.html">runFAC_multi</a></span>(<span class="kw">param.grid</span> <span class="kw">=</span> <span class="no">F28.5.win.grid</span>)
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">F28.5.FAC.win</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/runFAC_multi.html">runFAC_multi</a></span><span class="op">(</span>param.grid <span class="op">=</span> <span class="va">F28.5.win.grid</span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Model at equilibrium after 62 iterations</span>
 <span class="co">#&gt; </span>
@@ -225,7 +232,7 @@
 <span class="co">#&gt; Model at equilibrium after 154 iterations</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Model at equilibrium after 149 iterations</span>
-<span class="no">F28.5.FAC.int</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/runFAC_multi.html">runFAC_multi</a></span>(<span class="kw">param.grid</span> <span class="kw">=</span> <span class="no">F28.5.int.grid</span>)
+<span class="va">F28.5.FAC.int</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/runFAC_multi.html">runFAC_multi</a></span><span class="op">(</span>param.grid <span class="op">=</span> <span class="va">F28.5.int.grid</span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Model at equilibrium after 64 iterations</span>
 <span class="co">#&gt; </span>
@@ -246,7 +253,7 @@
 <span class="co">#&gt; Model at equilibrium after 83 iterations</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Model at equilibrium after 83 iterations</span>
-<span class="no">F28.5.FAC.sum</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/runFAC_multi.html">runFAC_multi</a></span>(<span class="kw">param.grid</span> <span class="kw">=</span> <span class="no">F28.5.sum.grid</span>)
+<span class="va">F28.5.FAC.sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/runFAC_multi.html">runFAC_multi</a></span><span class="op">(</span>param.grid <span class="op">=</span> <span class="va">F28.5.sum.grid</span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Model at equilibrium after 94 iterations</span>
 <span class="co">#&gt; </span>
@@ -286,12 +293,13 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Model at equilibrium after 94 iterations</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; Model at equilibrium after 94 iterations</span></pre></body></html></div>
+<span class="co">#&gt; Model at equilibrium after 94 iterations</span></code></pre></div>
 <p>Once all calls to runFAC_mulit() are done we can plot using plot_Fig28_5().</p>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="fu"><a href="../reference/plot_Fig28_5.html">plot_Fig28_5</a></span>(<span class="kw">dat.winter.lim</span> <span class="kw">=</span> <span class="no">F28.5.FAC.win</span>$<span class="no">multiFAC.out.df.RM</span>,
-             <span class="kw">dat.intermediate</span> <span class="kw">=</span> <span class="no">F28.5.FAC.int</span>$<span class="no">multiFAC.out.df.RM</span>,
-             <span class="kw">dat.summer.lim</span> <span class="kw">=</span> <span class="no">F28.5.FAC.sum</span>$<span class="no">multiFAC.out.df.RM</span>,
-             <span class="kw">drain</span> <span class="kw">=</span> <span class="no">T</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/plot_Fig28_5.html">plot_Fig28_5</a></span><span class="op">(</span>dat.winter.lim <span class="op">=</span> <span class="va">F28.5.FAC.win</span><span class="op">$</span><span class="va">multiFAC.out.df.RM</span>,
+             dat.intermediate <span class="op">=</span> <span class="va">F28.5.FAC.int</span><span class="op">$</span><span class="va">multiFAC.out.df.RM</span>,
+             dat.summer.lim <span class="op">=</span> <span class="va">F28.5.FAC.sum</span><span class="op">$</span><span class="va">multiFAC.out.df.RM</span>,
+             drain <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></code></pre></div>
 <p><img src="h-make_figure_28_5_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
 </div>
 <div id="make-figure-28-5-step-by-step-instructions" class="section level2">
@@ -320,7 +328,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

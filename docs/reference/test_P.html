@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -175,22 +175,22 @@
     <p>These equations determine pairing proportions (P) in breeding habitat.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>test_P</span>(
-  <span class='kw'>dat</span> <span class='kw'>=</span> <span class='no'>test_dat_P</span>,
-  <span class='kw'>FUN</span> <span class='kw'>=</span> <span class='no'>eq09_Pcgg</span>,
-  <span class='kw'>plot.test</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>subsample</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>sample.N</span> <span class='kw'>=</span> <span class='fl'>10</span>,
-  <span class='kw'>return.df</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='no'>...</span>
-)</pre>
+    <pre class="usage"><span class='fu'>test_P</span><span class='op'>(</span>
+  <span class='va'>dat</span>,
+  FUN <span class='op'>=</span> <span class='va'>eq09_Pcgg</span>,
+  plot.test <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  subsample <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  sample.N <span class='op'>=</span> <span class='fl'>10</span>,
+  return.df <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>dat</th>
-      <td><p>dataframe with values against which to test function.  Defaults to object named test_dat_P.</p></td>
+      <td><p>dataframe with values against which to test function.  An object named test_dat_P is available for testing.</p></td>
     </tr>
     <tr>
       <th>FUN</th>
@@ -206,7 +206,7 @@
     </tr>
     <tr>
       <th>sample.N</th>
-      <td><p>how many subsamples of datarame to take</p></td>
+      <td><p>how many subsamples of dataframe to take</p></td>
     </tr>
     <tr>
       <th>return.df</th>
@@ -234,7 +234,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

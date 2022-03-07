@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -120,13 +120,13 @@
 
       
 
-      </header><div class="row">
+      </header><script src="d-the_runFAC_command_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>d) The runFAC() command</h1>
                         <h4 class="author">Nathan L. Brouwer</h4>
             
-            <h4 class="date">2020-07-02</h4>
+            <h4 class="date">2022-03-07</h4>
       
       
       <div class="hidden name"><code>d-the_runFAC_command.Rmd</code></div>
@@ -138,18 +138,18 @@
 <div id="introduction" class="section level2">
 <h2 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h2>
-<p>In the redstart package, a single run of a FAC is done using the <strong>runFAC()</strong> function. <strong>runFAC()</strong> is the engine underlying the core of the redstart package. You’ll rarely have to actually use this function except for diagnostic purposes. Its worthwhile to know what its doing to understanding how higher-level output is being generated.</p>
+<p>In the redstart package, a single run of a the full-annual cycle (FAC) is done using the runFAC() function. runFAC() is the engine underlying the core of the entire redstart package. You’ll rarely have to actually use this function except for diagnostic purposes. However, its worthwhile to know what its doing to understand how higher-level output is being generated.</p>
 <p>The user gives this function 3 bundles of information:</p>
 <ol style="list-style-type: decimal">
-<li>The demographic parameters for the model, including surival rates and fecundities</li>
+<li>The demographic parameters for the model, including survival rates and fecundities</li>
 <li>The habitat carrying capacities (breeding and winter)</li>
-<li>The intial population state. Specifically the abundance and age structure of male and females on the wintering ground in “good” and “poor” habitat.</li>
+<li>The initial population state. Specifically the abundance and age structure of male and females on the wintering ground in “good” and “poor” habitat.</li>
 </ol>
-<p><strong>runFAC()</strong> then builds all of the matrices that describe the FAC, plugs in the starting population state, and turns the crank on the model for either a given number of iterations (the default is 300) or, if specified, until a stability criteria is met.</p>
-<p><strong>runFAC()</strong> can be set to run and either keep track of everything that happens during the entire model run (save.ts = T, the default), or just the final time point which (save.ts = F); …</p>
+<p>runFAC() then builds all of the matrices that describe the FAC, plugs in the starting population state, and turns the crank on the model for either a given number of iterations (the default is 300) or, if specified, until a stability criteria is met.</p>
+<p>runFAC() can be set to run and either keep track of everything that happens during the entire model run (save.ts = T, the default), or just the final time point which (save.ts = F); …</p>
 <p>TODO: what is this fragment of a sentence for? if the model reach equilibrium, represents that stable population size, stage, and sex structure of the model during each time point.</p>
-<p>Examining the entire time series (“ts”) of the model is mostly useful for understanding what the model does and for diagnostics purposes, e.g. to makes sure it is reaching equilbrium. For most subsequent analyses just the equilibrium state is needed; a typical analysis of a FAC model involves running the model many times while systematically varying one or two key parameters to understand how they impact the equilibrium population state.</p>
-<p>In this vignette I’ll demonstrate what <strong>runFAC()</strong> does and what the output of a single run the FAC looks like. In subsequent vignettes we’ll using a wrapper function, <strong>runFAC_multi()</strong> to run the model repeatedly to equilibirum while varying parameters such as carrying capacity (K). When doing simple explorations of how the function works I’ll set return.output = F so that the full output dataframe isn’t printed out into the R terminal.</p>
+<p>Examining the entire time series (“ts”) of the model is mostly useful for understanding what the model does and for diagnostics purposes, e.g. to makes sure it is reaching equilibrium. For most subsequent analyses just the equilibrium state is needed; a typical analysis of a FAC model involves running the model many times while systematically varying one or two key parameters to understand how they impact the equilibrium population state.</p>
+<p>In this vignette I’ll demonstrate what <strong>runFAC()</strong> does and what the output of a single run the FAC looks like. In subsequent vignettes we’ll using a wrapper function, <strong>runFAC_multi()</strong> to run the model repeatedly to equilibrium while varying parameters such as carrying capacity (K). When doing simple explorations of how the function works I’ll set return.output = F so that the full output dataframe isn’t printed out into the R terminal.</p>
 </div>
 <div id="preliminaries" class="section level2">
 <h2 class="hasAnchor">
@@ -157,62 +157,75 @@
 <div id="getting-the-redstart-package" class="section level3">
 <h3 class="hasAnchor">
 <a href="#getting-the-redstart-package" class="anchor"></a>Getting the redstart package</h3>
-<p>The most recent version of redstart is available from github and can be downloaded directly using hte devtools package</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="co">#load devtools</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">devtools</span>)
+<p>The most recent version of redstart is available from github and can be downloaded directly using the devtools package</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">#load devtools</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/">devtools</a></span><span class="op">)</span>
 
 <span class="co">#download redstart from github</span>
-<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"brouwern/redstart"</span>)</pre></body></html></div>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"brouwern/redstart"</span><span class="op">)</span></code></pre></div>
 <p>Load redstart into your current R sessions</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">redstart</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">redstart</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="getting-parameters-for-a-model-run" class="section level3">
 <h3 class="hasAnchor">
 <a href="#getting-parameters-for-a-model-run" class="anchor"></a>Getting parameters for a model run</h3>
-<p>Default values are set in all of redstart’s functions so you can easily explore them without worrying about setting the underlying demographic parameters. For a preliminary run parameters will be called automatically behind the scenes using a function called <strong>param_set()</strong>, which has default to the parameters used in Runge and Marra (2004).</p>
+<p>Default values are set in all of redstart’s functions so you can easily explore them without worrying about setting the underlying demographic parameters. For a preliminary run parameters will be called automatically behind the scenes using a function called <strong>param_set()</strong>, which default to the primary parameters used in Runge and Marra (2005).</p>
 <p>You can look at the default parameters by calling the <strong>param_set()</strong> function. Later we’ll use <strong>param_set()</strong> to tweak a few parameters.</p>
 <p>To view the parameter, call param_set() with empty parentheses (Output not shown)</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="../reference/param_set.html">param_set</a></span>()</pre></body></html></div>
-<p>Counting the 3 carrying capacities (K.bc, K.bk, K.wg) there are 30 parameters in a single run of the FAC. We can see this using the length command.</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span>(<span class="fu"><a href="../reference/param_set.html">param_set</a></span>())
-<span class="co">#&gt; [1] 30</span></pre></body></html></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/param_set.html">param_set</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>Counting the 3 carrying capacities (K.bc, K.bk, K.wg) there are 30 parameters in a single run of the Runge and Marra (2005) FAC. We can see this using the length command.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fu"><a href="../reference/param_set.html">param_set</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; [1] 30</span></code></pre></div>
 <p>The first 10 parameters are:</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu"><a href="../reference/param_set.html">param_set</a></span>()[<span class="fl">1</span>:<span class="fl">10</span>]
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/param_set.html">param_set</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span>
 <span class="co">#&gt;   gamma co K.bc  K.bk K.wg S.w.mg S.w.mp S.w.fg S.w.fp S.m.mg</span>
-<span class="co">#&gt; 1     5  1 1000 10000  900    0.8    0.8    0.8    0.8    0.9</span></pre></body></html></div>
+<span class="co">#&gt; 1     5  1 1000 10000  900    0.8    0.8    0.8    0.8    0.9</span></code></pre></div>
 <p>For information on each parameter call the helpfile like this</p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r">?<span class="no">param_set</span></pre></body></html></div>
-<p>Additionally, there are four intial population size values for males and females in the two types of winter habitats. Defaults are set for these using the arguement "Ninint = c(….) within the <strong>runFAC()</strong> command itself. Call the help file on runFAC for more information (?runFAC)</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">?</span><span class="va">param_set</span></code></pre></div>
+<p>Additionally, there are four intial population size values for males and females in the two types of winter habitats. Defaults are set for these using the agreement “Ninint = c(….) within the <strong>runFAC()</strong> command itself. Call the help file on runFAC for more information (?runFAC)</p>
 </div>
 </div>
-<div id="lets-do-this-running-a-fac" class="section level2">
+<div id="lets-do-this-running-a-runage-and-marra-fac" class="section level2">
 <h2 class="hasAnchor">
-<a href="#lets-do-this-running-a-fac" class="anchor"></a>Let’s do this! Running a FAC</h2>
-<p>When you call the <strong>runFAC()</strong> function an R <strong>list</strong> object is created is created. This list contains everything you put into runFAC() (the intial parameters) AND everyting the model produced.</p>
+<a href="#lets-do-this-running-a-runage-and-marra-fac" class="anchor"></a>Let’s do this! Running a Runage and Marra FAC</h2>
+<p>When you call the <strong>runFAC()</strong> function an R <strong>list</strong> object is created. This list contains everything you put into runFAC() (the intial parameters) AND everything the model produced.</p>
 <p>We can run the model and save its output to an object (Note that since there are defaults set within runFAC() you don’t have to include anything in the parentheses).</p>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">my.fac</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/runFAC.html">runFAC</a></span>()
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">my.fac</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/runFAC.html">runFAC</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; Model at equilibrium after 103 iterations</span></pre></body></html></div>
-<p>This should only take a few seconds, and you should get a short message about how many iteractions it took to reach equilibrium.</p>
+<span class="co">#&gt; Model at equilibrium after 103 iterations</span></code></pre></div>
+<p>This should only take a few seconds, and you should get a short message about how many iterations it took to reach equilibrium. (By default runFAC() monitors whether stable population sizes have been reached and ends the model shortly after that point).</p>
 <p>The output of runFAC() is a <strong>list</strong>.</p>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="fu">is</span>(<span class="no">my.fac</span>)
-<span class="co">#&gt; [1] "list"   "vector"</span></pre></body></html></div>
-<p>Lists are common R <strong>data structures</strong> but can take some getting used to when your first encounter them. The list produced by runFAC() has 8 elements.</p>
-<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span>(<span class="no">my.fac</span>)
-<span class="co">#&gt; [1] 8</span></pre></body></html></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">is</span><span class="op">(</span><span class="va">my.fac</span><span class="op">)</span>
+<span class="co">#&gt; [1] "list"   "vector"</span></code></pre></div>
+<p>Lists are common R <strong>data structures</strong> but can take some getting used to when your first encounter them. The list produced by runFAC() has 8 elements, as shown by the length() command.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">my.fac</span><span class="op">)</span>
+<span class="co">#&gt; [1] 8</span></code></pre></div>
 <p>We can see the names of the 8 elements like this:</p>
-<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="no">my.fac</span>)
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">my.fac</span><span class="op">)</span>
 <span class="co">#&gt; [1] "FAC.out.RM"         "FAC.out.IB"         "FAC.eq.state.RM"   </span>
 <span class="co">#&gt; [4] "FAC.eq.state.IB"    "W.mg.diagnostic.df" "param.matrices"    </span>
-<span class="co">#&gt; [7] "params.initial"     "use.IBM"</span></pre></body></html></div>
+<span class="co">#&gt; [7] "params.initial"     "use.IBM"</span></code></pre></div>
 <p>Again, this is dense object - some of the elements in the list are list themselves! For example, the element “param.matrices” is a list which contains all of the parametrized transition matrices for the model. We can check what each element of the my.fac list by using dollar sign notation to select the name of the element. Here is the parameter matrix element.</p>
-<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="fu">is</span>(<span class="no">my.fac</span>$<span class="no">param.matrices</span>)
-<span class="co">#&gt; [1] "list"   "vector"</span></pre></body></html></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">is</span><span class="op">(</span><span class="va">my.fac</span><span class="op">$</span><span class="va">param.matrices</span><span class="op">)</span>
+<span class="co">#&gt; [1] "list"   "vector"</span></code></pre></div>
 <p>We can check how many matrices there are by again using the length() function</p>
-<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span>(<span class="no">my.fac</span>$<span class="no">param.matrices</span>)
-<span class="co">#&gt; [1] 8</span></pre></body></html></div>
-<p>To look at the names of all the elements of the list we can also use the str() command to look at the output. The “1” tells str() to just give us the names of the elements inthe list. This provides some more output than using names():</p>
-<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span>(<span class="no">my.fac</span>,<span class="fl">1</span>)
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">my.fac</span><span class="op">$</span><span class="va">param.matrices</span><span class="op">)</span>
+<span class="co">#&gt; [1] 8</span></code></pre></div>
+<p>To look at the names of all the elements of the list we can also use the str() command to look at the output. The “1” tells str() to just give us the names of the elements in the list. This provides some more output than using names():</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">my.fac</span>,<span class="fl">1</span><span class="op">)</span>
 <span class="co">#&gt; List of 8</span>
 <span class="co">#&gt;  $ FAC.out.RM        :'data.frame':  350 obs. of  48 variables:</span>
 <span class="co">#&gt;  $ FAC.out.IB        :'data.frame':  350 obs. of  42 variables:</span>
@@ -221,13 +234,13 @@
 <span class="co">#&gt;  $ W.mg.diagnostic.df:'data.frame':  350 obs. of  5 variables:</span>
 <span class="co">#&gt;  $ param.matrices    :List of 8</span>
 <span class="co">#&gt;  $ params.initial    :'data.frame':  1 obs. of  30 variables:</span>
-<span class="co">#&gt;  $ use.IBM           : logi FALSE</span></pre></body></html></div>
-<p>The elements of the list are</p>
+<span class="co">#&gt;  $ use.IBM           : logi FALSE</span></code></pre></div>
+<p>The elements of the my.fac list product by runFAC() are:</p>
 <ol style="list-style-type: decimal">
 <li>
 <strong>FAC.out.RM</strong>: a dataframe containing the outputs from the original Runge and Mara FAC model (rmFAC)</li>
 <li>
-<strong>FAC.out.IB</strong>: a daframe containing the output from a slightly modified version of the model which uses an individual-based modeling (IBM) submodel (ibFAC) for some calculations. TODO: which ones</li>
+<strong>FAC.out.IB</strong>: a daframe containing the output from a slightly modified version of the model which uses an individual-based modeling (IBM) submodel (ibFAC) for some calculations. By default the ibFAC is not run.</li>
 <li>
 <strong>FAC.eq.state.RM</strong>: a vector with the state of the original rmFAC when the model reaches equilibrium</li>
 <li>
@@ -239,57 +252,67 @@
 <li>
 <strong>params.initial</strong>: initial parameters used to set up the transition matrices</li>
 <li>
-<strong>use.IBM</strong>: indicater (TRUE/FALSE) if the individual-based (IBM) sub-model was run.</li>
+<strong>use.IBM</strong>: indicator (TRUE/FALSE) if the individual-based (IBM) sub-model was run.</li>
 </ol>
-<p>The main output of runFAC() is “FAC.out.RM” and “FAC.eq.state.RM.” When many runs of the model are required we can just save the equilibrium state to improve performace of the model.</p>
+<p>The main output of runFAC() is “FAC.out.RM” and “FAC.eq.state.RM.” When many runs of the model are required we can just save the equilibrium state to improve performance of the model.</p>
 <div id="a-basic-run-of-the-fac" class="section level3">
 <h3 class="hasAnchor">
 <a href="#a-basic-run-of-the-fac" class="anchor"></a>A basic run of the FAC</h3>
-<p>We’ll call runFAC() with the argument return.output set to FALSE to supress the output of full time series. We’ll Also set diagnostic.plot = T to see plot of the time series.</p>
+<p>We’ll call runFAC() with the argument return.output set to FALSE to suppress the output of a full time series. We’ll also set diagnostic.plot = T to see plot of the time series.</p>
 <p>To be clear about what the options do, if I ran just this</p>
-<div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="no">my.fac</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/runFAC.html">runFAC</a></span>()</pre></body></html></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">my.fac</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/runFAC.html">runFAC</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>I’d run then model and then get a big list with all the data output to my R terminal if I call up the my.fac object..</p>
-<p>In contrast, the code below will run the model to equilibrium but won’t output anything - my.fac will be empty (NULL).</p>
-<div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="no">my.fac</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/runFAC.html">runFAC</a></span>(<span class="kw">return.output</span> <span class="kw">=</span> <span class="no">F</span>)
+<p>In contrast, the code below will run the model to equilibrium but won’t output anything - the object my.fac will be empty (NULL).</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">my.fac</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/runFAC.html">runFAC</a></span><span class="op">(</span>return.output <span class="op">=</span> <span class="cn">F</span><span class="op">)</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; Model at equilibrium after 103 iterations</span></pre></body></html></div>
-<p>We can see how the model progresses to equilbibrium by setting the arguement diagnostic.plot = T. The my.fac object will be empty, but a diagnostic plot will be produced.</p>
-<div class="sourceCode" id="cb16"><html><body><pre class="r"><span class="no">my.fac</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/runFAC.html">runFAC</a></span>(<span class="kw">return.output</span> <span class="kw">=</span> <span class="no">F</span>, <span class="kw">diagnostic.plot</span> <span class="kw">=</span> <span class="no">T</span>)
+<span class="co">#&gt; Model at equilibrium after 103 iterations</span></code></pre></div>
+<p>We can see how the model progresses to equilibrium by setting the agreement diagnostic.plot = T. The my.fac object will be empty, but a diagnostic plot will be produced.</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">my.fac</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/runFAC.html">runFAC</a></span><span class="op">(</span>return.output <span class="op">=</span> <span class="cn">F</span>, 
+                 diagnostic.plot <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Model at equilibrium after 103 iterations</span>
-<span class="co">#&gt; Diagnostic plot build using runFAC.i$FAC.out.RM</span></pre></body></html></div>
+<span class="co">#&gt; Diagnostic plot build using runFAC.i$FAC.out.RM</span></code></pre></div>
 <p><img src="d-the_runFAC_command_files/figure-html/unnamed-chunk-16-1.png" width="700"></p>
-<p>The diagnostic plot has three panels. On the left hand size is a graph of total winter population size (tot.W; black) and total breeding poulation size (tot.B, red). Winter population size is larger because birds die ocer the course of the winter and spring migration The middle panel of the graph shows the realized population growth rate, calcualted simply as winter population size in year t+1 divided by winter populationsize in year t. When growth stabilizes at 1.0, the model is at equilibrium.</p>
-<p>The third panel of the diagnostic plot shows the winter stucture of the population based on sex and habitat,</p>
-<p>TODO: the sex ratio for the default parameters is highly skewed. Is this how its suppossed to be? I think the figure lengend might be labeled wrong. Cross reference with the barplot produced below.</p>
-<p>The default behavior of runFAC() is save time by monitoring a run of the model for equilibrium. If you want to make sure your model is at equilibrium you can turn off the equilibirum monitoring using the check.eq arguement; the model will then run for a default of 350 iterations.</p>
-<div class="sourceCode" id="cb17"><html><body><pre class="r"><span class="fu"><a href="../reference/runFAC.html">runFAC</a></span>(<span class="kw">return.output</span> <span class="kw">=</span> <span class="no">F</span>,
-       <span class="kw">check.eq</span> <span class="kw">=</span> <span class="fl">FALSE</span>,
-       <span class="kw">diagnostic.plot</span> <span class="kw">=</span> <span class="no">T</span>)
-<span class="co">#&gt; Diagnostic plot build using runFAC.i$FAC.out.RM</span></pre></body></html></div>
+<p>The diagnostic plot has three panels. On the left hand side is a graph of total winter population size (tot.W; black) and total breeding population size (tot.B, red). Winter population size is larger because birds die over the course of the winter and during spring migration The middle panel of the graph shows the realized population growth rate, calculated simply as winter population size in year t+1 divided by winter population size in year t. When growth stabilizes at 1.0, the model is at equilibrium. This criteria is used to assess when to stop running the model and report results.</p>
+<p>The third panel of the diagnostic plot shows the winter structure of the population based on sex and habitat,</p>
+<p>TODO: the sex ratio for the default parameters is highly skewed. Is this how its supposed to be? I think the figure legend might be labeled wrong. Cross reference with the barplot produced below.</p>
+<p>The default behavior of runFAC() is save time by monitoring a run of the model for equilibrium. If you want to make sure your model is at equilibrium you can turn off the equilibrium monitoring using the check.eq argument; the model will then run for a default of 350 iterations.</p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/runFAC.html">runFAC</a></span><span class="op">(</span>return.output <span class="op">=</span> <span class="cn">F</span>,
+       check.eq <span class="op">=</span> <span class="cn">FALSE</span>,
+       diagnostic.plot <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>
+<span class="co">#&gt; Diagnostic plot build using runFAC.i$FAC.out.RM</span></code></pre></div>
 <p><img src="d-the_runFAC_command_files/figure-html/unnamed-chunk-17-1.png" width="700"></p>
 <p>You can also specify a specific number of iterations</p>
-<div class="sourceCode" id="cb18"><html><body><pre class="r"><span class="co">## TODO: total pop size plot returned here is off; doesn't include zero</span>
-<span class="fu"><a href="../reference/runFAC.html">runFAC</a></span>(<span class="kw">return.output</span> <span class="kw">=</span> <span class="no">F</span>,
-       <span class="kw">iterations</span> <span class="kw">=</span> <span class="fl">20</span>,
-       <span class="kw">diagnostic.plot</span> <span class="kw">=</span> <span class="no">T</span>)</pre></body></html></div>
-<p>We can also have it run longer by making the equilibrium checker – which checks the time series for an asymptote – stricter. This can be done by increasing the “equilibrium tolerance”, eq.tol. The model will still check if the time series has reached an asymptote (check.eq = TRUE) but will be stricter about judging equilibrium. The default value of eq.tol ot 6.</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## TODO: total pop size plot returned here is off; doesn't include zero</span>
+<span class="fu"><a href="../reference/runFAC.html">runFAC</a></span><span class="op">(</span>return.output <span class="op">=</span> <span class="cn">F</span>,
+       iterations <span class="op">=</span> <span class="fl">20</span>,
+       diagnostic.plot <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></code></pre></div>
+<p>We can also have it run longer by making the equilibrium checker – which checks the time series for an asymptote – stricter. This can be done by increasing the “equilibrium tolerance”, eq.tol. The model will still check if the time series has reached an asymptote (check.eq = TRUE) but will be stricter about judging equilibrium. The default value of eq.tol to 6.</p>
 <p>TODO: how is this scaled?</p>
-<div class="sourceCode" id="cb19"><html><body><pre class="r"><span class="fu"><a href="../reference/runFAC.html">runFAC</a></span>(<span class="kw">return.output</span> <span class="kw">=</span> <span class="no">F</span>,
-       <span class="kw">eq.to</span> <span class="kw">=</span> <span class="fl">10</span>,
-       <span class="kw">diagnostic.plot</span> <span class="kw">=</span> <span class="no">T</span>)</pre></body></html></div>
-<p>After we run a model we can also create the plot after the fact if we want using the fuhction plot_runFAC(). First, let me re-run the model and save the object</p>
-<div class="sourceCode" id="cb20"><html><body><pre class="r"><span class="no">my.fac</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/runFAC.html">runFAC</a></span>(<span class="kw">iterations</span> <span class="kw">=</span> <span class="fl">150</span>)
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/runFAC.html">runFAC</a></span><span class="op">(</span>return.output <span class="op">=</span> <span class="cn">F</span>,
+       eq.to <span class="op">=</span> <span class="fl">10</span>,
+       diagnostic.plot <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></code></pre></div>
+<p>After we run a model we can also create the plot after the fact if we want using the function plot_runFAC(). First, let me re-run the model and save the object</p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">my.fac</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/runFAC.html">runFAC</a></span><span class="op">(</span>iterations <span class="op">=</span> <span class="fl">150</span><span class="op">)</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; Model at equilibrium after 103 iterations</span></pre></body></html></div>
+<span class="co">#&gt; Model at equilibrium after 103 iterations</span></code></pre></div>
 <p>Now use plot_runFAC()</p>
-<div class="sourceCode" id="cb21"><html><body><pre class="r"><span class="fu"><a href="../reference/plot_runFAC.html">plot_runFAC</a></span>(<span class="no">my.fac</span>$<span class="no">FAC.out.RM</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/plot_runFAC.html">plot_runFAC</a></span><span class="op">(</span><span class="va">my.fac</span><span class="op">$</span><span class="va">FAC.out.RM</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="time-series-dataframe" class="section level3">
 <h3 class="hasAnchor">
 <a href="#time-series-dataframe" class="anchor"></a>Time series dataframe</h3>
-<p>The main output of runFAC() is a dataframe containing the status of the population at each timestep. This dataframe is contined in the FAC.out.RM component of the list output by runFAC()</p>
-<div class="sourceCode" id="cb22"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">my.fac</span>$<span class="no">FAC.out.RM</span>)
+<p>The main output of runFAC() is a dataframe containing the status of the population at each timestep. This dataframe is continued in the FAC.out.RM component of the list output by runFAC()</p>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">my.fac</span><span class="op">$</span><span class="va">FAC.out.RM</span><span class="op">)</span>
 <span class="co">#&gt;       W.mg W.mp     W.fg W.fp     B.mc B.mk B.md     B.fc B.fk P.cgg P.cgp</span>
 <span class="co">#&gt; 1 10.65600    0 10.65600    0 7.200000    0    0 7.200000    0     1     0</span>
 <span class="co">#&gt; 2 11.35503    0 11.35503    0 7.672320    0    0 7.672320    0     1     0</span>
@@ -324,43 +347,48 @@
 <span class="co">#&gt; 3             NA            NA 3 16.35125 24.19985       1       0 1.0656</span>
 <span class="co">#&gt; 4             NA            NA 4 17.42389 25.78736       1       0 1.0656</span>
 <span class="co">#&gt; 5             NA            NA 5 18.56690 27.47901       1       0 1.0656</span>
-<span class="co">#&gt; 6             NA            NA 6 19.78489 29.28163       1       0 1.0656</span></pre></body></html></div>
+<span class="co">#&gt; 6             NA            NA 6 19.78489 29.28163       1       0 1.0656</span></code></pre></div>
 <p>This time series contains information about how <strong>everything</strong> in the model changes over time and is the basis for the diagnostic plot. As implied above, we can have access this dataframe by removing “return.output = F”. (The default of runFAC() is returnet.output = T, but we’ve set it to false sometimes above so we don’t have to see all the crazy output. )</p>
 <p>The dataframe is 45 columns wide and has the state variables for each step in the model, such as population sizes in each habitat</p>
-<div class="sourceCode" id="cb23"><html><body><pre class="r"><span class="no">j.abundance.columns</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"W.mg"</span>,<span class="st">"W.mp"</span>,<span class="st">"W.fg"</span>,<span class="st">"W.fp"</span>,<span class="st">"B.mc"</span>,<span class="st">"B.mk"</span>,<span class="st">"B.md"</span>)
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">my.fac</span>$<span class="no">FAC.out.RM</span>[,<span class="no">j.abundance.columns</span> ])
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">j.abundance.columns</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"W.mg"</span>,<span class="st">"W.mp"</span>,<span class="st">"W.fg"</span>,<span class="st">"W.fp"</span>,<span class="st">"B.mc"</span>,<span class="st">"B.mk"</span>,<span class="st">"B.md"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">my.fac</span><span class="op">$</span><span class="va">FAC.out.RM</span><span class="op">[</span>,<span class="va">j.abundance.columns</span> <span class="op">]</span><span class="op">)</span>
 <span class="co">#&gt;       W.mg W.mp     W.fg W.fp     B.mc B.mk B.md</span>
 <span class="co">#&gt; 1 10.65600    0 10.65600    0 7.200000    0    0</span>
 <span class="co">#&gt; 2 11.35503    0 11.35503    0 7.672320    0    0</span>
 <span class="co">#&gt; 3 12.09992    0 12.09992    0 8.175624    0    0</span>
 <span class="co">#&gt; 4 12.89368    0 12.89368    0 8.711945    0    0</span>
 <span class="co">#&gt; 5 13.73950    0 13.73950    0 9.283449    0    0</span>
-<span class="co">#&gt; 6 14.64082    0 14.64082    0 9.892443    0    0</span></pre></body></html></div>
-<p>The dataframe also has summary stats (eg sums of several column) such as the total breeding (tot.B), winter (tot.W) populations, and realized lambda (“lambda”).</p>
-<div class="sourceCode" id="cb24"><html><body><pre class="r"><span class="no">j.summary.columns</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"tot.B"</span>,<span class="st">"tot.W"</span>,<span class="st">"tot.P.c"</span>,<span class="st">"tot.P.k"</span>,<span class="st">"lambda"</span>)
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">my.fac</span>$<span class="no">FAC.out.RM</span>[,<span class="no">j.summary.columns</span> ])
+<span class="co">#&gt; 6 14.64082    0 14.64082    0 9.892443    0    0</span></code></pre></div>
+<p>The dataframe also has summary stats (e.g. sums of several column) such as the total breeding (tot.B), winter (tot.W) populations, and realized lambda (“lambda”).</p>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">j.summary.columns</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"tot.B"</span>,<span class="st">"tot.W"</span>,<span class="st">"tot.P.c"</span>,<span class="st">"tot.P.k"</span>,<span class="st">"lambda"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">my.fac</span><span class="op">$</span><span class="va">FAC.out.RM</span><span class="op">[</span>,<span class="va">j.summary.columns</span> <span class="op">]</span><span class="op">)</span>
 <span class="co">#&gt;      tot.B    tot.W tot.P.c tot.P.k lambda</span>
 <span class="co">#&gt; 1 14.40000 21.31200       1       0     NA</span>
 <span class="co">#&gt; 2 15.34464 22.71007       1       0 1.0656</span>
 <span class="co">#&gt; 3 16.35125 24.19985       1       0 1.0656</span>
 <span class="co">#&gt; 4 17.42389 25.78736       1       0 1.0656</span>
 <span class="co">#&gt; 5 18.56690 27.47901       1       0 1.0656</span>
-<span class="co">#&gt; 6 19.78489 29.28163       1       0 1.0656</span></pre></body></html></div>
-<p>Each row in this dataframe is from one iteration of the model. NAs are VERY common in this dataframe and don’t indicate a problem - they occur when the model didn’t run long enough to assign values to that iteration because equlibirum was met.</p>
-<div class="sourceCode" id="cb25"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span>(<span class="no">my.fac</span>$<span class="no">FAC.out.RM</span>[,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"tot.B"</span>,<span class="st">"tot.W"</span>,<span class="st">"lambda"</span>)])
+<span class="co">#&gt; 6 19.78489 29.28163       1       0 1.0656</span></code></pre></div>
+<p>Each row in this dataframe is from one iteration of the model. NAs are VERY common in this dataframe and don’t indicate a problem - they occur when the model didn’t run long enough to assign values to that iteration because equilibrium was met.</p>
+<p>TODO: purge NAs from df to make it easiert fo read</p>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="va">my.fac</span><span class="op">$</span><span class="va">FAC.out.RM</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"tot.B"</span>,<span class="st">"tot.W"</span>,<span class="st">"lambda"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>
 <span class="co">#&gt;     tot.B tot.W lambda</span>
 <span class="co">#&gt; 145    NA    NA     NA</span>
 <span class="co">#&gt; 146    NA    NA     NA</span>
 <span class="co">#&gt; 147    NA    NA     NA</span>
 <span class="co">#&gt; 148    NA    NA     NA</span>
 <span class="co">#&gt; 149    NA    NA     NA</span>
-<span class="co">#&gt; 150    NA    NA     NA</span></pre></body></html></div>
+<span class="co">#&gt; 150    NA    NA     NA</span></code></pre></div>
 </div>
 <div id="returning-just-the-equilibrium-state" class="section level3">
 <h3 class="hasAnchor">
 <a href="#returning-just-the-equilibrium-state" class="anchor"></a>Returning just the equilibrium state</h3>
 <p>Typically when doing an analysis of a FAC model we’ll just be interested in the final equilibrium state of the population. The information in the “FAC.out.RM” part of the output will be tossed and instead we’ll keep the information in “FAC.eq.state.RM”</p>
-<div class="sourceCode" id="cb26"><html><body><pre class="r"><span class="no">my.fac</span>$<span class="no">FAC.eq.state.RM</span>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">my.fac</span><span class="op">$</span><span class="va">FAC.eq.state.RM</span>
 <span class="co">#&gt;        W.mg     W.mp    W.fg     W.fp B.mc     B.mk B.md B.fc     B.fk</span>
 <span class="co">#&gt; 103 749.596 944.9938 150.404 1544.186 1000 220.0927    0 1000 220.0927</span>
 <span class="co">#&gt;         P.cgg     P.cgp P.cpg   P.cpp P.kgg P.kgp P.kpg P.kpp     y.mc     y.mk</span>
@@ -372,13 +400,14 @@
 <span class="co">#&gt;     A.P.y.fc A.P.y.fk lambda.B.mc.i lamb.B.mc.mean lamb.B.mc.var   t    tot.B</span>
 <span class="co">#&gt; 103       NA       NA            NA             NA            NA 103 2440.185</span>
 <span class="co">#&gt;       tot.W   tot.P.c tot.P.k  lambda</span>
-<span class="co">#&gt; 103 3389.18 0.9999991       1 1.00001</span></pre></body></html></div>
+<span class="co">#&gt; 103 3389.18 0.9999991       1 1.00001</span></code></pre></div>
 <p>This is just all the information the last (TODO - is this true) row from the main output dataframe (FAC.out.RM).</p>
-<p>TODO(): simplfy output of equilibrium output TODO: create summary function which makes a barplot of relevant information</p>
-<div class="sourceCode" id="cb27"><html><body><pre class="r"><span class="no">x</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span>(<span class="no">my.fac</span>$<span class="no">FAC.eq.state.RM</span>[<span class="fl">1</span>:<span class="fl">7</span>])
-<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span>(<span class="kw">mfrow</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>,<span class="fl">1</span>))
-<span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span>(<span class="kw">height</span> <span class="kw">=</span> <span class="no">x</span>)
-<span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span>(<span class="kw">v</span> <span class="kw">=</span> <span class="fl">4.85</span>, <span class="kw">col</span> <span class="kw">=</span> <span class="fl">2</span>, <span class="kw">lwd</span> <span class="kw">=</span> <span class="fl">2</span>)</pre></body></html></div>
+<p>TODO(): simplify output of equilibrium output TODO: create summary function which makes a barplot of relevant information</p>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span><span class="op">(</span><span class="va">my.fac</span><span class="op">$</span><span class="va">FAC.eq.state.RM</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">7</span><span class="op">]</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span>height <span class="op">=</span> <span class="va">x</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>v <span class="op">=</span> <span class="fl">4.85</span>, col <span class="op">=</span> <span class="fl">2</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <p><img src="d-the_runFAC_command_files/figure-html/unnamed-chunk-27-1.png" width="700"></p>
 </div>
 </div>
@@ -399,7 +428,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

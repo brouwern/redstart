@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -175,20 +175,20 @@
     <p>QA/QC: Build sequences of parameters for testing mate pairing equations</p>
     </div>
 
-    <pre class="usage"><span class='fu'>error_check_build_Ptest_df</span>(
-  <span class='kw'>include.W.0</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>include.K.0</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>seqW</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>1</span>, <span class='fl'>100</span>, <span class='fl'>30</span>),
-  <span class='kw'>seqK</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>1</span>, <span class='fl'>250</span>, <span class='fl'>50</span>),
-  <span class='kw'>seqP.cgg</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>seqP.cgp</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>seqP.cpg</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>seqP.cpp</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>seqP.kgg</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>seqP.kgp</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>seqP.kpg</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>seqP.kpp</span> <span class='kw'>=</span> <span class='fl'>NA</span>
-)</pre>
+    <pre class="usage"><span class='fu'>error_check_build_Ptest_df</span><span class='op'>(</span>
+  include.W.0 <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  include.K.0 <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  seqW <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>100</span>, <span class='fl'>30</span><span class='op'>)</span>,
+  seqK <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>250</span>, <span class='fl'>50</span><span class='op'>)</span>,
+  seqP.cgg <span class='op'>=</span> <span class='cn'>NA</span>,
+  seqP.cgp <span class='op'>=</span> <span class='cn'>NA</span>,
+  seqP.cpg <span class='op'>=</span> <span class='cn'>NA</span>,
+  seqP.cpp <span class='op'>=</span> <span class='cn'>NA</span>,
+  seqP.kgg <span class='op'>=</span> <span class='cn'>NA</span>,
+  seqP.kgp <span class='op'>=</span> <span class='cn'>NA</span>,
+  seqP.kpg <span class='op'>=</span> <span class='cn'>NA</span>,
+  seqP.kpp <span class='op'>=</span> <span class='cn'>NA</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -248,9 +248,11 @@
     <p>P.test.df xxxx of parameters</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>P.test.df</span> <span class='kw'>&lt;-</span> <span class='fu'>error_check_build_Ptest_df</span>()
-<span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='no'>P.test.df</span>)</div><div class='output co'>#&gt; [1] 6400   14</div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>P.test.df</span> <span class='op'>&lt;-</span> <span class='fu'>error_check_build_Ptest_df</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span><span class='op'>(</span><span class='va'>P.test.df</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 6400   14</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -266,7 +268,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

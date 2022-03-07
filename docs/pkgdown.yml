@@ -1,5 +1,5 @@
-pandoc: 2.3.1
-pkgdown: 1.5.1
+pandoc: 2.14.1
+pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   a-Bio_Intro-FAC_demography: a-Bio_Intro-FAC_demography.html
@@ -19,5 +19,5 @@ articles:
   z-MANUSCRIPT: z-MANUSCRIPT.html
   z-TODO: z-TODO.html
   z-build_and_rebuild_package: z-build_and_rebuild_package.html
-last_built: 2020-07-02T17:53Z
+last_built: 2022-03-07T17:54Z
 

@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -175,7 +175,7 @@
     <p>Competitive ability depends on "an intrsince age-,sex- and condition(habitat)-specific competitive factor gamma and the number of birds in each class" (Runge and Mara, 2004; page 380, column 2).  THis function calculates gammas for each class of birds based on gamma.base provided in function call.  Currently competitiveness for winter habitat is primarily determined by age and the habitat a bird originated (source vs. sink).  Changing gamma.base decreases the competitiveness of females relative to males.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>eq24_make_gamma_vec</span>(<span class='kw'>gamma.base</span> <span class='kw'>=</span> <span class='fl'>2</span>)</pre>
+    <pre class="usage"><span class='fu'>eq24_make_gamma_vec</span><span class='op'>(</span>gamma.base <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -194,24 +194,26 @@
     <p>Note: breeding K is based on pairs,winter K is based on individuals.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='co'># Default relative competitiveness is that males = females</span>
-<span class='no'>gamma.1</span> <span class='kw'>&lt;-</span> <span class='fu'>eq24_make_gamma_vec</span>()
-
-<span class='co'># Make females more competitive than males</span>
-<span class='no'>gamma.1.2</span> <span class='kw'>&lt;-</span> <span class='fu'>eq24_make_gamma_vec</span>(<span class='kw'>gamma.base</span> <span class='kw'>=</span> <span class='fl'>1.2</span>)
-
-<span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='no'>gamma.1</span>, <span class='no'>gamma.1.2</span>)</div><div class='output co'>#&gt;   gamma.1  gamma.1.2
-#&gt; 1    1.00 1.00000000
-#&gt; 2    0.10 0.10000000
-#&gt; 3    0.01 0.01000000
-#&gt; 4    0.50 0.83333333
-#&gt; 5    0.05 0.08333333
-#&gt; 6    0.20 0.20000000
-#&gt; 7    0.01 0.01000000
-#&gt; 8    0.10 0.16666667
-#&gt; 9    0.01 0.01000000</div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'></span>
+<span class='r-in'><span class='co'># Default relative competitiveness is that males = females</span></span>
+<span class='r-in'><span class='va'>gamma.1</span> <span class='op'>&lt;-</span> <span class='fu'>eq24_make_gamma_vec</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Make females more competitive than males</span></span>
+<span class='r-in'><span class='va'>gamma.1.2</span> <span class='op'>&lt;-</span> <span class='fu'>eq24_make_gamma_vec</span><span class='op'>(</span>gamma.base <span class='op'>=</span> <span class='fl'>1.2</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='va'>gamma.1</span>, <span class='va'>gamma.1.2</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   gamma.1  gamma.1.2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1    1.00 1.00000000</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2    0.10 0.10000000</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3    0.01 0.01000000</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4    0.50 0.83333333</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5    0.05 0.08333333</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6    0.20 0.20000000</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 7    0.01 0.01000000</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 8    0.10 0.16666667</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 9    0.01 0.01000000</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -227,7 +229,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

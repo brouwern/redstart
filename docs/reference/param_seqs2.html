@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -175,7 +175,7 @@
     <p>Create sequence of parameter values between minimum and maximum.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>param_seqs2</span>(<span class='kw'>param.ranges</span> <span class='kw'>=</span> <span class='fu'><a href='param_ranges.html'>param_ranges</a></span>(), <span class='kw'>len.out</span> <span class='kw'>=</span> <span class='fl'>10</span>)</pre>
+    <pre class="usage"><span class='fu'>param_seqs2</span><span class='op'>(</span>param.ranges <span class='op'>=</span> <span class='fu'><a href='param_ranges.html'>param_ranges</a></span><span class='op'>(</span><span class='op'>)</span>, len.out <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -195,18 +195,20 @@
     <p>param.seq List with 30 elements, one for each parameter.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>#generate min and max values for each parameter used for figure 28.3 in original paper</span>
-<span class='no'>params</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='param_ranges.html'>param_ranges</a></span>(<span class='kw'>figure</span> <span class='kw'>=</span> <span class='fl'>28.3</span>)
-
-<span class='co'># Generate parameter sequence</span>
-<span class='no'>params.seqs</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='param_seqs.html'>param_seqs</a></span>(<span class='kw'>param.ranges</span> <span class='kw'>=</span> <span class='no'>params</span>)
-
-
-<span class='co'>## Most are constants; 3rd and 5th element vary accross a range of values</span>
-<span class='no'>params.seqs</span>$<span class='no'>K.wg</span></div><div class='output co'>#&gt;  [1]    1  112  223  334  445  556  667  778  889 1000</div><div class='input'>
-
-
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'>#generate min and max values for each parameter used for figure 28.3 in original paper</span></span>
+<span class='r-in'><span class='va'>params</span> <span class='op'>&lt;-</span> <span class='fu'><a href='param_ranges.html'>param_ranges</a></span><span class='op'>(</span>figure <span class='op'>=</span> <span class='fl'>28.3</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Generate parameter sequence</span></span>
+<span class='r-in'><span class='va'>params.seqs</span> <span class='op'>&lt;-</span> <span class='fu'><a href='param_seqs.html'>param_seqs</a></span><span class='op'>(</span>param.ranges <span class='op'>=</span> <span class='va'>params</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Most are constants; 3rd and 5th element vary accross a range of values</span></span>
+<span class='r-in'><span class='va'>params.seqs</span><span class='op'>$</span><span class='va'>K.wg</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1]    1  112  223  334  445  556  667  778  889 1000</span>
+<span class='r-in'></span>
+<span class='r-in'></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -222,7 +224,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

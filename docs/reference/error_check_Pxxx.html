@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -175,7 +175,7 @@
     <p>QA/QC: Check for errors in pairing equations</p>
     </div>
 
-    <pre class="usage"><span class='fu'>error_check_Pxxx</span>(<span class='no'>P.xxx.name</span>, <span class='no'>P.xxx.value</span>, <span class='kw'>P.xxx.eq.name</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>i</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>error_check_Pxxx</span><span class='op'>(</span><span class='va'>P.xxx.name</span>, <span class='va'>P.xxx.value</span>, P.xxx.eq.name <span class='op'>=</span> <span class='cn'>NA</span>, i <span class='op'>=</span> <span class='cn'>NA</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -204,15 +204,25 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>P.xxx.names</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"P.cgg"</span>, <span class='st'>"P.cgp"</span>,<span class='st'>"P.cpg"</span>, <span class='st'>"P.cpp"</span>,<span class='st'>"P.kgg"</span>, <span class='st'>"P.kgp"</span>,<span class='st'>"P.kpg"</span>, <span class='st'>"P.kpp"</span>)
-<span class='no'>P.xxx.values</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='kw'>min</span> <span class='kw'>=</span> -<span class='fl'>0.8</span>,<span class='kw'>max</span> <span class='kw'>=</span> <span class='fl'>1.2</span>,<span class='kw'>n</span><span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>P.xxx.names</span>))
-<span class='no'>P.xxx.values</span>[<span class='fl'>3</span>] <span class='kw'>&lt;-</span> <span class='fl'>NaN</span>
-
-<span class='fu'>error_check_Pxxx</span>(<span class='kw'>P.xxx.name</span> <span class='kw'>=</span> <span class='no'>P.xxx.names</span>[<span class='fl'>3</span>],
-                 <span class='kw'>P.xxx.value</span> <span class='kw'>=</span> <span class='no'>P.xxx.values</span>[<span class='fl'>3</span>])</div><div class='output co'>#&gt; <span class='message'>P.cpg is NaN on iteration NA; equation NA</span></div><div class='output co'>#&gt; <span class='message'>P.cpg is NA on iteration NA; equation NA</span></div><div class='input'>
-<span class='kw'>for</span>(<span class='no'>i</span> <span class='kw'>in</span> <span class='fl'>1</span>:<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>P.xxx.names</span>)){
-   <span class='fu'>error_check_Pxxx</span>(<span class='kw'>P.xxx.name</span> <span class='kw'>=</span> <span class='no'>P.xxx.names</span>[<span class='no'>i</span>],
-                 <span class='kw'>P.xxx.value</span> <span class='kw'>=</span> <span class='no'>P.xxx.values</span>[<span class='no'>i</span>])}</div><div class='output co'>#&gt; <span class='message'>P.cgp is &lt;0 on iteration NA; P = -0.67; equation NA</span></div><div class='output co'>#&gt; <span class='message'>P.cpg is NaN on iteration NA; equation NA</span></div><div class='output co'>#&gt; <span class='message'>P.cpg is NA on iteration NA; equation NA</span></div><div class='output co'>#&gt; <span class='message'>P.cpp is &gt;1 on iteration NA; P = 1.15; equation NA</span></div><div class='output co'>#&gt; <span class='message'>P.kgg is &lt;0 on iteration NA; P = -0.22; equation NA</span></div><div class='output co'>#&gt; <span class='message'>P.kpp is &lt;0 on iteration NA; P = -0.41; equation NA</span></div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>P.xxx.names</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"P.cgg"</span>, <span class='st'>"P.cgp"</span>,<span class='st'>"P.cpg"</span>, <span class='st'>"P.cpp"</span>,<span class='st'>"P.kgg"</span>, <span class='st'>"P.kgp"</span>,<span class='st'>"P.kpg"</span>, <span class='st'>"P.kpp"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>P.xxx.values</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span>min <span class='op'>=</span> <span class='op'>-</span><span class='fl'>0.8</span>,max <span class='op'>=</span> <span class='fl'>1.2</span>,n<span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>P.xxx.names</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>P.xxx.values</span><span class='op'>[</span><span class='fl'>3</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='cn'>NaN</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>error_check_Pxxx</span><span class='op'>(</span>P.xxx.name <span class='op'>=</span> <span class='va'>P.xxx.names</span><span class='op'>[</span><span class='fl'>3</span><span class='op'>]</span>,</span>
+<span class='r-in'>                 P.xxx.value <span class='op'>=</span> <span class='va'>P.xxx.values</span><span class='op'>[</span><span class='fl'>3</span><span class='op'>]</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> P.cpg is NaN on iteration NA; equation NA</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> P.cpg is NA on iteration NA; equation NA</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='kw'>for</span><span class='op'>(</span><span class='va'>i</span> <span class='kw'>in</span> <span class='fl'>1</span><span class='op'>:</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>P.xxx.names</span><span class='op'>)</span><span class='op'>)</span><span class='op'>{</span></span>
+<span class='r-in'>   <span class='fu'>error_check_Pxxx</span><span class='op'>(</span>P.xxx.name <span class='op'>=</span> <span class='va'>P.xxx.names</span><span class='op'>[</span><span class='va'>i</span><span class='op'>]</span>,</span>
+<span class='r-in'>                 P.xxx.value <span class='op'>=</span> <span class='va'>P.xxx.values</span><span class='op'>[</span><span class='va'>i</span><span class='op'>]</span><span class='op'>)</span><span class='op'>}</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> P.cgp is &lt;0 on iteration NA; P = -0.67; equation NA</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> P.cpg is NaN on iteration NA; equation NA</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> P.cpg is NA on iteration NA; equation NA</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> P.cpp is &gt;1 on iteration NA; P = 1.15; equation NA</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> P.kgg is &lt;0 on iteration NA; P = -0.22; equation NA</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> P.kpp is &lt;0 on iteration NA; P = -0.41; equation NA</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -228,7 +238,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

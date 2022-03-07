@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -175,7 +175,7 @@
     <p>Draws values from a random uniform distribution (see function runif() ) between a minmum and maximum value.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>r_vitals</span>(<span class='kw'>d</span> <span class='kw'>=</span> <span class='fl'>0.25</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10000</span>, <span class='kw'>params.</span> <span class='kw'>=</span> <span class='fu'><a href='param_set.html'>param_set</a></span>())</pre>
+    <pre class="usage"><span class='fu'>r_vitals</span><span class='op'>(</span>d <span class='op'>=</span> <span class='fl'>0.25</span>, n <span class='op'>=</span> <span class='fl'>10000</span>, params. <span class='op'>=</span> <span class='fu'><a href='param_set.html'>param_set</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -210,28 +210,30 @@ allow tolerances to be set on lambda values being used as references
 (currently use round() as a clunky way to make this work)</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>random.vitals</span> <span class='kw'>&lt;-</span><span class='fu'>r_vitals</span>()
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>random.vitals</span>)</div><div class='output co'>#&gt;         S.w.fg    S.w.fp    S.m.fg    S.m.fp    S.b.fc    S.b.fk    S.f.fc
-#&gt; 1873 0.7543400 0.7003431 0.9773236 0.9736435 0.9961088 0.8325422 0.7197066
-#&gt; 3185 0.7389030 0.7258221 0.9342319 0.8392916 0.7788868 0.7719384 0.9889531
-#&gt; 3415 0.8208713 0.7770452 0.7692821 0.7398411 0.8934320 0.8037966 0.7845557
-#&gt; 4255 0.8273149 0.7973646 0.8733134 0.7599667 0.8452933 0.8328583 0.9925424
-#&gt; 5745 0.9030721 0.8972997 0.8455739 0.7332654 0.9433235 0.8297175 0.8642536
-#&gt; 5881 0.9277549 0.8514534 0.7619092 0.6951580 0.7508966 0.6735178 0.8832557
-#&gt;         S.f.fk    S.y.fc    S.y.fk R.base.rate R.hab.effect   f   S.ad.hi
-#&gt; 1873 0.7114239 0.9173880 0.8712749    1.831127    0.4501040 0.5 0.5285277
-#&gt; 3185 0.8128288 0.9445320 0.7671436    1.711873    0.6204255 0.5 0.5317312
-#&gt; 3415 0.7142379 0.9661392 0.7831177    2.040444    0.5849981 0.5 0.4426352
-#&gt; 4255 0.7627583 0.8236380 0.7278495    1.707757    0.5839341 0.5 0.6061743
-#&gt; 5745 0.8478304 0.7429496 0.6204812    1.529647    0.3987078 0.5 0.6225523
-#&gt; 5881 0.8420214 0.8340811 0.6373344    2.165886    0.5401717 0.5 0.4688167
-#&gt;       S.juv.hi   Fec.hi  Lamb.hi   S.ad.lo  S.juv.lo    Fec.lo   Lamb.lo
-#&gt; 1873 0.6763299 1.831127 1.147751 0.4038737 0.5941088 0.8241977 0.6487052
-#&gt; 3185 0.6520168 1.711873 1.089816 0.3822301 0.4673258 1.0620898 0.6304011
-#&gt; 3415 0.6100991 2.040444 1.065072 0.3300455 0.4502065 1.1936559 0.5987413
-#&gt; 4255 0.5950828 1.707757 1.114303 0.3849547 0.4410554 0.9972174 0.6048688
-#&gt; 5745 0.5673268 1.529647 1.056457 0.4628475 0.4082511 0.6098822 0.5873400
-#&gt; 5881 0.5895828 2.165886 1.107301 0.3356732 0.3772348 1.1699504 0.5563462</div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>random.vitals</span> <span class='op'>&lt;-</span><span class='fu'>r_vitals</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>random.vitals</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>         S.w.fg    S.w.fp    S.m.fg    S.m.fp    S.b.fc    S.b.fk    S.f.fc</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1873 0.7543400 0.7003431 0.9773236 0.9736435 0.9961088 0.8325422 0.7197066</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3185 0.7389030 0.7258221 0.9342319 0.8392916 0.7788868 0.7719384 0.9889531</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3415 0.8208713 0.7770452 0.7692821 0.7398411 0.8934320 0.8037966 0.7845557</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4255 0.8273149 0.7973646 0.8733134 0.7599667 0.8452933 0.8328583 0.9925424</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5745 0.9030721 0.8972997 0.8455739 0.7332654 0.9433235 0.8297175 0.8642536</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5881 0.9277549 0.8514534 0.7619092 0.6951580 0.7508966 0.6735178 0.8832557</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>         S.f.fk    S.y.fc    S.y.fk R.base.rate R.hab.effect   f   S.ad.hi</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1873 0.7114239 0.9173880 0.8712749    1.831127    0.4501040 0.5 0.5285277</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3185 0.8128288 0.9445320 0.7671436    1.711873    0.6204255 0.5 0.5317312</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3415 0.7142379 0.9661392 0.7831177    2.040444    0.5849981 0.5 0.4426352</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4255 0.7627583 0.8236380 0.7278495    1.707757    0.5839341 0.5 0.6061743</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5745 0.8478304 0.7429496 0.6204812    1.529647    0.3987078 0.5 0.6225523</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5881 0.8420214 0.8340811 0.6373344    2.165886    0.5401717 0.5 0.4688167</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       S.juv.hi   Fec.hi  Lamb.hi   S.ad.lo  S.juv.lo    Fec.lo   Lamb.lo</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1873 0.6763299 1.831127 1.147751 0.4038737 0.5941088 0.8241977 0.6487052</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3185 0.6520168 1.711873 1.089816 0.3822301 0.4673258 1.0620898 0.6304011</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3415 0.6100991 2.040444 1.065072 0.3300455 0.4502065 1.1936559 0.5987413</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4255 0.5950828 1.707757 1.114303 0.3849547 0.4410554 0.9972174 0.6048688</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5745 0.5673268 1.529647 1.056457 0.4628475 0.4082511 0.6098822 0.5873400</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5881 0.5895828 2.165886 1.107301 0.3356732 0.3772348 1.1699504 0.5563462</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -247,7 +249,7 @@ allow tolerances to be set on lambda values being used as references
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

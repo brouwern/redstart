@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -175,7 +175,7 @@
     <p>FAC-IBM Step 3, Substep A1: Breeding habitat acquisition substep of pre-breeding step of breeding season using individual-based (IB) approach</p>
     </div>
 
-    <pre class="usage"><span class='fu'>step3_substepA1_hab_acquire_IB</span>(<span class='no'>W2</span>, <span class='no'>K.bc</span>, <span class='no'>K.bk</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>step3_substepA1_hab_acquire_IB</span><span class='op'>(</span><span class='va'>W2</span>, <span class='va'>K.bc</span>, <span class='va'>K.bk</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -203,29 +203,31 @@
     <p>hab.aq.results.IB Results of habitatio acquisition</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>#Set up param.set</span>
-<span class='no'>param.set</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>redstart</span><span class='kw ns'>::</span><span class='fu'><a href='param_set.html'>param_set</a></span>()
-
-<span class='co'>#set breeding carrying capacities to be relatively small</span>
-<span class='no'>param.set</span>$<span class='no'>K.bc</span> <span class='kw'>&lt;-</span> <span class='fl'>50</span>
-<span class='no'>param.set</span>$<span class='no'>K.bk</span> <span class='kw'>&lt;-</span> <span class='fl'>50</span>
-
-<span class='co'>#Set up W2 vector</span>
-<span class='no'>W2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>10</span>,<span class='fl'>5</span>,<span class='fl'>10</span>,<span class='fl'>10</span>); <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>W2</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"mg"</span>,<span class='st'>"mp"</span>,<span class='st'>"fg"</span>,<span class='st'>"fp"</span>)
-
-
-<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'>step3_substepA1_hab_acquire_IB</span>(<span class='kw'>W2</span> <span class='kw'>=</span> <span class='no'>W2</span>,
-           <span class='kw'>K.bc</span> <span class='kw'>=</span>  <span class='no'>param.set</span>$<span class='no'>K.bc</span>,
-           <span class='kw'>K.bk</span> <span class='kw'>=</span> <span class='no'>param.set</span>$<span class='no'>K.bk</span>)
-
-<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>out</span>)</div><div class='output co'>#&gt;                   Length Class      Mode   
-#&gt; B.fc              1      -none-     numeric
-#&gt; B.fk              1      -none-     numeric
-#&gt; B.mc              1      -none-     numeric
-#&gt; B.mk              1      -none-     numeric
-#&gt; B.md              1      -none-     numeric
-#&gt; hab.aq.results.IB 5      data.frame list   </div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'>#Set up param.set</span></span>
+<span class='r-in'><span class='va'>param.set</span> <span class='op'>&lt;-</span> <span class='fu'>redstart</span><span class='fu'>::</span><span class='fu'><a href='param_set.html'>param_set</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>#set breeding carrying capacities to be relatively small</span></span>
+<span class='r-in'><span class='va'>param.set</span><span class='op'>$</span><span class='va'>K.bc</span> <span class='op'>&lt;-</span> <span class='fl'>50</span></span>
+<span class='r-in'><span class='va'>param.set</span><span class='op'>$</span><span class='va'>K.bk</span> <span class='op'>&lt;-</span> <span class='fl'>50</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>#Set up W2 vector</span></span>
+<span class='r-in'><span class='va'>W2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>10</span>,<span class='fl'>5</span>,<span class='fl'>10</span>,<span class='fl'>10</span><span class='op'>)</span>; <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>W2</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"mg"</span>,<span class='st'>"mp"</span>,<span class='st'>"fg"</span>,<span class='st'>"fp"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>out</span> <span class='op'>&lt;-</span> <span class='fu'>step3_substepA1_hab_acquire_IB</span><span class='op'>(</span>W2 <span class='op'>=</span> <span class='va'>W2</span>,</span>
+<span class='r-in'>           K.bc <span class='op'>=</span>  <span class='va'>param.set</span><span class='op'>$</span><span class='va'>K.bc</span>,</span>
+<span class='r-in'>           K.bk <span class='op'>=</span> <span class='va'>param.set</span><span class='op'>$</span><span class='va'>K.bk</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>out</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                   Length Class      Mode   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> B.fc              1      -none-     numeric</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> B.fk              1      -none-     numeric</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> B.mc              1      -none-     numeric</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> B.mk              1      -none-     numeric</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> B.md              1      -none-     numeric</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> hab.aq.results.IB 5      data.frame list   </span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -241,7 +243,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
