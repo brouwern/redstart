@@ -11,7 +11,7 @@ The primary goal of the package is to model bird demographic rates through the b
 There is large uncertainty in the parameters of this model, and so it must be run across ranges of values to determine where model stability and change points occur. A central figure produced by the model is shown below, where the x and y axes are two model parameters, and the z-axis is the equilibrium population size.
 
 
-<img src="https://raw.githubusercontent.com/brouwern/redstart/master/Runge_Mara_Fig28_3.png" alt="Figure 28.3 of Runge and Marra 2004" width="375">
+<img src="https://raw.githubusercontent.com/brouwern/redstart/master/Runge_Mara_Fig28_3.png" alt="Figure 28.3 of Runge and Marra 2004">
 
 
 
